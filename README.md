@@ -1,0 +1,1 @@
+This is git a repository for the project to make a model correctly describing lipid-ion interactions. The structure of NMRlipids project repositories will be followed. This may or may not become a Open Collaboration project NMRlipids VI
