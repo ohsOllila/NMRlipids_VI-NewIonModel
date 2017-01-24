@@ -47,9 +47,9 @@ plot "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.d
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/CHARMM36_no-NBFIX/CHARMMnaclCONSchange.dat" using 1:2:3 with yerrorbars notitle pt 3 lt 1 lc rgb '#0088BF', "" using 1:2 with linespoint title 'CHARMM36 without NBFIX' pt 3 linetype 1 lw 2 dt 2 lc rgb '#0088BF', \
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/CHARMM36_no-NBFIX/CHARMMnaclCONSchange.dat" using 1:4:5 with yerrorbars notitle  pt 3 lt 1 lc rgb '#0088BF', "" using 1:4 with lines notitle linetype 1  lw 2 dt 2 lc rgb '#0088BF',\
      "../../../lipid_ionINTERACTION/scratch/EXP-Akutsu1981-DPPC-NaClchange.dat"  using 1:($2*-0.00784) notitle with linespoints  linetype 1 lw 5 pt 5 lc rgb 'black', \
-     "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeALLSCALED.dat" using 1:2 with linespoint title 'All scaled' pt 6 linetype 1 lc rgb 'violet', \
+     "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeALLSCALED.dat" using 1:2 with linespoint title 'All scaled NVT' pt 6 linetype 1 lc rgb 'violet', \
      "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeALLSCALED.dat" using 1:4 with linespoint notitle pt 6 linetype 1 lc rgb 'violet', \
-     "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGSCALED.dat" using 1:2 with linespoint title 'Headgroup scaled' pt 6 linetype 1 lc rgb 'orange', \
+     "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGSCALED.dat" using 1:2 with linespoint title 'Headgroup scaled NpT 310K' pt 6 linetype 1 lc rgb 'orange', \
      "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGSCALED.dat" using 1:4 with linespoint notitle pt 6 linetype 1 lc rgb 'orange', \
 
 
@@ -72,9 +72,9 @@ plot "../../../lipid_ionINTERACTION/Data/POPC/CaCl/CHARMM36/CHARMMcaclCONSchange
      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchange.dat" using 1:4:5 with yerrorbars notitle  pt 7 lt 1 lc rgb '#7AEE9E', "" using 1:4 with lines notitle linetype 1 lc rgb '#7AEE9E' ,\
      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeSCALED.dat" using 1:2:3 with yerrorbars notitle pt 6 lt 1 lc rgb '#7AEE9E', "" using 1:2 with linespoint notitle pt 6 linetype 1 dt 2 lc rgb '#7AEE9E', \
      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeSCALED.dat" using 1:4:5 with yerrorbars notitle  pt 6 lt 1 lc rgb '#7AEE9E', "" using 1:4 with lines notitle linetype 1 dt 2 lc rgb '#7AEE9E', \
-     "../../Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeALLSCALED.dat" using 1:2 with linespoint title 'All scaled' pt 6 linetype 1 lc rgb 'violet', \
+     "../../Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeALLSCALED.dat" using 1:2 with linespoint title 'All scaled NVT' pt 6 linetype 1 lc rgb 'violet', \
      "../../Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeALLSCALED.dat" using 1:4 with linespoint notitle pt 6 linetype 1 lc rgb 'violet', \
-     "../../Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeHGSCALED.dat" using 1:2 with linespoint title 'Headgroup scaled' pt 6 linetype 1 lc rgb 'orange', \
+     "../../Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeHGSCALED.dat" using 1:2 with linespoint title 'Headgroup scaled NpT 310K' pt 6 linetype 1 lc rgb 'orange', \
      "../../Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeHGSCALED.dat" using 1:4 with linespoint notitle pt 6 linetype 1 lc rgb 'orange', \
      "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/EXP-Akutsu1981-DPPC-CaClchange-T332.dat"  using 1:($2*-0.00784) notitle with linespoints  linetype 1 lw 5 pt 4 lc rgb 'black', \
      "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/EXP-Akutsu1981-DPPC-CaClchange-T323.dat"  using 1:($2*-0.00784) notitle with linespoints  linetype 1 lw 5 pt 5 lc rgb 'black', \
