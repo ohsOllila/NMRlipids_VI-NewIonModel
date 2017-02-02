@@ -1,34 +1,31 @@
 #!/usr/bin/env python
 """
- calculation of order parameters from a MD trajectory
+ calculation of order parameters of lipid bilayers
+ from a MD trajectory
+ 
+ meant for use with NMRlipids projects
 
  ------------------------------------------------------------
- Made by Joe,  Last edit 2017/01/26
+ Made by Joe,  Last edit 2017/02/02
 ------------------------------------------------------------
- input:
- output: order parameters (pickled, textfile and plot)
+ input: Order parameter definitions
+        gro and xtc file (or equivalents)
+ output: order parameters (2 textfiles)
 
 --------------------------------------------------------
 """
-
 
 # coding: utf-8
 
 import MDAnalysis as mda
 import numpy as np
 import math
-#import matplotlib.pyplot as plt
-#import cPickle
 from optparse import OptionParser
-#import scipy, math
 
-#try:
-    #import read_xvg_calc_mean as rxvg
-#except:
-    #print "Couldn't read XVG-reading library, can't process Gromacs pullx.xvg files!"
 
-k_b = 0.0083144621  #kJ/Mol*K
-f_conc=55430  # factor for calculating concentrations of salts from numbers of ions/waters; in mM/L
+#k_b = 0.0083144621  #kJ/Mol*K
+#f_conc=55430  # factor for calculating concentrations of salts from numbers of ions/waters; in mM/L
+
 bond_len_max=1.5  # in A, max distance between atoms for reasonable OP calculation
 bond_len_max_sq=bond_len_max**2
 
@@ -85,7 +82,7 @@ class OrderParameter:
         return (np.mean(self.traj), np.std(self.traj))
 
 
-def read_trajs(ordPars, top, trajs):
+def read_trajs_calc_OPs(ordPars, top, trajs):
     """
     procedure that
     creates MDAnalysis Universe with top,
@@ -126,6 +123,34 @@ def read_trajs(ordPars, top, trajs):
         #print "--", mol.atoms[0].position
 
 
+def parse_op_input(fname):
+    """
+    parses input file with Order Parameter definitions
+    file format is as follows:
+    OP_name    resname    atom1    atom2
+    (flexible cols)
+
+    fname : string
+        input file name
+
+    returns : dictionary 
+        with OrderParameters class instances
+    """
+    ordPars = {}
+    try:
+        with open(fname,"r") as f:
+            for line in f.readlines():
+                if not line.startswith("#"):
+                    items = line.split()
+                    op_name = items[0]
+                    resname = items[1]
+                    atAname = items[2]
+                    atBname = items[3]
+                    ordPars[op_name] = OrderParameter(op_name, resname, atAname, atBname)
+    except:
+        raise RuntimeError, "Couldn't read input file >> {inpf} <<".format(inpf=opts.inp_fname)
+    return ordPars
+
 
 
 #%%
@@ -140,34 +165,15 @@ if __name__ == "__main__":
     parser.add_option('-o', '--out',  dest='out_fname',  help='output (OPs mean&std) file name', default="Headgroup_Glycerol_OPs.dat")
     opts, args = parser.parse_args()
 
+#%%
     # dictionary for storing of OrderParameter class instances (name-wise, of course)
-    ordPars = {}
-    # read-in OP definitions from the input file
-    try:
-        with open(opts.inp_fname,"r") as f:
-            for line in f.readlines():
-                if not line.startswith("#"):
-                    items = line.split()
-                    op_name = items[0]
-                    resname = items[1]
-                    atAname = items[2]
-                    atBname = items[3]
-                    ordPars[op_name] = OrderParameter(op_name, resname, atAname, atBname)
-    except:
-        raise RuntimeError, "Couldn't read input file >> {inpf} <<".format(inpf=opts.inp_fname)
-
-
-#    ordPars = {}
-#    beta1OP  = OrderParameter("beta1",  "POPC", "C12", "H12A")
-#    beta2OP  = OrderParameter("beta2",  "POPC", "C12", "H12B")
-#    alpha1OP = OrderParameter("alpha1", "POPC", "C11", "H11A")
-#    alpha2OP = OrderParameter("alpha2", "POPC", "C11", "H11B")
-#    op_list = (beta1OP, beta2OP, alpha1OP, alpha2OP)
-#    for op in op_list:
-#        ordPars[op.name] = op
+    print "\nReading OP definitions ...\n"
+    ordPars = parse_op_input(opts.inp_fname)
 
 #%%
-    read_trajs(ordPars, opts.top_fname, opts.traj_fname)
+    # read trajectory and calculate all OPs
+    print "Reading trajectory and calculating OPs ...\n"
+    read_trajs_calc_OPs(ordPars, opts.top_fname, opts.traj_fname)
 
 #%%
 
@@ -184,9 +190,9 @@ if __name__ == "__main__":
 ------------------------------------------------------------\n")
             for op in ordPars.values():
                 f.write( "   ".join([op.name, op.resname, op.atAname, op.atBname, str(op.avg), str(op.std), "\n"]) )
-        print "OrderParameters written to >> {fname} <<".format(fname=opts.out_fname)
+        print "\nOrderParameters written to >> {fname} <<".format(fname=opts.out_fname)
     except:
-        print "Problems writing main output file."
+        print "ERROR: Problems writing main output file."
 
 
     #conc = f_conc*nion/nwat
@@ -200,4 +206,5 @@ if __name__ == "__main__":
         with open(opts.out_fname+".line","w") as f:
             f.write(conc_formatted_line)
     except:
-        print "Problems writing the beta-alpha single line format file."
+        print "ERROR: Problems writing the beta-alpha single line format file."
+
