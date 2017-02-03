@@ -103,15 +103,18 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
     # make atom selections for each OP and store it as its attribute for later use in trajectory
     for op in ordPars.values():
         # selection = pairs of atoms, split-by residues
-        selection = mol.select_atoms("resname {rnm} and name {atA} or name {atB}".format(
+        selection = mol.select_atoms("resname {rnm} and name {atA} {atB}".format(
                                     rnm=op.resname, atA=op.atAname, atB=op.atBname)
                                     ).atoms.split("residue")
         for res in selection:
             # check if we have only 2 atoms (A & B) selected
             if res.n_atoms != 2:
+                print res.resnames, res.resids
+                for atom in res.atoms:
+                    print atom.name, atom.id
                 raise UserWarning, "Selection >> name {atA} {atB} << \
                 contains {nat} atoms, but should contain exactly 2!".format(
-                atA=op.atAname, atB=op.atBname, nat=len(sel.atoms))
+                atA=op.atAname, atB=op.atBname, nat=res.n_atoms)
         op.selection = selection
 
     # go through trajectory frame-by-frame

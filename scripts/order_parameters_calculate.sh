@@ -9,7 +9,8 @@ traj_file_name="traj_comp.xtc" #"../traj.trr"
 traj_pbc_nonwat_file_name="traj_nonwat_pbc.xtc" #"../traj.trr" 
 top_file_name="last_frame_nonwat.gro"
 tpr_file_name="topol.tpr"
-op_def_file="../../Headgroup_Glycerol_OPs.def"
+#op_def_file="../../Headgroup_Glycerol_OPs.def"
+op_def_file="../../order_parameter_definitions_POPC_all.def"
 op_out_file="Headgroup_Glycerol_OPs.dat"
 
 if ! [ -s $tpr_file_name ] 
