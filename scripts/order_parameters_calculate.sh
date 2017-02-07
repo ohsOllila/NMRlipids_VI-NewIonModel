@@ -11,7 +11,9 @@ top_file_name="last_frame_nonwat.gro"
 tpr_file_name="topol.tpr"
 #op_def_file="../../Headgroup_Glycerol_OPs.def"
 op_def_file="../../order_parameter_definitions_POPC_all.def"
-op_out_file="Headgroup_Glycerol_OPs.dat"
+op_out_file="OrdPars.dat"
+top="topol.top"
+f_conc=55430  # in mM/L
 
 if ! [ -s $tpr_file_name ] 
 then
@@ -30,6 +32,7 @@ then
         echo non-water | gmx trjconv -f state.cpt -s topol.tpr -o $top_file_name -pbc mol
     else
         echo "Couldn't find state.cpt"
+        exit 1
     fi
 fi
 
@@ -38,13 +41,10 @@ python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $t
 
 
 #getting concentration from topol.top file (if exists)
-top="topol.top"
-f_conc=55430  # in mM/L
-
 if [ -f $top ]
 then
-    nwat=`grep -e "^SOL" -e "^TIP" $top | cut  -f1 --complement `
-    nion=`grep -e "^NA" -e "^CA" $top | cut -d " " -f1 --complement `
+    nwat=`grep -e "molecules" -A 10 $top | grep -e "^SOL" -e "^TIP" | cut -d " " -f1 --complement `
+    nion=`grep -e "molecules" -A 10 $top | grep -e "^NA"  -e "^CA"  | cut -d " " -f1 --complement `
     [ -z $nion ] && nion=0
 
     conc=`echo $f_conc "*" $nion / $nwat  | bc`

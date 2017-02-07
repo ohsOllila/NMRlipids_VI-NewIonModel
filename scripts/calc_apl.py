@@ -5,9 +5,9 @@
 """
 
 import sys, os # math # os.path, string, re
+from optparse import OptionParser
 
 def main():
-   from optparse import OptionParser
    # help message is automatically provided
    # type=string, action=store is default
    parser = OptionParser()
