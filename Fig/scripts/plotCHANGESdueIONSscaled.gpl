@@ -22,7 +22,7 @@ set label 1 at screen 1.18, screen 0.715 "POPC" # font ",20"
 set label 2 at screen 1.18, screen 0.68 "DPPC" # font ",20"
 
 
-set key at screen 0.95,screen 0.85 maxcols 2 maxrows 4 reverse Left
+set key at screen 0.75,screen 0.92 reverse Left #maxcols 2 maxrows 4 
 set key font ",13"
 
 set yrange [-0.08:0.015]
@@ -30,14 +30,7 @@ set xtics format " "
 set ylabel "{/Symbol D}S^{/Symbol b}_{CH}"
 set origin 0,0.37
 set size 0.8, 0.43
-plot "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.dat" using 1:2:3 with yerrorbars notitle pt 5 lt 1 lc rgb '#D70039', "" using 1:2 with linespoint title 'Berger' pt 5 linetype 1 lc rgb '#D70039', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.dat" using 1:4:5 with yerrorbars notitle  pt 5 lt 1 lc rgb '#D70039', "" using 1:4 with lines notitle linetype 1 lc rgb '#D70039',\
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchangeSCALED.dat" using 1:2:3 with yerrorbars notitle pt 4 lt 1 lc rgb '#D70039', "" using 1:2 with linespoint title 'Berger scaled ions' pt 4 linetype 1 dt 2 lc rgb '#D70039', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchangeSCALED.dat" using 1:4:5 with yerrorbars notitle  pt 4 lt 1 lc rgb '#D70039', "" using 1:4 with lines notitle linetype 1 dt 2 lc rgb '#D70039',\
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchange.dat" using 1:2:3 with yerrorbars notitle pt 5 lt 1 lc rgb 'brown', "" using 1:2 with linespoint title 'Berger-OPLS' pt 5 linetype 1 lc rgb 'brown', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchange.dat" using 1:4:5 with yerrorbars notitle  pt 5 lt 1 lc rgb 'brown', "" using 1:4 with lines notitle linetype 1 lc rgb 'brown', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchangeSCALED.dat" using 1:2:3 with yerrorbars notitle pt 4 lt 1 lc rgb 'brown', "" using 1:2 with linespoint title 'Berger-OPLS scaled ions' pt 4 linetype 1 dt 2 lc rgb 'brown', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchangeSCALED.dat" using 1:4:5 with yerrorbars notitle  pt 4 lt 1 lc rgb 'brown', "" using 1:4 with lines notitle linetype 1 dt 2 lc rgb 'brown', \
+plot \
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/SLIPID/SLIPIDnaclCONSchangeSD.dat" using 1:2:3 with yerrorbars notitle pt 7 lt 1 lc rgb '#7AEE9E', "" using 1:2 with linespoint title 'Slipids' pt 7 linetype 1 lc rgb '#7AEE9E', \
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/SLIPID/SLIPIDnaclCONSchangeSD.dat" using 1:4:5 with yerrorbars notitle  pt 7 lt 1 lc rgb '#7AEE9E', "" using 1:4 with lines notitle linetype 1 lc rgb '#7AEE9E',\
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/SLIPID/SLIPIDnaclCONSchangeSCALED.dat" using 1:2:3 with yerrorbars notitle pt 6 lt 1 lc rgb '#7AEE9E', "" using 1:2 with linespoint title 'Slipids scaled ions' pt 6 linetype 1 dt 2 lc rgb '#7AEE9E', \
@@ -53,11 +46,18 @@ plot "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.d
      "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGSCALED.dat" using 1:4 with linespoint notitle pt 6 linetype 1 lc rgb '#FF6600', \
      "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGglycSCALED.dat" using 1:2 with linespoint title 'Headgroup+glycerol scaled NpT 310K' pt 6 linetype 1 lc rgb '#A944A9', \
      "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGglycSCALED.dat" using 1:4 with linespoint notitle pt 6 linetype 1 lc rgb '#A944A9', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.dat" using 1:2:3 with yerrorbars notitle pt 5 lt 1 lc rgb '#D70039', "" using 1:2 with linespoint title 'Berger' pt 5 linetype 1 lc rgb '#D70039', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.dat" using 1:4:5 with yerrorbars notitle  pt 5 lt 1 lc rgb '#D70039', "" using 1:4 with lines notitle linetype 1 lc rgb '#D70039',\
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchangeSCALED.dat" using 1:2:3 with yerrorbars notitle pt 4 lt 1 lc rgb '#D70039', "" using 1:2 with linespoint title 'Berger scaled ions' pt 4 linetype 1 dt 2 lc rgb '#D70039', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchangeSCALED.dat" using 1:4:5 with yerrorbars notitle  pt 4 lt 1 lc rgb '#D70039', "" using 1:4 with lines notitle linetype 1 dt 2 lc rgb '#D70039',\
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchange.dat" using 1:2:3 with yerrorbars notitle pt 5 lt 1 lc rgb 'brown', "" using 1:2 with linespoint title 'Berger-OPLS' pt 5 linetype 1 lc rgb 'brown', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchange.dat" using 1:4:5 with yerrorbars notitle  pt 5 lt 1 lc rgb 'brown', "" using 1:4 with lines notitle linetype 1 lc rgb 'brown', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchangeSCALED.dat" using 1:2:3 with yerrorbars notitle pt 4 lt 1 lc rgb 'brown', "" using 1:2 with linespoint title 'Berger-OPLS scaled ions' pt 4 linetype 1 dt 2 lc rgb 'brown', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchangeSCALED.dat" using 1:4:5 with yerrorbars notitle  pt 4 lt 1 lc rgb 'brown', "" using 1:4 with lines notitle linetype 1 dt 2 lc rgb 'brown', \
 
 
 
-
-set key at screen 1.4,screen 0.9 maxcols 2 maxrows 7
+set key at screen 1.4,screen 0.92 #maxcols 2 maxrows 7
 set xtics format " "			
 set ytics format " "
 set y2tic 0.01
@@ -66,7 +66,8 @@ set origin 0.72,0.37
 unset ylabel
 set y2label "{/Symbol D}S^{/Symbol b}_{CH}" 
 set size 0.85, 0.43
-plot "../../../lipid_ionINTERACTION/Data/POPC/CaCl/CHARMM36/CHARMMcaclCONSchange.dat" using 1:2:3 with yerrorbars notitle pt 7 lt 1 lc rgb '#0088BF', "" using 1:2 with linespoint notitle pt 7 linetype 1 lc rgb '#0088BF', \
+plot \
+     "../../../lipid_ionINTERACTION/Data/POPC/CaCl/CHARMM36/CHARMMcaclCONSchange.dat" using 1:2:3 with yerrorbars notitle pt 7 lt 1 lc rgb '#0088BF', "" using 1:2 with linespoint notitle pt 7 linetype 1 lc rgb '#0088BF', \
      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/CHARMM36/CHARMMcaclCONSchange.dat" using 1:4:5 with yerrorbars notitle  pt 7 lt 1 lc rgb '#0088BF', "" using 1:4 with lines notitle linetype 1 lc rgb '#0088BF', \
      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/CHARMM36/CHARMMcaclCONSchangeSCALED.dat" using 1:2:3 with yerrorbars notitle pt 6 lt 1 lc rgb '#0088BF', "" using 1:2 with linespoint title " CHARMM36 scaled ions" pt 6 linetype 1 dt 2 lc rgb '#0088BF', \
      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/CHARMM36/CHARMMcaclCONSchangeSCALED.dat" using 1:4:5 with yerrorbars notitle  pt 6 lt 1 lc rgb '#0088BF', "" using 1:4 with lines notitle linetype 1 dt 2 lc rgb '#0088BF', \
@@ -95,14 +96,7 @@ set ylabel "{/Symbol D}S^{/Symbol a}_{CH}"
 set xlabel "[NaCl] (mM)"
 set origin 0,0
 set size 0.8, 0.43
-plot "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchangeSCALED.dat" using 1:6:7  with yerrorbars notitle pt 4 lt 1 lc rgb '#D70039', "" using 1:6 with lines notitle linetype 1 dt 2 lc rgb '#D70039', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchangeSCALED.dat" using 1:8:9  with yerrorbars notitle pt 4 lt 1 lc rgb '#D70039', "" using 1:8 with lines notitle linetype 1 dt 2 lc rgb '#D70039',\
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.dat" using 1:6:7  with yerrorbars notitle pt 5 lt 1 lc rgb '#D70039', "" using 1:6 with lines notitle linetype 1 lc rgb '#D70039', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.dat" using 1:8:9  with yerrorbars notitle pt 5 lt 1 lc rgb '#D70039', "" using 1:8 with lines notitle linetype 1 lc rgb '#D70039',\
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchangeSCALED.dat" using 1:6:7  with yerrorbars notitle pt 4 lt 1 lc rgb 'brown', "" using 1:6 with lines notitle linetype 1 dt 2 lc rgb 'brown', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchangeSCALED.dat" using 1:8:9  with yerrorbars notitle pt 4 lt 1 lc rgb 'brown', "" using 1:8 with lines notitle linetype 1 dt 2 lc rgb 'brown', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchange.dat" using 1:6:7  with yerrorbars notitle pt 5 lt 1 lc rgb 'brown', "" using 1:6 with lines notitle linetype 1 lc rgb 'brown', \
-     "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchange.dat" using 1:8:9  with yerrorbars notitle pt 5 lt 1 lc rgb 'brown', "" using 1:8 with lines notitle linetype 1 lc rgb 'brown', \
+plot \
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/SLIPID/SLIPIDnaclCONSchangeSCALED.dat" using 1:6:7  with yerrorbars notitle pt 6 lt 1 lc rgb '#7AEE9E', "" using 1:6 with lines notitle linetype 1 dt 2 lc rgb '#7AEE9E', \
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/SLIPID/SLIPIDnaclCONSchangeSCALED.dat" using 1:8:9  with yerrorbars notitle pt 6 lt 1 lc rgb '#7AEE9E', "" using 1:8 with lines notitle linetype 1  dt 2 lc rgb '#7AEE9E',\
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/SLIPID/SLIPIDnaclCONSchangeSD.dat" using 1:6:7  with yerrorbars notitle pt 7 lt 1 lc rgb '#7AEE9E', "" using 1:6 with lines notitle linetype 1 lc rgb '#7AEE9E', \
@@ -118,9 +112,17 @@ plot "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchangeSC
      "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGSCALED.dat" using 1:8 with linespoint notitle pt 6 linetype 1 lc rgb '#FF6600', \
      "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGglycSCALED.dat" using 1:6 with linespoint notitle pt 6 linetype 1 lc rgb '#A944A9', \
      "../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGglycSCALED.dat" using 1:8 with linespoint notitle pt 6 linetype 1 lc rgb '#A944A9', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchangeSCALED.dat" using 1:6:7  with yerrorbars notitle pt 4 lt 1 lc rgb '#D70039', "" using 1:6 with lines notitle linetype 1 dt 2 lc rgb '#D70039', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchangeSCALED.dat" using 1:8:9  with yerrorbars notitle pt 4 lt 1 lc rgb '#D70039', "" using 1:8 with lines notitle linetype 1 dt 2 lc rgb '#D70039',\
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.dat" using 1:6:7  with yerrorbars notitle pt 5 lt 1 lc rgb '#D70039', "" using 1:6 with lines notitle linetype 1 lc rgb '#D70039', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGER/BERGERnaclCONSchange.dat" using 1:8:9  with yerrorbars notitle pt 5 lt 1 lc rgb '#D70039', "" using 1:8 with lines notitle linetype 1 lc rgb '#D70039',\
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchangeSCALED.dat" using 1:6:7  with yerrorbars notitle pt 4 lt 1 lc rgb 'brown', "" using 1:6 with lines notitle linetype 1 dt 2 lc rgb 'brown', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchangeSCALED.dat" using 1:8:9  with yerrorbars notitle pt 4 lt 1 lc rgb 'brown', "" using 1:8 with lines notitle linetype 1 dt 2 lc rgb 'brown', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchange.dat" using 1:6:7  with yerrorbars notitle pt 5 lt 1 lc rgb 'brown', "" using 1:6 with lines notitle linetype 1 lc rgb 'brown', \
+     #"../../../lipid_ionINTERACTION/Data/DPPC/NaCl/BERGERopls/BERGERoplsnaclCONSchange.dat" using 1:8:9  with yerrorbars notitle pt 5 lt 1 lc rgb 'brown', "" using 1:8 with lines notitle linetype 1 lc rgb 'brown', \
 
 
-set key at screen 1.29,screen 0.835 maxcols 2 maxrows 6
+set key at screen 1.29,screen 0.835 #maxcols 2 maxrows 6
 set xtics format "%G"
 set ytics format " "
 set y2tics				   
@@ -129,7 +131,8 @@ unset ylabel
 set y2label "{/Symbol D}S^{/Symbol a}_{CH}" 
 set origin 0.72,0
 set size 0.85, 0.43
-plot "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchange.dat"  using 1:6:7  with yerrorbars notitle pt 7 lt 1 lc rgb '#7AEE9E', "" using 1:6 with lines notitle linetype 1 lc rgb '#7AEE9E', \
+plot \
+     "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchange.dat"  using 1:6:7  with yerrorbars notitle pt 7 lt 1 lc rgb '#7AEE9E', "" using 1:6 with lines notitle linetype 1 lc rgb '#7AEE9E', \
      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchange.dat" using 1:8:9  with yerrorbars notitle pt 7 lt 1 lc rgb '#7AEE9E', "" using 1:8 with lines notitle linetype 1 lc rgb '#7AEE9E',\
      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeSCALED.dat"  using 1:6:7  with yerrorbars notitle pt 6 lt 1 lc rgb '#7AEE9E', "" using 1:6 with lines notitle linetype 1 dt 2 lc rgb '#7AEE9E', \
      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/SLIPIDcaclCONSchangeSCALED.dat" using 1:8:9  with yerrorbars notitle pt 6 lt 1 lc rgb '#7AEE9E', "" using 1:8 with lines notitle linetype 1 dt 2 lc rgb '#7AEE9E', \
