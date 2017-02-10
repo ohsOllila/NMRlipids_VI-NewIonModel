@@ -1,0 +1,18 @@
+#include "forcefield_slipids+Dang-ions.itp"
+; #include "./slipids_top/forcefield.ff/forcefield.itp"
+; #include "./slipids_top/POPC.itp"
+#include "./slipids_top/POPCvs.itp"
+#include "./slipids_top/TIP3p_lowmass.itp"
+#include <./ions/gromacs/ions.itp>
+
+[ system ]
+; Name
+POPC - 128 lipids & 40 waters per lipid & 150mM NaCl
+
+[ molecules ]
+; Compound	#mols
+POPC		128
+TIP3p		5064
+NA_s        28
+CL_2s       28
+
