@@ -1,0 +1,37 @@
+; Dang parameters for Na, K and Cl (unchanged) from Miriam Kohagen (Uhlig) 
+; references:
+;  J. Chem. Phys. 1994, 100, 3757-3766;
+;  J. Phys. Chem. B 1999, 103, 4714-4720
+
+[ atomtypes ]
+; name      at.num  mass     charge ptype  sigma      epsilon
+Cl          17      35.45    0.0000  A   4.40104e-01  4.18400e-01  ; remains the same as in Amber99SB
+Na          11      22.99    0.0000  A   2.350e-01    5.44284e-01  ; Dang
+K           19      39.10    0.0000  A   3.154e-01    4.18680e-01  ; Dang
+
+
+[ moleculetype ]
+; molname       nrexcl
+CL              1
+
+[ atoms ]
+; id    at type         res nr  residu name     at name  cg nr  charge
+   1    Cl                  1       CL             CL      1   -1.00000
+
+
+[ moleculetype ]
+; molname       nrexcl
+NA              1
+
+[ atoms ]
+; id    at type         res nr  residu name     at name  cg nr  charge
+   1    Na                  1       NA             NA      1    1.00000
+
+[ moleculetype ]
+; molname       nrexcl
+K               1
+
+[ atoms ]
+; id    at type         res nr  residu name     at name  cg nr  charge
+   1    K                   1       K              K       1    1.00000
+

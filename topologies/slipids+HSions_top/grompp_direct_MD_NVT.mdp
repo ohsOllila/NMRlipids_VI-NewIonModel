@@ -1,0 +1,80 @@
+; GROMACS configuration for ...eGFP simulations
+;  virtual-sites NegCleGFP well-energy-conserving setup
+; NPT simulation (amber99sb version and Slipids)
+
+integrator               = md
+dt                       = 0.005  ; 5fs
+tinit                    = 0
+init_step                = 0
+nsteps                   = 20000000 ; 100ns
+
+; ELECTRIC FIELD
+; E-z                      = 1 +0.1 0
+
+nstxout                  = 2000000 ;10ns
+nstvout                  = 2000000 ;10ns
+nstfout                  = 0
+nstlog                   = 1000   ; 5ps
+nstcalcenergy            = 100    ; 0.5ps, default value=100 ; replex must be multiple of this value!
+nstenergy                = 1000   ; 5ps
+nstxtcout                = 1000   ; 5ps
+xtc-precision            = 1000
+xtc-grps                 = 
+energygrps               = Water_and_ions POPC
+nstlist                  = 25 ; .05ps, Gromacs manual says values>20 give the best performance (for GPUs)
+ns-type                  = grid ; grid search for neighbour list faster for larger sys. than simple
+;Centre of mass movement removal
+comm-mode                = Linear
+nstcomm                  = 100 ; 1.0ps, This should suffice
+comm-grps                = 
+;nstcheckpoint            = 2000   ;10ps
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+cutoff-scheme            = verlet      ; group is alternative
+coulombtype              = PME			; Particle mesh Ewald, do not change
+rcoulomb                 = 1.0			; Real-space cut-off
+vdwtype                  = cut-off
+vdw-modifier             = potential-shift-verlet   ; =shifted-vdw with Verlet_cutoff_scheme, =none with grid_cutoff_scheme
+rvdw                     = 1.0			; VdW cut-off, orig paper rvdw=1.4, but this value is still fine (tested for both rigbonds an VSites, almost identical)
+DispCorr                 = EnerPres		; Dispersion corrections to both the potential and pressure
+table-extension          = 1.0
+fourierspacing		       = 0.12			; PME grid
+
+; Options no longer required with Verlet cut-off scheme
+;rlist			          = 1.0			; Short-range neighbor list
+;rlistlong		          = 1.6			; Long-range neighbor list 
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS 
+tcoupl                   = v-rescale   ; Thermostat, v-rescale or nose-hoover is also fine
+tc-grps                  = POPC Water_and_ions		; Couple lipids and Water_and_ions seperatly
+tau-t                    = 1.0 1.0		; Time constant for temperature coupling
+ref-t                    = 310 310		; Desired temperature (K)
+Pcoupl                   = no ;parrinello-rahman	; Barostat
+;Pcoupltype               = semiisotropic	; Pressure in xy and z couple separately
+;ref-p                    = 1.013 1.013		; Desired pressure (bar)
+;tau-p                    = 10.0 10.0		; Time constant for pressure coupling
+;compressibility          = 4.5e-5 4.5e-5	; Same as for water
+
+; CONSTRAINTS
+constraints              = all-bonds
+constraint-algorithm     = Lincs
+lincs-order              = 6    ; Increasing these does not make much change to the precision of virtual sites (J. Melcr)
+lincs-iter               = 2    ; 5,2 conserves energy in NVE well enough (J. Melcr)
+
+; Lambda-dynamics stuff
+free-energy              = no
+;delta_lambda             = 0.0 ; lambda won't change during simulation
+;dhdl_derivatives         = no
+;nstdhdl                  = 0
+; For Gromacs 4.6.+
+;fep-lambdas =   0.000  0.092  0.183  0.271  0.358  0.441  0.522  0.597  0.669  0.734  0.794  0.849
+;init-lambda-state        = 0
+
+; Energy minimization opts
+emtol                    = 10
+emstep                   = 0.01
+niter                    = 20
+fcstep                   = 0
+nstcgsteep               = 1000
+nbfgscorr                = 10 ; number of correction steps for LBFGS
+

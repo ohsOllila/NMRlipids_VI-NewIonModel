@@ -1,0 +1,64 @@
+; Optimal settings for Slipids using Virtual sites for hydrogen atoms
+;  minimization
+;  thoroughly tested by Josef Melcr
+
+integrator               = steep
+tinit                    = 0
+dt                       = 0.006	
+nsteps                   = 5000
+pbc			             = xyz		; Periodic boundary conditions in xyz
+
+; OUTPUT CONTROL OPTIONS
+nstxtcout                = 100
+nstxout                  = 0
+nstvout                  = 0
+nstfout                  = 0
+ns_type			 = grid		; Fastest option
+nstlist			 = 10			; Update neighbor list between cut-offs; increasing this value doesn't yield speedup (rather a bit slower)
+nstcomm         = 200      ; COM motion removal
+comm-mode                = linear			
+comm-grps                = system
+nstcalcenergy   = 200      ; implicit value = 100, increasing this value doesn't speed things up too much at a single node (might provide something in high-parallel env)
+nstenergy		 = 200		; .edr-file output
+energygrps		 = POPC Water_and_ions		; Energy groups
+
+; OPTIONS FOR ELECTROSTATICS AND VDW
+cutoff-scheme            = verlet      ; group is alternative
+coulombtype              = PME			; Particle mesh Ewald, do not change
+rcoulomb                 = 1.0			; Real-space cut-off
+vdwtype                  = cut-off
+vdw-modifier             = potential-shift-verlet   ; =shifted-vdw with Verlet_cutoff_scheme, =none with grid_cutoff_scheme
+rvdw                     = 1.0			; VdW cut-off, orig paper rvdw=1.4, but this value is still fine (tested for both rigbonds an VSites, almost identical)
+DispCorr                 = EnerPres		; Dispersion corrections to both the potential and pressure
+table-extension          = 1.0
+fourierspacing		       = 0.12			; PME grid
+
+; Options no longer required with Verlet cut-off scheme
+;rlist			          = 1.0			; Short-range neighbor list
+;rlistlong		          = 1.6			; Long-range neighbor list 
+
+; OPTIONS FOR WEAK COUPLING ALGORITHMS 
+tcoupl                   = v-rescale   ; Thermostat, v-rescale or nose-hoover is also fine
+tc-grps                  = POPC Water_and_ions		; Couple lipids and Water_and_ions seperatly
+tau-t                    = 1.2 1.2		; Time constant for temperature coupling
+ref-t                    = 310 310		; Desired temperature (K)
+Pcoupl                   = parrinello-rahman	; Barostat
+Pcoupltype               = semiisotropic	; Pressure in xy and z couple separately
+ref-p                    = 1.013 1.013		; Desired pressure (bar)
+tau-p                    = 10.0 10.0		; Time constant for pressure coupling
+compressibility          = 4.5e-5 4.5e-5	; Same as for water
+
+; CONSTRAINTS
+constraints              = all-bonds
+constraint-algorithm     = Lincs
+lincs-order              = 5    ; Increasing these does not really make change to precision when using virtual sites (J. Melcr)
+lincs-iter               = 2    ; Probably does not conserve energy well in NVE sim, but that's not crucial for NVT and NPT ensembles
+
+; Energy minimization opts
+emtol                    = 10
+emstep                   = 0.01
+niter                    = 20
+fcstep                   = 0
+nstcgsteep               = 1000
+nbfgscorr                = 10 ; number of correction steps for LBFGS
+

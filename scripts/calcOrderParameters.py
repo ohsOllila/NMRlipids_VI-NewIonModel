@@ -37,7 +37,7 @@ class OrderParameter:
     and OP trajectories
     and methods to evaluate OPs.
     """
-    def __init__(self, name, resname, atom_A_name, atom_B_name):
+    def __init__(self, name, resname, atom_A_name, atom_B_name, *args):
         """
         it doesn't matter which comes first,
         atom A or B, for OP calculation.
@@ -54,6 +54,15 @@ class OrderParameter:
                 if not field.strip():
                     raise RuntimeError, "provided name >> {} << is empty! \n \
                     Cannot use empty names for atoms and OP definitions.".format(field)
+        # extra optional arguments allow setting avg,std values -- suitable for reading-in results of this script
+        if len(args) == 0:
+            self.avg = None
+            self.std = None
+        elif len(args) == 2:
+            self.avg = args[0]
+            self.std = args[1]
+        else:
+            raise UserWarning, "Number of optional positional arguments is {len}, not 2 or 0. Args: {args}\nWrong file format?".format(len=len(args), args=args)
         self.traj = []  # for storing OPs
 
 
@@ -103,15 +112,18 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
     # make atom selections for each OP and store it as its attribute for later use in trajectory
     for op in ordPars.values():
         # selection = pairs of atoms, split-by residues
-        selection = mol.select_atoms("resname {rnm} and name {atA} or name {atB}".format(
+        selection = mol.select_atoms("resname {rnm} and name {atA} {atB}".format(
                                     rnm=op.resname, atA=op.atAname, atB=op.atBname)
                                     ).atoms.split("residue")
         for res in selection:
             # check if we have only 2 atoms (A & B) selected
             if res.n_atoms != 2:
+                print res.resnames, res.resids
+                for atom in res.atoms:
+                    print atom.name, atom.id
                 raise UserWarning, "Selection >> name {atA} {atB} << \
                 contains {nat} atoms, but should contain exactly 2!".format(
-                atA=op.atAname, atB=op.atBname, nat=len(sel.atoms))
+                atA=op.atAname, atB=op.atBname, nat=res.n_atoms)
         op.selection = selection
 
     # go through trajectory frame-by-frame
@@ -142,11 +154,7 @@ def parse_op_input(fname):
             for line in f.readlines():
                 if not line.startswith("#"):
                     items = line.split()
-                    op_name = items[0]
-                    resname = items[1]
-                    atAname = items[2]
-                    atBname = items[3]
-                    ordPars[op_name] = OrderParameter(op_name, resname, atAname, atBname)
+                    ordPars[items[0]] = OrderParameter(*items)
     except:
         raise RuntimeError, "Couldn't read input file >> {inpf} <<".format(inpf=opts.inp_fname)
     return ordPars
@@ -186,8 +194,8 @@ if __name__ == "__main__":
 
     try:
         with open(opts.out_fname,"w") as f:
-            f.write("OP_name    resname    atom1    atom2    OP_mean   OP_stddev\n\
-------------------------------------------------------------\n")
+            f.write("# OP_name    resname    atom1    atom2    OP_mean   OP_stddev\n\
+#-------------------------------------------------------------\n")
             for op in ordPars.values():
                 f.write( "   ".join([op.name, op.resname, op.atAname, op.atBname, str(op.avg), str(op.std), "\n"]) )
         print "\nOrderParameters written to >> {fname} <<".format(fname=opts.out_fname)

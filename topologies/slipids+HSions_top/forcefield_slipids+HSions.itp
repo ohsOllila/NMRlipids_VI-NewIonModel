@@ -1,0 +1,38 @@
+; Force field wrapper
+; loads Slipids and ion parameters (from Hector Seara) in the right order
+
+;Slipids force field for various lipids
+; modified to employ Virtual Interaction Sites (made by be Josef Melcr)
+; Feenstra 1999, J. Comput. Chem. Improving efficiency ... hydrogen rich ...
+;Use together with "forcefield.ff" (available at http://people.su.se/~jjm or 
+;on http://www.gromacs.org/Downloads/User_contributions/Force_fields)
+;Can be used togther with the AMBER99SB/AMBER99SB-ILDN/AMBER03 FF for proteins
+;For support/suggestions or whatever: joakim.jambeck@mmk.su.se/joakim.jambeck@gmail.com or lyuba.mmk.su.se
+;Joakim P. M. Jämbeck and Alexander P. Lyubertsev, "Derivation and Systematic Validation of a Refined All-Atom Force Field for Phosphatidylcholine Lipids",
+;J. Phys. Chem. B, 2012, 116, 3164-3179, DOI: 10.1021/jp212503e
+;Joakim P. M. Jämbeck and Alexander P. Lyubertsev, "An Extension and Further Validation of an All-Atomistic Force Field for Biological Membranes"
+;J. Chem. Theory Comput., 8, 2938-2948, DOI: 10.1021/ct300342n
+;Joakim P. M. Jämbeck and Alexander P. Lyubertsev, "Another Piece of the Membrane Puzzle: Extending Slipids Further"
+;J. Chem. Theory Comput., DOI: 10.1021/ct300777p
+
+; Dang parameters for Na, K and Cl (unchanged) from Miriam Kohagen (Uhlig-to-be) 
+; references:
+;  J. Chem. Phys. 1994, 100, 3757-3766;
+;  J. Phys. Chem. B 1999, 103, 4714-4720
+
+
+#define _FF_AMBER
+#define _FF_AMBER99SB
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+1               2               yes             0.5     0.8333
+
+#include "slipids.ff/ffnonbonded.itp"
+#include "slipids.ff/ffbonded.itp"
+
+;#include "ions_Dang.itp"
+
+; ions from Hector Seara
+#include <./ions/gromacs/ions_nb_sigma_eps.itp> 
+
