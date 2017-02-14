@@ -2,6 +2,6 @@
 
 #700  -0.01 # DPPC NaCl
 
-900  -0.001 # POPC CaCl2
+900  0.007 # POPC CaCl2
 
-900  -0.01 # DPPC CaCl2
+900  -0.002 # DPPC CaCl2
