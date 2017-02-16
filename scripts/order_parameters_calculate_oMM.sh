@@ -5,7 +5,7 @@
 
 scriptdir=`dirname $0`
 
-traj_file_name="traj_openMM.dcd" #"../traj.trr" 
+traj_file_name="traj_openMM" #"../traj.trr" 
 top_file_name="conf_init.gro"
 #op_def_file="../../Headgroup_Glycerol_OPs.def"
 op_def_file="../../order_parameter_definitions_POPC_all.def"

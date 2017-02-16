@@ -20,6 +20,7 @@
 import MDAnalysis as mda
 import numpy as np
 import math
+import os, sys
 from optparse import OptionParser
 
 
@@ -169,7 +170,7 @@ if __name__ == "__main__":
     parser = OptionParser()
     parser.add_option('-i', '--inp',  dest='inp_fname',  help='input (OP definitions) file name', default="Headgroup_Glycerol_OPs.def")
     parser.add_option('-t', '--top',  dest='top_fname',  help='topology (gro, pdb) file name', default="last_frame_nonwat.gro")
-    parser.add_option('-x', '--traj', dest='traj_fname', help='trajectory (xtc) file name', default="traj_nonwat_pbc.xtc")
+    parser.add_option('-x', '--traj', dest='traj_fname', help='beginning of trajectory (xtc) files names (will use all that begin with this).', default="traj")
     parser.add_option('-o', '--out',  dest='out_fname',  help='output (OPs mean&std) file name', default="Headgroup_Glycerol_OPs.dat")
     opts, args = parser.parse_args()
 
@@ -179,9 +180,15 @@ if __name__ == "__main__":
     ordPars = parse_op_input(opts.inp_fname)
 
 #%%
+    # get all parts of trajectories
+    trajs = []
+    for file_name in os.listdir(os.getcwd()):
+             if file_name.startswith(opts.traj_fname):
+                 trajs.append(file_name)
+
     # read trajectory and calculate all OPs
-    print "Reading trajectory and calculating OPs ...\n"
-    read_trajs_calc_OPs(ordPars, opts.top_fname, opts.traj_fname)
+    print "Reading trajectories and calculating OPs ...\n"
+    read_trajs_calc_OPs(ordPars, opts.top_fname, trajs)
 
 #%%
 
