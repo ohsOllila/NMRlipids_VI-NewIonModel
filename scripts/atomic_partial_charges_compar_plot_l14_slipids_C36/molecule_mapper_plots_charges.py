@@ -1,9 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-script for reordering atoms in molecules
-according to the names of a reference molecule
+reorders atoms in molecules
+according to the names in a reference molecule
 
-Originally meant to reorder POPC atoms from CHARMM-GUI to Slipids ordering
+and prints out their partial charges in plots.
+
+IN: itp files (hard-coded in)
+
+Originally developed to be used with NMRlipids project 6
+by
+J. Melcr
 """
 
 import pmx
@@ -83,65 +89,89 @@ if __name__ == '__main__':
             ax_x_labels.append(name)
 
 #%%
+    # BAR PLOT 1
+    #############
+            
+    def autolabel(rects, i_max=None, font_size=4, q_label_offset=0.03):
+        """
+        Attach a text label above/below each bar displaying its height
+        This implementation works with a GLOBAL variable ax -- QUICK&DIRTY HACK!!
+        """
+        if i_max == None:
+            i_max = len(rects)
+        for i,rect in enumerate(rects):
+            if i<i_max :
+                height = rect.get_height()
+                if rect.get_y() >= 0:
+                    ax.text(rect.get_x() + rect.get_width()/2., rect.get_y() + height + q_label_offset,
+                        '%2.2f' % height,
+                        ha='center', va='bottom',
+                        fontsize=font_size,
+                        rotation=90)
+                else:
+                    ax.text(rect.get_x() + rect.get_width()/2., rect.get_y() - q_label_offset,
+                        '-%2.2f' % height,
+                        ha='center', va='top',
+                        fontsize=font_size,
+                        color='red',
+                        rotation=90)
+            else:
+                break
 
-    plt.xticks(ax_x_label_pos, ax_x_labels, rotation=89)
-    plt.plot(mol_a_sorted_atoms_q, label="Lipid14")
-    plt.plot(mol_b_sorted_atoms_q, label="Slipids")
-    plt.plot(mol_c_sorted_atoms_q, label="Charmm36")
-    plt.legend()
-    plt.ylabel("Q")
-    plt.savefig("slipids_lipid14_charmm_charges_aligned.png", dpi=300)
-    plt.show()
 
-#%%
-    plt.xticks(ax_x_label_pos, ax_x_labels, rotation=89)
-    plt.xlim([0,45])
-    plt.plot(mol_a_sorted_atoms_q, label="Lipid14")
-    plt.plot(mol_b_sorted_atoms_q, label="Slipids")
-    plt.plot(mol_c_sorted_atoms_q, label="Charmm36")
-    plt.legend()
-    plt.ylabel("Q")
-    plt.savefig("slipids_lipid14_charmm_charges_aligned_subplot.png", dpi=300)
-    plt.show()
-
-#%%
-    plt.xticks(ax_x_label_pos, ax_x_labels, rotation=89)
-    plt.xlim([0,45])
-    plt.plot(np.abs(mol_a_sorted_atoms_q), label="Lipid14")
-    plt.plot(np.abs(mol_b_sorted_atoms_q), label="Slipids")
-    plt.plot(np.abs(mol_c_sorted_atoms_q), label="Charmm36")
-    plt.legend()
-    plt.ylabel("|Q|")
-    plt.savefig("slipids_lipid14_charmm_charges_aligned_subplot_abs.png", dpi=300)
-    plt.show()
-
-#%%
-    bar_width = 0.35
+    bar_width = 0.25
 
     fig, ax = plt.subplots()
-    rects1 = ax.bar(range(len(mol_c_sorted_atoms_names)), mol_c_sorted_atoms_q, bar_width, color='r')
-    rects1 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+bar_width, mol_b_sorted_atoms_q, bar_width, color='blue')
+
+    max_atom_index = 43
 
     # add some text for labels, title and axes ticks
     ax.set_ylabel('Q')
     ax.set_title('Atomic partial charges')
-    ax.set_xticks(range(len(mol_c_sorted_atoms_names)))
-    ax.set_xticklabels(mol_c_sorted_atoms_names)
+    ax.set_xticks(np.array(ax_x_label_pos)+0.375)
+    ax.set_xticklabels(ax_x_labels, rotation=89)
+    ax.set_xlim(right=max_atom_index)  # Includes Headgroup and glycerol with carbonyls
 
-    #ax.legend((rects1[0], rects2[0]), ('Men', 'Women'))
+    # plot bars
+    rects1 = ax.bar(range(len(mol_c_sorted_atoms_names)), mol_c_sorted_atoms_q, bar_width, color='navy', linewidth=0, label="Charmm36")
+    rects2 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+bar_width, mol_b_sorted_atoms_q, bar_width, color='orange', linewidth=0, label="Slipids")
+    rects3 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+2*bar_width, mol_a_sorted_atoms_q, bar_width, color='green', linewidth=0, label="Lipid14")
 
+    # assign labels
+    autolabel(rects1, i_max=max_atom_index)
+    autolabel(rects2, i_max=max_atom_index)
+    autolabel(rects3, i_max=max_atom_index)
 
-    def autolabel(rects):
-        """
-        Attach a text label above each bar displaying its height
-        """
-        for rect in rects:
-            height = rect.get_height()
-            ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
-                    '%d' % int(height),
-                    ha='center', va='bottom')
-
-    autolabel(rects1)
-    #autolabel(rects2)
+    ax.legend()
     plt.savefig("slipids_lipid14_charmm_charges_aligned_bars.png", dpi=300)
-    plt.show()
+
+
+#%%
+    # BAR PLOT 2
+    #############
+            
+    fig, ax = plt.subplots()
+
+    # add some text for labels, title and axes ticks
+    ax.set_ylabel('Q')
+    ax.set_title('Atomic partial charges')
+    ax.set_xticks(np.array(ax_x_label_pos)+0.375)
+    ax.set_xticklabels(ax_x_labels, rotation=89)
+
+    # plot bars
+    rects1 = ax.bar(range(len(mol_c_sorted_atoms_names)), mol_c_sorted_atoms_q, bar_width, color='navy', linewidth=0, label="Charmm36")
+    rects2 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+bar_width, mol_b_sorted_atoms_q, bar_width, color='orange', linewidth=0, label="Slipids")
+    rects3 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+2*bar_width, mol_a_sorted_atoms_q, bar_width, color='green', linewidth=0, label="Lipid14")
+
+    # assign labels
+    autolabel(rects1)
+    autolabel(rects2)
+    autolabel(rects3)
+
+    ax.legend()
+    plt.savefig("slipids_lipid14_charmm_charges_aligned_bars_all-atoms.png", dpi=300)
+
+
+
+#%%
+
