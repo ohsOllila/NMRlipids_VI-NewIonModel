@@ -16,7 +16,57 @@ import pmx
 import pmx.forcefield
 import numpy as np
 import matplotlib.pyplot as plt
-import math
+#import math
+
+#%%
+
+def fetch_atom(mol, at_name):
+    """
+    return the first occurence of an atom with a given name.
+    return the 1st atom if searched atom is not found.
+    """
+    try:
+        found = False
+        for otherat in mol.atoms:
+            if otherat.name == at_name:
+                found = True
+                #print "Found atom {atname}.".format(atname=at_name)
+                return otherat
+    except:
+        print "Something went wrong during atom searching (function fetch_atom). \
+        \nIs mol a pmx.forcefield.ITPfile object?"
+    finally:
+        if not found:
+            print "Atom {atname} not found! -- will substitute it with atom no.1.".format(atname=at_name)
+            # so that there's no missing space in the sequence.
+            return mol.atoms[0]
+
+
+def autolabel(rects, i_max=None, font_size=2.5, q_label_offset=0.03):
+    """
+    Attach a text label above/below each bar displaying its height
+    This implementation works with a GLOBAL variable ax -- QUICK&DIRTY HACK!!
+    """
+    if i_max == None:
+        i_max = len(rects)
+    for i,rect in enumerate(rects):
+        if i<i_max :
+            height = rect.get_height()
+            if rect.get_y() >= 0:
+                ax.text(rect.get_x() + rect.get_width()/2., rect.get_y() + height + q_label_offset,
+                    '%2.2f' % height,
+                    ha='center', va='bottom',
+                    fontsize=font_size,
+                    rotation=90)
+            else:
+                ax.text(rect.get_x() + rect.get_width()/2., rect.get_y() - q_label_offset,
+                    '-%2.2f' % height,
+                    ha='center', va='top',
+                    fontsize=font_size,
+                    color='red',
+                    rotation=90)
+        else:
+            break
 
 
 #%%
@@ -27,6 +77,7 @@ if __name__ == '__main__':
     mol_a = pmx.forcefield.ITPFile("l14_POPC.itp")
     mol_b = pmx.forcefield.ITPFile("slipids_POPC.itp")
     mol_c = pmx.forcefield.ITPFile("charmm_POPC.itp")
+    mol_d = pmx.forcefield.ITPFile("macRog_POPC.itp")
 
 #%%
 
@@ -50,6 +101,17 @@ if __name__ == '__main__':
                 items = line.split()
                 mapping_bx[items[1]] = items[0]
 
+#    # mapping file for MacRog from earlier NMRlipids publication doesn't work
+#    # with itp file from http://www.sciencedirect.com/science/article/pii/S2352340915002073
+#
+#    # mappingPOPCmacrog.txt -- works for MacRog model
+#    mapping_xd = {}
+#    with open("mappingPOPCmacrog.txt","r") as f:
+#        for line in f.readlines():
+#            if not line.startswith("#"):
+#                items = line.split()
+#                mapping_xd[items[0]] = items[1]
+
 
 #%%
     # create dictionaries for transaltion from b->a
@@ -61,24 +123,31 @@ if __name__ == '__main__':
     for key in mapping_bx.keys():
         mapping_ba[key] = mapping_xa[mapping_bx[key]]
 
+#    mapping_bd = {}
+#    for key in mapping_bx.keys():
+#        mapping_bd[key] = mapping_xd[mapping_bx[key]]
+
+
 #%%
     # sort molecules after molecule C and record their charges
     mol_a_sorted_atoms_q = []
     mol_b_sorted_atoms_q = []
     mol_c_sorted_atoms_q = []
+    mol_d_sorted_atoms_q = []
     mol_c_sorted_atoms_names = []
+    # sort atoms after molecule C
+    # following code re-uses variable otherat -- simple but DIRTY!
     for atom in mol_c.atoms:
-        mol_a_same_atom_name = mapping_ba[atom.name]
-        for otherat in mol_a.atoms:
-            if otherat.name == mol_a_same_atom_name:
-                break
-        mol_a_sorted_atoms_q.append(otherat.q)
-        for otherat in mol_b.atoms:
-            if otherat.name == atom.name:
-                break
-        mol_b_sorted_atoms_q.append(otherat.q)
+        mol_a_sorted_atoms_q.append(fetch_atom(mol_a, mapping_ba[atom.name]).q)
+        mol_b_sorted_atoms_q.append(fetch_atom(mol_b, atom.name).q)
+        #mol_d_sorted_atoms_q.append(fetch_atom(mol_d, mapping_bd[atom.name]).q)
         mol_c_sorted_atoms_q.append(atom.q)
         mol_c_sorted_atoms_names.append(atom.name)
+    # assuming mol D -- MacRog POPC -- atoms are already
+    # CHARMM-like sorted as promised by authors.
+    for atom in mol_d.atoms:
+        mol_d_sorted_atoms_q.append(atom.q)
+
 
 #%%
     ax_x_label_pos = []
@@ -91,39 +160,10 @@ if __name__ == '__main__':
 #%%
     # BAR PLOT 1
     #############
-            
-    def autolabel(rects, i_max=None, font_size=4, q_label_offset=0.03):
-        """
-        Attach a text label above/below each bar displaying its height
-        This implementation works with a GLOBAL variable ax -- QUICK&DIRTY HACK!!
-        """
-        if i_max == None:
-            i_max = len(rects)
-        for i,rect in enumerate(rects):
-            if i<i_max :
-                height = rect.get_height()
-                if rect.get_y() >= 0:
-                    ax.text(rect.get_x() + rect.get_width()/2., rect.get_y() + height + q_label_offset,
-                        '%2.2f' % height,
-                        ha='center', va='bottom',
-                        fontsize=font_size,
-                        rotation=90)
-                else:
-                    ax.text(rect.get_x() + rect.get_width()/2., rect.get_y() - q_label_offset,
-                        '-%2.2f' % height,
-                        ha='center', va='top',
-                        fontsize=font_size,
-                        color='red',
-                        rotation=90)
-            else:
-                break
-
-
-    bar_width = 0.25
+    bar_width = 0.2
+    max_atom_index = 43
 
     fig, ax = plt.subplots()
-
-    max_atom_index = 43
 
     # add some text for labels, title and axes ticks
     ax.set_ylabel('Q')
@@ -133,23 +173,24 @@ if __name__ == '__main__':
     ax.set_xlim(right=max_atom_index)  # Includes Headgroup and glycerol with carbonyls
 
     # plot bars
-    rects1 = ax.bar(range(len(mol_c_sorted_atoms_names)), mol_c_sorted_atoms_q, bar_width, color='navy', linewidth=0, label="Charmm36")
-    rects2 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+bar_width, mol_b_sorted_atoms_q, bar_width, color='orange', linewidth=0, label="Slipids")
-    rects3 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+2*bar_width, mol_a_sorted_atoms_q, bar_width, color='green', linewidth=0, label="Lipid14")
+    rects1 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names))),             mol_c_sorted_atoms_q, bar_width, color='navy',   linewidth=0, label="Charmm36")
+    rects4 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+1*bar_width, mol_d_sorted_atoms_q, bar_width, color='pink',   linewidth=0, label="MacRog")
+    rects2 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+2*bar_width, mol_b_sorted_atoms_q, bar_width, color='orange', linewidth=0, label="Slipids")
+    rects3 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+3*bar_width, mol_a_sorted_atoms_q, bar_width, color='green',  linewidth=0, label="Lipid14")
 
     # assign labels
     autolabel(rects1, i_max=max_atom_index)
     autolabel(rects2, i_max=max_atom_index)
     autolabel(rects3, i_max=max_atom_index)
+    autolabel(rects4, i_max=max_atom_index)
 
-    ax.legend()
-    plt.savefig("slipids_lipid14_charmm_charges_aligned_bars.png", dpi=300)
+    ax.legend(loc="top left")
+    plt.savefig("slipids_lipid14_charmm_macrog_charges_aligned_bars.png", dpi=300)
 
 
 #%%
     # BAR PLOT 2
     #############
-            
     fig, ax = plt.subplots()
 
     # add some text for labels, title and axes ticks
@@ -159,17 +200,19 @@ if __name__ == '__main__':
     ax.set_xticklabels(ax_x_labels, rotation=89)
 
     # plot bars
-    rects1 = ax.bar(range(len(mol_c_sorted_atoms_names)), mol_c_sorted_atoms_q, bar_width, color='navy', linewidth=0, label="Charmm36")
-    rects2 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+bar_width, mol_b_sorted_atoms_q, bar_width, color='orange', linewidth=0, label="Slipids")
-    rects3 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+2*bar_width, mol_a_sorted_atoms_q, bar_width, color='green', linewidth=0, label="Lipid14")
+    rects1 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names))),             mol_c_sorted_atoms_q, bar_width, color='navy',   linewidth=0, label="Charmm36")
+    rects4 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+1*bar_width, mol_d_sorted_atoms_q, bar_width, color='pink',   linewidth=0, label="MacRog")
+    rects2 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+2*bar_width, mol_b_sorted_atoms_q, bar_width, color='orange', linewidth=0, label="Slipids")
+    rects3 = ax.bar(np.array(range(len(mol_c_sorted_atoms_names)))+3*bar_width, mol_a_sorted_atoms_q, bar_width, color='green',  linewidth=0, label="Lipid14")
 
     # assign labels
     autolabel(rects1)
-    autolabel(rects2)
+#    autolabel(rects2)
     autolabel(rects3)
+#    autolabel(rects4)
 
     ax.legend()
-    plt.savefig("slipids_lipid14_charmm_charges_aligned_bars_all-atoms.png", dpi=300)
+    plt.savefig("slipids_lipid14_charmm_macrog_charges_aligned_bars_all-atoms.png", dpi=300)
 
 
 
