@@ -24,4 +24,7 @@
  HW           1       1.008   0.0000  A   0.00000e+00  0.00000e+00 
  OWT3         8      16.00    0.0000  A   3.15061e-01  6.36386e-01
  HWT3         1       1.008   0.0000  A   0.00000e+00  0.00000e+00 
+;name  at.num    mass      charge    ptype   sigma     epsilon
+  OW3   8      15.9994    -0.895170    A    0.317427   0.68369  ; DOI: http://dx.doi.org/10.1063/1.4960175 ; OPC3 water Oxygen
+  HW3   1       1.008      0.447585    A    0.0        0.0      ; DOI: http://dx.doi.org/10.1063/1.4960175 ; OPC3 water Hydrogen
 
