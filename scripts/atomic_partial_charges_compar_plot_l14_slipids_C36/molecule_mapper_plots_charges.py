@@ -69,6 +69,42 @@ def autolabel(rects, i_max=None, font_size=2.5, q_label_offset=0.03):
             break
 
 
+def create_mapping_file_for_macrog(mol_d, mol_c, mapping_bx):
+    """
+    Returns mapping dictionary noted as mapping_dx
+    (mol_d is MacRox, 'x' referres to the universal M_*_M language started in NMRlipids projects)
+    assuming that molecules d and c have the same order of atoms.
+
+    In addition: Writes the mapping_dx into a file.
+
+    Parameters
+    ------------
+    mol_d, mol_c : pmx.ITPfile instances
+        molecule topologies that have the same order of atoms
+    mapping_bx : dictionary
+        dictionary that translates molecule c to the atom-naming-language 'x'
+    """
+
+    # create mapping file forMacROg POPC from http://www.sciencedirect.com/science/article/pii/S2352340915002073
+    # using atom names in the ITP files that are in the same order as for CHARMM POPC (stated in the reference)
+    mapping_dx = {}
+    for i,atom in enumerate(mol_d.atoms):
+        mapping_dx[atom.name] = mapping_bx[mol_c.atoms[i].name]
+
+    # write mappingFILEmacRogPOPC.txt -- works for MacRog POPC from the above reference
+    with open("mappingFILEmacRogPOPC.txt","w") as f:
+        f.write("# Individual atoms\n# mapping for MacRog POPC as implemented in reference http://www.sciencedirect.com/science/article/pii/S2352340915002073\n")
+        for item in mapping_dx.items():
+            f.write("    {x_name}    {d_name}\n".format(x_name=item[1], d_name=item[0]))
+        f.write("""# Whole molecules
+                M_POPC_M         POPC
+                M_NA_M           NA
+                M_CA_M           CA
+                """)
+
+    return mapping_dx
+
+
 #%%
 
 if __name__ == '__main__':
@@ -135,6 +171,7 @@ if __name__ == '__main__':
     mol_c_sorted_atoms_q = []
     mol_d_sorted_atoms_q = []
     mol_c_sorted_atoms_names = []
+    mol_d_sorted_atoms_names = []
     # sort atoms after molecule C
     # following code re-uses variable otherat -- simple but DIRTY!
     for atom in mol_c.atoms:
