@@ -1,0 +1,18 @@
+set size 1.0,0.5
+set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
+set output "../HGopsNEWmodels.eps"
+#set yrange [0:0.25] 
+set xrange [-0.5:5.5] 
+set ytic 0.05
+set ylabel "-S_{CH}"
+#set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3R}" 3, "g_{3S}" 4, "g_{2}" 5, "g_{1R}" 6, "g_{1S}" 7)
+set xtics ("{/Symbol g}" 0, "{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3}" 3, "g_{2}" 4, "g_{1}" 5)
+#set key box linestyle 1 linecolor rgb 'black'
+set key above maxcols 2 maxrows 5
+
+plot "../../../MATCH/Data/Lipid_Bilayers/POPC/T300K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:((-1)*$2) title 'POPC T=300K' pt 5 ps 1.6 lc rgb 'black',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPC/T300K/Headgroup_Glycerol_Order_Parameters_Experiments.dat" using 1:((-1)*$3) notitle pt 5 ps 1.6 lc rgb 'black',\
+     "../../Data/POPC/no-ions/Lipid14/sim0_ref_noIons/OrdParsGNUPLOT.dat" using 1:((-1)*$2) title 'Lipid14/sim0_ref_noIons' pt 5 ps 1.6 lc rgb 'red',\
+     "../../Data/POPC/no-ions/Lipid14/sim10_0mM_NaCl_scDang_headgr_0.85_scaled_noIons-ref/OrdParsGNUPLOT.dat" using 1:((-1)*$2) title 'Lipid14 Headgr+glyc+carb scaled with 0.85 NpT 313K' pt 4 ps 1.6 lc rgb 'red',\
+     "../../Data/POPC/no-ions/Slipids-VIS/headgr_glyc-scaled_0.80/OrdParsGNUPLOT.dat" using 1:((-1)*$2) title 'Slipids Headgr+glyc+carb scaled 0.80 NpT 310K' pt 5 ps 1.6 lc rgb 'green',\
+     "../../../MATCH/Data/Lipid_Bilayers/POPC/T310K/MODEL_SLIPIDS/Headgroup_Glycerol_Order_Parameters_Simulation.dat" using 1:((-1)*$2) title 'Slipids' pt 4 ps 1.6 lc rgb 'green' 
