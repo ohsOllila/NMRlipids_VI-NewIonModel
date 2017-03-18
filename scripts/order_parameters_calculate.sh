@@ -43,7 +43,7 @@ python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $t
 #getting concentration from topol.top file (if exists)
 if [ -f $top ]
 then
-    nwat=`grep -e "molecules" -A 10 $top | grep -e "^SOL" -e "^TIP" | cut -d " " -f1 --complement `
+    nwat=`grep -e "molecules" -A 10 $top | grep -e "^SOL" -e "^TIP" -e "^OPC3" | cut -d " " -f1 --complement `
     nion=`grep -e "molecules" -A 10 $top | grep -e "^NA"  -e "^CA"  | cut -d " " -f1 --complement `
     [ -z $nion ] && nion=0
 
