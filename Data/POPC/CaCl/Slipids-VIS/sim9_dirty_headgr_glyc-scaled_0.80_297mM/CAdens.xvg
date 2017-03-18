@@ -1,0 +1,74 @@
+# This file was created Wed Mar 15 21:53:05 2017
+# Created by:
+#                     :-) GROMACS - gmx density, 2016.2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /wrk/einstein/samuli/NEWionMODELS/Slipids/sim9_dirty_headgr_glyc-scaled_0.80_297mM
+# Command line:
+#   gmx density -f /wrk/einstein/joe/mnt/gaiwan/NMRlipids_VI-NewIonModel/simulations/POPC/slipids-VIS/calcium/sim9_dirty_headgr_glyc-scaled_0.80_297mM/traj_comp.xtc -s /wrk/einstein/joe/mnt/gaiwan/NMRlipids_VI-NewIonModel/simulations/POPC/slipids-VIS/calcium/sim9_dirty_headgr_glyc-scaled_0.80_297mM/topol.tpr -o CAdens.xvg -dens number
+# gmx density is part of G R O M A C S:
+#
+# Getting the Right Output Means no Artefacts in Calculating Stuff
+#
+@    title "Partial density"
+@    xaxis  label "Coordinate (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "CA"
+   0.0890069           0.1334
+    0.267021         0.127059
+    0.445034         0.119716
+    0.623048         0.111832
+    0.801062        0.0994894
+    0.979076        0.0851946
+     1.15709         0.067606
+      1.3351        0.0504185
+     1.51312        0.0411884
+     1.69113        0.0577368
+     1.86914         0.146783
+     2.04716          0.31412
+     2.22517         0.388971
+     2.40319         0.246579
+      2.5812        0.0688412
+     2.75921       0.00904992
+     2.93723      0.000106226
+     3.11524                0
+     3.29326                0
+     3.47127                0
+     3.64928                0
+      3.8273                0
+     4.00531                0
+     4.18332                0
+     4.36134                0
+     4.53935                0
+     4.71737                0
+     4.89538                0
+     5.07339                0
+     5.25141                0
+     5.42942                0
+     5.60743                0
+     5.78545      0.000414396
+     5.96346       0.00845859
+     6.14148        0.0759488
+     6.31949         0.273323
+      6.4975         0.425395
+     6.67552         0.291088
+     6.85353         0.107545
+     7.03154          0.04708
+     7.20956        0.0453555
+     7.38757        0.0591033
+     7.56559        0.0767313
+      7.7436        0.0908262
+     7.92161         0.103356
+     8.09963         0.114732
+     8.27764          0.12293
+     8.45566         0.127725
+     8.63367         0.130684
+     8.81168          0.13323
