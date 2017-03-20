@@ -1,0 +1,78 @@
+#set term postscript enhanced color  
+set size 1, 1
+set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
+#set terminal png enhanced color dashed lw 1 "Helvetica" 14 
+#set terminal png size 555,880 enhanced font "Helvetica,20"
+set output "../CAdensities.eps"
+set multiplot  layout 3,1
+#set size 1.0, 0.25
+set yrange [0:0.9]
+set xrange [-5:5] 
+set ytic 0.2
+#set key box
+
+
+
+set key above
+set xtics format " "
+set size 1.0, 0.25
+set ylabel " "
+set label at graph 0.44, graph 0.84 "LIPID14"
+set label at graph 0.85,graph 0.26 "304 mM" 
+set label at graph 0.83,graph 0.66 "867 mM" 
+plot  "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:3 notitle  with lines linetype 1 lw 1 lc rgb 'red',\
+      "../../Data/POPC/no-ions/Lipid14/sim10_856mM_CaCl_scDang_headgr_0.85_scaled/CAdens.xvg" using ($1-3.9):2 title 'Lipid14ecc0.85 (856mM)'  with lines linetype 1 dashtype 2 lw 1 lc rgb 'red',\
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:($4/2) notitle with lines linetype 1 lw 1 lc rgb 'green', \
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:($2/200) notitle with lines linetype 1 lc rgb 'black' lw 3,\
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/100ca/LIPIDdensity_last100ns.xvg" using 1:3 notitle  with lines linetype 1 lw 3 lc rgb 'red',\
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/100ca/LIPIDdensity_last100ns.xvg" using 1:($4/2) notitle with lines linetype 1 lw 3 lc rgb 'green', \
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/100ca/LIPIDdensity_last100ns.xvg" using 1:($2/200) notitle with lines linetype 1 lc rgb 'black' lw 3
+unset label
+
+#set xtics format " "
+#set size 1.0, 0.205
+#set ylabel " "
+#set label at graph 0.44, graph 0.84 "LIPID14ecc0.85"
+#set label at graph 0.85,graph 0.26 "350 mM" 
+#set label at graph 0.83,graph 0.66 "856 mM" 
+#plot  "../../Data/POPC/no-ions/Lipid14/sim10_856mM_CaCl_scDang_headgr_0.85_scaled/CAdens.xvg" using ($1-3.9):2 notitle  with lines linetype 1 lw 1 lc rgb 'red',\
+      #"../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:($4/2) notitle with lines linetype 1 lw 1 lc rgb 'green', \
+      #"../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:($2/200) notitle with lines linetype 1 lc rgb 'black' lw 3,\
+      #"../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/100ca/LIPIDdensity_last100ns.xvg" using 1:3 notitle  with lines linetype 1 lw 3 lc rgb 'red',\
+      #"../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/100ca/LIPIDdensity_last100ns.xvg" using 1:($4/2) notitle with lines linetype 1 lw 3 lc rgb 'green', \
+      #"../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/100ca/LIPIDdensity_last100ns.xvg" using 1:($2/200) notitle with lines linetype 1 lc rgb 'black' lw 3
+#unset label
+
+set size 1.0, 0.25
+set ylabel " "
+set label at graph 0.44, graph 0.84 "SLIPIDS"
+set label at graph 0.42,graph 0.47 "(450 mM)" 
+plot  "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mMscaled/LIPIDdensity.xvg" using 1:3 title "scaled \nions"  with lines linetype 1 dashtype 2  lw 2 lc rgb 'red',\
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mMscaled/LIPIDdensity.xvg" using 1:($4/2) notitle with lines linetype 1 dashtype 2 lw 2 lc rgb 'green', \
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mMscaled/LIPIDdensity.xvg" using 1:($2/200) notitle with lines linetype 1  dashtype 2 lc rgb 'black' lw 3, \
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mM/LIPIDdensity.xvg" using 1:3 notitle  with lines linetype 1 lw 2 lc rgb 'red',\
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mM/LIPIDdensity.xvg" using 1:($4/2) notitle with lines linetype 1 lw 2 lc rgb 'green', \
+      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mM/LIPIDdensity.xvg" using 1:($2/200) notitle with lines linetype 1 lc rgb 'black' lw 3
+unset label
+
+set xtics format "%G"
+set xlabel "z (nm)"
+
+set size 1.0, 0.25
+set ylabel " "
+set label at graph 0.44, graph 0.84 "SLIPIDSecc"
+set label at graph 0.94,graph 0.17 "297 mM"
+set label at graph 0.94,graph 0.37 "594 mM"
+set label at graph 0.94,graph 0.67 "1007 mM" 
+plot  "../../Data/POPC/CaCl/Slipids-VIS/sim9_dirty_headgr_glyc-scaled_0.80_297mM/CAdens.xvg" using ($1-4.5):2 notitle  with lines linetype 1 lw 2 lc rgb 'red',\
+      "../../Data/POPC/CaCl/Slipids-VIS/sim9_dirty_headgr_glyc-scaled_0.80_594mM/CAdens.xvg" using ($1-4.5):2 notitle  with lines linetype 1 lw 3 lc rgb 'red',\
+      "../../Data/POPC/CaCl/Slipids-VIS/sim9_dirty_headgr_glyc-scaled_0.80_1007mM/CAdens.xvg" using ($1-4.5):2 notitle  with lines linetype 1 lw 4 lc rgb 'red',\
+#      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mMscaled/LIPIDdensity.xvg" using 1:($4/2) notitle with lines linetype 1 dashtype 2 lw 2 lc rgb 'green', \
+#      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mMscaled/LIPIDdensity.xvg" using 1:($2/200) notitle with lines linetype 1  dashtype 2 lc rgb 'black' lw 3, \
+#      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mM/LIPIDdensity.xvg" using 1:3 notitle  with lines linetype 1 lw 2 lc rgb 'red',\
+#      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mM/LIPIDdensity.xvg" using 1:($4/2) notitle with lines linetype 1 lw 2 lc rgb 'green', \
+ #     "../../../lipid_ionINTERACTION/Data/POPC/CaCl/SLIPID/450mM/LIPIDdensity.xvg" using 1:($2/200) notitle with lines linetype 1 lc rgb 'black' lw 3
+unset label
+
+unset multiplot
+

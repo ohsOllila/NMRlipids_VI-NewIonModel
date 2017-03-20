@@ -1,0 +1,74 @@
+# This file was created Wed Mar 15 21:17:18 2017
+# Created by:
+#                     :-) GROMACS - gmx density, 2016.2 (-:
+# 
+# Executable:   /usr/bin/gmx
+# Data prefix:  /usr
+# Working dir:  /wrk/einstein/samuli/NEWionMODELS/sim10_856mM_CaCl_scDang_headgr-glyc_0.85_scaled
+# Command line:
+#   gmx density -f tst.xtc -s tst.tpr -o CAdens.xvg -dens number
+# gmx density is part of G R O M A C S:
+#
+# Gromacs Runs One Microsecond At Cannonball Speeds
+#
+@    title "Partial density"
+@    xaxis  label "Coordinate (nm)"
+@    yaxis  label "Number density (nm\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "CA"
+   0.0796178         0.399073
+    0.238853          0.39666
+    0.398089         0.377305
+    0.557324         0.346443
+     0.71656         0.295348
+    0.875795         0.230892
+     1.03503          0.17143
+     1.19427         0.140009
+      1.3535         0.221302
+     1.51274         0.490284
+     1.67197         0.787891
+     1.83121         0.788056
+     1.99044         0.462354
+     2.14968        0.0942571
+     2.30891       0.00460751
+     2.46815      2.13207e-05
+     2.62739                0
+     2.78662                0
+     2.94586                0
+     3.10509                0
+     3.26433                0
+     3.42356                0
+      3.5828                0
+     3.74203                0
+     3.90127                0
+     4.06051                0
+     4.21974                0
+     4.37898                0
+     4.53821                0
+     4.69745                0
+     4.85668                0
+     5.01592                0
+     5.17515                0
+     5.33439                0
+     5.49363      0.000116592
+     5.65286        0.0081876
+      5.8121        0.0974693
+     5.97133         0.473479
+     6.13057          0.93821
+      6.2898         0.842528
+     6.44904         0.480524
+     6.60827          0.19214
+     6.76751         0.122365
+     6.92674         0.147482
+     7.08598         0.212975
+     7.24522         0.287454
+     7.40445         0.342803
+     7.56369         0.378549
+     7.72292         0.397529
+     7.88216         0.401577

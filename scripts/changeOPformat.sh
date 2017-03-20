@@ -1,0 +1,6 @@
+grep gamma OrdPars.dat | awk '{print 0" "$5}'
+grep beta OrdPars.dat | awk '{print 1" "$5}'
+grep alpha OrdPars.dat | awk '{print 2" "$5}'
+grep g3 OrdPars.dat | awk '{print 3" "$5}'
+grep g2 OrdPars.dat | awk '{print 4" "$5 }'
+grep g1 OrdPars.dat | awk '{print 5" "$5 }'

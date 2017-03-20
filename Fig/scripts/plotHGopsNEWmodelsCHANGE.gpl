@@ -1,0 +1,15 @@
+set size 1.0,0.5
+set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
+set output "../HGopsNEWmodelsCHANGE.eps"
+#set yrange [0:0.25] 
+set xrange [-0.5:5.5] 
+set ytic 0.01
+set ylabel "|{/Symbol D}S_{CH}|"
+#set xtics ("{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3R}" 3, "g_{3S}" 4, "g_{2}" 5, "g_{1R}" 6, "g_{1S}" 7)
+set xtics ("{/Symbol g}" 0, "{/Symbol b}" 1, "{/Symbol a}" 2, "g_{3}" 3, "g_{2}" 4, "g_{1}" 5)
+#set key box linestyle 1 linecolor rgb 'black'
+set key above maxcols 2 maxrows 5
+
+plot "../../Data/POPC/OPchangeDUEtoSCALINGnoionsLIPID14.dat" using 1:(sqrt($2**2)) title 'Lipid14 Headgr+glyc+carb scaled 0.85' pt 5 ps 1.2 lc rgb 'red',\
+     "../../Data/POPC/OPchangeDUEtoSCALINGnoionsSLIPIDS.dat" using 1:(sqrt($2**2)) title 'Slipids Headgr+glyc+carb scaled 0.80 NpT 310K' pt 5 ps 1.2 lc rgb 'green',\
+
