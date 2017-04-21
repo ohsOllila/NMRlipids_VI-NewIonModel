@@ -42,7 +42,9 @@ plot \
      "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#33A080', \
      "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OPC3.dat" using 1:2 with linespoint title 'Lipid14 Headgr+glyc+carb scaled with 0.85 OPC3 water model NpT 313K' pt 8 linetype 1 lw 4 lc rgb '#106610', \
      "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OPC3.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#106610', \
-
+     #
+     #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OxySigma_0.90_OPC3.dat" using 1:2 with linespoint title 'Lipid14 Headgr+glyc+carb scaled with 0.85, Oxy sigmas scaled by 0.90, OPC3 water model NpT 313K' pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
+     #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OxySigma_0.90_OPC3.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
 #     "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGSCALED_0.80.dat" using 1:2 with linespoint title 'Lipid14 Headgroup scaled with 0.80 NpT 313K' pt 8 linetype 1 lw 2 lc rgb '#33DC70', \
 #     "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGSCALED_0.80.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#33DC70', \
      #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGSCALED.dat" using 1:2 with linespoint title 'Lipid14 Headgroup scaled with 0.75 NpT 313K' pt 8 linetype 1 lw 2 lc rgb '#00FF66', \
@@ -57,7 +59,7 @@ plot \
      #"../../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGglycSCALED.dat" using 1:4 with linespoint notitle pt 6 linetype 1 lw 4 lc rgb '#A944A9', \
 
 
-set key at screen 1.82,screen 0.76 #maxcols 2 maxrows 7
+set key at screen 1.82,screen 0.49 #maxcols 2 maxrows 7
 set xtics format " "			
 set ytics format " "
 set y2tic 0.01 
@@ -79,9 +81,17 @@ plot \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#33A080', \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85_OPC3.dat" using 1:2 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#106610', \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85_OPC3.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#106610', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3.dat" using 1:2 with linespoint pt 8 linetype 1 lw 4 lc rgb '#AB2734' title 'Lipid14 Headgr+glyc+carb scaled with 0.80, Oxy sigmas scaled by 0.90, OPC3 water model NpT 313K', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3_NpAT.dat" using 1:2 with linespoint pt 8 linetype 1 lw 2 lc rgb '#AB2734' title 'Lipid14 Headgr+glyc+carb scaled with 0.80, Oxy sigmas scaled by 0.90, OPC3 water model NpAT 313K', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3_NpAT.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#AB2734', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_FBopt_OPC3.dat" using 1:2 with linespoint pt 8 linetype 1 lw 4 lc rgb '#989712' title 'Lipid14 Headgr+glyc+carb scaled with 0.80, Oxy sigmas optimized with ForceBalalnce, OPC3 water model NpT 313K', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_FBopt_OPC3.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#989712', \
      "forKeyOPfig.dat" ev :::0::0 notitle pt 7 lc rgb 'black', \
      "forKeyOPfig.dat" ev :::1::1 notitle pt 5 lc rgb 'black',\
 
+     #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85_OxySigma_0.90_OPC3.dat" using 1:2 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
+     #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85_OxySigma_0.90_OPC3.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
      #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGSCALED_0.85.dat" using 1:2 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#33CD90', \
      #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGSCALED_0.85.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#33CD90', \
      #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGSCALED.dat" using 1:2 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#00FF66', \
@@ -117,6 +127,8 @@ plot \
      "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OPC3.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#106610', \
      "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OPC3.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#106610', \
 
+     #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OxySigma_0.90_OPC3.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
+     #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OxySigma_0.90_OPC3.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
      #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGSCALED_0.85.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#33CD90', \
      #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGSCALED_0.85.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#33CD90', \
      #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGSCALED.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#00FF66', \
@@ -152,8 +164,16 @@ plot \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#33A080', \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85_OPC3.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#106610', \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85_OPC3.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#106610', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3_NpAT.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#AB2734', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3_NpAT.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#AB2734', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_FBopt_OPC3.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#989712', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_FBopt_OPC3.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#989712', \
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/EXP-Altenbach1984-POPC-CaClchange-T313.dat"  using ($1*1000):($2*0.00784) title '^2H NMR (313K)' with linespoints  linetype 1 lw 5 pt 7 lc rgb 'black',\
 
+     #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85_OxySigma_0.90_OPC3.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
+     #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.85_OxySigma_0.90_OPC3.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#AB2734', \
      #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGSCALED_0.85.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#33CD90', \
      #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGSCALED_0.85.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#33CD90', \
      #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGSCALED.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#00FF66', \

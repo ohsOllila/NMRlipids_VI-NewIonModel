@@ -1,6 +1,0 @@
-#OP_name    resname    atom1    atom2
-#------------------------------------------------------------
-alpha2      POPC       C11      H11B
-alpha1      POPC       C11      H11A
-beta2       POPC       C12      H12B 
-beta1       POPC       C12      H12A 
