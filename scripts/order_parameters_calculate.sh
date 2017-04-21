@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# bash wrapper for calculating Order Parameters of lipid bilayer
+# Gromacs 5.x version of ...
+# bash wrapper for calculating Order Parameters of lipid bilayer 
+# python script/library calcOrderParameters.py
 # meant for use with NMRlipids projects
+#------------------------------------------------------------
+# Made by J.Melcr,  Last edit 2017/03/21
+#------------------------------------------------------------
 
 scriptdir=`dirname $0`
 
