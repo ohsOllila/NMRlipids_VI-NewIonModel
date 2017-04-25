@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 """
- calculation of order parameters of lipid bilayers
+ calculation of order parameters 
  from a MD trajectory
+ useful for example for lipid bilayers
  
  meant for use with NMRlipids projects
 
- ------------------------------------------------------------
- Made by Joe,  Last edit 2017/02/02
+------------------------------------------------------------
+ Made by J.Melcr,  Last edit 2017/03/21
 ------------------------------------------------------------
  input: Order parameter definitions
         gro and xtc file (or equivalents)
@@ -24,23 +25,28 @@ import os, sys
 from optparse import OptionParser
 
 
-#k_b = 0.0083144621  #kJ/Mol*K
-#f_conc=55430  # factor for calculating concentrations of salts from numbers of ions/waters; in mM/L
-
-bond_len_max=1.5  # in A, max distance between atoms for reasonable OP calculation
+bond_len_max=1.5  # in Angstroms, max distance between atoms for reasonable OP calculation (PBC and sanity check)
 bond_len_max_sq=bond_len_max**2
 
-#%%
+
 class OrderParameter:
     """
     Class for storing&manipulating
     order parameter (OP) related metadata (definition, name, ...)
     and OP trajectories
     and methods to evaluate OPs.
+
+    OP definition consist of:
+       - name of the OP
+       - residue name
+       - involved atoms (exactly 2)
+       + extra: mean and std.dev. of the OP (when reading-in an already calculated result)
     """
     def __init__(self, name, resname, atom_A_name, atom_B_name, *args):
         """
-        it doesn't matter which comes first,
+        Initialization of an instance of this class.
+        
+        it doesn't matter which atom comes first,
         atom A or B, for OP calculation.
         """
         self.name = name             # name of the order parameter, a label
@@ -95,12 +101,12 @@ class OrderParameter:
 def read_trajs_calc_OPs(ordPars, top, trajs):
     """
     procedure that
-    creates MDAnalysis Universe with top,
+    creates MDAnalysis (mda) Universe instance with topology top,
     reads in trajectories trajs and then
     goes through every frame and
     evaluates each Order Parameter "S" from the list of OPs ordPars.
 
-    ordPars : list of OrderParameter class
+    ordPars : list of OrderParameter class instances
        each item in this list describes an Order parameter to be calculated in the trajectory
     top : str
         filename of a top file (e.g. conf.gro)
@@ -110,7 +116,7 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
     # read-in topology and trajectory
     mol = mda.Universe(top, trajs)
 
-    # make atom selections for each OP and store it as its attribute for later use in trajectory
+    # make atom selections for each OP and store it as its attribute for later use with trajectory
     for op in ordPars.values():
         # selection = pairs of atoms, split-by residues
         selection = mol.select_atoms("resname {rnm} and name {atA} {atB}".format(
@@ -128,19 +134,20 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
         op.selection = selection
 
     # go through trajectory frame-by-frame
+    # and calculate each OP from the list of OPs
+    # for each residue separately
     for frame in mol.trajectory:
         for op in ordPars.values():
             for residue in op.selection:
                 S = op.calc_OP(residue)
                 op.traj.append(S)
-        #print "--", mol.atoms[0].position
 
 
 def parse_op_input(fname):
     """
     parses input file with Order Parameter definitions
     file format is as follows:
-    OP_name    resname    atom1    atom2
+    OP_name    resname    atom1    atom2  +extra: OP_mean  OP_std
     (flexible cols)
 
     fname : string
@@ -170,16 +177,14 @@ if __name__ == "__main__":
     parser = OptionParser()
     parser.add_option('-i', '--inp',  dest='inp_fname',  help='input (OP definitions) file name', default="Headgroup_Glycerol_OPs.def")
     parser.add_option('-t', '--top',  dest='top_fname',  help='topology (gro, pdb) file name', default="last_frame_nonwat.gro")
-    parser.add_option('-x', '--traj', dest='traj_fname', help='beginning of trajectory (xtc) files names (will use all that begin with this).', default="traj")
+    parser.add_option('-x', '--traj', dest='traj_fname', help='beginning of trajectory (xtc, dcd) files names (will use all files beginning with this string).', default="traj")
     parser.add_option('-o', '--out',  dest='out_fname',  help='output (OPs mean&std) file name', default="Headgroup_Glycerol_OPs.dat")
     opts, args = parser.parse_args()
 
-#%%
     # dictionary for storing of OrderParameter class instances (name-wise, of course)
     print "\nReading OP definitions ...\n"
     ordPars = parse_op_input(opts.inp_fname)
 
-#%%
     # get all parts of trajectories
     trajs = []
     for file_name in os.listdir(os.getcwd()):
@@ -190,7 +195,6 @@ if __name__ == "__main__":
     print "Reading trajectories and calculating OPs ...\n"
     read_trajs_calc_OPs(ordPars, opts.top_fname, trajs)
 
-#%%
 
     print "OP Name     mean     stddev "
     print "----------------------------"
@@ -210,7 +214,8 @@ if __name__ == "__main__":
         print "ERROR: Problems writing main output file."
 
 
-    #conc = f_conc*nion/nwat
+    # this single-line format may become soon deprecated, but 
+    # it is the format that is used in NMRlipids projects for processing through awk+gnuplot
     try:
         conc_formatted_line = "conc  {b1} 0  {b2} 0    {a1} 0  {a2} 0".format(
                               b1=ordPars['beta1'].avg, b2=ordPars['beta2'].avg,
