@@ -6,7 +6,7 @@
 
 scriptdir=`dirname $0`
 
-edr_file_name="ener.edr"
+edr_file_name="ener_0.edr"
 xvg_file_name="energies.xvg"
 boxdim_file_name="box_dim.txt"
 top="topol.top"
@@ -23,7 +23,7 @@ echo 17 18 19 | gmx energy -f $edr_file_name -o $xvg_file_name > $boxdim_file_na
 #getting no. POPC lipids from topol.top file (if exists)
 if [ -f $top ]
 then
-    nlip=`grep -e "molecules" -A 10 $top | grep -e "^POPC" | cut  -f1 --complement `
+    nlip=`grep -e "molecules" -A 10 $top | grep -e "^POPC" | cut -d" "  -f1 --complement `
     nlip_per_leaflet=`echo $nlip/2.00 | bc`
 else
     echo "Topology probably not present, can't get no. POPC lipids, assuming 64."
