@@ -6,7 +6,7 @@
 
 scriptdir=`dirname $0`
 
-edr_file_name="ener_0.edr"
+edr_file_name="ener.edr"
 xvg_file_name="energies.xvg"
 boxdim_file_name="box_dim.txt"
 top="topol.top"
