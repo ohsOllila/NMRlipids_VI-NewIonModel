@@ -18,6 +18,7 @@ awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.75
 awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_OxySigma_0.90_OPC3.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3.dat 
 awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_OxySigma_0.90_OPC3_NpAT.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_0.90_OPC3_NpAT.dat 
 awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_OxySigma_FBopt_OPC3.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_FBopt_OPC3.dat 
+awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_HGglyc-Sigmas_0.875_OPC3.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.875_OPC3.dat 
 
 awk -f calcOPchanges.awk ../Data/POPC/NaCl/Slipids-VIS/OPvsNACLconsALLSCALED.dat  > ../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeALLSCALED.dat 
 awk -f calcOPchanges.awk ../Data/POPC/NaCl/Slipids-VIS/OPvsNACLconsHGSCALED.dat  > ../Data/POPC/NaCl/Slipids-VIS/SLIPIDnaclCONSchangeHGSCALED.dat 
@@ -33,3 +34,4 @@ awk -f calcOPchanges.awk ../Data/POPC/NaCl/lipid14/OPvsNACLconsOxySCALED.dat  > 
 awk -f calcOPchanges.awk ../Data/POPC/NaCl/lipid14/OPvsNACLconsHGglycSCALED_0.85.dat  > ../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85.dat 
 awk -f calcOPchanges.awk ../Data/POPC/NaCl/lipid14/OPvsNACLconsHGglycSCALED_0.85_OPC3.dat  > ../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OPC3.dat 
 awk -f calcOPchanges.awk ../Data/POPC/NaCl/lipid14/OPvsNACLconsHGglycSCALED_0.85_OPC3_NpAT.dat  > ../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OPC3_NpAT.dat 
+awk -f calcOPchanges.awk ../Data/POPC/NaCl/lipid14/OPvsNACLconsHGglycSCALED_0.80_HGglyc-Sigmas_0.875_OPC3.dat  > ../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.875_OPC3.dat 
