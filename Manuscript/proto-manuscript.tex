@@ -19,7 +19,9 @@
 %\documentclass[pre,aps,floatfix,authordate1-4,twocolumn]{revtex4-1}
 %\documentclass[pre,aps,floatfix,authordate1-4]{revtex4-1}
 
-\documentclass[aps,prl,superscriptaddress,twocolumn]{revtex4}
+%\documentclass[aip,jcp,twocolumn]{revtex4}
+\documentclass[aip,jcp]{revtex4}
+%\documentclass{article}
 
 
 
@@ -33,6 +35,9 @@
 \usepackage{epstopdf}
 \usepackage[obeyFinal]{easy-todo}
 \usepackage{csquotes}
+\usepackage{mhchem}
+
+%\usepackage{markdown} 
 
 \begin{document}
 
@@ -53,7 +58,8 @@
 % The \affiliation command should follow the other information.
 
 \author{Josef Melcr}
-%\homepage[]{Your web page}
+\author{Hector Martinez-Seara Monne}
+\author{Pavel Jungwirth}
 \affiliation{Institute of Organic Chemistry and Biochemistry,
 Academy of Sciences of the Czech Republic, 
 Prague 6, Czech Republic}
@@ -76,16 +82,13 @@ Prague 6, Czech Republic}
 
 \begin{abstract}
 % insert abstract here
-  Cellular membranes are complex systems that are hard to study both experimentally and theoretically. Classical molecular dynamics simulations (MD)
-give detailed information about membrane structure, dynamics and its interactions with other biomolecules. However,  there is still a room for
-improvements in the current force fields, especially in the hydrophilic region of membrane.  According to the results reported in NMRlipids, Open Collaboration project
-running at nmrlipids.blogspot.fi, biologically relevant Na+ and Ca2+ generally overbind to zwitterionic phophatidylcholine (PC) membranes in current MD models [Ollila 2016].
-Here we suggest that the PC lipid membrane-ion interactions can be corrected by implicitly inducing electronic polarizability in the lipid models by
-using a simple electrostatic continuum correction (ECC) for partial charges [Leontyev 2010], which is successfully applied already to monovalent and divalent ions in bulk water [Kohagen, 2015].
-Our results show that applying ECC to existing force fields significantly improved PC lipid--cation interactions when compared against NMR data
-by using the electrometer concept [Ollila 2016,Seelig87]. However, also other force field parameters have to be made consistent
-for ECC correction to preserve the area per molecule and other relevant bilayer properties. This work is carried as Open Collaboration
-in NMRlipids VI project (http://nmrlipids.blogspot.fi).
+Classical molecular dynamics simulations give detailed information about membrane structure and dynamics. However, there is still a room for improvements in current force fields – it is known from the literature, that the binding of ions, especially cations, to phopholipid membranes is overestimated in all classical models [1]. We suggest that the membrane-ion interactions can be corrected by including implicit electronic polarizability into the lipid models through the electronic continuum correction (ECC) [2], which was already applied to monovalent and divalent ions yielding models that feature correct ion pairing [3]. Using the electrometer concept [3, 4], our pilot simulations point out that our hypothesis is correct and ECC is indeed a missing important contribution in current classical lipid models. Moreover, the solid physical principles behind ECC are found not to hamper other relevant properties of a phospholipid bilayer. Poster presents a new lipid model, "ECClipids", that shows accurate affinity to sodium and calcium cations. 
+This work will continue as an open collaboration project NMRlipids IV (http://nmrlipids.blogspot.fi).
+
+[1] Catte, A., Girych, M., Javanainen, M., Melcr J., Miettinen, M. S., Oganesyan, V. S. and Ollila H. S.,  PCCP 18(47) 32560-32569 (2016)
+[2] Leontyev, I. V., and Stuchebrukhov, A. A., JCTC 6(5) 1498–1508 (2010)
+[3] Kohagen, M., Mason, P. E., and Jungwirth, P., J. Phys. Chem. B 120(8) 1454–60 (2015)
+[4] Seelig, J., MacDonald, P. M., and Scherer, P. G., Biochemistry 26(24) 7535–7541 (1987)
 \end{abstract}
 
 %\pacs{}% insert suggested PACS numbers in braces on next line
@@ -94,6 +97,91 @@ in NMRlipids VI project (http://nmrlipids.blogspot.fi).
 
 % Body of paper goes here. Use proper sectioning commands. 
 % References should be done using the \cite, \ref, and \label commands
+
+
+% Here I write pseudo-article statements that will make the main argument.
+% Beautiful polished sentences will be formed only afte we agree on these basic things
+\textbf{Introduction}
+
+ motivation, significance of membranes, phospholipids and simulation.
+
+ assumptions (so that we have structure of the paper like in a mathematical proof) -- 
+ MD simulation is a good tool for studying molecules.
+ classical MD models can describe lipids accurately, 
+
+ MD is ... and it serves ... it is useful for ... (describe throuhg references)
+
+ Lipid membranes, especially phospholipid membranes; their significance for life, sciences, society, pharma ...
+
+\textbf{MDEC and current FFs}
+
+ Current force fields -- pros and cons, at a good shape in many aspects, agree on various properties
+
+ lipid force fields fail in description of membrane-cation interaction -- could be answered by ECC?
+
+MDEC -- or -- ECC 
+\todoii{choose one}{We have to decide whether we will refer to the method as a correction (ECC) or as a MD simulation paradigm (MDEC) -- and choose on of these labels.}
+MD in electronic continuum as in \cite{Leontyev2015} or electronic continuum correction as in \cite{Jungwirth2015}
+
+Describe ECC: good physical concept for treating part of the polarizability (electronic) in a simple mean-field way.
+
+Succesful application: Works for cations \cite{Jungwirth2015,Kohagen..} -- motivation for its application to zwitterionic lipids like POPC.
+
+Hypothesis: ECC helps in describing even zwitterionic molecules like POPC, will be demonstrated through headgroup oreder parametere response to cationic molecules.
+
+\textbf{Main body starts:}
+
+ECC and solvation $\Delta G$.(from \cite{Leontyev2015}: hydration $\Delta G$ can provide good structur and energetics, but will fail in good interactions -- already proved for cations)
+In addition, $\Delta G_{hyd}$ -- the usual target for parametrization of small molecules in classical force fields -- is not the right target in the MDEC/ECC framework -- part of $\Delta G$ is already included in the polarization of electrons, and only the remining part of $\Delta G$ belongs to the polarization of the nuclei. 
+Interestingly, the part of $\Delta G$ due to electrons is approximately $1/2$ of it, which is what I observe in my simulations -- if I assume that half of this energy is already accounted for by the water model (which is rather a MDEC model already), than I should recover approximately $3/4$ of the original interaction energy. 
+When I write the formula for interaction energy for two particles at a distance $r=\sigma$ (approximate equilibrium position), I get
+\begin{equation}
+W(f_\sigma r,f_q q) = \kappa \frac{q_i q_j}{r} \frac{f_q^2}{f_\sigma}
+\end{equation}
+
+When I apply $3/4$-assumption for the intereaction energy, I require: 
+\begin{equation}
+\frac{3}{4} W(r,q) = W(f_\sigma r, f_q q)
+\end{equation}
+
+So for $f_q=0.8$ I obtain $f_\sigma ~= \frac{4}{3} f_q^2 \,\,\, = 0.853$ -- which is very close to the value I use, $f_\sigma=0.875$. This is a crude derivation neglecting the true position of energy minimum and the LJ mixing rules.
+
+
+How I apply ECC on Lipid14 POPC and why such choice (i.e. $f_\sigma$, $f_q$ and definition of the scaled region).
+
+why Lipid 14 -- good ratio of $\alpha / \beta$ response.
+
+\textbf{Observations:}
+
+Accurate electrometer response to \ce{Na^+}, \ce{Ca^{2+}} and \ce{DHMDMAB} cationic surfactant. 
+
+Preserves other relevant properties: APL, Order Parameters (OPs), diffusion? \todoi{diffusion can be even improved}, elasticity? \todoi{check elastic properties -- do they change, improve, worsen??} -- however, it is still garbage in-garbage out
+
+Gives correct scattering form factor -- good groud for interpretting experimental data.
+
+Provides correct stoichiometry for \ce{Na^+}, \ce{Ca^{2+}} and their interaction energies with the lipid membrane.
+
+\textbf{Discussion:}
+
+other lipids: charged lipid? -- ongoing research in our lab (starting to do something with Aniket on POPE for curved membranes)
+
+Role of water model: we use OPC3 (current best), it would be worth giving an estimate how results change when we use say SPCE or even TIP3p at least in the SI (so that the reader knows what errors to expect comming from these sub-optimal models). In addition, there is protein force field Amber15-FB, which uses water close to OPC3, TIP3pFB \todoii{REFs}{add references here}.
+
+questionable charge distribution from RESP -- a leeway for further tweaks of the FF
+
+acheivable accuracy of the MD engines themselves (mainly Hector's worry).
+
+application of the correction to other lipid models: The rule looks general, however, it depends on how accurate the original model was.
+
+\textbf{Conclusion:}
+
+Say what we did...
+
+This will be a foundation stone of a new open-collaboration project NPRlipid 6 in nmrlipids.blogspot.fi....
+
+
+
+
 
 
 %\label{}
