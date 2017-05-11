@@ -82,7 +82,8 @@ Prague 6, Czech Republic}
 
 \begin{abstract}
 % insert abstract here
-Classical molecular dynamics simulations give detailed information about membrane structure and dynamics. However, there is still a room for improvements in current force fields – it is known from the literature, that the binding of ions, especially cations, to phopholipid membranes is overestimated in all classical models [1]. We suggest that the membrane-ion interactions can be corrected by including implicit electronic polarizability into the lipid models through the electronic continuum correction (ECC) [2], which was already applied to monovalent and divalent ions yielding models that feature correct ion pairing [3]. Using the electrometer concept [3, 4], our pilot simulations point out that our hypothesis is correct and ECC is indeed a missing important contribution in current classical lipid models. Moreover, the solid physical principles behind ECC are found not to hamper other relevant properties of a phospholipid bilayer. Poster presents a new lipid model, "ECClipids", that shows accurate affinity to sodium and calcium cations. 
+Classical molecular dynamics simulations give detailed information about membrane structure and dynamics. However, there is still a room for improvements in current force fields – it is known from the literature, that the binding of ions, especially cations, to phopholipid membranes is overestimated in all classical models [1]. We suggest that the membrane-ion interactions can be corrected by including implicit electronic polarizability into the lipid models through the electronic continuum correction (ECC) [2], which was already applied to monovalent and divalent ions yielding models that feature correct ion pairing [3]. Using the electrometer concept [3, 4], our simulations point out that our hypothesis is correct and ECC is indeed a missing important contribution in current classical lipid models. Moreover, the solid physical principles behind ECC are found not to hamper other relevant properties of a phospholipid bilayer. 
+The new lipid model, "ECClipids", shows accurate affinity to sodium and calcium cations. 
 This work will continue as an open collaboration project NMRlipids IV (http://nmrlipids.blogspot.fi).
 
 [1] Catte, A., Girych, M., Javanainen, M., Melcr J., Miettinen, M. S., Oganesyan, V. S. and Ollila H. S.,  PCCP 18(47) 32560-32569 (2016)
@@ -101,7 +102,7 @@ This work will continue as an open collaboration project NMRlipids IV (http://nm
 
 % Here I write pseudo-article statements that will make the main argument.
 % Beautiful polished sentences will be formed only afte we agree on these basic things
-\textbf{Introduction}
+\textbf{General Introduction}
 
  motivation, significance of membranes, phospholipids and simulation.
 
@@ -113,7 +114,7 @@ This work will continue as an open collaboration project NMRlipids IV (http://nm
 
  Lipid membranes, especially phospholipid membranes; their significance for life, sciences, society, pharma ...
 
-\textbf{MDEC and current FFs}
+\textbf{Specific introduction: MDEC and current FFs}
 
  Current force fields -- pros and cons, at a good shape in many aspects, agree on various properties
 
@@ -125,13 +126,13 @@ MD in electronic continuum as in \cite{Leontyev2015} or electronic continuum cor
 
 Describe ECC: good physical concept for treating part of the polarizability (electronic) in a simple mean-field way.
 
-Succesful application: Works for cations \cite{Jungwirth2015,Kohagen..} -- motivation for its application to zwitterionic lipids like POPC.
+Succesful application: Works for cations \cite{Jungwirth2015,Kohagen..}\todoii{REF}{Missing references} -- motivation for its application to zwitterionic lipids like POPC.
 
-Hypothesis: ECC helps in describing even zwitterionic molecules like POPC, will be demonstrated through headgroup oreder parametere response to cationic molecules.
+Hypothesis: ECC helps in describing even zwitterionic molecules like POPC, will be demonstrated through headgroup order parameter response to cationic molecules.
 
 \textbf{Main body starts:}
 
-ECC and solvation $\Delta G$.(from \cite{Leontyev2015}: hydration $\Delta G$ can provide good structur and energetics, but will fail in good interactions -- already proved for cations)
+ECC and solvation $\Delta G$.(from \cite{Leontyev2015}: hydration $\Delta G$ can provide good structure and energetics, but will fail in good interactions -- already proved for cations)
 In addition, $\Delta G_{hyd}$ -- the usual target for parametrization of small molecules in classical force fields -- is not the right target in the MDEC/ECC framework -- part of $\Delta G$ is already included in the polarization of electrons, and only the remining part of $\Delta G$ belongs to the polarization of the nuclei. 
 Interestingly, the part of $\Delta G$ due to electrons is approximately $1/2$ of it, which is what I observe in my simulations -- if I assume that half of this energy is already accounted for by the water model (which is rather a MDEC model already), than I should recover approximately $3/4$ of the original interaction energy. 
 When I write the formula for interaction energy for two particles at a distance $r=\sigma$ (approximate equilibrium position), I get
