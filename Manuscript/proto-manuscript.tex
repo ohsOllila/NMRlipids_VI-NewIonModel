@@ -137,19 +137,8 @@ Hypothesis: ECC helps in describing even zwitterionic molecules like POPC, will 
 \textbf{Main body starts:}
 
 ECC and solvation $\Delta G$.(from \cite{Leontyev2015}: hydration $\Delta G$ can provide good structure and energetics, but will fail in good interactions -- already proved for cations)
-In addition, $\Delta G_{hyd}$ -- the usual target for parametrization of small molecules in classical force fields -- is not the right target in the MDEC/ECC framework -- part of $\Delta G$ is already included in the polarization of electrons, and only the remining part of $\Delta G$ belongs to the polarization of the nuclei. 
-Interestingly, the part of $\Delta G$ due to electrons is approximately $1/2$ of it, which is what I observe in my simulations -- if I assume that half of this energy is already accounted for by the water model (which is rather a MDEC model already), than I should recover approximately $3/4$ of the original interaction energy. 
-When I write the formula for interaction energy for two particles at a distance $r=\sigma$ (approximate equilibrium position), I get
-\begin{equation}
-W(f_\sigma r,f_q q) = \kappa \frac{q_i q_j}{r} \frac{f_q^2}{f_\sigma}
-\end{equation}
-
-When I apply $3/4$-assumption for the intereaction energy, I require: 
-\begin{equation}
-\frac{3}{4} W(r,q) = W(f_\sigma r, f_q q)
-\end{equation}
-
-So for $f_q=0.8$ I obtain $f_\sigma ~= \frac{4}{3} f_q^2 \,\,\, = 0.853$ -- which is very close to the value I use, $f_\sigma=0.875$. This is a crude derivation neglecting the true position of energy minimum and the LJ mixing rules. However, the formula for $f_\sigma$ does not depend on the absolute position and I believe that the assumption that the minimum is relatively shifted by scaling with $f_\sigma$ holds pretty well. 
+In addition, $\Delta G_{hyd}$ -- the usual target for parametrization of small molecules in classical force fields -- is not the right target in the MDEC/ECC paradigm -- part of $\Delta G$ is already included in the polarization of electrons, and only the remining part of $\Delta G$ belongs to the polarization of the nuclei. 
+Hence it is non trivial, how large should be the scaling factor $f_\sigma$ -- it should lay between $1$ and $f_q$, the limits for the original interaction energy and its limit when we neglect the $\Delta G_{el}$ term in $\Delta G_{hyd}$. 
 
 
 How do I apply ECC on Lipid14 POPC and why such choice (i.e. $f_\sigma$, $f_q$ and definition of the scaled region).
