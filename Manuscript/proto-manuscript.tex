@@ -114,11 +114,15 @@ This work will continue as an open collaboration project NMRlipids IV (http://nm
 
  Lipid membranes, especially phospholipid membranes; their significance for life, sciences, society, pharma ...
 
-\textbf{Specific introduction: MDEC and current FFs}
+\textbf{Specific introduction: current FFs and MDEC/ECC}
 
- Current force fields -- pros and cons, at a good shape in many aspects, agree on various properties
+ Current force fields -- pros and cons, at a good shape in many aspects, agree on various properties. 
 
- lipid force fields fail in description of membrane-cation interaction -- could be answered by ECC?
+ lipid force fields fail in description of membrane-cation interaction -- could be answered by ECC? 
+Cations were shown to generally overbind in PC lipid bilayers in
+NMRlipids II project. Here we propose that the cation overbinding can
+be corrected by implicitly inducing electronic polarizability in
+lipid headgroups by scaling the partial charges.
 
 MDEC -- or -- ECC 
 \todoii{choose one}{We have to decide whether we will refer to the method as a correction (ECC) or as a MD simulation paradigm (MDEC) -- and choose on of these labels.}
@@ -148,19 +152,25 @@ When I apply $3/4$-assumption for the intereaction energy, I require:
 So for $f_q=0.8$ I obtain $f_\sigma ~= \frac{4}{3} f_q^2 \,\,\, = 0.853$ -- which is very close to the value I use, $f_\sigma=0.875$. This is a crude derivation neglecting the true position of energy minimum and the LJ mixing rules. However, the formula for $f_\sigma$ does not depend on the absolute position and I believe that the assumption that the minimum is relatively shifted by scaling with $f_\sigma$ holds pretty well. 
 
 
-How I apply ECC on Lipid14 POPC and why such choice (i.e. $f_\sigma$, $f_q$ and definition of the scaled region).
+How do I apply ECC on Lipid14 POPC and why such choice (i.e. $f_\sigma$, $f_q$ and definition of the scaled region).
 
-why Lipid 14 -- good ratio of $\alpha / \beta$ response.
+why did I choose Lipid 14 -- good ratio of $\alpha / \beta$ response.
 
-\textbf{Observations:}
+\textbf{Observations, how does the system behave, what are its macroscopic properties:}
 
 Accurate electrometer response to \ce{Na^+}, \ce{Ca^{2+}} and \ce{DHMDMAB} cationic surfactant. 
+The response of the headgroup order parameters is improved both through diminished affinity towards the cations and through lower headgroup response to the bound charge (from simulations with \ce{DHMDMAB} surfactant). 
+The best models from Fig.  \ref{OrderParameterIONSchangesSCALED} are shown in
+Fig. \ref{OrderParameterCHANGESnewMODELS}. Based on these results we choose
 
 Preserves other relevant properties: APL, Order Parameters (OPs), diffusion? \todoi{diffusion can be even improved}, elasticity? \todoi{check elastic properties -- do they change, improve, worsen??} -- however, it is still garbage in-garbage out
+The glycerol backbone and headgroup order parameters are plotted in
+Fig \ref{HGopsNEWmodels.eps} for reference models and EEC models. The difference,
+i.e. the effect of scaling on these parameters, is shown in Fig. \ref{HGopsNEWmodelsCHANGE}.
 
-Gives correct scattering form factor -- good groud for interpretting experimental data.
+Gives correct scattering form factor -- good ground for interpretting experimental data.
 
-Provides correct stoichiometry for \ce{Na^+}, \ce{Ca^{2+}} and their interaction energies with the lipid membrane.
+Provides/predicts correct stoichiometry for \ce{Na^+}, \ce{Ca^{2+}} and their interaction energies with the lipid membrane.
 
 \textbf{Discussion:}
 
@@ -168,15 +178,18 @@ other lipids: charged lipid? -- ongoing research in our lab (starting to do some
 
 Role of water model: we use OPC3 (current best), it would be worth giving an estimate how results change when we use say SPCE or even TIP3p at least in the SI (so that the reader knows what errors to expect comming from these sub-optimal models). In addition, there is protein force field Amber15-FB, which uses water close to OPC3, TIP3pFB \todoii{REFs}{add references here}.
 
-questionable charge distribution from RESP -- a leeway for further tweaks of the FF
+questionable charge distribution from RESP -- a leeway for further tweaks of the FF.
+It is not obvious that RESP charges provide the best description, especially due to its non-uniqe solution. 
+Shall we solve RESP fitting with the constraint of full charges and then scale down, or shall we rather solve the fitting with a scaled total charge target?
 
-acheivable accuracy of the MD engines themselves (mainly Hector's worry).
+acheivable accuracy of the MD engines themselves (mainly Hector's worry) is another limiting factor in fine tuning parameters -- solid physical ground helps.
 
 application of the correction to other lipid models: The rule looks general, however, it depends on how accurate the original model was.
+From preliminary simulations with POPE, it looks that the rule works for Lipid14 FF, at least for zwitterionic headgroups.
 
 \textbf{Conclusion:}
 
-Say what we did...
+Reiterate what we did...
 
 This will be a foundation stone of a new open-collaboration project NPRlipid 6 in nmrlipids.blogspot.fi....
 
@@ -185,30 +198,10 @@ This will be a foundation stone of a new open-collaboration project NPRlipid 6 i
 
 
 
-%\label{}
-\section{Introduction}
 
-Cations were shown to generally overbind in PC lipid bilayers in
-NMRlipids II project. Here we propose that the cation overbinding can
-be corrected by implicitly inducing electronic polarizability in
-lipid headgroups by scaling the partial charges.
 
-%\section{Methods}
 
-%\subsection{Molecular dynamics simulations}
 
-\section{Effect of scaling of headgroup and glycerol backbone partial charges on lipid bilayer properties and cation binding}
-
-Headgroup and glycerol backbone partial charges of Slipids and Lipid14 models were scaled
-with various scaling factors and cation binding was monitored by using the electrometer
-concept. Headgroup order parameter changes as a function of ion concentration are
-shown in Fig. \ref{OrderParameterIONSchangesSCALED}. The order parameter decrease
-seemst to be proportional to the headgroup charges: the smaller the charges
-(larger scaling factor), the less change is observed in order parameters.
-According to the electrometer concept, this means that the headgroup scaling
-decreases cation binding affinity. However, from this data only we cannot
-exclude the possibility that order parameters are changing less because
-headgroup becomes less sensitive for cation binding.
 \begin{figure}[]
   \centering
   \includegraphics[width=9.0cm]{../Fig/OrderParameterIONSchangesSCALED.eps}
@@ -217,10 +210,6 @@ headgroup becomes less sensitive for cation binding.
     with modified headgroup partial charges.}
 \end{figure}
 
-The best models from Fig.  \ref{OrderParameterIONSchangesSCALED} are shown in
-Fig. \ref{OrderParameterCHANGESnewMODELS}. Based on these results we choose
-two models for more careful studies: Slipids and Lipid 14 models with headroup
-and glycerol backbone partial charges scaled with 0.8 and 0.85, respectively.
 \begin{figure}[]
   \centering
   \includegraphics[width=9.0cm]{../Fig/OrderParameterCHANGESnewMODELS.eps}
@@ -230,15 +219,6 @@ and glycerol backbone partial charges scaled with 0.8 and 0.85, respectively.
 \end{figure}
 
 
-
-While scaling seems to improve ion binding, it changes the lipid bilayer properties
-without ions. The glycerol backbone and headgroup order parameters are plotted in
-Fig \ref{HGopsNEWmodels.eps} for reference models and EEC models. The difference,
-i.e. the effect of scaling on these parameters, is shown in Fig. \ref{HGopsNEWmodelsCHANGE}.
-The area per lipid from different models are shown in Table \ref{apls}
-The conclusion is that the charge scaling has only a marginal effect on
-headgroup order parameters, while area per lipid is significantly decreased.
-Area per lipid decrease is more pronounced in Lipid14 than in Slipids.
 
 \begin{figure}[]
   \centering
@@ -260,27 +240,13 @@ Area per lipid decrease is more pronounced in Lipid14 than in Slipids.
   \begin{tabular}{c c}
     model          & A (Å$^2$)    \\
     Lipid14 (literature)  & 65.6$\pm$ 0.5   \\
-    Lipid14eec0.85 & 55.5      \\
+    Lipid14ecc0.80+sigma0.875 & 64.3      \\
     Slipids (literature T=303K)       & 64.6 $\pm$ 0.4   \\
     SlipidsEEC0.8  & 57.8  \\
   \end{tabular}
 \end{table}
 
-The Calcium densities from new models and standard models are compared in Fig \ref{CAdensities}.
-It seems to me that Ca binding in Lipid14 model is not reduced by scaling the
-partial charges even thought the order parameter response is better.
-On the other hand, in Slipids the binding seems to be reduced.
-Possible interpretation is that Lipid14 result gets better because headgroup
-gets less sensitive for bound charge, while in Slipid the binding is reduced.
-\begin{figure}[]
-  \centering
-  \includegraphics[width=9.0cm]{../Fig/CAdensities.eps}
-  \caption{\label{CAdensities}
-    Calcium densities from different simulations with new and standard models.
-  }
-\end{figure}
 
-\section{Conclusions}
 
 % Tables may be be put in the text as floats.
 % Here is an example of the general form of a table:
