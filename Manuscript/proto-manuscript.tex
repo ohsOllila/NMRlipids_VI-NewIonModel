@@ -128,7 +128,7 @@ Cations were shown to generally overbind in PC lipid bilayers in NMRlipids II pr
 Here we propose that the cation overbinding can be corrected by implicitly inducing electronic polarizability in lipid headgroups by scaling the partial charges -- i.e. MDEC/ECC~\cite{Leontyev2015}\todo{Bulid BibTex references database.} paradigm.
 
 MDEC -- or -- ECC 
-\todoii{choose one}{We have to decide whether we will refer to the method as a correction (ECC) or as a MD simulation paradigm (MDEC) -- and choose on of these labels.}
+\todoii{choose one}{We have to decide whether we will refer to the method as a correction (ECC) or as a MD simulation paradigm (MDEC) -- and choose on of these labels. -- Joe: use ECC as we apply MDEC rather as a correction to current state not as a new paradigm for FF development.}
 MD in electronic continuum as in \cite{Leontyev2015} or electronic continuum correction as in \cite{Jungwirth2015}
 
 Describe ECC: good physical concept for treating part of the polarizability (electronic) in a simple mean-field way.
@@ -176,13 +176,20 @@ i.e. the effect of scaling on these parameters, is shown in Fig. \ref{HGopsNEWmo
   \caption{Area per lipid from different models for POPC without ions\label{apls} }
   \begin{tabular}{c c c}
     model          & A (Å$^2$)   & Temperature [K] \\
+    \hline
     Lipid14 (literature)  & 65.6$\pm$ 0.5  &  303 \\
-    Lipid14ecc0.80+sigma0.875 & 63.7 -- 64.9 &  313    \\
+    Lipid14ecc0.80+sigma0.875 &        &  313    \\
+    GMX small patch           & 64.9   &         \\
+    GMX 4xbig patch           & 65.5   &         \\
+    oMM small patch           & 63.65  &         \\
+    oMM 4xbig patch           & 63.7   &         \\
+    \hline
     experiment \cite{Jambeck2012}\todoii{REF}{put original references, not Slipids param. paper.}  & 62.7  &  293    \\
     experiment  & 64.3  &  303    \\
     experiment  & 67.3  &  323    \\
     experiment  & 68.1  &  333    \\
     experiment POPE  & 56.6 &  303    \\
+    \hline
   \end{tabular}
 \end{table}
 
@@ -209,7 +216,7 @@ from Lipid14, new model and experiments (like current Fig. 1, but only original 
 
 \begin{figure}[]
   \centering
-  \includegraphics[width=9.0cm]{../Fig/OrderParameterCHANGESnewMODELS.eps}
+  \includegraphics[width=14.0cm]{../Fig/OrderParameterCHANGESnewMODELS.eps}
   \caption{\label{OrderParameterCHANGESnewMODELS}
     Headgroup order parameter changes as a function of cations from models
     with modified headgroup partial charges.}
