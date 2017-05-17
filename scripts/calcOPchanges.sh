@@ -35,3 +35,7 @@ awk -f calcOPchanges.awk ../Data/POPC/NaCl/lipid14/OPvsNACLconsHGglycSCALED_0.85
 awk -f calcOPchanges.awk ../Data/POPC/NaCl/lipid14/OPvsNACLconsHGglycSCALED_0.85_OPC3.dat  > ../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OPC3.dat 
 awk -f calcOPchanges.awk ../Data/POPC/NaCl/lipid14/OPvsNACLconsHGglycSCALED_0.85_OPC3_NpAT.dat  > ../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.85_OPC3_NpAT.dat 
 awk -f calcOPchanges.awk ../Data/POPC/NaCl/lipid14/OPvsNACLconsHGglycSCALED_0.80_HGglyc-Sigmas_0.875_OPC3.dat  > ../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.875_OPC3.dat 
+
+cd ../Fig/scripts
+gnuplot plotOPchangesNEWmodels.gpl
+
