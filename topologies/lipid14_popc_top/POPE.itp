@@ -3,8 +3,7 @@
 
 [ atomtypes ]
 ;name   bond_type     mass     charge   ptype   sigma         epsilon       Amb
-; non-tail atoms - sigma scaled by 0.875:
-; tweaked values
+; extra atom type for POPE
  hN       hN          0.00000  0.00000   A     1.069080000000e-01   6.56888e-02 ; EVAL 5 0.106908*PARM['sigma_scale_factor.txt:1.0'] /EVAL
 
 [ moleculetype ]

@@ -1,0 +1,36 @@
+#set term postscript enhanced color  
+set terminal postscript enhanced color dashed lw 1 "Helvetica" 14 
+set output "../form-f_exp-l14-eccl17.eps"
+#set size 3.07, 1.2
+#set key above
+
+#set style line ls_forKey lt 1 ps 1.5*r lc rgb "black"
+#set style line ls_berger lt 1 dt 1 lw w lc rgb "#D70039"
+#set style line ls_beOPLS lt 1 dt 3 lw w lc rgb "#D70039"
+#set style line ls_chrm36 lt 1 dt 1 lw w lc rgb "#0088BF"
+#set style line ls_lipd14 lt 1 dt 1 lw w lc rgb "#FFD300"
+#set style line ls_macrog lt 1 dt 1 lw w lc rgb "#00A368"
+#set style line ls_orange lt 1 dt 1 lw w lc rgb "#FF6600"
+#set style line ls_ulmsch lt 1 dt 1 lw w lc rgb "#FFA0A3"
+#set style line ls_slipid lt 1 dt 1 lw w lc rgb "#EE7A9E"
+
+#set object 201 rectangle center screen 2.8, screen 1.025 size screen 0.15, screen 0.07 fs empty
+#set label 1 at screen 2.78, screen 1.045 "POPC" # font ",20"
+#set label 2 at screen 2.78, screen 1.01 "DPPC" # font ",20"
+
+
+set key font ",13"
+#set key at screen 2.10,screen 1.1 reverse Left # maxcols 2 maxrows 9 
+
+set xtics format "%G"
+set ytics format "%G"
+set ylabel "f(q)"
+set xlabel "q"
+#set size 0.8, 0.43
+plot \
+     "../../Data/POPC/no-ions/Kucerka_POPC_ULV_form-f/POPC_ULV_303K_in0D.xff" using 1:2:3 with yerrorbars title 'Kucerka 303K' lc rgb 'grey', \
+     "../../Data/POPC/no-ions/Kucerka_POPC_ULV_form-f/POPC_ULV_323K_in0D.xff" using 1:2:3 with yerrorbars title 'Kucerka 323K' lc rgb 'black', \
+     "../../Data/POPC/no-ions/Lipid14/sim0_ref_noIons/Form_Factor_From_Simulation.dat" using 1:(2.3/3.8 * $2) title 'Lipid14 313K' lc rgb '#33AA66', \
+     "../../Data/POPC/no-ions/Lipid14/sim20_0mM_NaCl_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875_noIons-ref/Form_Factor_From_Simulation.dat" using 1:(2.1/3.8 * $2) title 'ECCLipids17 313K' lc rgb '#DE7845', \
+     #
+
