@@ -197,13 +197,20 @@ i.e. the effect of scaling on these parameters, is shown in Fig. \ref{HGopsNEWmo
 
 - Figure showing the system: POPC, membrane, atoms involved in headgroup OPs.\todoi{This is probably sufficient as the last thing we would do -- and will probably provide a good basis for TOC graphic.}
 
-- Figure comparing order parameters (Fig.~\ref{HGopsNEWmodels}) and form factor \todoii{Add plot}{Add the form factor plot} between original Lipid14, new model and experiments,
+- Figure comparing order parameters (Fig.~\ref{HGopsNEWmodels}) and form factor \todoi{The original L14 form-f are worse than those in the L14 paper -- I'd better double check it and make sure I use the same settings and version for all simulations consistently for a good comparison.}between original Lipid14, new model and experiments,
 
 \begin{figure}[]
   \centering
-  \includegraphics[width=9.0cm]{../Fig/HGopsNEWmodels.eps}
+  \includegraphics[width=9.0cm,angle=-90]{../Fig/form-f_exp-l14-eccl17.eps}
+  \caption{\label{fig:form-f}
+    X-ray scattering form factors from experiments~\cite{Kucerka2011} and simulations using Lipid14 and ECCLipids17 models.  }
+\end{figure}
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=9.0cm]{../Fig/ipython_nb/Headgr_OPs_exp-L14-ECCL17.png}
   \caption{\label{HGopsNEWmodels}
-    Headgroup and glycerol backbone order parameters from standard and EEC models.}
+    Headgroup and glycerol backbone order parameters from standard Lipid14 and EECLipid17 models.}
 \end{figure}
 
 
@@ -216,13 +223,19 @@ from Lipid14, new model and experiments (like current Fig. 1, but only original 
 
 \begin{figure}[]
   \centering
-  \includegraphics[width=14.0cm]{../Fig/OrderParameterCHANGESnewMODELS.eps}
+  \includegraphics[width=16.0cm]{../Fig/OrdParChanges_NaCl_CaCl2_surf.eps}
   \caption{\label{OrderParameterCHANGESnewMODELS}
-    Headgroup order parameter changes as a function of cations from models
-    with modified headgroup partial charges.}
+    Headgroup order parameter changes as a function of concentration of cations or cationic surfactant DHMDMAB. }
 \end{figure}
 
 - Figure(s) analysing binding details (density profiles, lipids bound per ion, something else?).
+
+\begin{figure}[]
+  \centering
+  \includegraphics[width=9.0cm,angle=0]{../Fig/CAdensities.eps}
+  \caption{\label{fig:cacl-dens}
+    Density profiles of \ce{Ca^{2+}} and \ce{Cl^-} for Lipid14 model with Aquist parameters and with ECC ions and ECCLipids17 with ECC ions. }
+\end{figure}
 
 
 \textbf{Discussion:}
