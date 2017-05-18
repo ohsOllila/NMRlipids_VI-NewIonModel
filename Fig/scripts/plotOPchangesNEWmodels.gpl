@@ -25,7 +25,7 @@ set label 2 at screen 1.20, screen 0.71 "DPPC" # font ",20"
 set key at screen 1.20,screen 0.94 reverse Left maxcols 2 maxrows 9 
 set key font ",13"
 
-set yrange [-0.06:0.01]
+set yrange [-0.05:0.01]
 set xtics format " "			
 set ylabel "{/Symbol D}S^{/Symbol b}_{CH}"
 set origin 0,0.37
@@ -64,11 +64,11 @@ plot \
 set key at screen 1.82,screen 0.49 #maxcols 2 maxrows 7
 set xtics format " "			
 set ytics format " "
-set y2tic 0.01 
-set y2range [-0.08:0.015]	
+#set y2tic 0.01 
+#set y2range [-0.08:0.015]	
 set origin 0.72,0.37
 unset ylabel
-set y2label "{/Symbol D}S^{/Symbol b}_{CH}" 
+#set y2label "{/Symbol D}S^{/Symbol b}_{CH}" 
 set size 0.85, 0.43
 plot \
      "../../../lipid_ionINTERACTION/Data/DPPC/NaCl/EXP-Akutsu1981-DPPC-CaClchange-T332.dat"  using 1:($2*-0.00784) notitle with linespoints  linetype 1 lw 5 pt 4 lc rgb 'black', \
@@ -112,9 +112,9 @@ plot \
      #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeORIG.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#33AA66', \
 
 
-unset y2label
+#unset y2label
 set xtics format "%G"
-unset y2tics
+#unset y2tics
 set ytics format "%G"
 set ylabel "{/Symbol D}S^{/Symbol a}_{CH}"
 set xlabel "[NaCl] (mM)"
@@ -153,10 +153,10 @@ set key at screen 1.28,screen 0.8315 #maxcols 2 maxrows 6
 set xtics format "%G"
 set ytics format " "
 #unset ytic 
-set y2tic 0.01				   
+#set y2tic 0.01				   
 set xlabel "[CaCl] (mM)"
 unset ylabel
-set y2label "{/Symbol D}S^{/Symbol a}_{CH}" 
+#set y2label "{/Symbol D}S^{/Symbol a}_{CH}" 
 set origin 0.72,0
 set size 0.85, 0.43
 plot \
