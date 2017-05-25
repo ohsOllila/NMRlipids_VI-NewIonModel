@@ -1,0 +1,25 @@
+#set term postscript enhanced color  
+set terminal postscript enhanced color dashed lw 1 "Helvetica" 22 
+set output "../bound-CAs_conc-eccl17.eps"
+#set size 3.07, 1.2
+#set key above
+
+ls_exp=10
+ls_l14=1
+ls_eccl17=2
+
+set style line ls_exp    pt 13 ps 2 lw 1 lc rgb '#000000' dashtype 3
+set style line ls_l14    pt  6 ps 2 lw 4 lc rgb '#33AA66' dashtype 3
+set style line ls_eccl17 pt  6 ps 2 lw 4 lc rgb '#DE7845' dashtype 3
+
+#set key font ",13"
+#set key at screen 2.10,screen 1.1 reverse Left # maxcols 2 maxrows 9 
+
+set xtics format "%G"
+set ytics format "%G"
+set ylabel "no. bound cations"
+set xlabel "conc. [mM]"
+#set size 0.8, 0.43
+plot \
+     "../../Data/POPC/CaCl/lipid14/bound_Ca_non-tail_q-sc_0.80_sig-sc_0.875_OPC3.dat" using 1:2 with linespoints title 'ECClipid17 313K' ls ls_eccl17 
+
