@@ -10,18 +10,18 @@
 #
 # Glycine aRginine prOline Methionine Alanine Cystine Serine
 #
-@    title "Symmetrized partial density"
-@    xaxis  label "Average relative position from center (nm)"
-@    yaxis  label "Number density (nm\S-3\N)"
-@TYPE xy
-@ view 0.15, 0.15, 0.75, 0.85
-@ legend on
-@ legend box on
-@ legend loctype view
-@ legend 0.78, 0.8
-@ legend length 2
-@ s0 legend "CA"
-@ s1 legend "CL"
+#@    title "Symmetrized partial density"
+#@    xaxis  label "Average relative position from center (nm)"
+#@    yaxis  label "Number density (nm\S-3\N)"
+#@TYPE xy
+#@ view 0.15, 0.15, 0.75, 0.85
+#@ legend on
+#@ legend box on
+#@ legend loctype view
+#@ legend 0.78, 0.8
+#@ legend length 2
+#@ s0 legend "CA"
+#@ s1 legend "CL"
     -3.60813           0.2292       0.588576
     -3.59608         0.240618       0.576097
     -3.58403         0.226875       0.588522

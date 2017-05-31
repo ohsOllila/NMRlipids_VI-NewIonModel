@@ -7,8 +7,8 @@ set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14
 set output "../CAdensities.eps"
 set multiplot  layout 3,1
 #set size 1.0, 0.25
-set yrange [0:1.8]
-set xrange [0:5] 
+set yrange [0:1.5]
+set xrange [0:4] 
 set ytic 0.5
 #set key box
 
@@ -22,46 +22,45 @@ set style line 2  lw 3 lt 1 lc rgb '#77ac30' # green  # '#d95319' # orange
 set style line 7  lw 3 lt 1 lc rgb '#0072bd' # blue  #'#7e2f8e' # purple
 set style line 10 lw 3 lt 1 lc rgb '#000000'  # black  #
 
+set grid ytics
+
 set key above
 set xtics format " "
 #set size 1.0, 0.25
 set ylabel " "
-set label at graph 0.60, graph 0.84 "LIPID14 + Åquist ions -- change this to Dang ions"
-set label at graph 0.85,graph 0.14 "304 mM" 
-set label at graph 0.85,graph 0.35 "867 mM" 
-plot  "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:3        title "Ca^{2+}" with lines ls 7 lw 1,\
-      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:($4/2)   title "Cl^{-}"  with lines ls 2, \
-      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:($2/200) title "POPC"    with lines ls 10,\
-      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/100ca/LIPIDdensity_last100ns.xvg" using 1:3 notitle  with lines ls 7,\
-      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/100ca/LIPIDdensity_last100ns.xvg" using 1:($4/2) notitle with lines ls 2, \
-      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/100ca/LIPIDdensity_last100ns.xvg" using 1:($2/200) notitle with lines ls 10
+set label at graph 0.044, graph 0.84 "LIPID14 + Dang ions"
+#set label at graph 0.85,graph 0.14 "304 mM" 
+#set label at graph 0.85,graph 0.35 "856 mM" 
+plot      "../../Data/POPC/no-ions/Lipid14/sim2-1_856mM_CaCl2_full-Dang_OPC3/density.xvg" using 1:2        with lines ls 7 title "Ca^{2+}",\
+                                                                                       "" using 1:($3/2.0) with lines ls 2 title "Cl^{-}" 
+
 unset label
 
 
 #set size 1.0, 0.25
-set ylabel " "
-set label at graph 0.60, graph 0.84 "LIPID14 + ECC ions -- check this"
-set label at graph 0.85,graph 0.30 "856 mM" 
-plot      "../../Data/POPC/no-ions/Lipid14/sim2_856mM_CaCl2_Dang/density.xvg" using 1:2 notitle with lines ls 7,\
-          "../../Data/POPC/no-ions/Lipid14/sim2_856mM_CaCl2_Dang/density.xvg" using 1:($3/2.0) notitle  with lines ls 2,\
-      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:($2/200) notitle with lines ls 10,\
-	  #"../../Data/POPC/no-ions/Lipid14/sim10_856mM_CaCl_scDang_headgr_0.85_scaled/CAdens.xvg" using ($1-3.9):($3/2.0) notitle  with lines ls 2,\
+set ylabel "normalized number density [nm^{-3}]"
+set label at graph 0.044, graph 0.84 "LIPID14 + ECC ions"
+#set label at graph 0.85,graph 0.30 "856 mM" 
+plot      "../../Data/POPC/no-ions/Lipid14/sim2-1_856mM_CaCl2_MK_OPC3/density.xvg" using 1:2 with lines ls 7 notitle,\
+          "" using 1:($3/2.0) with lines ls 2 notitle 
 
 unset label
 
 set xtics format "%G"
-set xlabel "z (nm)"
+set xlabel "distance from membrane centre along normal axis [nm]"
 
 #set size 1.0, 0.25
 set ylabel " "
-set label at graph 0.60, graph 0.84 "ECCLipids17 + ECC ions"
+set label at graph 0.044, graph 0.84 "ECCLipids17 + ECC ions"
 #set label at graph 0.94,graph 0.17 "297 mM"
 #set label at graph 0.94,graph 0.37 "594 mM"
 #set label at graph 0.94,graph 0.67 "1007 mM" 
-set label at graph 0.85,graph 0.30 "690 mM" 
-plot      "../../Data/POPC/no-ions/Lipid14/sim20_big4_698mM_CaClMK_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density_Ca_Cl.xvg" using 1:2 notitle with lines ls 7,\
-          "../../Data/POPC/no-ions/Lipid14/sim20_big4_698mM_CaClMK_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density_Ca_Cl.xvg" using 1:($3/2.0) notitle  with lines ls 2,\
-      "../../../lipid_ionINTERACTION/Data/POPC/CaCl/LIPID14/35ca/LIPIDdensity_last100ns.xvg" using 1:($2/200) notitle with lines ls 10,\
+#set label at graph 0.85,graph 0.30 "690 mM" 
+#set label at graph 0.85,graph 0.30 "856 mM" 
+plot      "../../Data/POPC/no-ions/Lipid14/sim20_856mM_CaClMK_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density.xvg" using 1:2 with lines ls 7 notitle,\
+          "" using 1:($3/2.0) with lines ls 2 notitle , \
+          #"../../Data/POPC/no-ions/Lipid14/sim20_big4_698mM_CaClMK_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density_Ca_Cl.xvg" using 1:2 notitle with lines ls 7,\
+          #"../../Data/POPC/no-ions/Lipid14/sim20_big4_698mM_CaClMK_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density_Ca_Cl.xvg" using 1:($3/2.0) notitle  with lines ls 2
 
 unset label
 

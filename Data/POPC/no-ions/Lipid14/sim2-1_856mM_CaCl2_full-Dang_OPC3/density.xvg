@@ -10,18 +10,18 @@
 #
 # God Rules Over Mankind, Animals, Cosmos and Such
 #
-@    title "Symmetrized partial density"
-@    xaxis  label "Average relative position from center (nm)"
-@    yaxis  label "Number density (nm\S-3\N)"
-@TYPE xy
-@ view 0.15, 0.15, 0.75, 0.85
-@ legend on
-@ legend box on
-@ legend loctype view
-@ legend 0.78, 0.8
-@ legend length 2
-@ s0 legend "CA"
-@ s1 legend "CL"
+#@    title "Symmetrized partial density"
+#@    xaxis  label "Average relative position from center (nm)"
+#@    yaxis  label "Number density (nm\S-3\N)"
+#@TYPE xy
+#@ view 0.15, 0.15, 0.75, 0.85
+#@ legend on
+#@ legend box on
+#@ legend loctype view
+#@ legend 0.78, 0.8
+#@ legend length 2
+#@ s0 legend "CA"
+#@ s1 legend "CL"
     -3.56877         0.397882       0.665007
     -3.55685         0.399988       0.663961
     -3.54494          0.40337       0.663924

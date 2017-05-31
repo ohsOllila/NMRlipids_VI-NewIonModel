@@ -1,4 +1,4 @@
-set encoding utf8
+set encoding utf8 
 #set term postscript enhanced color  
 set size 1, 1
 set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14 
@@ -7,11 +7,10 @@ set terminal postscript portrait enhanced color dashed lw 1 "Helvetica" 14
 set output "../NAdensities.eps"
 set multiplot  layout 3,1
 #set size 1.0, 0.25
-set yrange [0:1.8]
+set yrange [0:1.5]
 set xrange [0:4] 
 set ytic 0.5
 #set key box
-
 
 set style line 1 lt 1 lc rgb '#0072bd' # blue
 set style line 3 lt 1 lc rgb '#edb120' # yellow
@@ -22,11 +21,13 @@ set style line 2  lw 3 lt 1 lc rgb '#77ac30' # green  # '#d95319' # orange
 set style line 7  lw 3 lt 1 lc rgb '#7e2f8e' # purple
 set style line 10 lw 3 lt 1 lc rgb '#000000'  # black  #
 
+set grid ytics
+
 set key above
 set xtics format " "
 #set size 1.0, 0.25
 set ylabel " "
-set label at graph 0.60, graph 0.84 "LIPID14 + Åquist ions"
+set label at graph 0.044, graph 0.84 "LIPID14 + Åquist ions"
 set label at graph 0.85,graph 0.10 "150 mM" 
 set label at graph 0.85,graph 0.40 "1000 mM" 
 plot  "../../../lipid_ionINTERACTION/Data/POPC/NaCl/LIPID14/12na/LIPIDdensity.xvg" using 1:3        title "Na^{+}" with lines ls 7 lw 1,\
@@ -39,8 +40,8 @@ unset label
 
 
 #set size 1.0, 0.25
-set ylabel " "
-set label at graph 0.60, graph 0.84 "LIPID14 + ECC ions"
+set ylabel "normalized number density [nm^{-3}]"
+set label at graph 0.044, graph 0.84 "LIPID14 + ECC ions"
 set label at graph 0.85,graph 0.25 "351 mM" 
 plot  "../../Data/POPC/no-ions/Lipid14/sim3_351mM_NaCl_scDang_ref/ana_densities_number.xvg" using ($1-3.35):2 notitle with lines ls 7,\
       "../../Data/POPC/no-ions/Lipid14/sim3_351mM_NaCl_scDang_ref/ana_densities_number.xvg" using ($1-3.35):3 notitle with lines ls 2,\
@@ -50,18 +51,15 @@ plot  "../../Data/POPC/no-ions/Lipid14/sim3_351mM_NaCl_scDang_ref/ana_densities_
 unset label
 
 set xtics format "%G"
-set xlabel "z (nm)"
+set xlabel "distance from membrane centre along normal axis [nm]"
 
 #set size 1.0, 0.25
-set ylabel " "
-set label at graph 0.60, graph 0.84 "ECCLipids17 + ECC ions"
-#set label at graph 0.94,graph 0.17 "297 mM"
-#set label at graph 0.94,graph 0.37 "594 mM"
-#set label at graph 0.94,graph 0.67 "1007 mM" 
-set label at graph 0.85,graph 0.40 "843 mM" 
+#set ylabel " "
+set label at graph 0.044, graph 0.84 "ECCLipids17 + ECC ions"
+#set label at graph 0.85,graph 0.40 "843 mM" 
 plot      "../../Data/POPC/no-ions/Lipid14/sim20_843mM_NaCl_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density.xvg" using 1:2 notitle with lines ls 7,\
           "../../Data/POPC/no-ions/Lipid14/sim20_843mM_NaCl_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density.xvg" using 1:($3/1.0) notitle  with lines ls 2,\
-      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/LIPID14/77na/LIPIDdensity.xvg" using 1:($2/200) notitle with lines ls 10
+      #"../../../lipid_ionINTERACTION/Data/POPC/NaCl/LIPID14/77na/LIPIDdensity.xvg" using 1:($2/200) notitle with lines ls 10
 
 unset label
 
