@@ -34,6 +34,7 @@ set style line ls_eccl17 pt  6 ps 2 dashtype 3 lw 6 lc rgb '#DE7845'
 set key at screen 2.30,screen 1.1 reverse Left # maxcols 2 maxrows 9 
 
 set yrange [-0.21:0.01]
+set y2range [-0.21:0.01]
 set xtics format " "			
 set ylabel "{/Symbol D}S^{/Symbol b}_{CH}"
 set origin 0,0.5
@@ -52,7 +53,7 @@ set xtics format "%G"
 #unset y2tics
 set ytics format "%G"
 set ylabel "{/Symbol D}S^{/Symbol a}_{CH}"
-set xlabel "[NaCl] (mM)"
+set xlabel "[NaCl] (mM)_ "
 set origin 0,0
 #set size 0.8, 0.43
 plot \
@@ -89,7 +90,7 @@ set xtics format "%G"
 set ytics format " "
 #unset ytic 
 #set y2tic 0.01				   
-set xlabel "[CaCl] (mM)"
+set xlabel "[CaCl_2] (mM)"
 unset ylabel
 #set y2label "{/Symbol D}S^{/Symbol a}_{CH}" 
 set origin 1,0
@@ -106,30 +107,32 @@ plot \
 
 set xrange [-0.01:0.95]
 
-set key at screen 2.70,screen 1.1 reverse right    #maxcols 2 maxrows 6
+y_error=0.005
+
+set key at screen 2.90,screen 1.1 reverse right    #maxcols 2 maxrows 6
 set origin 2,0.5
 #set y2label "{/Symbol D}S^{/Symbol b}_{CH}" 
-set y2tic 0.02
+set y2tic 0.02 mirror
 unset xlabel
 set xtics format " "			
-plot "../../Data/POPC/DHMDMAB/sceherer89fig4BETAC16.dat" using 1:(-0.00748*$2) with linespoints title '^2H NMR DHMDMAB' ls ls_exp pt 11,\
+plot "../../Data/POPC/DHMDMAB/sceherer89fig4BETAC16.dat" using 1:(-0.00748*$2) with linespoints title '^2H NMR cationic surfactant' ls ls_exp pt 11,\
      "../../Data/POPC/DHMDMAB/lipid14simulationsBETA.dat" using 1:($2-0.00753363208228) with linespoints notitle ls ls_l14,\
      "../../Data/POPC/DHMDMAB/lipid14simulationsBETA.dat" using 1:($3-0.000737552907939) with linespoints notitle ls ls_l14,\
-     "../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_headgr-sigmas_0.875_simulationsBETA_delta.dat" using 1:2 with linespoints notitle ls ls_eccl17,\
-     "../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_headgr-sigmas_0.875_simulationsBETA_delta.dat" using 1:3 with linespoints notitle ls ls_eccl17,\
+     "../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_headgr-sigmas_0.875_simulationsBETA_delta.dat" using 1:2:(y_error) with linespoints notitle ls ls_eccl17,\
+     "../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_headgr-sigmas_0.875_simulationsBETA_delta.dat" using 1:3:(y_error) with linespoints notitle ls ls_eccl17,\
      #"../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_oxy-sigmas_FBopt_simulationsBETA_delta.dat" using 1:2 with linespoints title 'Lipid 14 scaled 0.80 \& opt-sigmas' lw 5 pt 5 ps 1.2 lc rgb 'blue',\
      #"../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_oxy-sigmas_FBopt_simulationsBETA_delta.dat" using 1:3 with linespoints notitle lw 5 pt 5 ps 1.2 lc rgb 'blue',\
 
 unset key
 set origin 2,0
 #set y2label "{/Symbol D}S^{/Symbol a}_{CH}" 
-set xlabel "Mole fraction of DHMDMAB"
+set xlabel "Mole fraction of cationic surfactant_ "
 set xtics format "%G"
 plot "../../Data/POPC/DHMDMAB/sceherer89fig4ALPHAC16.dat" using 1:(0.00748*$2) with linespoints notitle ls ls_exp,\
      "../../Data/POPC/DHMDMAB/lipid14simulationsALPHA.dat" using 1:($2-0.0799104708936) with linespoints notitle ls ls_l14,\
      "../../Data/POPC/DHMDMAB/lipid14simulationsALPHA.dat" using 1:($3-0.0708998940251) with linespoints notitle ls ls_l14,\
-     "../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_headgr-sigmas_0.875_simulationsALPHA_delta.dat" using 1:2 with linespoints notitle ls ls_eccl17,\
-     "../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_headgr-sigmas_0.875_simulationsALPHA_delta.dat" using 1:3 with linespoints notitle ls ls_eccl17,\
+     "../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_headgr-sigmas_0.875_simulationsALPHA_delta.dat" using 1:2:(y_error) with linespoints notitle ls ls_eccl17,\
+     "../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_headgr-sigmas_0.875_simulationsALPHA_delta.dat" using 1:3:(y_error) with linespoints notitle ls ls_eccl17,\
      #"../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_oxy-sigmas_FBopt_simulationsALPHA_delta.dat" using 1:2 with linespoints notitle pt 5 ps 1.2 lc rgb 'blue',\
      #"../../Data/POPC/DHMDMAB/lipid14_headgr-glyc_0.80_oxy-sigmas_FBopt_simulationsALPHA_delta.dat" using 1:3 with linespoints notitle pt 5 ps 1.2 lc rgb 'blue',\
 
