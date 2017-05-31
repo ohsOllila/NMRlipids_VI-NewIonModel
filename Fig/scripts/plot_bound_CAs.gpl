@@ -8,18 +8,47 @@ ls_exp=10
 ls_l14=1
 ls_eccl17=2
 
-set style line ls_exp    pt 13 ps 2 lw 1 lc rgb '#000000' dashtype 3
+# no. lipid in simulation
+n_lipids=72
+
+# columns:
+# 1 nominal conc
+# 2 no. bound cations
+# 3 tot. no. cations in simulation
+# 4 bound oxygens_POPC per cation
+datafile="../../Data/POPC/CaCl/lipid14/bound_Ca_non-tail_q-sc_0.80_sig-sc_0.875_OPC3.dat"
+# simulaiton: no NaCl, 313K
+
+set style line ls_exp    pt 13 ps 2 lw 4 lc rgb '#000000' 
 set style line ls_l14    pt  6 ps 2 lw 4 lc rgb '#33AA66' dashtype 3
 set style line ls_eccl17 pt  6 ps 2 lw 4 lc rgb '#DE7845' dashtype 3
 
 #set key font ",13"
 #set key at screen 2.10,screen 1.1 reverse Left # maxcols 2 maxrows 9 
+#
 
+# equation 18 from Altenbach and Seelig (Biochemistry 1984, 23, 3913-3920)
+# assumes formation of a ternary complex -- 2 POPC molecules per 1 Calcium
+# x: conc. bound cations / conc. POPC
+# y: sqrt( conc_bound_ions / conc_solution_ions )
+f(x) = ksqrt       * (1-2*x)
+e(x) = sqrt(k_exp) * (1-2*x)
+ksqrt  = 2.91878
+k_exp  = 7.0  # no NaCl, 313K
+
+fit f(x) datafile using ($2/n_lipids):(sqrt($2/($3-$2)))  via ksqrt
+
+set xrange [0:0.6]
+set yrange [0:3.5]
 set xtics format "%G"
 set ytics format "%G"
-set ylabel "no. bound cations"
-set xlabel "conc. [mM]"
+set xlabel "number of bound Ca^{2+} per POPC"
+set xlabel "[Ca^{2+}_{bound}] / [POPC]"
+set ylabel "[Ca^{2+}_{bound}] / [Ca^{2+}_{free}]"
 #set size 0.8, 0.43
 plot \
-     "../../Data/POPC/CaCl/lipid14/bound_Ca_non-tail_q-sc_0.80_sig-sc_0.875_OPC3.dat" using 1:2 with linespoints title 'ECClipid17 313K' ls ls_eccl17 
+     datafile using ($2/n_lipids):(sqrt($2/($3-$2))) with points title 'ECClipid17' ls ls_eccl17 ,\
+     f(x) title 'ternary complex binding model (simulation)' ls ls_eccl17, \
+     e(x) title 'ternary complex binding model (experiment)' ls ls_exp
+     
 
