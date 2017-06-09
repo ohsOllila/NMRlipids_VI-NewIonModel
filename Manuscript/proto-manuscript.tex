@@ -139,16 +139,51 @@ Hypothesis: ECC helps in describing even zwitterionic molecules like POPC, will 
 
 \section{Methods}
 
-ECC and solvation $\Delta G$.(from \cite{leontyev11} \todoi{Pavel: do not replicate Stuchebrukhov paper, write it very briefly}: hydration $\Delta  G_{hyd}$ can provide good structure and energetics, but will fail in good interactions -- already proved for cations)
-In addition, $\Delta G_{hyd}$ -- the usual target for parametrization of small molecules in classical force fields -- is not the right target in the MDEC/ECC paradigm -- part of $\Delta G = \Delta G_{nuc} + \Delta G_{el}$ is already included in the polarization of electrons, and only the remining part of $\Delta G$,  $\Delta G_{nuc}$, belongs to the polarization of the nuclei. 
-Hence it is non trivial, how large should be the scaling factor $f_\sigma$ -- it should lay between $1$ and $f_q$, the limits for the original interaction energy and its limit when we neglect the $\Delta G_{el}$ term in $\Delta G_{hyd}$. 
+Simulations with molecular mechanics models represent nuclei as classical particles 
+and describe their interactions through a pariwise additive empirical potential \cite{SOME_review, FF_papers}. 
+According to the electronic continuum correction (ECC), electrons that surround 
+the nuclei shall be taken into account in such simulations as an electronic continuum. \cite{leontyev11}
+Such a continuum responds to the electrostatic interactions of the explicitly represented nuclei
+as a dielectric polarizing itself. 
+The dielectric constant of shuch a dielectric medium, $\epsilon _{el}$, will 
+then resduce the electrostatic interactions in between the nuclei. 
+This can be formally represented in standard simulations by scaling charges of particles with a factor $f_q = \epsilon _{el} ^{-1/2}$. 
+Note that the high frequency dielectric constant, which is experimentally measurable \cite{some_original_work, leontyev11}, represents
+the part of dielectric response only due to electrons, and it is approximately $\epsilon _{el} ~ 2$ for almost any biomaterial that is
+usually simulated/exists in a living cells \todo{choose between the two options}.
+The high frequency dielectric constant of water, 
+the most abundant molecule in any simulaiton in biophysics, 
+is $\epsilon _{el} = 1.78$, hence the scaling factor adopts the value of $f_q = 0.75$. \cite{some_orig_source, leontyev11}
 
-How do I apply ECC on Lipid14 POPC and why such choice (i.e. $f_\sigma$, $f_q$ and definition of the scaled region).
-Region definition: headgroup requires optimization, tails appear already accurate enough. 
-Choice of $f_q$: value 0.8 reflects the fact that the charges in Lipid14 were derived in vacuum, whereas they should rather be the average of vacuum and solvated charges (so called IPolQ charges \cite{Cerutti2013}, both charge-sets can be taken from \cite{maciejewski14}). 
+The newly presented model is based on the POPC model from Lipid14~\cite{dickson14} force field. 
+There, the partial atomic charges were derived by 
+fitting the electrostatic potential of a model quantum chemistry representation in vacuum. 
+If such charges are obtained in an implicit solvent, they vary the most for the polar moieties \cite{maiejewski14}. 
+In order to represent this difference in polarity in a model with fixed charges, 
+we shall use the average charges from both environments (IpolQ charges) \cite{Cerutti2013}. 
+By taking the charges of oxygen atoms in vacuum and implicit water solvent for POPC from \cite{maciejewski14}, 
+we represent the IpolQ charges in the electronic continuum correction of the Lipid14 model
+by increasing the scaling factor $f_q = 0.8$. 
 
-why did I choose Lipid 14 -- good ratio of $\alpha / \beta$ response~\cite{catte16} but not perfect.
+Because the biologically relevant cations like \ce{Na^+} and \ce{Ca^{2+}
+are found to interact only with the phospholipid head group,
+and the alkyl sidechains are found to be described accuratley enough,
+we exclude alkyl tails from our modifications. 
 
+By scaling the particle charges alone, we reduce the 
+electrostatic interactions and, hence, their contribution to hydration.
+A simple approach to correct for this effect is to scale also 
+the sigma factors in the Van der Waals interaction that is 
+modelled with a Lennard-Jones potential. \cite{lennard-jones_work}
+In line with the electronic continnum correction,
+the scaling factor for sigma parameters, $f_\sigma$,
+has to lay between $f_q$ and 1.
+
+The optimal value for $f_q$ was found by matching the overall membrane structure, 
+scattering form factors to the experimental data.
+This ensures that the presented model describes the membrane strucutre correctly,
+adopts correct liquid disordered phase, 
+and provides area per lipid agreeing with experiments (see Fig~\ref{simVSexpNOions}). 
 
 
 Detailed and robust structural information of lipid bilayers can
@@ -211,6 +246,8 @@ in lipid bilayer, which was rationalized as a charge induced tilt
 of the headgroup dipole \cite{seelig87}. Later analysis including signs of the order
 parameters showed that the order parameters are actually decreasing with bound
 positive charge and {\it vice versa} for negative charge \cite{ollila16,catte16}.
+To date, there is no lipid model that can describe such a behaviour, 
+the electrometer response and cation binding, quantitatively well~\cite{catte16}
 
 \section{Results and Discussion}
 
