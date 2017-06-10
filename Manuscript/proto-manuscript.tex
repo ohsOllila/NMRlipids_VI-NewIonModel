@@ -149,10 +149,9 @@ The dielectric constant of shuch a dielectric medium, $\epsilon _{el}$, will
 then resduce the electrostatic interactions in between the nuclei. 
 This can be formally represented in classical simulations through scaling of charges of particles with a factor $f_q = \epsilon _{el} ^{-1/2}$. 
 Note that the high frequency dielectric constant, which is experimentally measurable \cite{some_original_work, leontyev11}, represents
-the part of dielectric response only due to electrons, and it is approximately $\epsilon _{el} ~ 2$ for almost any biomaterial that is
-usually simulated/exists in a living cells \todo{choose between the two options}.
+the part of dielectric response only due to electrons, and it is approximately $\epsilon _{el} \approx 2$ for almost any biomaterial that exists in living cells. 
 The high frequency dielectric constant of water, 
-the most abundant molecule in any simulaiton in biophysics, 
+the most abundant molecule in any cell, 
 is $\epsilon _{el} = 1.78$, hence the scaling factor adopts the value of $f_q = 0.75$. \cite{some_orig_source, leontyev11}
 
 The newly presented ECC-POPC model is based on the POPC model from Lipid14~\cite{dickson14} force field. 
@@ -179,10 +178,10 @@ In line with the electronic continnum correction,
 the scaling factor for sigma parameters, $f_\sigma$,
 has to lay between $f_q$ and 1.
 
-The optimal value for $f_q$ was found by matching the overall membrane structure, 
-scattering form factors to the experimental data.
-This ensures that the presented model describes the membrane strucutre correctly,
-adopts correct liquid disordered phase, 
+The optimal value for $f_\sigma$ was found by representing the overall membrane structure well
+by matching scattering form factors to experimental data~\cite{Petrache06, Kucerka08, Pabst10}.
+This ensures that the presented model describes correctly the membrane strucutre,
+adopts a liquid disordered phase, 
 and provides area per lipid agreeing with experiments (see Fig~\ref{simVSexpNOions} and Table~\ref{tab:apls}). 
 
 
@@ -360,8 +359,8 @@ From preliminary simulations with POPE, it looks that the rule works for Lipid14
 We present models of POPC and DPPC lipids that for the first time exhibit accurate headgroup order parameter response to cation binding. 
 The models are derived from Lipid14 model \cite{dickson14} by applying the electronic continuum correction. 
 The models were optimized to represent correct membrane structure, 
-and they were validated with the use of electrometer concept \cite{seelig87,Altenbach84}. 
-Compared to the phenomenological observations of calcium:POPC stoichiometry in the experimental work \cite{Altenbach87}, 
+and they were validated with the use of electrometer concept \cite{seelig87,Altenbach85,Altenbach84}. 
+Compared to the phenomenological observations of calcium:POPC stoichiometry in the experimental work \cite{Altenbach84}, 
 our simulations reveal the same stoichiometry of 2~POPC molecules per 1~calcium but through direct observation. 
 This tells us on the subtle effects of calcium in phospholipid membranes 
 possibly leading to a better understanding of their physical properties (elasticity etc.). 
