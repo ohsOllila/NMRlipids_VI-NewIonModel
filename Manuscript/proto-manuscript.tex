@@ -204,19 +204,18 @@ The decrease of area was speculated
 to arise from reduced hydration
 of headgroup due to the lower polarity of molecules with scaled charges.
 The hydration can be increased by decreasing the radius of atoms
-by reducing $\sigma$ term in Lennart-Jones potential.
-This allows water molecules approach closer to lipid atoms,
-where electrostatic interactions are stronger and, thus, 
-increases hydration level.
+by reducing $\sigma$ term in Lennart-Jones potential, which
+allows water molecules approach closer to lipid atoms and
+have stonger electrostatic interactions with them.
 \todo{This effect may have an official name. In that case we should mention it.}
-\todo{Is there some justification for the below sentence?} 
-In line with the electronic continnum correction,
-the scaling factor for sigma parameters, $f_\sigma$,
-has to lay between $f_q$ and 1. Scaling factor
-value of ?? for $\sigma$ was found to reproduce
-area per molecule values close to experiments and
-original Lipid14 model when charges were scaled with
-0.8.
+Indeed, the scaling of $\sigma$ increased the area per molecule
+and the results close to experimental and original Lipid14 values were achieved
+with scaling factor of ?? for $\sigma$ and 0.8 for partial charges.
+%\todo{Is there some justification for the below sentence?} 
+%In line with the electronic continnum correction,
+%the scaling factor for sigma parameters, $f_\sigma$,
+%has to lay between $f_q$ and 1.
+
 
 \subsection{Comparison to experimental data}
 Structures sampled by individual lipid molecules were compared
@@ -264,34 +263,55 @@ unit like this}
 \section{Results and Discussion}
 
 \subsection{Lipid bilayers without ions}
-The structural quality of
-new ECC lipid model is evaluated against scattering form factors and NMR order parameters
-in Fig. \ref{simVSexpNOions}
-The optimal value for $f_\sigma$ was found by representing the overall membrane structure well
-by matching scattering form factors to experimental data~\cite{Petrache06, Kucerka08, Pabst10}.
-This ensures that the presented model describes correctly the membrane strucutre,
-adopts a liquid disordered phase, 
-and provides area per lipid agreeing with experiments (see Fig~\ref{simVSexpNOions} and Table~\ref{tab:apls}). 
+The scattering form factors, NMR order parameters and area per lipids calculated from 
+the ECC corrected lipid model for POPC are compared to experiments and original
+Lipid14 results in Fig. \ref{simVSexpNOions} and in Table~\ref{tab:apls}. 
+%The optimal value for $f_\sigma$ was found by representing the overall membrane structure well
+%by matching scattering form factors to experimental data~\cite{Petrache06, Kucerka08, Pabst10}.
+The structural quality is comparable to the state of art lipid models available in literature \cite{ollila16},
+thus we conclude that the ECC corrected lipid model reproduces the lipid bilayer structure
+in liquid disordered phase with similar accuracy than other available models
+\todo{Discussion to be finished when we have all the results in the figure}.
 
+Headgroup order parameter response to bound charge was evaluated against
+experimental data measured with cationic surfactant
+(dihexadecyldimethylammonium bromide, C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$) \cite{scherer89}.
+The exact amount of bound charge in the membrane is known these systems, because
+practically all cationic surfactant molecules are embedded in lipid bilayer due to
+their amphiphilic nature. Thus, the headgroup order parameter changes as a function of
+mole fraction of cationic surfactants in  Fig. \ref{OrderParameterCHANGESnewMODELS} gives
+also the order parameter changes as a function of bound cations.
+\todo{I think that we should make a separate figure for this one and ion concentrations.
+  In the current figure it would be difficult to show this with a reasonable scale.
+  Currently Lipid14 results are cut out, thus the scale should be increased.
+  This would, however, make the changes with CaCl too small.
+  The change of headgroup tilt could be incorporated in the same figure with order parameter
+  response to cationic surfactant.
+}
+The headgroup order parameter response to bound cation concentration
+is approximately linear up to $\sim$0.3 mole fraction in experiments \cite{scherer89}.
+The linearity is also observed in simulations with original Lipid14 and with ECC correction.
+%from experiments \cite{seelig87} and simulations with Lipid14 model and with ECC-lipids model 
+%as a function of bound charge are shown in
+Quantitative comparison, however, reveals that the response is overestimated in 
+original Lipid14 for both segments, while the ECC corrected model gives a
+good agreement for the change of $\alpha$ segment order parameter, but slightly
+underestimates the $\beta$ segment order parameter change.
+The overestimation of order parameter changes with original Lipid14 model 
+suggests that the overestimated response with CaCl$_2$ concentration in \cite{catte16} 
+can be partly explained by the high sensitivity of the headgroup order parameter response
+to bound charge.
 
-
-Order parameter changes from experiments \cite{seelig87} and simulations with Lipid14 model and with ECC-lipids model 
-as a function of bound charge are shown in Fig. \ref{OrderParameterCHANGESnewMODELS}. 
-Approximately linear decrease of headgroup order parameters is observed both 
-in simulations and experiments with the cationic surfactant (dihexadecyldimethylammonium bromide, C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$). 
-The use of a cationic surfactant has the benefit that it is not a subject of partitioning between water and lipid phase. 
-This means that we know the exact amount of bound charge in the membrane both in experiment and simulation. 
-Quantitative comparison reveals that in the original Lipid14 model the response is overestimated for both order parameters, $\alpha$ and $\beta$. 
-This suggests that the observed overestimated response in \cite{catte16} 
-is at least in part due to the high sensitivity of the headgroup order parameter response, 
-not only due to overestimated binding of cations. 
 Secondly, the $S^\alpha/S^\beta$ ratio of the response is found to be slightly larger than in 
-experiments (VALexp vs VALsim\todoi{Add values of $S^\alpha/S^\beta$ response for sim and experiment}).
+experiments (VALexp vs VALsim
+\todo{Add values of $S^\alpha/S^\beta$ response for sim and experiment
+  SAMULI: Maybe these could be put in the same figure with the order parameter
+  response and P-N vector angle change with surfactants.
+}
+).
 This property is kept also by the newly derived model, ECC-lipid, and, hence, 
 it shows a perfect agreement in the response of the headgroup order parameter $S^\alpha$ 
 but underestimates slightly the response of $S^\beta$. 
-\todo{Add acyl chain order parameters, POPC chemical structure}
-\todo{Why original Lipid14 model seems to deviate from experiments, in contrast to the original publication? Different simulation setup used?}
 \begin{figure}[]
   \centering
   \includegraphics[height=8.5cm,angle=-90]{../Fig/form-f_exp-l14-eccl17.eps}
@@ -306,6 +326,8 @@ but underestimates slightly the response of $S^\beta$.
     X-ray scattering form factors from experiments~\cite{Kucerka2011} and simulations using Lipid14 and ECCLipids17 models. 
     Headgroup and glycerol backbone order parameters from simulations with Lipid14 \cite{dickson14} and EECLipid17 models
     compared with experimental order parameters from \cite{ferreira13}.}
+  \todo{Add acyl chain order parameters, POPC chemical structure}
+  \todo{Should we add the results from original lipid14?}
 \end{figure}
 Area per molecules extracted from MD simulations and SPD model fitted to scattering data \todo{check that this the case for the used values}
 are shown in Table \ref{tab:apls}.
@@ -379,6 +401,9 @@ The simulation suggests that the stoichiometry 2~POPC:1~\ce{Ca^{2+}} is the most
 In addition, there also is a non-negligable probability of one \ce{Ca^{2+}} cross-bridging three POPC molecules. 
 This cannot be observed in experiments without atomistic detail as it makes only a small perturabation to the binding isotherm that assumes 2~POPC per 1~\ce{Ca^{2+}}. 
 \todo{Analyze stoichiometry for \ce{Na^+}, \ce{Ca^{2+}}, their interaction energies with the lipid membrane, etc, and finalize the discussion after these results.}
+
+not only due to overestimated binding of cations. 
+
 
 It is also suggested that the addition of \ce{NaCl} to the solution of \ce{CaCl_2} enhances the hedgroup order parameter response compared to the solution with only \ce{CaCl_2}. \cite{Altenbach84}
 \todo{Simulate this effect and discuss it further}
