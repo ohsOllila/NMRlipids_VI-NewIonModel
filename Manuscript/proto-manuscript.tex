@@ -187,7 +187,7 @@ The partial atomic charges in Lipid14 were derived by fitting the electrostatic
 potential to its model quantum chemistry representation in vacuum.
 \todo{SAMULI: I do not fully understand the end of this paragraph}
 If such charges are obtained in an implicit solvent, 
-they vary the most for the polar moieties \cite{maiejewski14}. 
+they vary the most for the polar moieties \cite{maciejewski14}. 
 In order to represent this difference in polarity in a model with fixed charges, 
 we shall use the average charges from both environments (IpolQ charges) \cite{Cerutti2013}. 
 By taking the charges of oxygen atoms in vacuum and implicit water solvent for POPC from \cite{maciejewski14}, 
@@ -216,14 +216,14 @@ The scaling of these partial charges by a factor of 0.8 reduce the
 area per molecule to ??, which is significantly smaller than the
 experimental and original Lipid 14 values.  
 The decrease of area was speculated 
-\todo{Did you analyze the effect of this to hydration or did we only speculate?}
+\todo{SAMULI: Did you analyze the effect of this to hydration or did we only speculate?}
 to arise from reduced hydration
 of headgroup due to the lower polarity of molecules with scaled charges.
 The hydration can be increased by decreasing the radius of atoms
 by reducing $\sigma$ term in Lennart-Jones potential, which
 allows water molecules approach closer to lipid atoms and
 have stonger electrostatic interactions with them.
-\todo{This effect may have an official name. In that case we should mention it.}
+\todo{SAMULI: This effect may have an official name. In that case we should mention it.}
 Indeed, the scaling of $\sigma$ increased the area per molecule
 and the results close to experimental and original Lipid14 values were achieved
 with scaling factor of ?? for $\sigma$ and 0.8 for partial charges.
@@ -275,10 +275,30 @@ determined as
   C_{eq}=\frac{C_{plateau}}{0.602},
 \end{equation}
 where plateau concentration is the number density in unist of 1/(nm)$^3$.
+\todo{SAMULI: Once we have to final results, we can probably say that
+  the repeat distance is not far from the experimentally measured distance \cite{pabst07,uhrikova08}
+  }
 
 \subsection{Simulation details}
 
 \todo{To be written}
+
+
+\subsubsection{Simulations with cationic surfactants}
+Automated topoly builder \cite{malde11} was first used to create pdb structure of
+dihexadecyldimethylammonium bromide, C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$, molecule.
+The AmberTools \cite{amber} was then used to generate the Amber force field
+parameters from the pdb file. These were converted to Gromacs format by using
+acpype tool \cite{acpype}. The partial charges were then manually modified
+to approximately correspond the corresponding segments in Lipid14 \cite{dickson14}.
+The surfactants were randomly mized with lipids to form bilayer structures with
+mole fractions 10\%, 20\%, 30\%, 42\% and 50\% of surfctant in POPC bilayer.
+Simulation parameters and force field for POPC was already used and
+described previously \cite{catte16} and were downloaded from \cite{lipid14POPC0mMNaClfiles}.
+The systems were simulated 100-200~ns at 313K and the first 20~ns of the trajectories
+were excluded from the analysis as an equilibration period.
+The simulations were ran with Gromacs 5~\cite{abraham15}. 
+Simulation trajectories and parameters are available at \cite{??} \todo{To be uploaded to Zenodo}.
 
 \section{Results and Discussion}
 
@@ -324,7 +344,7 @@ in liquid disordered phase with similar accuracy than other available models
     oMM small patch           & 63.65  &         \\
     oMM 4xbig patch           & 63.7   &         \\
     \hline
-    experiment \cite{Jambeck2012}\todoii{REF}{put original references, not Slipids param. paper.}  & 62.7  &  293    \\
+    experiment \cite{jambeck12}\todoii{REF}{put original references, not Slipids param. paper.}  & 62.7  &  293    \\
     experiment  & 64.3  &  303    \\
     experiment  & 67.3  &  323    \\
     experiment  & 68.1  &  333    \\
@@ -341,7 +361,7 @@ practically all cationic surfactant molecules are embedded in lipid bilayer due 
 their amphiphilic nature. Thus, the headgroup order parameter changes as a function of
 mole fraction of cationic surfactants in  Fig. \ref{OrderParameterCHANGESnewMODELS} gives
 also the order parameter changes as a function of bound cations.
-\todo{I think that we should make a separate figures for this one and ion concentrations.
+\todo{SAMULI: I think that we should make a separate figures for this one and ion concentrations.
   In the current figure it would be difficult to show this with a reasonable scale.
   Currently Lipid14 results are cut out, thus the scale should be increased.
   This would, however, make the changes with CaCl too small.
@@ -412,48 +432,57 @@ Ion density profiles between different simulation models are compared in Fig. \r
 Density profiles from simulations with original Lipid14 and Dang ions \cite{smith94,chang1999,dang2006} 
 show a pronounced peak in the position of the phosphate moieties of POPC. 
 The use of a ECC-ion model~\cite{kohagen14,kohagen16} along with original Lipid14 does not significantly change it
-\todo{If we show density profile for this, we should show also the order parameter changes}.
+\todo{SAMULI: If we show density profile for this, we should show also the order parameter changes}.
 The new ECC-lipid model with scaled ions exhibits on the other hand smaller density in this region 
 suggesting overall weaker binding of cations (Fig.~\ref{OrderParameterCHANGESnewMODELS}). 
 This demonstrates that cation binding in zwitterionic phospholipid bilayer can be accurately
 described with classical MD simulation model with effective included of electronic polarizability.
-
 \begin{figure}[]
   \centering
   \includegraphics[width=9.0cm,angle=0]{../Fig/CAdensities.eps}
   \caption{\label{fig:cacl-dens}
     Density profiles of \ce{Ca^{2+}} and \ce{Cl^-} for Lipid14 model with Aquist parameters
     and with ECC ions and ECCLipids17 with ECC ions. }
-  \todo{We should add the location of bilayer here somehow.
+  \todo{SAMULI: We should add the location of bilayer here somehow.
     In NMRlipids II the location of phosphate was shown with green vertical line.}
-  \todo{I would add Aqvist data from NMRlipids II in here as well.}
+  \todo{SAMULI: I would add Aqvist data from NMRlipids II in here as well.}
 \end{figure}
 
+Good agreement of ECC corrected model with experiments encourages us to analyse the
+binding details from MD simulations. Direct analysis of contacts between ions and
+lipids from simulations suggest that most common complex are ones with stoichiometry
+of 2~POPC:1~\ce{Ca^{2+}}.
+\todo{SAMULI: Details of this analysis have to be added.}
+As shown in Fig. \ref{fig:cacl-bind} this is in agreement
+with the ternary complex model suggested based on headgroup order parameter
+experiments~\cite{altenbach84}.
+\todo{SAMULI: The same authors have also literature, where they say that ternary complex may not
+  be the only option. I will recheck and come back to this.}
+%This cannot be observed in experiments without atomistic detail as it makes only a small perturabation to 
+%the binding isotherm that assumes 2~POPC per 1~\ce{Ca^{2+}}. 
+\todo{SAMULI: I would also analyze how much there is contact between ions and different
+parts of the lipid (phosphase, carbonyl, etc.).}
+In addition to the ternary complexes, there also is a non-negligable probability
+of one \ce{Ca^{2+}} cross-bridging three POPC molecules
+\todo{SAMULI: I think we should quantify this, i.e. how much there are these.
+  Maybe also the other possible complexes? Maybe also the correlation betweem complexes
+  and binding cites, if it is not too much work.}. 
 
-One possible example is to adress the discourse on the stoichiometry of \ce{Ca^{2+}} binding 
-to POPC~\cite{altenbach84}.
-In line with the early experimental finding~\cite{altenbach84}, we find that our data 
-fit well a ternary complex model, which assumes 2 POPC molecules per 1 \ce{Ca^{2+}}. 
-In contrast to this experiment, however, we possess also a complete atomistic detail of this phenomenon.
-Hence we can support this empirical finding with a direct observation of transient complexes of \ce{Ca^{2+}} and POPC.
-The simulation suggests that the stoichiometry 2~POPC:1~\ce{Ca^{2+}} is the most common complex. 
-In addition, there also is a non-negligable probability of one \ce{Ca^{2+}} cross-bridging three POPC molecules. 
-This cannot be observed in experiments without atomistic detail as it makes only a small perturabation to 
-the binding isotherm that assumes 2~POPC per 1~\ce{Ca^{2+}}. 
-\todo{Analyze stoichiometry for \ce{Na^+}, \ce{Ca^{2+}}, their interaction energies with the lipid membrane, 
-etc, and finalize the discussion after these results.}
+\todo{Finalize stoichiometry analysis for \ce{Na^+}, \ce{Ca^{2+}},
+  their interaction energies with the lipid membrane, etc,
+  and finalize the discussion after these results.}
 
-It is also suggested that the addition of \ce{NaCl} to the solution of \ce{CaCl_2} enhances the hedgroup 
-order parameter response compared to the solution with only \ce{CaCl_2}. \cite{altenbach84}
-\todo{Simulate this effect and discuss it further}
+%It is also suggested that the addition of \ce{NaCl} to the solution of \ce{CaCl_2} enhances the hedgroup 
+%order parameter response compared to the solution with only \ce{CaCl_2}. \cite{altenbach84}
+%\todo{Simulate this effect and discuss it further}
 
-\todo{The difference between DPPC and POPC -- simulate and compare with experiment. }
+%\todo{The difference between DPPC and POPC -- simulate and compare with experiment. }
 
 \begin{figure}[]
   \centering
   \includegraphics[height=9.0cm,angle=-90]{../Fig/bound-CAs_conc-eccl17.eps}
   \caption{\label{fig:cacl-bind}
-    Binding isotherm assuming stoichiometry of 2~POPC:1~\ce{Ca^{2+}} as used in \cite{Altenbach84} fits the simulation data nicely.}
+    Binding isotherm assuming stoichiometry of 2~POPC:1~\ce{Ca^{2+}} as used in \cite{altenbach84} fits the simulation data nicely.}
 \end{figure}
 
 
@@ -479,17 +508,19 @@ This is a significant advantage to the other available lipid models,
 which all overestimate specific cation binding affinities.  
 The proposed model reproduces the lipid bilayer structural details
 with similar accuracy as the other state of the art lipid models.
-overestimated cation binding in classical molecular
-dynamics simulations can be corrected 
-We present models of POPC and DPPC lipids that for the first time exhibit accurate headgroup order parameter response to cation binding. 
-The models are derived from Lipid14 model \cite{dickson14} by applying the electronic continuum correction. 
-The models were optimized to represent correct membrane structure, 
-and they were validated with the use of electrometer concept \cite{seelig87,Altenbach85,Altenbach84}. 
-Compared to the phenomenological observations of calcium:POPC stoichiometry in the experimental work \cite{Altenbach84}, 
-our simulations reveal the same stoichiometry of 2~POPC molecules per 1~calcium but through direct observation. 
-This tells us on the subtle effects of calcium in phospholipid membranes 
-possibly leading to a better understanding of their physical properties (elasticity etc.). 
-\todo{Improve this concluding-discussion with actual insights.}
+The correction is applied here on Lipid14 POPC model \cite{dickson14},
+but we expect that the correction can be generalized also for other lipids
+and force fields.
+%The models were optimized to represent correct membrane structure, 
+%and they were validated with the use of electrometer concept \cite{seelig87,Altenbach85,Altenbach84}. 
+
+Direct analysis of calcium binding details from MD simulations is in agreement
+with ternary complex model, which is suggested based on NMR data \cite{altenbach84}.
+In this model 1~calcium binds to 2~POPC molecules, which together form a ternary
+complex.
+%This tells us on the subtle effects of calcium in phospholipid membranes 
+%possibly leading to a better understanding of their physical properties (elasticity etc.). 
+%\todo{Improve this concluding-discussion with actual insights.}
 
 This will be a foundation stone of a new open-collaboration project NPRlipid 6 in nmrlipids.blogspot.fi....
 
