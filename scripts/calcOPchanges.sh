@@ -20,6 +20,7 @@ awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80
 awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_OxySigma_FBopt_OPC3.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_OxySigma_FBopt_OPC3.dat 
 awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_HGglyc-Sigmas_0.875_OPC3.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.875_OPC3.dat 
 awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC3.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC3.dat 
+awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_HGglyc-Sigmas_0.89_SPCE.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_SPCE.dat 
 awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC4.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC4.dat 
 awk -f calcOPchanges.awk ../Data/POPC/CaCl/lipid14/OPvsCACLconsHGglycSCALED_0.80_HGglyc-Sigmas_0.89_TIP4p2005.dat  > ../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_TIP4p2005.dat 
 

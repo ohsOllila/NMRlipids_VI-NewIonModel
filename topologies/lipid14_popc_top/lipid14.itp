@@ -41,4 +41,6 @@ MW     0             0.000       D   0.0           0.0
 OWT4   15.9994       0.000       A   0.31589       0.77490
 ; OPC4 water extra atomtypes
 OPC4    0.0000  0.0000  A   3.16655e-01  8.903586e-01
+; ECC-water extra atomtypes - work-in-progress model
+OW_ecc  8     15.99940     0.000       A    3.192425184797e-01  4.982446609525e-01 ; PARM 5 6
 
