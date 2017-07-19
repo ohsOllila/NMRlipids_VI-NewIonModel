@@ -25,7 +25,7 @@ set label 2 at screen 1.20, screen 0.71 "DPPC" # font ",20"
 set key at screen 1.20,screen 0.94 reverse Left maxcols 2 maxrows 9 
 set key font ",13"
 
-set yrange [-0.05:0.01]
+set yrange [-0.10:0.01]
 set xtics format " "			
 set ylabel "{/Symbol D}S^{/Symbol b}_{CH}"
 set origin 0,0.37
@@ -79,6 +79,7 @@ plot \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_SPCE.dat" using 1:2 with linespoint pt 8 linetype 1 lw 4 lc rgb '#317979' title 'SPCE water', \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC4.dat" using 1:2 with linespoint pt 8 linetype 1 lw 2 lc rgb '#417969' title 'OPC4 water', \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_TIP4p2005.dat" using 1:2 with linespoint pt 8 linetype 1 lw 2 lc rgb '#517959' title 'TIP4p/2005 water', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_ECC-water.dat" using 1:2 with linespoint pt 8 linetype 1 lw 2 lc rgb '#617949' title 'ECC-water (prelim}', \
      "forKeyOPfig.dat" ev :::0::0 notitle pt 7 lc rgb 'black', \
      "forKeyOPfig.dat" ev :::1::1 notitle pt 5 lc rgb 'black',\
      #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC3.dat" using 1:4 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#217989', \
@@ -171,6 +172,7 @@ plot \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_SPCE.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#317979', \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC4.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#417969', \
      "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_TIP4p2005.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#517959', \
+     "../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_ECC-water.dat" using 1:6 with linespoint notitle pt 8 linetype 1 lw 2 lc rgb '#617949', \
      "../../../lipid_ionINTERACTION/Data/POPC/NaCl/EXP-Altenbach1984-POPC-CaClchange-T313.dat"  using ($1*1000):($2*0.00784) title '^2H NMR (313K)' with linespoints  linetype 1 lw 5 pt 7 lc rgb 'black',\
      #"../../Data/POPC/CaCl/lipid14/LIPID14caclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC3.dat" using 1:8 with linespoint notitle pt 8 linetype 1 lw 4 lc rgb '#217989', \
 
