@@ -19,6 +19,14 @@
   3     HW3    1    SOL     HW2    1     0.447585
 
 
+#ifndef FLEXIBLE
+
+[ settles ]
+; OW-no.  funct  d_OH      d_HH
+  1       1      0.097888  0.159849230604
+
+#else
+
 [ bonds ]
 ; i   j   funct   length   force.c.
   1   2    1     0.097888  502416.0 
@@ -28,17 +36,14 @@
 ; i  j  k   funct  angle   force.c.
   2  1  3    1     109.47  628.02
 
+#endif
 
-[ settles ]
-; OW-no.  funct  d_OH      d_HH
-  1       1      0.097888  0.159849230604
 
 [ exclusions ]
 1 2 3
 2 1 3
 3 1 2
 
-;
 ;
 ;
 ;

@@ -1,0 +1,42 @@
+[ moleculetype ]
+SOL          2
+
+[ atoms ]
+1       OW_ecc    1       SOL      OW     1       0.0
+2       HW        1       SOL     HW1     1       5.230441315825e-01 ; PARM 6
+3       HW        1       SOL     HW2     1       5.230441315825e-01 ; RPT 6 COUL:SOL-2 /RPT
+4       MW        1       SOL      MW     1      -1.046088263165e+00 ; EVAL 6 -2*PARM['COUL:SOL-2'] /EVAL
+
+#ifndef FLEXIBLE
+
+[ settles ]
+; i	funct	doh			dhh (from cosine law)
+1	1	9.669131360090e-02	0.15447163052555735
+
+#else
+
+[ bonds ]
+1     2     1
+1     3     1
+     
+[ angles ]
+2     1     3     1
+
+[ bondtypes ]
+OW     HW     1          9.669131360090e-02     502416.0 ; PARM 3
+
+[ angletypes ]
+HW     OW     HW     1     1.060289503699e+02     628.02 ; PARM 4
+
+#endif
+
+
+[ exclusions ]
+1     2     3     4
+2     1     3     4
+3     1     2     4
+4     1     2     3
+
+[ virtual_sites3 ]
+4     1     2     3     1     1.285405160307e-01     1.285405160307e-01 ; RPT 6 VSITE3A:SOL-4 /RPT PARM 5
+

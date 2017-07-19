@@ -27,7 +27,7 @@ then
 fi
 
 # remove PBC:
-! [ -s $traj_pbc_nonwat_file_name ] && echo non-water | gmx trjconv -f $traj_file_name -s topol.tpr -o $traj_pbc_nonwat_file_name -pbc mol
+! [ -s $traj_pbc_nonwat_file_name ] && echo non-water | gmx trjconv -f $traj_file_name -s topol.tpr -o $traj_pbc_nonwat_file_name -pbc mol #-n index
 
 # get a non-water gro-file (topology)
 if ! [ -s $top_file_name ] 

@@ -32,4 +32,15 @@
 ;name  at.num    mass      charge    ptype   sigma     epsilon
   OW3   8      15.9994    -0.895170    A    0.317427   0.68369  ; DOI: http://dx.doi.org/10.1063/1.4960175 ; OPC3 water Oxygen
   HW3   1       1.008      0.447585    A    0.0        0.0      ; DOI: http://dx.doi.org/10.1063/1.4960175 ; OPC3 water Hydrogen
+; spc water - use only with spc.itp & settles
+OW_spc       8      15.9994  0.0000  A   3.16557e-01  6.50629e-01
+; v-site in 4-site water models
+MW     0             0.000       D   0.0           0.0
+; tip4p/2005 water extra atomtypes
+;name     mass      charge   ptype    sigma        epsilon
+OWT4   15.9994       0.000       A   0.31589       0.77490
+; OPC4 water extra atomtypes
+OPC4    0.0000  0.0000  A   3.16655e-01  8.903586e-01
+; ECC-water extra atomtypes - work-in-progress model
+OW_ecc  8     15.99940     0.000       A    3.192425184797e-01  4.982446609525e-01 ; PARM 5 6
 
