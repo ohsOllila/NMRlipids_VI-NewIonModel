@@ -166,67 +166,76 @@ bilayers \cite{catte16}.
 \section{Methods}
 
 \subsection{Electronic continuum correction for lipid bilayers}
-According to the electronic continuum correction (ECC) the electronic
-polarizability can be effectively included in MD simulations by scaling
-the partial charges with a constant factor $f_q = \epsilon _{el} ^{-1/2}$, 
-where $\epsilon _{el}$ is the electronic part of the dielectric constant of 
-media \cite{leontyev11}. Measurements of high frequency 
+According to the electronic continuum correction (ECC)\cite{leontyev11}, electronic
+polarizability can be included in classical MD simulations by
+placing all particles into a homogeneous dielectric continuum 
+with a dielectric constant $\epsilon _{el}$. 
+which is the electronic part of the dielectric constant of 
+the media \cite{leontyev11}. Measurements of high frequency 
 dielectric constant gives values of approximately $\epsilon _{el} \approx 2$ 
 for almost any biomaterial \cite{some_original_work, leontyev11}. % that exists in living cells. 
+Such a continuum can be easily included in standard MD simulation by
+a formal transformation of partial charges 
+\begin{equation}
+  Q^{ECC} = f_q \cdot Q
+\end{equation}
+with a constant scaling factor $f_q = \epsilon _{el} ^{-1/2}$ 
+effectively representing the newly introduced electronic continuum. 
 The value measured for water, $\epsilon _{el} = 1.78$, gives 
 a scaling factor of $f_q = 0.75$ \cite{some_orig_source, leontyev11}, which has been
 successfully used to improve the performance of ion force fields \cite{kohagen14,kohagen16,??}. 
 
-Here we apply the same approach to lipid bilayers to accurately 
+Here we apply the electronic continuum correction to lipid bilayers to accurately 
 describe the lipid headgroup response to Na+ and Ca2+ concentrations \cite{catte16}. 
 We use the Lipid14~\cite{dickson14} force field parameters as a starting point,
 because they give the most realistic headgroup response with added cations 
 and relatively realistic glycerol backbone and headgroup structures
 when compared with other state of the art lipid models \cite{botan15,catte16}.
 The partial atomic charges in Lipid14 were derived by fitting the electrostatic 
-potential to its model quantum chemistry representation in vacuum.
-\todo{SAMULI: I do not fully understand the end of this paragraph}
-If such charges are obtained in an implicit solvent, 
+potential to its model quantum chemistry representation (RESP\cite{RESP_paper}) in vacuum.
+If the charges are obtained by using RESP in an implicit solvent, 
 they vary the most for the polar moieties \cite{maciejewski14}. 
-In order to represent this difference in polarity in a model with fixed charges, 
-we shall use the average charges from both environments (IpolQ charges) \cite{Cerutti2013}. 
+In order to implicitly capture solvent induced polarization 
+in models with fixed charges, 
+we shall use the average of partial charges 
+from both environments (i.e. vaccum and solvent),
+so called implicitly polarized charges (IpolQ) \cite{Cerutti2013}. 
 By taking the charges of oxygen atoms in vacuum and implicit water solvent for POPC from \cite{maciejewski14}, 
 we represent the IpolQ charges in the electronic continuum correction of the Lipid14 model
-by increasing the scaling factor for charges to $f_q = 0.8$. 
-\todo{SAMULI: I tried to repeat this calculation but I was not able to get 0.8.
-This has to be explained better.}
-The newly presented ECC-POPC model is based on the POPC model from 
+by increasing the scaling factor $f_q$ to $0.8$. 
+\footnote{Depending on which QM method you arrive at values from 0.76 to 0.83, averages across atom types being around 0.78--0.80. Even though the methods are almost identical, authors of Lipid 14 find lower partial charges in vacuum than here -- so I prefer the higher value. As the choice of charges is arbitrary anyway, I use 0.80 as an approximate round value. The use of 0.78---.79 might be more appropriate, though.}
 
 Hydrocarbon chains in Lipid14 and other lipids models are highly optimized and
 give generally a good description for hydrophobic part of lipid bilayers
 in various conditions \cite{ollila16},
 in contrast to glycerol backbone and headgroup regions which require
 some improvement in all available lipid models \cite{botan15}. 
-To minimize the intercalation with the highly optimized hydrocarbon
-parameters, we decided to apply ECC correction only
+To minimize the detuning of the highly optimized hydrocarbon
+parameters, we apply ECC only
 to the headgroup, glycerol backbone and carbonyl in acyl chains.
-These regions are also most polar parts in lipids and are expected
-to most affect on cation binding.   
+These regions are also the most polar parts in lipids and are expected
+to most affect cation binding.   
 %Because the biologically relevant cations like \ce{Na^+} and \ce{Ca^{2+}}
 %are found to interact only with the phospholipid head group,
 %and the accuracy of alkyl sidechains in Lipid14 model are satisfactory, 
 %we exclude alkyl tails from our modifications. 
 
-The scaling of these partial charges by a factor of 0.8 reduce the 
-area per molecule to ??, which is significantly smaller than the
-experimental and original Lipid 14 values.  
+Mere scaling of partial charges in the modified region by the factor $f_q$ reduces the 
+area per molecule to ??\todo{find the value}, which is significantly smaller than the
+experimental value (\cite{}) and the original Lipid14 values (\cite{}).  
 The decrease of area was speculated 
-\todo{SAMULI: Did you analyze the effect of this to hydration or did we only speculate?}
+\todo{SAMULI: Did you analyze the effect of this to hydration or did we only speculate?
+JOE: I found a systematic decrease of water density in the heagroup region even if I kept APL constant.}
 to arise from reduced hydration
 of headgroup due to the lower polarity of molecules with scaled charges.
 The hydration can be increased by decreasing the radius of atoms
-by reducing $\sigma$ term in Lennart-Jones potential, which
-allows water molecules approach closer to lipid atoms and
+by reducing the $\sigma$ parameters in Lennard-Jones potential for the selected atoms.
+This allows water molecules to approach closer to lipid atoms and
 have stonger electrostatic interactions with them.
 \todo{SAMULI: This effect may have an official name. In that case we should mention it.}
-Indeed, the scaling of $\sigma$ increased the area per molecule
-and the results close to experimental and original Lipid14 values were achieved
-with scaling factor of ?? for $\sigma$ and 0.8 for partial charges.
+Indeed, by reducing $\sigma$ with a scaling factor $f_\sigma = 0.89$ 
+we increased the area per molecule
+to a level close to experimental and original Lipid14 values. 
 %\todo{Is there some justification for the below sentence?} 
 %In line with the electronic continnum correction,
 %the scaling factor for sigma parameters, $f_\sigma$,
