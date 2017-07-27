@@ -199,9 +199,9 @@ In order to implicitly capture solvent induced polarization
 in models with fixed charges, 
 we shall use the average of partial charges 
 from both environments (i.e. vaccum and solvent),
-so called implicitly polarized charges (IpolQ) \cite{Cerutti2013}. 
+so called implicitly polarized charges (IPolQ) \cite{ipolq2013}. 
 By taking the charges of oxygen atoms in vacuum and implicit water solvent for POPC from \cite{maciejewski14}, 
-we represent the IpolQ charges in the electronic continuum correction of the Lipid14 model
+we represent the IPolQ charges in the electronic continuum correction of the Lipid14 model
 by increasing the scaling factor $f_q$ to $0.8$. 
 \footnote{Depending on which QM method you arrive at values from 0.76 to 0.83, averages across atom types being around 0.78--0.80. Even though the methods are almost identical, authors of Lipid 14 find lower partial charges in vacuum than here -- so I prefer the higher value. As the choice of charges is arbitrary anyway, I use 0.80 as an approximate round value. The use of 0.78---.79 might be more appropriate, though.}
 
@@ -222,7 +222,7 @@ to most affect cation binding.
 
 Mere scaling of partial charges in the modified region by the factor $f_q$ reduces the 
 area per molecule to ??\todo{find the value}, which is significantly smaller than the
-experimental value (\cite{}) and the original Lipid14 values (\cite{}).  
+experimental value (\cite{}) and the original Lipid14 values (\cite{})\todo{Add the values}.  
 The decrease of area was speculated 
 \todo{SAMULI: Did you analyze the effect of this to hydration or did we only speculate?
 JOE: I found a systematic decrease of water density in the heagroup region even if I kept APL constant.}
@@ -243,16 +243,24 @@ to a level close to experimental and original Lipid14 values.
 
 
 \subsection{Comparison to experimental data}
-Structures sampled by individual lipid molecules were compared
+Structures sampled by individual lipid molecules in simulations were compared
 to experimental data by using C-H bond order parameters \cite{ollila16}
 \begin{equation}
 S_{\rm CH}=\frac{3}{2}\langle \cos^2\theta -1 \rangle,
 \end{equation}
 where $\theta$ is the angle between C-H bond and membrane
 normal and average is taken over all sampled configurations.
+
 Bilayer dimensions were compared to experiments by using the
 scattering form factor \cite{ollila16}
-\todo{Add equation}. 
+\begin{equation}
+  F(q) = \int _{-D/2} ^{D/2} \left ( \sum _\alpha f_\alpha (q_z) n_\alpha (z) - \rho _s \right ) \exp (izq_z) \mathrm{d}z,
+\end{equation}
+where $f_\alpha(q_z)$ is the density of atomic scattering length, 
+$\rho_s$ is the density of solvent scattering lenght,
+$n_\alpha (z)$ is the number density of atom $\alpha$ and
+$z$ is the distance from the membrane centre along its normal 
+spanning the membrane with thickness $D$. 
 
 Ion binding was compared between experiments and simulations by 
 using lipid headgroup order parameters and ''electrometer concept'' 
@@ -267,23 +275,24 @@ the order parameter signs and concluded that the order parameters
 decrease with bound positive charge and increase with bound negative 
 charge \cite{ollila16,catte16}. The observations are rationalized 
 as a change of lipid headgroup dipole tilt to more vertical orientation
-with bound positive charge and {\it vice versa} for negative \cite{seelig87}. 
+with bound positive charge and {\it vice versa} for negative charge \cite{seelig87}. 
 
 %\todo{ongoing,Actual concentration of cations in simulation has yet to be estimated. 
 %If it varies too much from the nominal concentration, I may need to tweak the scaling 
 %factors, $f_q$ or only $f_\sigma$, to accomodate it. However, it is very unlikely, response 
 %to the surfactant \ce{DHMDMAB} is OK. Big patches with loads of solvent are running at the 
 %moment to guide me on the possible finite-size errors and this conc-error.
-The used experimental data reports order parameters as a function of
-equilibrium cation concentration in bulk solvent \cite{akutsu81,altenbach84}.
-The box size in simulations was adjusted such that ion conceration reaches 
-a clear bulk plateau, which then gives the concentration that corresponds to the
-one reported in experiments. The concentrations in units of mol/l were then 
+The used experimental data report order parameters as a function of
+equilibrium cation concentration in the bulk solvent \cite{akutsu81,altenbach84}.
+Such a condition is reached in simulations by adjusting
+the simulation box size to dimensions large enough
+that ion conceration reaches a clear plateau in the bulk solvent.
+The concentrations in the units of $\mathrm{mol/l}$ were then 
 determined as
 \begin{equation}
   C_{eq}=\frac{C_{plateau}}{0.602},
 \end{equation}
-where plateau concentration is the number density in unist of 1/(nm)$^3$.
+where plateau concentration is the number density in the units of $\mathrm{nm}^{-3}$.
 \todo{SAMULI: Once we have to final results, we can probably say that
   the repeat distance is not far from the experimentally measured distance \cite{pabst07,uhrikova08}
   }
