@@ -386,7 +386,6 @@ $z$ is the distance from the membrane centre along its normal
 spanning the membrane with thickness $D$. 
 
 
-
 \subsection{Simulation details}
 
 \subsubsection{Simulations with aqueous ions}
@@ -399,10 +398,33 @@ OPC \cite{Izadi14}, SPC/E \cite{Berendsen1987} and TIP4p/2005 \cite{Abascal2005}
 presented in Supporting Information (SI). 
 We used ECC-ions model for ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
 Simulations with Lipid14 use ion model by Dang \cite{smith94,chang1999,dang2006}. 
-\todo{Table about simulations details and some related text is deleted in commit
-  https://github.com/ohsOllila/NMRlipids\_VI-NewIonModel/commit/6526079062ca322e90f8ea0654597394b023041e
-  Maybe this is done accidentally, or is there some other plan with this?
-}
+Classical molecular dynamics simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4).  
+The simulation settings used in this work are 
+summarized in Table \ref{tbl:mdpar}, 
+and they are based on previously used settings in \cite{catte16} available at \cite{lipid14POPC0mMNaClfiles}. 
+Simulation trajectories and parameters are available at \cite{??} \todo{To be uploaded to Zenodo}.
+
+\begin{table}[btp]
+  \caption{Simulation parameters}
+  \label{tbl:mdpar}
+  \begin{tabular}{ll}
+    simulation property & parameter   \\
+    \hline
+    time-step           & 2~fs         \\
+    equilibration time  & 100~ns  \\
+    simulation time     & 200~ns  \\
+    temperature         & 313~K       \\
+    thermostat          & v-rescale  \cite{bussi07}   \\
+    barostat            & Parrinello-Rahman, semi-isotropic \cite{parrinello81} \\
+    long-range electrostatics & PME  \cite{darden93}  \\
+    cut-off scheme      & Verlet \cite{Pall13}      \\
+    Coulomb and VdW cut-off & 1.0~nm \\
+    constraints         & LINCS, only Hydrogen atoms \cite{hess97} \\
+    constraints for water & SETTLE  \cite{miyamoto92} \\
+    \hline
+  \end{tabular}
+\end{table}
+
 
 \subsubsection{Simulations with cationic surfactants}
 Automated topology builder \cite{malde11} was first used to create the structure of
