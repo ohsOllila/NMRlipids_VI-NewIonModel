@@ -299,24 +299,51 @@ where plateau concentration is the number density in the units of $\mathrm{nm}^{
 
 \subsection{Simulation details}
 
-\todo{To be written}
+The simulated systems consisted of 1-Palmitoyl-2-oleoylphosphatidylcholine (POPC) bilayer and an aqueous salt solutions of varying concentrations.
+Water molecules were described by OPC3 model \cite{Izadi16}.
+In order to test transferability of the newly developed ECC-Lipids model, 
+we also performed several additional simulations with water models 
+OPC \cite{Izadi14}, SPC/E \cite{Berendsen1987} and TIP4p/2005 \cite{Abascal2005}
+presented in Supporting Information (SI). 
+We used ECC-ions model for ions. \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014} % cite order: [Ca_2s, Na_s, Cl_2s]
+Classical molecular dynamics simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4).  
+The simulation settings used in this work are 
+are summarized in Table \ref{tbl:mdpar}, 
+and they are based on previously used settings in \cite{catte16} available at \cite{lipid14POPC0mMNaClfiles}. 
+Simulation trajectories and parameters are available at \cite{??} \todo{To be uploaded to Zenodo}.
+
+\begin{table}[btp]
+  \caption{Simulation parameters}
+  \label{tbl:mdpar}
+  \begin{tabular}{ll}
+    simulation property & parameter   \\
+    \hline
+    time-step           & 2~fs         \\
+    equilibration time  & 100~ns  \\
+    simulation time     & 200~ns  \\
+    temperature         & 313~K       \\
+    thermostat          & v-rescale  \cite{bussi07}   \\
+    barostat            & Parrinello-Rahman, semi-isotropic \cite{parrinello81} \\
+    long-range electrostatics & PME  \cite{darden93}  \\
+    cut-off scheme      & Verlet \cite{Pall13}      \\
+    Coulomb and VdW cut-off & 1.0~nm \\
+    constraints         & LINCS, only Hydrogen atoms \cite{hess97} \\
+    constraints for water & SETTLE  \cite{miyamoto92} \\
+    \hline
+  \end{tabular}
+\end{table}
+
 
 
 \subsubsection{Simulations with cationic surfactants}
-Automated topoly builder \cite{malde11} was first used to create pdb structure of
+Automated topology builder \cite{malde11} was first used to create the structure of
 dihexadecyldimethylammonium bromide, C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$, molecule.
-The AmberTools \cite{amber} was then used to generate the Amber force field
-parameters from the pdb file. These were converted to Gromacs format by using
+The code AmberTools \cite{amber} was then used to generate the Amber-type force field
+parameters. The parameters were converted to the Gromacs format by using
 acpype tool \cite{acpype}. The partial charges were then manually modified
-to approximately correspond the corresponding segments in Lipid14 \cite{dickson14}.
-The surfactants were randomly mized with lipids to form bilayer structures with
-mole fractions 10\%, 20\%, 30\%, 42\% and 50\% of surfctant in POPC bilayer.
-Simulation parameters and force field for POPC was already used and
-described previously \cite{catte16} and were downloaded from \cite{lipid14POPC0mMNaClfiles}.
-The systems were simulated 100-200~ns at 313K and the first 20~ns of the trajectories
-were excluded from the analysis as an equilibration period.
-The simulations were ran with Gromacs 5~\cite{abraham15}. 
-Simulation trajectories and parameters are available at \cite{??} \todo{To be uploaded to Zenodo}.
+to approximately correspond to their equivalent segments in Lipid14 \cite{dickson14}.
+The surfactants were randomly placed among the lipids to form bilayer structures with
+mole fractions 10\%, 20\%, 30\%, 42\% and 50\% of surfactant in the POPC bilayer.
 
 \section{Results and Discussion}
 
