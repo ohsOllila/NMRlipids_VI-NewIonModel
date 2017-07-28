@@ -110,55 +110,81 @@ This work will continue as an open collaboration project NMRlipids VI (http://nm
 \section{Introduction}
 Cation interactions with cellular membranes play a key role in several biological processes,
 like in signal propagation in neurons and vesicle fusion.
-Cation interactions with lipid bilayers serving as a model for cellular
-membranes are thus widely studied with experimental \cite{cevc90,tocanne90,binder02,pabst07,uhrikova08}
-and theoretical methods \cite{Berkowitz12,??}. General conclusion from experimental
-studies has been that multivalent ions and lithium have weak specific binding in
-phopholipid bilayers, while other monovalent ions do not essentially
-bind \cite{cevc90,tocanne90,seelig90,binder02}. The presence of anoinic lipids, like PS or PG,
-increase the concentration close to the bilayer and thus the amount of bound
-ions, but do not affect the specific binding constant \cite{seelig90}.
-The binding details, like binding sites and stoichiometry are not yet fully
-resolved but interpretation of NMR and scattering experiments suggest that one
-Ca2+ interacts mainly with the choline groups \cite{hauser76,hauser78,herbette84} of two
-phospholipid molecules \cite{altenbach84}.
+Zwitterionic phosphocholine (PC) lipid bilayers have been widely used as model systems
+to understand molecular level details of specific cation interactions with
+cellular membranes by using experimental \cite{cevc90,tocanne90,binder02,pabst07,uhrikova08}
+and theoretical methods \cite{bockmann03,bockmann04,Berkowitz12,??} \todo{We need to select references for these}.
+While relative binding affinity of different ions is agreed to follow Hoffmeister
+serie, the molecular details of binding and binding energetics are
+not fully understood \cite{cevc90,tocanne90,seelig90,binder02,catte16,??}.
+%General conclusion from experimental
+%studies has been that multivalent ions and lithium have weak specific binding in
+%phopholipid bilayers, while other monovalent ions do not essentially
+%bind 
+%The presence of anoinic lipids, like PS or PG,
+%increase the concentration close to the bilayer and thus the amount of bound
+%ions, but do not affect the specific binding constant \cite{seelig90}.
+Non-invansive spectroscopic methods, like nucelar magnetic resosnance (NMR), scattering
+and infrared scpectroscopy, give accurate information about ion binding
+in lipid bilayers\cite{hauser76,hauser78,herbette84,akutsu81,altenbach84,binder02}. 
+Molecular level interpretation of the results, however, requires assumptions
+about binding model and is often not fully conclusive \cite{??}.
+On the other hand, the accuracy of the state of the art atomistic resolution lipid and ion models
+have turned out insufficient for the detailed interpretation of cation binding details \cite{catte16}.
 
-Classical molecular dynamics simulations have potential to solve the ion binding details
-in lipid bilayers and reveal its relevance to various biological
-problems \cite{bockmann03,bockmann04,??}. However, the available
-molecular dynamics simulation models have a strong tendency to overestimate
-cation binding on zwitterionic bilayers and none of them can reproduce the
-experimental data with the accuracy required for the interpretation of
-experiments \cite{catte16}. The overestimated specific cation binding also
-makes zwitterionic bilayers effectively positively charged, which could
-potentially lead to significant artefacts in applications.
-Thus, there is a vast demand for classical molecular dynamics simulation
-model which correctly reproduces cation binding in lipid bilayers. 
+%The binding details, like binding sites and stoichiometry are not yet fully
+%resolved but interpretation of NMR and scattering experiments suggest that one
+%Ca2+ interacts mainly with the choline groups \cite{hauser76,hauser78,herbette84} of two
+%phospholipid molecules \cite{altenbach84}.
 
-The lack of electronic polarizability from the classical MD simulation
-models is a potential source of artefact, which could lead to overbinding
-of cations. 
-%Almost all lipid bilayer simulations reported in the literature 
-%are done with force fields that represent interactions between atoms
-%with pairwise additive empirical potential and exclude the electronic 
-%polarizability \cite{SOME_review, FF_papers}.
-The issue has been considered higly relevant since the early days of
-lipid bilayer simulations and pioneering simulation studies scaled
-the partial charges to effectively include electronic
-polarizability \cite{jonsson86,egberts94}. The explicit inclusion of
-electronic polarizability has been, however, turned to be 
-practically complicated and implementations for lipids are rare \cite{chowdhary13}.
-
-In this work we show that the cation overbinding in classical MD simulations
-can be corrected by including electronic polarizability by using effective continuum
-correction (ECC)~\cite{leontyev11} for polar region of zwitterionic lipid molecules.
-This is essentially physicalle well justified version of partial charge scaling
-implemented in early days of lipid and surfctant simulations \cite{jonsson86,egberts94}. 
+In this work we show that the accuracy of Calcium binding
+on zwitterionic PC lipid bilayer can be significantly improved by including electronic polarizability
+by using effective continuum correction (ECC)~\cite{leontyev11} for polar region of zwitterionic lipid molecules
+in classical MD simulation model.
+This is essentially physically well justified version of partial charge scaling
+implemented in early days of lipid and surfactant simulations \cite{jonsson86,egberts94}. 
 The approach has been previously shown in to improve bulk performace of
 ion models against neutron scattering data \cite{Jungwirth2015,kohagen14,kohagen16}.
 The better bulk behaviour was not, however, sufficient to correct binding in lipid
 bilayers \cite{catte16}. 
 %motivation for its application to zwitterionic lipids like POPC.
+
+%Classical molecular dynamics simulations have potential to solve the ion binding details
+%in lipid bilayers and reveal its relevance to various biological
+%problems \cite{bockmann03,bockmann04,??}. However, the available
+%molecular dynamics simulation models have a strong tendency to overestimate
+%cation binding on zwitterionic bilayers and none of them can reproduce the
+%experimental data with the accuracy required for the interpretation of
+%experiments \cite{catte16}.
+
+The proposed MD simulation model with ECC-corrected lipids and ions
+reproduce the experimental NMR data of Calcium binding in PC lipid bilayers
+and mainly supports the proposed ternary complex model (2 Ca2+ bind in
+on POPC) \cite{akutsu81,altenbach84}. However, non-negligible contribution
+of one Ca2+ cross bridging three POPC molecules is also observed.
+The overestimated specific cation binding observed in current lipid models \cite{catte16}
+may lead to articifially positively charged memranes and significant artefacts in
+MD simualtions. Thus, the proposed approach to improve the accuracy of cation
+binding in current MD models is highly useful for future MD simulations
+with physiological salt conditions.
+
+%re is a vast demand for classical molecular dynamics simulation
+%model which correctly reproduces cation binding in lipid bilayers. 
+
+%The lack of electronic polarizability from the classical MD simulation
+%models is a potential source of artefact, which could lead to overbinding
+%of cations. 
+%Almost all lipid bilayer simulations reported in the literature 
+%are done with force fields that represent interactions between atoms
+%with pairwise additive empirical potential and exclude the electronic 
+%polarizability \cite{SOME_review, FF_papers}.
+%The issue has been considered higly relevant since the early days of
+%lipid bilayer simulations and pioneering simulation studies scaled
+%the partial charges to effectively include electronic
+%polarizability \cite{jonsson86,egberts94}.
+
+
+
 
 
 
@@ -166,6 +192,10 @@ bilayers \cite{catte16}.
 \section{Methods}
 
 \subsection{Electronic continuum correction for lipid bilayers}
+The explicit inclusion of
+electronic polarizability has been, however, turned to be 
+practically complicated and implementations for lipids are rare \cite{chowdhary13}.
+
 According to the electronic continuum correction (ECC)\cite{leontyev11}, electronic
 polarizability can be included in classical MD simulations by
 placing all particles into a homogeneous dielectric continuum 
