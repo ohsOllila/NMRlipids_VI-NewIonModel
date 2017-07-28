@@ -171,39 +171,40 @@ with physiological salt conditions.
 %re is a vast demand for classical molecular dynamics simulation
 %model which correctly reproduces cation binding in lipid bilayers. 
 
-%The lack of electronic polarizability from the classical MD simulation
-%models is a potential source of artefact, which could lead to overbinding
-%of cations. 
-%Almost all lipid bilayer simulations reported in the literature 
-%are done with force fields that represent interactions between atoms
-%with pairwise additive empirical potential and exclude the electronic 
-%polarizability \cite{SOME_review, FF_papers}.
-%The issue has been considered higly relevant since the early days of
-%lipid bilayer simulations and pioneering simulation studies scaled
-%the partial charges to effectively include electronic
-%polarizability \cite{jonsson86,egberts94}.
-
-
-
-
-
 
 
 \section{Methods}
 
 \subsection{Electronic continuum correction for lipid bilayers}
-The explicit inclusion of
-electronic polarizability has been, however, turned to be 
-practically complicated and implementations for lipids are rare \cite{chowdhary13}.
+The lack of electronic polarizability from the classical MD simulation
+models has been considered higly relevant issue since the early days of
+lipid bilayer simulations and pioneering simulation studies scaled
+the partial charges by half to effectively include electronic
+polarizability \cite{jonsson86,egberts94}. Also approaches that
+explicitly include electronic polarizability has been introduced, but
+this has turned out to be practically complicated \cite{chowdhary13}.
+In this work we effectively include electronic polarizability in lipid
+bilayer simulations by using the electronic continuum correction
+(ECC)~\cite{leontyev11}. The approach is more sophisticated version of
+early studies with scaling to half was used \cite{jonsson86,egberts94},
+but significantly more simple than the explicit inclusion of electronic
+polarizability \cite{chowdhary13}.
 
-According to the electronic continuum correction (ECC)\cite{leontyev11}, electronic
+%is a potential source of artefact, which could lead to overbinding
+%of cations. 
+%Almost all lipid bilayer simulations reported in the literature 
+%are done with force fields that represent interactions between atoms
+%with pairwise additive empirical potential and exclude the electronic 
+%polarizability \cite{SOME_review, FF_papers}.
+
+According to ECC, electronic
 polarizability can be included in classical MD simulations by
 placing all particles into a homogeneous dielectric continuum 
 with a dielectric constant $\epsilon _{el}$, 
 which is the electronic part of the dielectric constant of 
 the media \cite{leontyev11}. Measurements of high frequency 
 dielectric constant gives values of approximately $\epsilon _{el} \approx 2$ 
-for almost any biomaterial \cite{some_original_work, leontyev11}. % that exists in living cells. 
+for almost any biomaterial \cite{some_original_work, leontyev11}.
 Such a continuum can be easily included in standard MD simulation by
 a formal transformation of partial charges 
 \begin{equation}
@@ -215,13 +216,16 @@ The value measured for water, $\epsilon _{el} = 1.78$, gives
 a scaling factor of $f_q = 0.75$ \cite{some_orig_source, leontyev11}, which has been
 successfully used to improve the performance of ion force fields \cite{kohagen14,kohagen16,??}. 
 
-Here we apply the electronic continuum correction to lipid bilayers to accurately 
-describe the lipid headgroup response to Na+ and Ca2+ concentrations \cite{catte16}. 
-We use the Lipid14~\cite{dickson14} force field parameters as a starting point,
-because they give the most realistic headgroup response with added cations 
-and relatively realistic glycerol backbone and headgroup structures
-when compared with other state of the art lipid models \cite{botan15,catte16}.
-The partial atomic charges in Lipid14 were derived by fitting the electrostatic 
+The main goal of this work is to apply ECC correction to accurately 
+describe the lipid headgroup response to Na$^+$ and Ca$^{2+}$ concentrations
+in MD simulation models when compared with NMR data \cite{catte16}. 
+The Lipid14~\cite{dickson14} force field parameters were used as a starting point,
+because their response to bound ions was most realistic against NMR data
+(see Fig.~5 in Ref.~\citenum{catte16}).
+Also glycerol backbone and headgroup structures in Lipid14 model were
+relatively realistic when compared with other state of the art lipid models \cite{botan15}.
+
+The partial atomic charges in original Lipid14 parametrization were derived by fitting the electrostatic 
 potential to its model quantum chemistry representation (RESP\cite{RESP_paper}) in vacuum.
 If the charges are obtained by using RESP in an implicit solvent, 
 they vary the most for the polar moieties \cite{maciejewski14}. 
@@ -233,7 +237,10 @@ so called implicitly polarized charges (IPolQ) \cite{ipolq2013}.
 By taking the charges of oxygen atoms in vacuum and implicit water solvent for POPC from \cite{maciejewski14}, 
 we represent the IPolQ charges in the electronic continuum correction of the Lipid14 model
 by increasing the scaling factor $f_q$ to $0.8$. 
-\footnote{Depending on which QM method you arrive at values from 0.76 to 0.83, averages across atom types being around 0.78--0.80. Even though the methods are almost identical, authors of Lipid 14 find lower partial charges in vacuum than here -- so I prefer the higher value. As the choice of charges is arbitrary anyway, I use 0.80 as an approximate round value. The use of 0.78---.79 might be more appropriate, though.}
+\footnote{Depending on which QM method you arrive at values from 0.76 to 0.83, averages across atom
+  types being around 0.78--0.80. Even though the methods are almost identical, authors of Lipid 14 find lower
+  partial charges in vacuum than here -- so I prefer the higher value. As the choice of charges is arbitrary anyway,
+  I use 0.80 as an approximate round value. The use of 0.78---.79 might be more appropriate, though.}
 
 Hydrocarbon chains in Lipid14 and other lipids models are highly optimized and
 give generally a good description for hydrophobic part of lipid bilayers
