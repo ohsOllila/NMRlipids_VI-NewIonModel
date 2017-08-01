@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """
- calculation of order parameters 
+ calculation of order parameters
  from a MD trajectory
  useful for example for lipid bilayers
- 
+
  meant for use with NMRlipids projects
 
 ------------------------------------------------------------
@@ -20,8 +20,9 @@
 
 import MDAnalysis as mda
 import numpy as np
+import scipy.stats
 import math
-import os, sys
+import os  #, sys
 from optparse import OptionParser
 
 
@@ -40,12 +41,13 @@ class OrderParameter:
        - name of the OP
        - residue name
        - involved atoms (exactly 2)
-       + extra: mean and std.dev. of the OP (when reading-in an already calculated result)
+       + extra: mean, std.dev. & err. estimation (p-value from Student's T-test)
+                of the OP (when reading-in an already calculated result)
     """
     def __init__(self, name, resname, atom_A_name, atom_B_name, *args):
         """
         Initialization of an instance of this class.
-        
+
         it doesn't matter which atom comes first,
         atom A or B, for OP calculation.
         """
@@ -61,15 +63,21 @@ class OrderParameter:
                 if not field.strip():
                     raise RuntimeError, "provided name >> {} << is empty! \n \
                     Cannot use empty names for atoms and OP definitions.".format(field)
-        # extra optional arguments allow setting avg,std values -- suitable for reading-in results of this script
+        # extra optional arguments allow setting avg,std,pval values -- suitable for reading-in results of this script
         if len(args) == 0:
-            self.avg = None
-            self.std = None
+            self.avg = None     # average/mean value
+            self.std = None     # standard deviation of the mean
+            self.pval = None    # p-value as an error estimate of the mean
         elif len(args) == 2:
             self.avg = args[0]
             self.std = args[1]
+            self.pval = None
+        elif len(args) == 3:
+            self.avg = args[0]
+            self.std = args[1]
+            self.pval = args[2]
         else:
-            raise UserWarning, "Number of optional positional arguments is {len}, not 2 or 0. Args: {args}\nWrong file format?".format(len=len(args), args=args)
+            raise UserWarning, "Number of optional positional arguments is {len}, not 3, 2 or 0. Args: {args}\nWrong file format?".format(len=len(args), args=args)
         self.traj = []  # for storing OPs
 
 
@@ -153,7 +161,7 @@ def parse_op_input(fname):
     fname : string
         input file name
 
-    returns : dictionary 
+    returns : dictionary
         with OrderParameters class instances
     """
     ordPars = {}
@@ -196,25 +204,31 @@ if __name__ == "__main__":
     read_trajs_calc_OPs(ordPars, opts.top_fname, trajs)
 
 
-    print "OP Name     mean     stddev "
-    print "----------------------------"
+    print "OP Name     mean     stddev   p-value"
+    print "-------------------------------------"
     for op in ordPars.values():
         (op.avg, op.std) = op.get_avg_std_OP
-        print op.name, op.avg, op.std
+        op.ttest = scipy.stats.ttest_1samp(op.traj, op.avg)
+        op.pval = op.ttest[1]
+        print op.name, op.avg, op.std, op.pval
+    print "-------------------------------------"
 
 
     try:
         with open(opts.out_fname,"w") as f:
-            f.write("# OP_name    resname    atom1    atom2    OP_mean   OP_stddev\n\
-#-------------------------------------------------------------\n")
+            f.write("# OP_name    resname    atom1    atom2    OP_mean   OP_stddev   OP_pvalue\n\
+#-------------------------------------------------------------------------\n")
             for op in ordPars.values():
-                f.write( "   ".join([op.name, op.resname, op.atAname, op.atBname, str(op.avg), str(op.std), "\n"]) )
+                f.write( "   ".join([op.name, op.resname,
+                                     op.atAname, op.atBname,
+                                     str(op.avg), str(op.std), str(op.pval),
+                                     "\n"]) )
         print "\nOrderParameters written to >> {fname} <<".format(fname=opts.out_fname)
     except:
         print "ERROR: Problems writing main output file."
 
 
-    # this single-line format may become soon deprecated, but 
+    # this single-line format may become soon deprecated, but
     # it is the format that is used in NMRlipids projects for processing through awk+gnuplot
     try:
         conc_formatted_line = "conc  {b1} 0  {b2} 0    {a1} 0  {a2} 0".format(
