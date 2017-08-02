@@ -41,6 +41,8 @@ then
     fi
 fi
 
+# rename resnames of palmitoyl and oleoyl segments 
+python $scriptdir/rename_residue_lipid14_to_PALM-POPC-OLE.py -i $top_file_name -o $top_file_name 
 #CALCULATE ORDER PARAMETERS
 python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $traj_pbc_nonwat_file_name -o $op_out_file && rm $traj_pbc_nonwat_file_name
 
@@ -48,7 +50,7 @@ python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $t
 #getting concentration from topol.top file (if exists)
 if [ -f $top ]
 then
-    nwat=`grep -e "molecules" -A 10 $top | grep -e "^SOL" -e "^TIP" -e "^OPC3" | cut -d " " -f1 --complement `
+    nwat=`grep -e "molecules" -A 10 $top | grep -e "^SOL" -e "^TIP" -e "^SPCE" -e "^OPC3" | cut -d " " -f1 --complement `
     nion=`grep -e "molecules" -A 10 $top | grep -e "^NA"  -e "^CA"  | cut -d " " -f1 --complement `
     [ -z $nion ] && nion=0
 
