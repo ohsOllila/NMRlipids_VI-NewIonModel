@@ -141,7 +141,7 @@ MD simualtions (e.g.~\ce{Ca^2+} induced charge inversion of bacterial membranes~
 %Ca2+ interacts mainly with the choline groups \cite{hauser76,hauser78,herbette84} of two
 %phospholipid molecules \cite{altenbach84}.
 
-In this work we show that the accuracy of ion binding, especially Calcium,
+In this work we show that the accuracy of ion binding, especially calcium,
 in zwitterionic PC lipid bilayer can be significantly improved 
 for classical MD simulation models of zwitterionic lipids
 by including electronic polarizability
@@ -159,7 +159,7 @@ that accounts for electronic polarizability by using ECC.
 We will validate such a model by comparing its lipid bilayer structue
 to x-ray scattering data and its head group structure to NMR experiments. 
 We will then quantify the accuracy of head group order parameter response to bound charge
-and compare it to the experimental NMR data of Sodium and Calcium binding in PC lipid bilayers. 
+and compare it to the experimental NMR data of sodium and calcium binding in PC lipid bilayers. 
 In addition, we will quantify relative binding affinities of different moieties in POPC to such cations. 
 This will be discussed in terms of binding modes, stoichiometry and binding isotherms and their models used in experiments.
 The proposed POPC model, ECC-lipids, and the approach to obtain it
@@ -279,34 +279,6 @@ close to the experimental value (see Table~\ref{tab:apls}).
 %the scaling factor for sigma parameters, $f_\sigma$,
 %has to lay between $f_q$ and 1.
 
-\begin{table}
-  \caption{Area per lipid (APL) from different models of POPC without ions\label{tab:apls} }
-  \begin{tabular}{l|c c}
-    model          & APL (\AA$^2$)   & Temperature [K] \\
-    \hline
-    Lipid14 \cite{dickson14}  & 65.6$\pm$ 0.5  &  303 \\
-    \hline
-    ECC-lipids &        &  \\
-    %Lipid14ecc0.80+sigma0.875 &        &  313    \\
-    ($4.6\cdot 5.1 \, \mathrm{nm}^2$), 72 lipids patch, OPC3           & 63.2   &   313      \\
-    \hline
-    (6.4 nm)$^2$, 128 lipids patch, OPC3           & 64.2   &  313       \\
-    (6.4 nm)$^2$, 128 lipids patch, SPC/E          & 65.1   &  313       \\
-    (6.4 nm)$^2$, 128 lipids patch, OPC            & 64.4   &  313       \\
-    (6.4 nm)$^2$, 128 lipids patch, TIP4p/2005     & 66.8   &  313       \\
-    %($9.2\cdot 10.2 \, \mathrm{nm}^2$), 288 lipids patch           & 65.5   &  313       \\ %% not done for this model with f_sigma=0.89
-    %oMM small patch           & 63.65  &         \\
-    %oMM 4xbig patch           & 63.7   &         \\
-    \hline
-    %experiment   & 62.7  &  293    \\
-    experiment \cite{jambeck12}\todoii{REF}{put original references, not Slipids param. paper.} & 64.3  &  303    \\
-    experiment  & 67.3  &  323    \\
-    %experiment  & 68.1  &  333    \\
-    %experiment POPE  & 56.6 &  303    \\
-    \hline
-  \end{tabular}
-\end{table}
-
 
 
 \subsection{Comparison of ion binding affinity to experiments by using the electrometer concept}
@@ -391,21 +363,6 @@ where plateau concentration is the number density in the units of $\mathrm{nm}^{
 
 \subsection{Comparison of lipid bilayer structure to experimental data}
 
-\begin{figure}[tbp]
-  \centering
-  \includegraphics[height=8.5cm,angle=-90]{../Fig/form-f_exp-l14-eccl17.eps}
-  \includegraphics[width=9.0cm]{../Fig/ipython_nb/Order-parameters_exp-L14-ECCL17_q80_sig89.png}
-  \caption{\label{simVSexpNOions}
-    X-ray scattering form factors from experiments~\cite{Kucerka2011} and simulations using Lipid14 \cite{dickson14} and ECC-lipids models. 
-    Order parameters of head group, glycerol backbone and sn-1 and sn-2 tails  from simulations with Lipid14 \cite{dickson14} and ECC-lipids models
-    compared with experimental order parameters from \cite{ferreira13}.}
-  \todo{Add acyl chain order parameters, POPC chemical structure} \\
-  \todo{We should run a simulation for the system withtout ions with the
-    same (or close) temperature as the experimental data. The NMR data is at 300K
-    so that would be good. I think that this would be also close enough for the scattering data at 303K.
-  }
-\end{figure}
-
 Lipid bilayer structure without ions was validated against NMR experiments
 by order parameters for C-H bonds and x-ray scattering experiments by using
 form factors. The former validates the structures sampled by individual
@@ -422,14 +379,6 @@ $n_\alpha (z)$ is the number density of atom $\alpha$ and
 $z$ is the distance from the membrane centre along its normal 
 spanning the membrane with thickness $D$. 
 
-The scattering form factors, NMR order parameters and area per lipid calculated  
-using the ECC-lipids model for POPC are compared to experiments and original
-Lipid14 results in Fig. \ref{simVSexpNOions} and in Table~\ref{tab:apls}. 
-%The optimal value for $f_\sigma$ was found by representing the overall membrane structure well
-%by matching scattering form factors to experimental data~\cite{Petrache06, Kucerka08, Pabst10}.
-The structural quality is comparable to the state of art lipid models available in literature \cite{ollila16},
-thus we conclude that the ECC-lipids model reproduces the lipid bilayer structure
-in liquid disordered phase with similar accuracy to other available models. 
 
 
 
@@ -466,7 +415,7 @@ Simulation trajectories and parameters are available at \cite{??} \todo{To be up
     long-range electrostatics & PME  \cite{darden93}  \\
     cut-off scheme      & Verlet \cite{Pall13}      \\
     Coulomb and VdW cut-off & 1.0~nm \\
-    constraints         & LINCS, only Hydrogen atoms \cite{hess97} \\
+    constraints         & LINCS, only hydrogen atoms \cite{hess97} \\
     constraints for water & SETTLE  \cite{miyamoto92} \\
     \hline
   \end{tabular}
@@ -486,6 +435,65 @@ These systems were ran with original Lipid14 POPC model and with ECC-corrected m
 \todo{Describe the changes in surfactant model used with ECC-corrected lipids.}
 
 \section{Results and Discussion}
+
+\subsection{POPC membrane and its structure}
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[height=8.5cm,angle=-90]{../Fig/form-f_exp-l14-eccl17.eps}
+  \includegraphics[width=9.0cm]{../Fig/ipython_nb/Order-parameters_exp-L14-ECCL17_q80_sig89.png}
+  \caption{\label{simVSexpNOions}
+    X-ray scattering form factors from experiments~\cite{Kucerka2011} and simulations using Lipid14 \cite{dickson14} and ECC-lipids models. 
+    Order parameters of head group, glycerol backbone and sn-1 and sn-2 tails  from simulations with Lipid14 \cite{dickson14} and ECC-lipids models
+    compared with experimental order parameters from \cite{ferreira13}.}
+  \todo{Add acyl chain order parameters, POPC chemical structure} \\
+  \todo{We should run a simulation for the system withtout ions with the
+    same (or close) temperature as the experimental data. The NMR data is at 300K
+    so that would be good. I think that this would be also close enough for the scattering data at 303K.
+  }
+\end{figure}
+
+\begin{table}
+  \caption{Area per lipid (APL) from different models of POPC without ions\label{tab:apls} }
+  \begin{tabular}{l|c c}
+    model          & APL (\AA$^2$)   & Temperature [K] \\
+    \hline
+    Lipid14 \cite{dickson14}  & 65.6$\pm$ 0.5  &  303 \\
+    \hline
+    ECC-lipids &        &  \\
+    %Lipid14ecc0.80+sigma0.875 &        &  313    \\
+    ($4.6\cdot 5.1 \, \mathrm{nm}^2$), 72 lipids patch, OPC3           & 63.2   &   313      \\
+    \hline
+    (6.4 nm)$^2$, 128 lipids patch, OPC3           & 64.2   &  313       \\
+    (6.4 nm)$^2$, 128 lipids patch, SPC/E          & 65.1   &  313       \\
+    (6.4 nm)$^2$, 128 lipids patch, OPC            & 64.4   &  313       \\
+    (6.4 nm)$^2$, 128 lipids patch, TIP4p/2005     & 66.8   &  313       \\
+    %($9.2\cdot 10.2 \, \mathrm{nm}^2$), 288 lipids patch           & 65.5   &  313       \\ %% not done for this model with f_sigma=0.89
+    %oMM small patch           & 63.65  &         \\
+    %oMM 4xbig patch           & 63.7   &         \\
+    \hline
+    %experiment   & 62.7  &  293    \\
+    experiment \cite{jambeck12}\todoii{REF}{put original references, not Slipids param. paper.} & 64.3  &  303    \\
+    experiment  & 67.3  &  323    \\
+    %experiment  & 68.1  &  333    \\
+    %experiment POPE  & 56.6 &  303    \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+In order to validate the newly developed model, ECC-lipids, 
+we compared our simulation results without ions to
+NMR order parameters measurements and x-ray scattering form factors 
+(Fig.~\ref{simVSexpNOions} and Table~\ref{tab:apls}). 
+The tail order parameters being already highly optimized in the original Lipid14 model~\cite{dickson14}
+are found to match the experimental values nicely.
+The head group and glycerol backbone order parameters accuracy is 
+comparable to the state of art lipid models available in literature \cite{ollila16},
+The agreement between the x-ray scattering form factors and areas per molecule from simulations and experiments
+confirm that the membrane structural properties are well captured. 
+%The optimal value for $f_\sigma$ was found by representing the overall membrane structure well
+%by matching scattering form factors to experimental data~\cite{Petrache06, Kucerka08, Pabst10}.
 
 \subsection{POPC membrane and electrometer concept with cationic surfactant}
 
@@ -600,8 +608,8 @@ In addition to the ternary complexes, there also is a non-negligable probability
 of one \ce{Ca^{2+}} cross-bridging three POPC molecules.
 Technical details of the analysis are in the SI. 
 
-\todo{Put details of the cation-binding stoichiometry analysis to SI.} \\
-\todo{Update the binding isotherm figure with new simulations} \\
+\todo{JOE: Put details of the cation-binding stoichiometry analysis to SI.} \\
+\todo{JOE: Update the binding isotherm figure with new simulations} \\
 \todo{SAMULI: The same authors have also literature, where they say that ternary complex may not
   be the only option. I will recheck and come back to this.
   SAMULI: This is written in \cite{macdonald87}:
@@ -612,7 +620,8 @@ Technical details of the analysis are in the SI.
   In contrast, the Ca2+ binding to POPC-POPG mixtures can be best described by assuming a 1:l stoichiometry regardless of the range of Ca2+concentrations.''
   We might or might not want to discuss about this.} \\
 \todo{SAMULI: I would also analyze how much there is contact between ions and different
-parts of the lipid (phosphase, carbonyl, etc.).} \\
+parts of the lipid (phosphase, carbonyl, etc.).
+JOE: Pavel suggest using volumetric map (e.g. in VMD) to visualise the amounts of Ca, Na and Cl bound to different moieties.} \\
 \todo{SAMULI: I think we should quantify this, i.e. how much there are these.
   Maybe also the other possible complexes? Maybe also the correlation betweem complexes
   and binding sites, if it is not too much work.
