@@ -1,3 +1,33 @@
+@article{Wang2017,
+abstract = {The increasing availability of high-quality experimental data and first-principles calculations creates opportunities for developing more accurate empirical force fields for simulation of proteins. We developed the AMBER-FB15 protein force field by building a high-quality quantum chemical data set consisting of comprehensive potential energy scans and employing the ForceBalance software package for parameter optimization. The optimized potential surface allows for more significant thermodynamic fluctuations away from local minima. In validation studies where simulation results are compared to experimental measurements, AMBER-FB15 in combination with the updated TIP3P-FB water model predicts equilibrium properties with equivalent accuracy, and temperature dependent properties with significantly improved accuracy, in comparison with published models. We also discuss the effect of changing the protein force field and water model on the simulation results.},
+author = {Wang, Lee-Ping and McKiernan, Keri A. and Gomes, Joseph and Beauchamp, Kyle A. and Head-Gordon, Teresa and Rice, Julia E. and Swope, William C. and Mart{\'{i}}nez, Todd J. and Pande, Vijay S.},
+doi = {10.1021/acs.jpcb.7b02320},
+file = {:home/joe/Downloads/acs{\%}2Ejpcb{\%}2E7b02320.pdf:pdf},
+issn = {1520-6106},
+journal = {The Journal of Physical Chemistry B},
+month = {apr},
+number = {16},
+pages = {4023--4039},
+publisher = {American Chemical Society},
+title = {{Building a More Predictive Protein Force Field: A Systematic and Reproducible Route to AMBER-FB15}},
+url = {http://pubs.acs.org/doi/abs/10.1021/acs.jpcb.7b02320},
+volume = {121},
+year = {2017}
+}
+
+@article{Luan2016,
+author = {Luan, Binquan and Chen, Kai Loon and Zhou, Ruhong},
+doi = {10.1021/acs.jpclett.6b01065},
+file = {:home/joe/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Luan, Chen, Zhou - 2016 - Mechanism of Divalent-Ion-Induced Charge Inversion of Bacterial Membranes.pdf:pdf},
+issn = {1948-7185},
+journal = {The Journal of Physical Chemistry Letters},
+pages = {2434--2438},
+title = {{Mechanism of Divalent-Ion-Induced Charge Inversion of Bacterial Membranes}},
+url = {http://pubs.acs.org/doi/abs/10.1021/acs.jpclett.6b01065},
+year = {2016}
+}
+
+
 @article{Berendsen1987,
 abstract = {Effective pair potentials used for simulations of polar liquids include the average effects of polarization. Such potentials are generally adjusted to produce the experimental heat of vaporization. It has not been recognized before that the self-energy term inherent in any polarizable model should be included in effective pair potentials as well. Inclusion of the self-energy correction with a consequent reparametrization of the SPC (simple point charge) model of water yields an improvement of the effective pair potential for water, as exemplified by density, radial distribution functions, and diffusion constant.},
 author = {Berendsen, Herman J. C. and Grigera, J. R. and Straatsma, T. P.},
@@ -1160,6 +1190,49 @@ issue  ="7",
 pages  ="2613-2626",
 publisher  ="The Royal Society of Chemistry",
 }
+
+@article{leontyev10,
+abstract = {Electronic polarizability is an important factor in molecular interactions. In the conventional force fields such as AMBER or CHARMM, however, there is inconsistency in how the effect of electronic dielectric screening of Coulombic interactions, inherent for the condensed phase media, is treated. Namely, the screening appears to be accounted for via effective charges only for neutral moieties, whereas the charged residues are treated as if they were in a vacuum. As a result, the electrostatic interactions between ionized groups are exaggerated in molecular simulations by a factor of about 2. The model discussed here, MDEC (Molecular Dynamics in Electronic Continuum) provides a theoretical framework for modification of the standard nonpolarizable force fields to make them consistent with the idea of uniform electronic screening of partial atomic charges. The present theory states that the charges of ionized groups and ions should be scaled, i.e., reduced by a factor of about 0.7. In several examples, including the interaction between Na+ ions, which is of interest for ion-channel simulations, and the dynamics of an important salt bridge in cytochrome c oxidase, we compared the standard nonpolarizable MD simulations with MDEC simulations and demonstrated that the MDEC charge scaling procedure results in more accurate interactions. The inclusion of electronic screening for charged moieties is shown to result in significant changes in protein dynamics and can give rise to new qualitative results compared with the traditional nonpolarizable force fields simulations. Electronic polarizability is an important factor in molecular interactions. In the conventional force fields such as AMBER or CHARMM, however, there is inconsistency in how the effect of electronic dielectric screening of Coulombic interactions, inherent for the condensed phase media, is treated. Namely, the screening appears to be accounted for via effective charges only for neutral moieties, whereas the charged residues are treated as if they were in a vacuum. As a result, the electrostatic interactions between ionized groups are exaggerated in molecular simulations by a factor of about 2. The model discussed here, MDEC (Molecular Dynamics in Electronic Continuum) provides a theoretical framework for modification of the standard nonpolarizable force fields to make them consistent with the idea of uniform electronic screening of partial atomic charges. The present theory states that the charges of ionized groups and ions should be scaled, i.e., reduced by a factor of about 0.7. In several examples, including the interaction between Na+ ions, which is of interest for ion-channel simulations, and the dynamics of an important salt bridge in cytochrome c oxidase, we compared the standard nonpolarizable MD simulations with MDEC simulations and demonstrated that the MDEC charge scaling procedure results in more accurate interactions. The inclusion of electronic screening for charged moieties is shown to result in significant changes in protein dynamics and can give rise to new qualitative results compared with the traditional nonpolarizable force fields simulations.},
+annote = {charge scalinc paper, MDEC = MD in phenomenological electronic continuum
+
+Citation:
+In the uniform dielectric, all electrostatic interactions are scaled by a factor 1/$\epsilon$el. Since interactions are quadratic in charges, the effect of electronic dielectric screening can be taken into account implicitly by using scaled partial charges, qieff = qi/√$\epsilon$el; in this case, the Coulomb interaction between sites i and j automatically has the correct form qieff qjeff/rij = qiqj/$\epsilon$elrij without explicitly introducing factor 1/$\epsilon$el},
+author = {Leontyev, I. V. and Stuchebrukhov, A. A.},
+doi = {10.1021/ct9005807},
+file = {:home/joe/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Leontyev, Stuchebrukhov - 2010 - Electronic Continuum Model for Molecular Dynamics Simulations of Biological Molecules.pdf:pdf},
+issn = {1549-9618},
+journal = {Journal of Chemical Theory and Computation},
+month = {may},
+number = {5},
+pages = {1498--1508},
+publisher = {American Chemical Society},
+title = {{Electronic Continuum Model for Molecular Dynamics Simulations of Biological Molecules}},
+url = {http://dx.doi.org/10.1021/ct9005807},
+volume = {6},
+year = {2010}
+}
+
+@article{leontyev09,
+abstract = {A simple model for accounting for electronic polarization in molecular dynamics (MD) simulations is discussed. In this model, called molecular dynamics electronic continuum (MDEC), the electronic polarization is treated explicitly in terms of the electronic continuum (EC) approximation, while the nuclear dynamics is described with a fixed-charge force field. In such a force-field all atomic charges are scaled to reflect the screening effect by the electronic continuum. The MDEC model is rather similar but not equivalent to the standard nonpolarizable force-fields; the differences are discussed. Of our particular interest is the calculation of the electrostatic part of solvation energy using standard nonpolarizable MD simulations. In a low-dielectric environment, such as protein, the standard MD approach produces qualitatively wrong results. The difficulty is in mistreatment of the electronic polarizability. We show how the results can be much improved using the MDEC approach. We also show how the dielectric constant of the medium obtained in a MD simulation with nonpolarizable force-field is related to the static (total) dielectric constant, which includes both the nuclear and electronic relaxation effects. Using the MDEC model, we discuss recent calculations of dielectric constants of alcohols and alkanes, and show that the MDEC results are comparable with those obtained with the polarizable Drude oscillator model. The applicability of the method to calculations of dielectric properties of proteins is discussed.},
+annote = {MDEC, scaled charges introduced
+
+accounting for electronic polarizability},
+author = {Leontyev, I V and Stuchebrukhov, A A},
+doi = {10.1063/1.3060164},
+file = {:home/joe/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Leontyev, Stuchebrukhov - 2009 - Electronic continuum model for molecular dynamics simulations.pdf:pdf},
+issn = {1089-7690},
+journal = {The Journal of chemical physics},
+month = {feb},
+number = {8},
+pages = {085102},
+pmid = {19256627},
+publisher = {AIP Publishing},
+title = {{Electronic continuum model for molecular dynamics simulations.}},
+url = {http://scitation.aip.org/content/aip/journal/jcp/130/8/10.1063/1.3060164},
+volume = {130},
+year = {2009}
+}
+
 
 @article {tatulian87,
 author = {Tatulian, Suren A.},
