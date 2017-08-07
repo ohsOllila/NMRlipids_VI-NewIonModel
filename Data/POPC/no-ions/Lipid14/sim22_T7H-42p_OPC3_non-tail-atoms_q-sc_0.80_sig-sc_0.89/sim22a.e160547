@@ -1,0 +1,92 @@
+                   :-) GROMACS - gmx mdrun, VERSION 5.1.4 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov  Herman J.C. Berendsen    Par Bjelkmar   
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra   Sebastian Fritsch 
+  Gerrit Groenhof   Christoph Junghans   Anca Hamuraru    Vincent Hindriksen
+ Dimitrios Karkoulis    Peter Kasson        Jiri Kraus      Carsten Kutzner  
+    Per Larsson      Justin A. Lemkul   Magnus Lundborg   Pieter Meulenhoff 
+   Erik Marklund      Teemu Murtola       Szilard Pall       Sander Pronk   
+   Roland Schulz     Alexey Shvetsov     Michael Shirts     Alfons Sijbers  
+   Peter Tieleman    Teemu Virolainen  Christian Wennberg    Maarten Wolf   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2015, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx mdrun, VERSION 5.1.4
+Executable:   /home/melcr/prog/BIN/gromacs/gromacs-5.1.4+plumed2.2.3/intel_13.1.0.146-openmpi_1.6.5_sse4.1/bin/gmx
+Data prefix:  /home/melcr/prog/BIN/gromacs/gromacs-5.1.4+plumed2.2.3/intel_13.1.0.146-openmpi_1.6.5_sse4.1
+Command line:
+  gmx mdrun -x /scratch/melcr/sim22a-160547/traj_comp.xtc -cpi /home/melcr/l14/npt/sim22_T7H-42p_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89/state.cpt -g /home/melcr/l14/npt/sim22_T7H-42p_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89/md.log -e /home/melcr/l14/npt/sim22_T7H-42p_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89/ener.edr -append -tunepme -pin on
+
+
+Back Off! I just backed up /home/melcr/l14/npt/sim22_T7H-42p_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89/md.log to /home/melcr/l14/npt/sim22_T7H-42p_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89/#md.log.1#
+
+Running on 1 node with total 8 cores, 16 logical cores, 2 compatible GPUs
+Hardware detected on host m35 (the node of MPI rank 0):
+  CPU info:
+    Vendor: GenuineIntel
+    Brand:  Intel(R) Xeon(R) CPU           X5647  @ 2.93GHz
+    SIMD instructions most likely to fit this hardware: SSE4.1
+    SIMD instructions selected at GROMACS compile time: SSE4.1
+  GPU info:
+    Number of GPUs detected: 2
+    #0: NVIDIA Tesla M2090, compute cap.: 2.0, ECC: yes, stat: compatible
+    #1: NVIDIA Tesla M2090, compute cap.: 2.0, ECC: yes, stat: compatible
+
+Reading file topol.tpr, VERSION 5.1.4 (single precision)
+Changing nstlist from 25 to 40, rlist from 1.011 to 1.045
+
+The number of OpenMP threads was set by environment variable OMP_NUM_THREADS to 4
+
+Reading checkpoint file /home/melcr/l14/npt/sim22_T7H-42p_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89/state.cpt generated: Tue Jul 25 13:52:26 2017
+
+
+GROMACS patchlevel, binary or parallel settings differ from previous run.
+Continuation is exact, but not guaranteed to be binary identical.
+See the log file for details.
+
+Using 2 MPI processes
+Using 4 OpenMP threads per MPI process
+
+On host m35 2 compatible GPUs are present, with IDs 0,1
+On host m35 2 GPUs auto-selected for this run.
+Mapping of GPU IDs to the 2 PP ranks in this node: 0,1
+
+
+Back Off! I just backed up /home/melcr/l14/npt/sim22_T7H-42p_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89/ener.edr to /home/melcr/l14/npt/sim22_T7H-42p_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89/#ener.edr.1#
+
+NOTE: DLB will not turn on during the first phase of PME tuning
+
+starting mdrun 'membrane (POPC) with 42% cationic surfactant'
+100000000 steps, 200000.0 ps (continuing from step 1000,      2.0 ps).
+
+NOTE: DLB can now turn on, when beneficial
+
+
+Writing final coordinates.
+
+Back Off! I just backed up confout.gro to ./#confout.gro.1#
+
+ Average load imbalance: 1.3 %
+ Part of the total run time spent waiting due to load imbalance: 0.4 %
+
+
+               Core t (s)   Wall t (s)        (%)
+       Time:  3631860.039   454188.590      799.6
+                         5d06h09:48
+                 (ns/day)    (hour/ns)
+Performance:       38.045        0.631
+
+gcq#209: "Your Bones Got a Little Machine" (Pixies)
+

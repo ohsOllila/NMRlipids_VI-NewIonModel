@@ -57,8 +57,9 @@ set label at graph 0.044, graph 0.84 "ECCLipids17 + ECC ions"
 #set label at graph 0.94,graph 0.67 "1007 mM" 
 #set label at graph 0.85,graph 0.30 "690 mM" 
 #set label at graph 0.85,graph 0.30 "856 mM" 
-plot      "../../Data/POPC/no-ions/Lipid14/sim20_856mM_CaClMK_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density.xvg" using 1:2 with lines ls 7 notitle,\
+plot      "../../Data/POPC/no-ions/Lipid14/sim22a_978mM_CaCl-2s_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89/density_ca_cl_water.xvg" using 1:2 with lines ls 7 notitle,\
           "" using 1:($3/2.0) with lines ls 2 notitle , \
+          "" using 1:($4/100.0) with lines ls 3 notitle , \
           #"../../Data/POPC/no-ions/Lipid14/sim20_big4_698mM_CaClMK_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density_Ca_Cl.xvg" using 1:2 notitle with lines ls 7,\
           #"../../Data/POPC/no-ions/Lipid14/sim20_big4_698mM_CaClMK_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875/density_Ca_Cl.xvg" using 1:($3/2.0) notitle  with lines ls 2
 

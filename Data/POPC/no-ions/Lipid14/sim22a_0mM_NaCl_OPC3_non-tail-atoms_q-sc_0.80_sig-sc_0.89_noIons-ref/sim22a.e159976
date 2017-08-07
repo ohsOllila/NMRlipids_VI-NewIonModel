@@ -1,0 +1,78 @@
+                   :-) GROMACS - gmx mdrun, VERSION 5.1.4 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov  Herman J.C. Berendsen    Par Bjelkmar   
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra   Sebastian Fritsch 
+  Gerrit Groenhof   Christoph Junghans   Anca Hamuraru    Vincent Hindriksen
+ Dimitrios Karkoulis    Peter Kasson        Jiri Kraus      Carsten Kutzner  
+    Per Larsson      Justin A. Lemkul   Magnus Lundborg   Pieter Meulenhoff 
+   Erik Marklund      Teemu Murtola       Szilard Pall       Sander Pronk   
+   Roland Schulz     Alexey Shvetsov     Michael Shirts     Alfons Sijbers  
+   Peter Tieleman    Teemu Virolainen  Christian Wennberg    Maarten Wolf   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2015, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx mdrun, VERSION 5.1.4
+Executable:   /home/melcr/prog/BIN/gromacs/gromacs-5.1.4+plumed2.2.3/intel_13.1.0.146-openmpi_1.6.5_sse4.1/bin/gmx
+Data prefix:  /home/melcr/prog/BIN/gromacs/gromacs-5.1.4+plumed2.2.3/intel_13.1.0.146-openmpi_1.6.5_sse4.1
+Command line:
+  gmx mdrun -x /scratch/melcr/sim22a-159976/traj_comp.xtc -cpi /home/melcr/l14/npt/sim22a_0mM_NaCl_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89_noIons-ref/state.cpt -g /home/melcr/l14/npt/sim22a_0mM_NaCl_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89_noIons-ref/md.log -e /home/melcr/l14/npt/sim22a_0mM_NaCl_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89_noIons-ref/ener.edr -append -tunepme -pin on
+
+
+Running on 1 node with total 8 cores, 16 logical cores, 2 compatible GPUs
+Hardware detected on host m36 (the node of MPI rank 0):
+  CPU info:
+    Vendor: GenuineIntel
+    Brand:  Intel(R) Xeon(R) CPU           X5647  @ 2.93GHz
+    SIMD instructions most likely to fit this hardware: SSE4.1
+    SIMD instructions selected at GROMACS compile time: SSE4.1
+  GPU info:
+    Number of GPUs detected: 2
+    #0: NVIDIA Tesla M2090, compute cap.: 2.0, ECC: yes, stat: compatible
+    #1: NVIDIA Tesla M2090, compute cap.: 2.0, ECC: yes, stat: compatible
+
+Reading file topol.tpr, VERSION 5.1.4 (single precision)
+Changing nstlist from 25 to 40, rlist from 1.018 to 1.055
+
+The number of OpenMP threads was set by environment variable OMP_NUM_THREADS to 4
+Using 2 MPI processes
+Using 4 OpenMP threads per MPI process
+
+On host m36 2 compatible GPUs are present, with IDs 0,1
+On host m36 2 GPUs auto-selected for this run.
+Mapping of GPU IDs to the 2 PP ranks in this node: 0,1
+
+
+NOTE: DLB will not turn on during the first phase of PME tuning
+
+starting mdrun '128 POPC in 3-site water'
+100000000 steps, 200000.0 ps.
+
+NOTE: DLB can now turn on, when beneficial
+
+
+Writing final coordinates.
+
+ Average load imbalance: 1.2 %
+ Part of the total run time spent waiting due to load imbalance: 0.4 %
+
+
+               Core t (s)   Wall t (s)        (%)
+       Time:  3350323.223   418976.381      799.6
+                         4d20h22:56
+                 (ns/day)    (hour/ns)
+Performance:       41.243        0.582
+
+gcq#27: "A Man Needs a Maid" (N. Young)
+

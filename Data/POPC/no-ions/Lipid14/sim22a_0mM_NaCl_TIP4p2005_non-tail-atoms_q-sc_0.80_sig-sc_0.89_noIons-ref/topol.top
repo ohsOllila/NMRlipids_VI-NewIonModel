@@ -1,0 +1,15 @@
+#include <lipid14_popc_top/lipid14.itp> 
+#include <lipid14_popc_top/ions/gromacs/ions_nb_sigma_eps.itp> 
+#include "lipid14_popc_top/POPC_non-tail-atoms_q-sc_0.80_sig-sc_0.89.itp"
+#include "lipid14_popc_top/tip4p_2005.itp"
+#include <lipid14_popc_top/ions/gromacs/ions.itp>
+
+[ system ]
+128 POPC in 4-site water
+
+[molecules]
+POPC                128
+SOL                6400
+;CA_s                 54
+;CL_s                108
+
