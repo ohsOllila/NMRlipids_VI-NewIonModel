@@ -175,7 +175,7 @@ def parse_op_input(fname):
                     items = line.split()
                     ordPars[items[0]] = OrderParameter(*items)
     except:
-        raise RuntimeError, "Couldn't read input file >> {inpf} <<".format(inpf=opts.inp_fname)
+        raise RuntimeError, "Couldn't read input file >> {inpf} <<".format(inpf=fname)
     return ordPars
 
 

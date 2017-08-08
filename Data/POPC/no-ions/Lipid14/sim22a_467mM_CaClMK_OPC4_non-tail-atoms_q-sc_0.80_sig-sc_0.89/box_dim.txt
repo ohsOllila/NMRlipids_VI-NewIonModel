@@ -1,0 +1,9 @@
+
+Statistics over 100000001 steps [ 0.0000 through 200000.0000 ps ], 3 data sets
+All statistics are over 20001 points (frames)
+
+Energy                      Average   Err.Est.       RMSD  Tot-Drift
+-------------------------------------------------------------------------------
+Constr. rmsd             3.54759e-06    1.3e-09 7.17067e-08 -3.37596e-09  ()
+Box-X                       6.27449      0.011  0.0621745 -0.0707083  (nm)
+Box-Y                       6.27449      0.011  0.0621745 -0.0707083  (nm)

@@ -1,0 +1,16 @@
+#include <lipid14_popc_top/lipid14.itp> 
+#include <lipid14_popc_top/ions/gromacs/ions_nb_sigma_eps.itp> 
+#include "lipid14_popc_top/POPC_non-tail-atoms_q-sc_0.80_sig-sc_0.89.itp"
+#include "lipid14_popc_top/T7H_GMX_ECC.itp"
+#include "lipid14_popc_top/spce.itp"
+#include <lipid14_popc_top/ions/gromacs/ions.itp>
+
+[ system ]
+membrane (POPC) with 42% cationic surfactant
+
+[molecules]
+POPC     100
+T7H      70
+CL_2s    70
+SPCE     6214
+

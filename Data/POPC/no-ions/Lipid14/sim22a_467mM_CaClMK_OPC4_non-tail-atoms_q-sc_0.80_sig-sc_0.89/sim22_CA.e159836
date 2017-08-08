@@ -1,0 +1,86 @@
+                   :-) GROMACS - gmx mdrun, VERSION 5.1.4 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov  Herman J.C. Berendsen    Par Bjelkmar   
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra   Sebastian Fritsch 
+  Gerrit Groenhof   Christoph Junghans   Anca Hamuraru    Vincent Hindriksen
+ Dimitrios Karkoulis    Peter Kasson        Jiri Kraus      Carsten Kutzner  
+    Per Larsson      Justin A. Lemkul   Magnus Lundborg   Pieter Meulenhoff 
+   Erik Marklund      Teemu Murtola       Szilard Pall       Sander Pronk   
+   Roland Schulz     Alexey Shvetsov     Michael Shirts     Alfons Sijbers  
+   Peter Tieleman    Teemu Virolainen  Christian Wennberg    Maarten Wolf   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2015, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx mdrun, VERSION 5.1.4
+Executable:   /home/melcr/prog/BIN/gromacs/gromacs-5.1.4+plumed2.2.3/intel_13.1.0.146-tmpi_avx256/bin/gmx
+Data prefix:  /home/melcr/prog/BIN/gromacs/gromacs-5.1.4+plumed2.2.3/intel_13.1.0.146-tmpi_avx256
+Command line:
+  gmx mdrun -x /scratch/melcr/sim22_CA-159836/traj_comp.xtc -cpi /home/melcr/l14/npt/sim22_999mM_CaClMK_OPC4_non-tail-atoms_q-sc_0.80_sig-sc_0.89/state.cpt -g /home/melcr/l14/npt/sim22_999mM_CaClMK_OPC4_non-tail-atoms_q-sc_0.80_sig-sc_0.89/md.log -e /home/melcr/l14/npt/sim22_999mM_CaClMK_OPC4_non-tail-atoms_q-sc_0.80_sig-sc_0.89/ener.edr -append -tunepme -pin on
+
+
+Running on 1 node with total 12 cores, 12 logical cores, 2 compatible GPUs
+Hardware detected:
+  CPU info:
+    Vendor: GenuineIntel
+    Brand:  Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz
+    SIMD instructions most likely to fit this hardware: AVX_256
+    SIMD instructions selected at GROMACS compile time: AVX_256
+  GPU info:
+    Number of GPUs detected: 2
+    #0: NVIDIA Tesla K20m, compute cap.: 3.5, ECC: yes, stat: compatible
+    #1: NVIDIA Tesla K20m, compute cap.: 3.5, ECC: yes, stat: compatible
+
+Reading file topol.tpr, VERSION 5.1.4 (single precision)
+Changing nstlist from 25 to 40, rlist from 1.038 to 1.077
+
+The number of OpenMP threads was set by environment variable OMP_NUM_THREADS to 6
+Using 2 MPI threads
+Using 6 OpenMP threads per tMPI thread
+
+2 compatible GPUs are present, with IDs 0,1
+2 GPUs auto-selected for this run.
+Mapping of GPU IDs to the 2 PP ranks in this node: 0,1
+
+
+NOTE: GROMACS was configured without NVML support hence it can not exploit
+      application clocks of the detected Tesla K20m GPU to improve performance.
+      Recompile with the NVML library (compatible with the driver used) or set application clocks manually.
+
+
+WARNING: This run will generate roughly 2102 Mb of data
+
+
+NOTE: DLB will not turn on during the first phase of PME tuning
+
+starting mdrun '128 POPC in 4-site water'
+100000000 steps, 200000.0 ps.
+
+NOTE: DLB can now turn on, when beneficial
+
+
+Writing final coordinates.
+
+ Average load imbalance: 1.0 %
+ Part of the total run time spent waiting due to load imbalance: 0.3 %
+
+
+               Core t (s)   Wall t (s)        (%)
+       Time:  3960505.739   330882.008     1197.0
+                         3d19h54:42
+                 (ns/day)    (hour/ns)
+Performance:       52.224        0.460
+
+gcq#86: "I Don't Want to Catch Anybody Not Drinking." (Monty Python)
+

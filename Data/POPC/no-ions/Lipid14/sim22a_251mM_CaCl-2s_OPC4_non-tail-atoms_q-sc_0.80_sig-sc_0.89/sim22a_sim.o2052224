@@ -1,0 +1,109 @@
+load modules ... 
+
+Basic job -- info
+-----------------
+job name:  sim22a_sim
+job id:  2052224.arien-pro.ics.muni.cz
+name: 
+running on:  doom3.metacentrum.cz
+proc per node:  8
+num nodes:  1
+Req-d walltime:  43200
+
+cwd:  /storage/brno3-cerit/home/melcrj/l14_npt/sim22a_251mM_CaCl-2s_OPC4_non-tail-atoms_q-sc_0.80_sig-sc_0.89
+
+current time:   Thu Aug 3 14:26:21 CEST 2017
+
+                     :-) GROMACS - mdrun, VERSION 5.1.2 (-:
+
+                            GROMACS is written by:
+     Emile Apol      Rossen Apostolov  Herman J.C. Berendsen    Par Bjelkmar   
+ Aldert van Buuren   Rudi van Drunen     Anton Feenstra   Sebastian Fritsch 
+  Gerrit Groenhof   Christoph Junghans   Anca Hamuraru    Vincent Hindriksen
+ Dimitrios Karkoulis    Peter Kasson        Jiri Kraus      Carsten Kutzner  
+    Per Larsson      Justin A. Lemkul   Magnus Lundborg   Pieter Meulenhoff 
+   Erik Marklund      Teemu Murtola       Szilard Pall       Sander Pronk   
+   Roland Schulz     Alexey Shvetsov     Michael Shirts     Alfons Sijbers  
+   Peter Tieleman    Teemu Virolainen  Christian Wennberg    Maarten Wolf   
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2015, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      mdrun, VERSION 5.1.2
+Executable:   /storage/brno3-cerit/home/melcrj/prog/BIN/gromacs-5.1.2+plumed2_ownFFTW_noMPI_intel15_avx_256/bin/mdrun
+Data prefix:  /storage/brno3-cerit/home/melcrj/prog/BIN/gromacs-5.1.2+plumed2_ownFFTW_noMPI_intel15_avx_256
+Command line:
+  mdrun -maxh 11.64 -ntomp 8 -noappend -cpi state.cpt -s topol.tpr -o /scratch/melcrj/job_2052224.arien-pro.ics.muni.cz/traj.trr -x /scratch/melcrj/job_2052224.arien-pro.ics.muni.cz/traj.xtc -e /scratch/melcrj/job_2052224.arien-pro.ics.muni.cz/ener.edr -cpo /scratch/melcrj/job_2052224.arien-pro.ics.muni.cz/state.cpt -g /scratch/melcrj/job_2052224.arien-pro.ics.muni.cz/md.log
+
+
+Running on 1 node with total 16 cores, 32 logical cores, 1 compatible GPU
+Hardware detected:
+  CPU info:
+    Vendor: GenuineIntel
+    Brand:  Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz
+    SIMD instructions most likely to fit this hardware: AVX_256
+    SIMD instructions selected at GROMACS compile time: AVX_256
+  GPU info:
+    Number of GPUs detected: 1
+    #0: NVIDIA Tesla K20m, compute cap.: 3.5, ECC: yes, stat: compatible
+
+
+The current CPU can measure timings more accurately than the code in
+mdrun was configured to use. This might affect your simulation
+speed as accurate timings are needed for load-balancing.
+Please consider rebuilding mdrun with the GMX_USE_RDTSCP=ON CMake option.
+
+Reading file topol.tpr, VERSION 5.1.4 (single precision)
+Changing nstlist from 25 to 40, rlist from 1.038 to 1.077
+
+The number of OpenMP threads was set by environment variable OMP_NUM_THREADS to 8 (and the command-line setting agreed with that)
+
+Reading checkpoint file state.cpt generated: Thu Aug  3 14:04:37 2017
+
+
+Using 1 MPI thread
+Using 8 OpenMP threads 
+
+1 compatible GPU is present, with ID 0
+1 GPU auto-selected for this run.
+Mapping of GPU ID to the 1 PP rank in this node: 0
+
+
+NOTE: GROMACS was configured without NVML support hence it can not exploit
+      application clocks of the detected Tesla K20m GPU to improve performance.
+      Recompile with the NVML library (compatible with the driver used) or set application clocks manually.
+
+
+NOTE: The number of threads is not equal to the number of (logical) cores
+      and the -pin option is set to auto: will not pin thread to cores.
+      This can lead to significant performance degradation.
+      Consider using -pin on (and -pinoffset in case you run multiple jobs).
+
+starting mdrun '128 POPC in 4-site water'
+150000000 steps, 300000.0 ps (continuing from step 150000000, 300000.0 ps).
+
+Writing final coordinates.
+
+Back Off! I just backed up confout.part0020.gro to ./#confout.part0020.gro.8#
+
+               Core t (s)   Wall t (s)        (%)
+       Time:        0.887        0.146      608.4
+                 (ns/day)    (hour/ns)
+Performance:        1.185       20.248
+
+Thanx for Using GROMACS - Have a Nice Day
+
+Checkpoint file is from part 19, new output files will be suffixed '.part0020'.
+
+current time:   Thu Aug 3 14:26:24 CEST 2017
+
