@@ -135,7 +135,11 @@ On the other hand, the accuracy of the state of the art atomistic resolution lip
 have turned out insufficient for the detailed interpretation of cation binding details \cite{catte16}.
 The overestimated specific cation binding observed in current lipid models \cite{catte16}
 may lead to articifially positively charged memranes and significant artefacts in
-MD simualtions (e.g.~divalent cation-induced charge inversion of bacterial membranes~\cite{Luan2016} \todo{JOE: this may be a too daring statement.}). 
+MD simualtions (e.g.~divalent cation-induced charge inversion of bacterial membranes~\cite{Luan2016}
+\todo{JOE: this may be a too daring statement. \\
+  SAMULI: I think that the divalent cation induced charge inversion is not an artefact,
+  but it might happen with too small concentrations. 
+  On the other hand, it is not a new observation either, see e.g. literature cited in NMRlipids IV project.}). 
 
 %The binding details, like binding sites and stoichiometry are not yet fully
 %resolved but interpretation of NMR and scattering experiments suggest that one
@@ -210,39 +214,58 @@ The value measured for water, $\epsilon _{el} = 1.78$, gives
 a scaling factor of $f_q = 0.75$ \cite{some_orig_source, leontyev11}, which has been
 successfully used to improve the performance of ion force fields \cite{kohagen14,kohagen16,??}. 
 
-The main goal of this work is to apply ECC correction to accurately 
-describe the lipid head group response to Na$^+$ and Ca$^{2+}$ concentrations
-in MD simulation models when compared with NMR data \cite{catte16}. 
-The Lipid14~\cite{dickson14} force field parameters were used as a starting point,
-because their response to bound ions was most realistic against NMR data
-(see Fig.~5 in Ref.~\citenum{catte16}).
-Also glycerol backbone and head group structures in Lipid14 model were
-relatively realistic when compared with other state of the art lipid models \cite{botan15}.
-
 While the scaling factor of $f_q = 0.75$ for ions in water is well justified and shown
 to improve model performance against scattering data \cite{kohagen14,kohagen16, Pluharova2014},
-it is not clear if the same factor should be used for molecules, i.e. lipid head groups in our case. 
-Unlike the total charge of cations and anions, atomic partial charges used in
-classical MD simulations are not experimental observables and 
-can in principle adopt arbitrary values. 
-In cases where the partial charges have some physical meaning 
-(e.g. approximate electrostatic potential as in RESP~\cite{RESP_paper}),
-we can merely estimate the scaling factor for molecules, $f_q$, 
-to adopt a value between $\epsilon _{el} ^{-1/2}$ and $1$.
-Searching in this parameter space, we empirically discovered that
-the scaling factor $f_q = 0.8$ is optimal for applying ECC on Lipid14 model. 
-Such a finding is in line with the estimate considering the
-so called ``implicitly polarized charges'' (IPolQ) \cite{ipolq2013}.
-IPolQ charges are obtained as the average of partial charges given by 
-restrained electrostatic potential fitting (RESP~\cite{RESP_paper}) 
-in vacuum and in a solvent.
-Using the partial atomic charges obtained from RESP fitting in vacuum and implicit solvent reported in \cite{maciejewski14} and
-considering that the partial charges in original Lipid14 parametrization were derived using RESP~\cite{RESP_paper} in vacuum,
-we find out that the charges in Lipid14 model shall be scaled roughly by the factor $f_q=0.8$ 
--- agreeing with our empirical finding. 
-%By taking the charges of oxygen atoms in vacuum and implicit water solvent for POPC from \cite{maciejewski14}, 
-%we represent the IPolQ charges in the electronic continuum correction of the Lipid14 model
-%by increasing the scaling factor $f_q$ to $0.8$. 
+it is not clear if the same factor should be used for partial charges in molecules,
+i.e. lipids in our case. Unlike the total charge of ions, atomic partial charges in
+classical MD simulations are not experimental observables.
+Instead they are based on theoretical calculations and the
+derived values depend, for example, on the conformational
+sampling of the molecules and description of solvent 
+in the calculations \cite{RESP_paper,??}. 
+%In cases where the partial charges have some physical meaning 
+%(e.g. approximate electrostatic potential as in RESP~\cite{RESP_paper}),
+Depending to the details, partial charge calculations may partially
+incude some of the solvent electronic polarizability effects. Thus, we expect that
+the correct ECC scaling factor, $f_q$, for molecular partial charges would lie
+between $\epsilon _{el} ^{-1/2}$ (no electronic polarizability in calculation)
+and $1$ (all electronic polarizability in calculation).
+
+In this work, we empirically sample this parameter space
+to find a atomistic MD simulation force field parameters for lipids that
+accurately describes the lipid head group response to Na$^+$ and Ca$^{2+}$ concentrations
+when compared with NMR data \cite{catte16}. This data can used to accurately asses
+ion binding in PC bilayers, as discussed in section \ref{section:electrometer}.
+We chose the Lipid14~\cite{dickson14} force field parameters as a starting point,
+because their response to bound ions was apparently most realistic against NMR data
+in recent work by NMRlipids project (see Fig.~5 in Ref.~\citenum{catte16}).
+Also glycerol backbone and head group structures in Lipid14 model were
+relatively realistic when compared with other state of the art lipid models \cite{botan15}.
+The ECC correction was applied to Lipid14 parameters by scaling partial charges of the headgroup,
+glycerol backbone and carbonyl regions, which are the most polar parts in lipids and
+are expected to have the largest contribution to the cation binding.
+The hydrocarbon chain parameters are not modified, because they are
+already highly optimized and give generally a good description for
+hydrophobic part of lipid bilayers in various conditions
+in most lipids models, including Lipid14 \cite{ollila16}.
+In contrast, improvements in glycerol backbone and headgroup
+parameters are required in all available lipid models~\cite{botan15}. 
+
+Exploring different scaling factor values, applied to headgroup, glycerol backbone
+and carbonyl charges of Lipid14 model, we found out that ion binding and
+related headgroup order parameter response became weaker with the scaling of partial
+charges. The optimal behaviour of ion binding was observed with
+the scaling factor $f_q = 0.8$. % is optimal for applying ECC on Lipid14 model. 
+Interestingly, this scaling factor is in line with the estimate
+given by ``implicitly polarized charges'' (IPolQ) \cite{ipolq2013}
+combined with RESP calculations in vacuum and implicit solvent reported
+in \cite{maciejewski14}. IPolQ charges are obtained as the average of
+partial charges given by RESP calculation~\cite{RESP_paper}
+in vacuum and in a solvent. Applying the scaling factor of 0.75 to
+IPolQ charges calculated from the data in Ref.~\cite{maciejewski14},
+gives similar partial charges to ones obtained by scaling Lipid14 charges
+with a factor 0.8.
+\todo{SAMULI: I am still not sure if this is correct and/or makes sense.}
 %-----\footnote----------
   %{Depending on which QM method you arrive at values from 0.76 to 0.83, averages across atom
   %types being around 0.78--0.80. Even though the methods are almost identical, authors of Lipid 14 find lower
@@ -250,48 +273,26 @@ we find out that the charges in Lipid14 model shall be scaled roughly by the fac
   %I use 0.80 as an approximate round value, which accounts for the already lower charges in Lipid14. 
   %The use of 0.78---.79 might be more appropriate, though.}
 
-Here we apply the ECC correction with the proposed scaling factor only to the head group,
-glycerol backbone and carbonyl regions, which are the most polar parts in lipids and
-are expected to have the largest contribution to the cation binding.
-The hydrocarbon chain parameters are not modified, because they are
-already highly optimized in most lipids models including Lipid14 and
-give generally a good description for hydrophobic part of lipid bilayers
-in various conditions \cite{ollila16}.
-In contrast, all available lipid models require
-some improvements in glycerol backbone and head group regions \cite{botan15}. 
-%To minimize the detuning of the highly optimized hydrocarbon
-%parameters, 
-%Because the biologically relevant cations like \ce{Na^+} and \ce{Ca^{2+}}
-%are found to interact only with the phospholipid head group,
-%and the accuracy of alkyl sidechains in Lipid14 model are satisfactory, 
-%we exclude alkyl tails from our modifications. 
 
-The scaling of partial charges in the polar region was found to 
-significantly decrease cation binding and
-the area per molecule to $\approx$60~\AA$^2$, which is significantly smaller than the
-experimental value 64.3~\AA$^2$ (\cite{}\todo{missing REF for APL experiment}) and the original Lipid14 values $(65.6 \pm 0.5)$~\AA$^2$~\cite{dickson14}.
+While, the charge scaling improved the behaviour of lipid-ion interactions,
+it reduced the area per molecule of lipid bilayer without ions below experimental
+values. Simulations with Lipid14 parameters having partial charges of headgroup, glycerol
+backbone and carbonyls scaled with 0.8 gave the area per molecule value of $\approx$60~\AA$^2$,
+which is significantly smaller than the experimental value 64.3~\AA$^2$ (\cite{}\todo{missing REF for APL experiment})
+and the original Lipid14 value $(65.6 \pm 0.5)$~\AA$^2$~\cite{dickson14}.
 The decrease of area was found to arise from a lower hydration of the lipid head group region,
-%\todo{SAMULI: Did you analyze the effect of this to hydration or did we only speculate?
-%JOE: I found a systematic decrease of water density in the heagroup region even if I kept APL constant.}
 which can be explained by the decreased solvation free energy due to the lower polarity
-of molecules with scaled charges. 
-The solvation free energy and hydration is sensitive to Van der Waals interaction parameters,
-hence, they can be increased by reducing the radius of the selected atoms by changing the 
-the $\sigma$ parameters in Lennard-Jones potential. 
-%This allows water molecules to approach closer to lipid atoms and
-%have stonger electrostatic interactions with them.
-%\todo{SAMULI: This effect may have an official name. In that case we should mention it.}
-Here we reduce $\sigma$ with a scaling factor of $f_\sigma = 0.89$ for the same atoms for which
-charges were scaled. This has lead to an increase of the area per molecule back
-close to the experimental value (see Table~\ref{tab:apls}). 
-%\todo{Is there some justification for the below sentence?} 
-%In line with the electronic continnum correction,
-%the scaling factor for sigma parameters, $f_\sigma$,
-%has to lay between $f_q$ and 1.
+of molecules with scaled charges. The hydration can be increased
+by reducing the effective radius of atoms by changing the 
+the $\sigma$ parameters in Lennard-Jones potential for the selected atoms.
+This increases solvation free energy by allowing water molecules to
+approach closer to lipid atoms and have stonger electrostatic interactions with them.
+After reducing the $\sigma$ parameters of the same atoms for which charges were scaled
+with a scaling factor of $f_\sigma = 0.89$, the area per molecule value was
+againg in agreement with experimental value (see Table~\ref{tab:apls}). 
 
 
-
-\subsection{Comparison of ion binding affinity to experiments by using the electrometer concept}
+\subsection{Comparison of ion binding affinity to experiments by using the electrometer concept} \label{section:electrometer}
 Ion binding was compared between experiments and simulations by 
 using lipid head group order parameters and ''electrometer concept'' 
 introduced by Seelig et al. \cite{seelig87,catte16}.
@@ -307,9 +308,10 @@ decrease with bound positive charge and increase with bound negative
 charge \cite{ollila16,catte16}. The observations are rationalized 
 as a change of lipid head group dipole tilt to more vertical orientation
 with bound positive charge and {\it vice versa} for negative charge \cite{seelig87}. 
-Order parameters for C-H bonds can be accurately measured for each
-C-H bond of lipids by using H$^2$ NMR or $^{13}$C NMR techniques and
-calculated from MD simulations directly from definition
+Order parameters for all C-H bonds in lipid molecules
+can be accurately measured by using H$^2$ NMR or $^{13}$C NMR techniques.
+The same order parameters can be calculated from MD simulations directly
+from the definition
 \begin{equation}\label{OP}
 S_{\rm CH}=\frac{3}{2}\langle \cos^2\theta -1 \rangle,
 \end{equation}
@@ -331,38 +333,45 @@ $i$ refers to either $\alpha$ or $\beta$ carbon,
 %\end{equation}                                                                                                                            
 $m_i$ is an empirical constant depending on the valency and position of bound charge,
 and the value of the quadrupole coupling constant is $\chi \approx$\,167\,kHz.
-Combination of atomic absorption spectra, $^2$H NMR experiments
-and information about order parameter signs gave
+Atomic absorption spectra and $^2$H NMR data, combined with the
+information about order parameter signs gave
 $m_\alpha=-20.5$  and $m_\beta=-10.0$ for Ca$^{2+}$ binding to POPC
 bilayer (in the presence of 100~mM NaCl)~\cite{altenbach84,ollila16,catte16}.
 
 Recent work published by the NMRlipids project showed that the concept works
 qualitatively also in simulations and can be used to compare ion binding
-affinitity between simulations and experiments~\cite{catte16}. However,
-it also turned out that the sensitivity of the order parameters response
-to the bound charge has to be quantified more accurately for quantitative comparison
-of binding affinity. Hence, we first quantify the response of
-head group order parameters against experimental data from cationinc surfactants
-embedded in PC bilayer~\cite{scherer89}. Essentially all surfactants locate in
-lipid bilayers in these experiments, thus the amount of the bound charge is known
-and can be plotted against order parameter change.
-Secondly we evaluate the response of the head group order parameters to varying salt concentrations in solution
-and estimate the amount of membrane bound charge. 
+affinitity between simulations and experiments~\cite{catte16}.
+However, only systems with lipid bilayers and aqueous cations were used in that
+study. The headgroup response to bound charge then depends on both, the
+binding affinity and the response of the headgroup on bound charge.
+Thus, the headgroup response to bound charge has to be correctly
+described in the model if the concept is used for quantitative studies of
+binding affinity. Hence, we first quantify the response of head group order
+parameters to the bound charge by using experimental data measured from mixtures of cationinc surfactants
+and PC lipids~\cite{scherer89}. The amount of the bound charge is known excatly in
+these systems, because essentially all surfactants with unit charge locate in
+lipid bilayers. Thus, the headgroup order parameter response to bound charge can be first
+quantified aginst experimental data before proceeding to binding affinity studies.
+%Secondly we evaluate the response of the head group order parameters
+%to varying salt concentrations in solution
+%and estimate the amount of membrane bound charge. 
 
 
-
-%\todo{ongoing,Actual concentration of cations in simulation has yet to be estimated. 
-%If it varies too much from the nominal concentration, I may need to tweak the scaling 
-%factors, $f_q$ or only $f_\sigma$, to accomodate it. However, it is very unlikely, response 
-%to the surfactant \ce{DHMDMAB} is OK. Big patches with loads of solvent are running at the 
-%moment to guide me on the possible finite-size errors and this conc-error.
-The used experimental data report order parameters as a function of
-equilibrium cation concentration in the bulk solvent \cite{akutsu81,altenbach84}.
-Such a condition is reached in simulations by adjusting
-the simulation box size to dimensions large enough
-that ion conceration reaches a clear plateau in the bulk solvent.
-The concentrations in the units of $\mathrm{mol/l}$ were then 
-determined as
+The experimental data used to quantify cation binding reports
+order parameters as a function of equilibrium cation concentration
+in the bulk solvent \cite{akutsu81,altenbach84}. Recent work
+by NMRlipids project estimated this concentration by using
+the molar concentration in water
+[salt]=N$_{\rm c} \times$[water]\,/\,N$_{\rm w}$, where [water]\,=\,55.5~M,\\
+\todo{SAMULI: I call here concentration we used to call ''nominal'' as ''molar concentration in water''.
+  I think that the ''nominal'' is not a good term for this. We need to decide how we will call this.} \\
+which was accurate enough for the conclusions in that study \cite{catte16}.
+Since we are now targeting a model with quantitatively accurate binding
+affinity, we used larger simulation box dimensions that allow the
+determination of bulk ion conceration. Equilibrium concentration
+corresponding the experimental data in the units of $\mathrm{mol/l}$
+can be then determined from the ion concentration plateau in the bulk s
+olvent at the boundaries of the simulation box as
 \begin{equation}
 \label{eq:conc}
   C_{eq}=\frac{C_{plateau}}{0.602},
@@ -436,7 +445,7 @@ Simulation trajectories and parameters are available at \cite{??} \todo{To be up
 \subsubsection{Simulations with cationic surfactants}
 Automated topology builder \cite{malde11} was first used to create the structure of
 dihexadecyldimethylammonium bromide, C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$, molecule.
-The code AmberTools \cite{amber} was then used to generate the Amber-type force field
+AmberTools program \cite{amber} was then used to generate the Amber-type force field
 parameters. The parameters were converted to the Gromacs format by using
 acpype tool \cite{acpype}. The partial charges were then manually modified
 to approximately correspond to their equivalent segments in Lipid14 \cite{dickson14}.
@@ -521,33 +530,36 @@ in SI along with results with other water models.
   \todo{This will be replaced with new figure with surfactants and P-N vector analysis when it is done.}
 \end{figure*}
 
-Headgroup order parameter response to the bound charge was evaluated against
-experimental data measured with the cationic surfactant
-(dihexadecyldimethylammonium bromide, C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$) \cite{scherer89}.
-The exact amount of bound charge in the membrane is known in these systems, because
-practically all cationic surfactant molecules are embedded in the lipid bilayer due to
-their amphiphilic nature. Thus, the changes of head group order parameter as a function of
-mole fraction of cationic surfactants (Fig. \ref{OrderParameterCHANGESnewMODELS}) gives
-also the order parameter changes as a function of the amount of bound cations.
-\todo{Split the OP-changes figure in two: cationic surfactant -and- binding of cations.
-      The separate figure with the cationic surfactant shall be additionally accompanied
-      with a plot of Head group tilt (PN-vector?) change/response. }
+Headgroup order parameter response to the amount of bound charge can
+be quantified by using ionic surfactants with a known valency~\cite{scherer89}.
+All surfactants locate in lipid bilayers due to their amphiphilic nature,
+thus the exact amount of bound charge in the membrane is known in these systems.
+The headgroup order parameter changes as a function of bound charges can be then
+explicitly determined from such systems.
 
+Changes of headgroup order parameter as a function of added cationic surfactant
+dihexadecyldimethylammonium bromide (C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$) from
+experiments~\cite{scherer89} and simulations are shown in
+Fig. \ref{OrderParameterCHANGESnewMODELS}).
 The head group order parameter response to the bound cation concentration
-is in experiments approximately linear up to $\sim$0.3 mole fraction of the cation \cite{scherer89}.
-The linearity is also observed in simulations with original Lipid14 and with newly derived ECC-lipids models.
+is approximately linear at least up to $\sim$0.3 mole fraction in experiments and
+in both simulation models, original Lipid14 and ECClipids. 
+
+of the cation \cite{scherer89}.
+The linearity is also observed in simulations with original Lipid14 and with
+newly derived ECC-lipids models \todo{Yet to be shown.}.
 Quantitative comparison, however, reveals that the response is overestimated in 
 Lipid14 for both segments, while the ECC-lipids model gives a
 good agreement for the change of $\alpha$ segment order parameter, and slightly
 underestimates the $\beta$ segment order parameter change.
-Such a finding is not surprising, as the $\Delta S^\alpha/\Delta S^\beta$ ratio 
-of the response of Lipid14 model is found to be slightly larger than in 
-experiments (VALexp vs VALsim
-\todo{Add values of $S^\alpha/S^\beta$ response for sim and experiment
-  SAMULI: Maybe these could be put in the same figure with the order parameter
-  response and P-N vector angle change with surfactants.
-}
-), and this property is also kept by the newly derived Lipid14-based model, ECC-lipids. 
+%Such a finding is not surprising, as the $\Delta S^\alpha/\Delta S^\beta$ ratio 
+%of the response of Lipid14 model is found to be slightly larger than in 
+%experiments (VALexp vs VALsim
+%\todo{Add values of $S^\alpha/S^\beta$ response for sim and experiment
+%  SAMULI: Maybe these could be put in the same figure with the order parameter
+%  response and P-N vector angle change with surfactants.
+%}
+%), and this property is also kept by the newly derived Lipid14-based model, ECC-lipids. 
 The present comparison of head group order parameter changes 
 suggests that the observed overestimated response of all models to 
 increasing CaCl$_2$ concentration in \cite{catte16} 
@@ -575,19 +587,18 @@ to the bound charge.
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=9.0cm,angle=0]{../Fig/CAdensities.eps}
+  \includegraphics[width=9.0cm,angle=0]{../Fig/CAdensities2.eps}
   \caption{\label{fig:cacl-dens}
-    Profiles of normalized number density of \ce{Ca^{2+}} and \ce{Cl^-} for Lipid14 model with Dang ions
-    and with ECC-ions and ECC-lipids model with ECC-ions. 
-    Normalization factor for ions is 1 for monovalent ions (i.e.~\ce{Na^+} and~\ce{Cl^-}), 2 for divalent ions (i.e.~\ce{Ca^2+}), and $1/100$ for water. 
+    Number density of \ce{Ca^{2+}} and \ce{Cl^-} as a function of membrane normal axis
+    for different force fields. Data for Lipid14 with Aqvist ions are taken directly from Ref. \citenum{catte16}
+    %Normalization factor for ions is 1 for monovalent ions (i.e.~\ce{Na^+} and~\ce{Cl^-}),
+    Densities of~\ce{Cl^-}) and water are divided with 2 and 200, respectively, to visalize them
+    with the same scale as \ce{Ca^{2+}}. The molar concentration in water is 350~mM in all systems
+    presented here. 
     }
   \todo{PAVEL: draw phosphate position with its variance, add water density (scaled) and include the number of$\Gamma$-surface access.} \\
   \todo{JOE: Change the figure so that it contains a membrane background} \\
-  \todo{What are the concentrations (calculated as in NMRlipids II) in this figure?} \\
-  \todo{These should be also compared to the results with Åqvist ions, which are shown
-    in NMRlipids II. NMRlipids II have results with 350mM and 1000mM. If we have the distributions with
-    the same concentrations Åqvist results could be added also in this figure. If not, the
-  comparison has to be made some other way.}
+  \todo{Resuls with Lipid14+Dang to be added once done.}
 \end{figure}
 
 After achieving accurate head group order parameter response with a cationic surfactant, 
