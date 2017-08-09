@@ -101,19 +101,18 @@ class OrderParameter:
         return S
 
 
-    def calc_angle(self, atoms):
+    def calc_angle(self, atoms, z_dim=45.0):
         """
         calculates the angle between the vector and z-axis in degrees
         no PBC check!
-        assuming POPC centred around z=0 (discriminates leaflets)
+        assuming a sim-box-centred membrane --> it's centre ~ z_dim/2
         """
         vec = atoms[1].position - atoms[0].position
         d = math.sqrt(np.square(vec).sum())
         cos = vec[2]/d
         # values for the bottom leaflet are inverted so that 
         # they have the same nomenclature as the top leaflet
-        ## DIRTY HACK! HARD CODED NUMBER 45 -- approximate centre of the bilayer
-        cos *= math.copysign(1.0, atoms[0].position[2]-45.0)
+        cos *= math.copysign(1.0, atoms[0].position[2]-z_dim*0.5)
         try:
             angle = math.degrees(math.acos(cos))
         except ValueError:
@@ -174,7 +173,7 @@ def read_trajs_calc_OPs(ordPars, top, trajs):
         for op in ordPars.values():
             for residue in op.selection:
                 if "vec" in op.name:
-                    S = op.calc_angle(residue)
+                    S = op.calc_angle(residue, z_dim=frame.dimensions[2])
                 else:
                     S = op.calc_OP(residue)
                 op.traj.append(S)
