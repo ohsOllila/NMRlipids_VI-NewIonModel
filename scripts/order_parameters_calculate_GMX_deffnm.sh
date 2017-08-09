@@ -20,12 +20,11 @@ scriptdir=`dirname $0`
 [ -z $1 ] && die "Default file name not specified.   Usage: this_script.sh DFNM"
 dfnm=$1
 
-traj_file_name=$dfnm".xtc" #"../traj.trr" 
+traj_file_name=$dfnm".trr"  #".xtc" #"../traj.trr" 
 traj_pbc_nonwat_file_name=$dfnm"_nonwat_pbc.xtc" #"../traj.trr" 
 top_file_name=$dfnm"_last_frame_nonwat.gro"
 tpr_file_name=$dfnm".tpr"
-#op_def_file="../../Headgroup_Glycerol_OPs.def"
-op_def_file="../../order_parameter_definitions_POPC_all.def"
+op_def_file=${scriptdir}"/order_parameter_definitions_Lipid14_POPC_all.def"
 op_out_file="OrdPars.dat"
 top="topol.top"
 f_conc=55430  # in mM/L
@@ -37,7 +36,7 @@ then
 fi
 
 # remove PBC:
-! [ -s $traj_pbc_nonwat_file_name ] && echo non-water | gmx trjconv -f $traj_file_name -s $tpr_file_name -o $traj_pbc_nonwat_file_name -pbc mol
+! [ -s $traj_pbc_nonwat_file_name ] && echo non-water | gmx trjconv -f $traj_file_name -s $tpr_file_name -o $traj_pbc_nonwat_file_name -pbc mol -b 20000
 
 # get a non-water gro-file (topology)
 if ! [ -s $top_file_name ] 
@@ -50,6 +49,9 @@ then
         exit 1
     fi
 fi
+
+# rename resnames of palmitoyl and oleoyl segments 
+python $scriptdir/rename_residue_lipid14_to_PALM-POPC-OLE.py -i $top_file_name -o $top_file_name 
 
 #CALCULATE ORDER PARAMETERS
 python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $traj_pbc_nonwat_file_name -o $op_out_file && rm $traj_pbc_nonwat_file_name
