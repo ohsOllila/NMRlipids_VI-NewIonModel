@@ -226,7 +226,7 @@ in the calculations \cite{RESP_paper,??}.
 %In cases where the partial charges have some physical meaning 
 %(e.g. approximate electrostatic potential as in RESP~\cite{RESP_paper}),
 Depending to the details, partial charge calculations may partially
-incude some of the solvent electronic polarizability effects. Thus, we expect that
+include some of the solvent electronic polarizability effects. Thus, we expect that
 the correct ECC scaling factor, $f_q$, for molecular partial charges would lie
 between $\epsilon _{el} ^{-1/2}$ (no electronic polarizability in calculation)
 and $1$ (all electronic polarizability in calculation).
@@ -234,8 +234,8 @@ and $1$ (all electronic polarizability in calculation).
 In this work, we empirically sample this parameter space
 to find a atomistic MD simulation force field parameters for lipids that
 accurately describes the lipid head group response to Na$^+$ and Ca$^{2+}$ concentrations
-when compared with NMR data \cite{catte16}. This data can used to accurately asses
-ion binding in PC bilayers, as discussed in section \ref{section:electrometer}.
+when compared with NMR data \cite{akutsu81,altenbach84}. This data can used to accurately asses
+ion binding in PC bilayers, as discussed in Ref, \citenum{catte16} and in section \ref{section:electrometer}.
 We chose the Lipid14~\cite{dickson14} force field parameters as a starting point,
 because their response to bound ions was apparently most realistic against NMR data
 in recent work by NMRlipids project (see Fig.~5 in Ref.~\citenum{catte16}).
@@ -543,11 +543,8 @@ experiments~\cite{scherer89} and simulations are shown in
 Fig. \ref{OrderParameterCHANGESnewMODELS}).
 The head group order parameter response to the bound cation concentration
 is approximately linear at least up to $\sim$0.3 mole fraction in experiments and
-in both simulation models, original Lipid14 and ECClipids. 
+in both simulation models, original Lipid14 and ECClipids \todo{Yet to be shown.}. 
 
-of the cation \cite{scherer89}.
-The linearity is also observed in simulations with original Lipid14 and with
-newly derived ECC-lipids models \todo{Yet to be shown.}.
 Quantitative comparison, however, reveals that the response is overestimated in 
 Lipid14 for both segments, while the ECC-lipids model gives a
 good agreement for the change of $\alpha$ segment order parameter, and slightly
