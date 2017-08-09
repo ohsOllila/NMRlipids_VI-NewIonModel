@@ -1,5 +1,6 @@
 #OP_name    resname    atom1    atom2
 #------------------------------------------------------------
+PN_vector POPC P31 N31
 gamma1_1 POPC C35 H5A
 gamma1_2 POPC C35 H5B
 gamma1_3 POPC C35 H5C
