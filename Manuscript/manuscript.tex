@@ -118,7 +118,7 @@ and theoretical methods \cite{bockmann03,bockmann04,Berkowitz12,??}
 \todo{PAVEL: introduce previous theoretical work that discusses cation binding to POPC w.r.t. its specific moiteties, e.g. Lukas' paper}.
 While relative binding affinity of different ions is agreed to follow Hoffmeister
 series, the molecular details of binding and binding energetics are
-not fully understood \cite{cevc90,tocanne90,seelig90,binder02,catte16,??}.
+not agreed in the literature \cite{cevc90,tocanne90,seelig90,binder02,catte16,??}.
 %General conclusion from experimental
 %studies has been that multivalent ions and lithium have weak specific binding in
 %phopholipid bilayers, while other monovalent ions do not essentially
@@ -186,7 +186,7 @@ lipid bilayer simulations.
 %explicitly include polarizability has been introduced, but
 %this has turned out to be practically complicated \cite{chowdhary13}.
 In this work we circumvent the rather demanding explicit inclusion
-of electronic polariization effects \cite{chowdhary13} by effectively including
+of electronic polariization effects \cite{chowdhary13} by implicitly including
 electronic polarizability in lipid
 bilayer simulations by using the electronic continuum correction
 (ECC)~\cite{leontyev11}. 
@@ -218,28 +218,49 @@ a scaling factor of $f_q = 0.75$ \cite{some_orig_source, leontyev11}, which has 
 successfully used to improve the performance of force field for ions \cite{kohagen14,kohagen16,??}. 
 
 While the scaling factor of $f_q = 0.75$ for ions in water is well justified and 
-improves model performance against experimental scattering data \cite{kohagen14,kohagen16, Pluharova2014},
+improves the model performance against experimental scattering data \cite{kohagen14,kohagen16, Pluharova2014},
 it is not clear if the same factor should be used for partial charges in molecules,
-i.e, lipids in our case. Unlike the total charge of ions, atomic partial charges in
-classical MD simulations are not experimental observables.
-Instead they are based on theoretical calculations and the
-derived values depend, for example, on the conformational
-sampling of the molecules and description of solvent 
-in the calculations \cite{RESP_paper,??}. 
+i.e, lipids in our case. 
+Unlike the total charge of molecules, atomic partial charges within each molecule are not experimental observables.
+Although there have been proposed several schemes for the assignment of partial charges of molecules, 
+methods targetting at fitting of electrostatic potentials are 
+most popular among classical fixed charge force fields for biomolecules. \cite{Hu2007}
+Currently the most commonly employed scheme is the RESP scheme~\cite{RESP_paper,Singh1984}, 
+which fits the electrostatic potential from quantum mechanical calculations. 
+The resulting set of fixed partial atomic charges is hence 
+the best fit to electrostatic potentials of 
+an ensemble of conformations of a molecule. 
+Such a physical meaning is especially well suited for the application of ECC, 
+which targets at improving electrostatic interactions. 
+Depending to the details, partial charge calculations may also partially
+include some of the solvent electronic polarizability effects. 
+Thus, we expect that
+the correct ECC scaling factor, $f_q$, for molecular partial charges
+does not have to be striclty $f_q = \epsilon _{el} ^{-1/2}$, 
+but rather lies between this value (no electronic polarizability in the charge calculation)
+and $1$ (full electronic polarizability already included in the charge calculation).
+%
+% This is not really important for the paper:
+%
+%However, the RESP method has several remedies;  %and these are specific to RESP
+%RESP charges show a dependence on the orientation and position
+%and it does not provide numerically stable partial charges of burried atoms;~\cite{Hu2007}
+%the RESP-derived values depend, for example, on the conformational
+%sampling of the molecules and description of solvent 
+%in the calculations~\cite{RESP_paper, Singh1984, Hu2007, maciejewski14}. 
+%
+%Hirshfeld-E partitioning: \cite{Verstraelen2013}
 %In cases where the partial charges have some physical meaning 
-%(e.g. approximate electrostatic potential as in RESP~\cite{RESP_paper}),
-Depending to the details, partial charge calculations may partially
-include some of the solvent electronic polarizability effects. Thus, we expect that
-the correct ECC scaling factor, $f_q$, for molecular partial charges would lie
-between $\epsilon _{el} ^{-1/2}$ (no electronic polarizability in charge calculation)
-and $1$ (full electronic polarizability in charge calculation).
+%(e.g. approximate electrostatic potential as in RESP~~\cite{RESP_paper,Singh1984}),
+%
+%
 
-In this work, we empirically sample this parameter space
-to find a atomistic MD simulation force field parameters for lipids that
+In this work, we empirically sample this parameter space $f_q \in [0.75, 1.0]$
+to find an atomistic MD simulation force field parameters for lipids that
 accurately describe the lipid head group response to Na$^+$ and Ca$^{2+}$ concentrations
-when compared with NMR data \cite{akutsu81,altenbach84}. This data can be used to accurately asses
+when compared with NMR data \cite{akutsu81,altenbach84}. These data can be used to accurately asses
 ion binding in PC bilayers, as discussed in Ref, \citenum{catte16} and in section \ref{section:electrometer}.
-We chose the Lipid14~\cite{dickson14} force field parameters as a starting point,
+We chose Lipid14~\cite{dickson14} force field parameters as a starting point,
 because their response to bound ions was apparently most realistic against NMR data
 in recent work by NMRlipids project (see Fig.~5 in Ref.~\citenum{catte16}).
 Also glycerol backbone and head group structures in Lipid14 model were
@@ -256,8 +277,8 @@ parameters are required in all available lipid models~\cite{botan15}.
 
 Exploring different scaling factor values, applied to headgroup, glycerol backbone
 and carbonyl charges of Lipid14 model, we found out that ion binding and
-related headgroup order parameter response became weaker with the scaling of partial
-charges. The optimal behaviour of ion binding was observed with
+related headgroup order parameter responses become weaker. 
+The optimal behaviour of ion binding was observed with
 the scaling factor $f_q = 0.8$. % is optimal for applying ECC on Lipid14 model. 
 Interestingly, this scaling factor is in line with the estimate
 given by ``implicitly polarized charges'' (IPolQ) \cite{ipolq2013}
@@ -287,7 +308,7 @@ which can be explained by the decreased solvation free energy due to the lower p
 of molecules with scaled charges. The hydration can be increased
 by reducing the effective radius of atoms by changing the 
 the $\sigma$ parameters in Lennard-Jones potential for the selected atoms
-similarly as done for free ions in solution \cite{kohagen14,kohagen16,??}.
+similarly as done for free ions in solution \cite{kohagen14,kohagen16,Pluharova2014}.
 This increases solvation free energy by allowing water molecules to
 approach closer to lipid atoms and have stonger electrostatic interactions with them.
 After reducing the $\sigma$ parameters with a factor of $f_\sigma = 0.89$
@@ -353,16 +374,17 @@ the relative molar concentration in water
 [salt]=N$_{\rm c} \times$[water]\,/\,N$_{\rm w}$, where [water]\,=\,55.5~M,
 which was accurate enough for the conclusions in that study \cite{catte16}.
 Since we are now targeting a model with quantitatively accurate binding
-affinity, we used larger simulation box dimensions that allow the
-determination of bulk ion conceration. Equilibrium concentration
-corresponding the experimental data in the units of $\mathrm{mol/l}$
-can be then determined from the ion concentration plateau in the bulk s
-olvent at the boundaries of the simulation box as
+affinity, we rather use a definition that corresponds more closely to the 
+concentrations reported in experiments. 
+By using larger simulation box dimensions that allow the
+determination of bulk ion conceration, the equilibrium concentration
+corresponding to the experimental data in the units of $\mathrm{mol/l}$
+can be then determined from the simulations as
 \begin{equation}
 \label{eq:conc}
-  C_{eq}=\frac{C_{plateau}}{0.602},
+  C_{eq}=\frac{C_{bulk}}{0.602},
 \end{equation}
-where plateau concentration is the number density in the units of $\mathrm{nm}^{-3}$.
+where bulk concentration, $C_{bulk}$, is the number density in the units of $\mathrm{nm}^{-3}$.
 \todo{SAMULI: Once we have to final results, we can probably say that
   the repeat distance is not far from the experimentally measured distance \cite{pabst07,uhrikova08}
   }
@@ -480,7 +502,7 @@ The same systems where also simulated with ECC-corrected lipi model...
   \centering
   \includegraphics[height=8.5cm,angle=-90]{../Fig/form-f_exp-l14-eccl17.eps}
   \includegraphics[width=7.0cm]{../Fig/POPCstructure.eps}
-  \includegraphics[width=9.0cm]{../Fig/ipython_nb/Order-parameters_exp-L14-ECCL17_q80_sig89.png}
+  \includegraphics[width=9.0cm]{../Fig/ipython_nb/Order-parameters_exp-L14-ECCL17_q80_sig89.eps}
   \caption{\label{simVSexpNOions}
     X-ray scattering form factors from experiments~\cite{Kucerka2011} and simulations using Lipid14 \cite{dickson14} and ECC-lipids models. 
     Order parameters of head group, glycerol backbone and sn-1 and sn-2 tails  from simulations with Lipid14 \cite{dickson14} and ECC-lipids models
