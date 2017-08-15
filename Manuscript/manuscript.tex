@@ -377,39 +377,48 @@ Since we are now targeting a model with quantitatively accurate binding
 affinity, we rather use a definition that corresponds more closely to the 
 concentrations reported in experiments. 
 By using larger simulation box dimensions that allow the
-determination of bulk ion conceration, the equilibrium concentration
+determination of bulk ion concentration, the equilibrium concentration
 corresponding to the experimental data in the units of $\mathrm{mol/l}$
 can be then determined from the simulations as
 \begin{equation}
 \label{eq:conc}
   C_{eq}=\frac{C_{bulk}}{0.602},
 \end{equation}
-where bulk concentration, $C_{bulk}$, is the number density in the units of $\mathrm{nm}^{-3}$.
+where the bulk concentration, $C_{bulk}$, is the number density in the units of $\mathrm{nm}^{-3}$
+in the bulk solvent far from the membrane interface. 
 \todo{SAMULI: Once we have to final results, we can probably say that
   the repeat distance is not far from the experimentally measured distance \cite{pabst07,uhrikova08}
   }
 
 The ion binding affinities between different models were compared by calculating
 the relative surface excess between water and ions $\Gamma_w^i$ \cite{chattorajBOOK}
-\begin{equation}
-  \Gamma_w^i=\Gamma_w^x-\Gamma_i^x\frac{c_w-c_w'}{c_i-c_i'},
-\end{equation}
-where $c_w$ and $c_i$ are concentrations in bulk water, 
-$c_w'$ and $c_i'$ are concentrations inside bilayer, and
-$\Gamma_w^x$ and $\Gamma_i^x$ are surface excess of water and
-ions, respectively. The whole simulation box is considered here
-as interfacial region, thus $\Gamma_w^x=n_w/A$ and $\Gamma_i^x=n_i/A$,
-where $A$ is the area of the simulation box, and $n_w$ and
-$n_i$ are total number of water and ions in simulation box,
-respectively. The concentrations of water and ions inside
-bilayer can be expected to vanish, thus $c_w'=c_i'=0$.
-Then we get the relative surface excess for lipid bilayer
-simulations
+\begin{eqnarray}
+  \Gamma_w^i   &=& \Gamma_w-\Gamma_i \frac{C_w-C_w'}{C_i-C_i'} \\
+  \Gamma_{a} &=& \frac{n_{a} - C_{a} V - C_{a}' V'}{A} \, \, ; \, a=i,w \, ,
+\end{eqnarray}
+where index $i$ and $w$ denote ions and water respectively,
+prime accent denotes the phase inside bilayer, 
+whereas non-prime symbols account for bulk water phase,
+$n$ is the total amount of water or ions,
+$C$ denotes bulk concentrations, 
+$V$ is the volume of the respective phase separated by the Gibbs divinding plane, 
+$A$ is the area of the interface, 
+and $\Gamma_a$ is the surface excess of water or ions. 
+As $\Gamma_w^i$ does not depend on the definition of the interfacial region
+and the position of the Gibbs dividing plane~\cite{chattorajBOOK},
+we consider the whole simulation box as an interface. 
+Note that phospholipid membranes are bilayers, 
+and hence the interface occurs in the simulation box twice
+providing a surface area $2A$.
+The concentrations of water and ions inside
+the bilayer can be expected to vanish, thus $c_{i,w}'=0$.
+This provides us a simplified relation for 
+the relative surface excess of lipid bilayers in simulations
 \begin{equation}\label{surfexcess}
-  \Gamma_w^i=\frac{n_w}{A}-\frac{n_i}{A}\frac{c_w}{c_i},
+  \Gamma_w^i=\frac{1}{2A} \left ( n_w - n_i \frac{C_w}{C_i} \right ) ,
 \end{equation}
-where concentrations in bulk, $c_w$ and $c_i$, can be determined
-from the simulation box boundary.
+where the bulk concentrations, $C_w$ and $C_i$, can be determined
+from the simulation as $C_{bulk}$ in Equation~\ref{eq:conc}.
 
 \subsection{Comparison of lipid bilayer structure to experiments}
 
