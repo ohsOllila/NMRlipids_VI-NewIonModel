@@ -10,7 +10,7 @@ ls_l14=1
 ls_eccl17=2
 
 set style line ls_exp    pt 13 ps 1 lw 1 lc rgb '#000000'
-set style line ls_l14    pt  6 ps 1 lw 4 lc rgb '#33AA66'
+set style line ls_l14    pt  6 ps 1 lw 4 lc rgb '#2010EE'
 set style line ls_eccl17 pt  6 ps 1 lw 4 lc rgb '#EE1020'
 
 #set key font ",13"
@@ -25,8 +25,8 @@ set xlabel "q [Å^{-1}]"
 #set size 0.8, 0.43
 plot \
      "../../Data/POPC/no-ions/Kucerka_POPC_ULV_form-f/POPC_ULV_303K_in0D.xff" using 1:2:3 with yerrorbars title 'experiment 303K' ls ls_exp , \
-     "../../Data/POPC/no-ions/Lipid14/sim22a_0mM_NaCl_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89_noIons-ref_300K/Form_Factor_From_Simulation.dat" using 1:(2.05/3.8 * $2) title 'ECC-lipids 300K' with lines ls ls_eccl17 
-     #"../../Data/POPC/no-ions/Lipid14/sim0_ref_noIons/Form_Factor_From_Simulation.dat" using 1:(2.3/3.8 * $2) title 'Lipid14 313K' with lines ls ls_l14, \
+     "../../Data/POPC/no-ions/Lipid14/sim22a_0mM_NaCl_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.89_noIons-ref_300K/Form_Factor_From_Simulation.dat" using 1:(2.05/3.8 * $2) title 'ECC-lipids 300K' with lines ls ls_eccl17 , \
+     "../../Data/POPC/no-ions/Lipid14/sim0_ref_noIons/Form_Factor_From_Simulation.dat" using 1:(2.3/3.8 * $2) title 'Lipid14 313K' with lines ls ls_l14, \
      #"../../Data/POPC/no-ions/Kucerka_POPC_ULV_form-f/POPC_ULV_323K_in0D.xff" using 1:2:3 with yerrorbars title 'experiment 323K' ls ls_exp, \
      #"../../Data/POPC/no-ions/Lipid14/sim0_ref_noIons/Form_Factor_From_Simulation.dat" using 1:(2.3/3.8 * $2) title 'Lipid14 313K' ls ls_l14, \ 
      #"../../Data/POPC/no-ions/Lipid14/sim20_0mM_NaCl_OPC3_non-tail-atoms_q-sc_0.80_sig-sc_0.875_noIons-ref/Form_Factor_From_Simulation.dat" using 1:(2.1/3.8 * $2) title 'ECCLipids17 313K' ls ls_eccl17 
