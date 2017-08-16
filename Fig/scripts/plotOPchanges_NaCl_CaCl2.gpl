@@ -49,7 +49,7 @@ plot \
      "../../Data/POPC/NaCl/lipid14/OPvsNACLconsNMRlipidsII.dat" using 1:2 with linespoint ls ls_l14 notitle , \
      "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeORIG.dat" using 1:2 with linespoint title 'Lipid14 + Dang' ls ls_l14d, \
      "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeORIG.dat" using 1:4 with linespoint notitle ls ls_l14d, \
-     "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC3.dat" using 1:2 with linespoint ls ls_eccl17 title 'ECCLipid17', \
+     "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC3.dat" using 1:2 with linespoint ls ls_eccl17 title 'ECC-lipids', \
      "../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC3.dat" using 1:4 with linespoint ls ls_eccl17 notitle , \
      #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeHGglycSCALED_0.80_HGglyc-Sigmas_0.89_OPC3.dat" using 1:4 with linespoint notitle ls ls_eccl17     #
      #"../../Data/POPC/NaCl/lipid14/LIPID14naclCONSchangeORIG.dat" using 1:4 with linespoint notitle ls ls_l14, \
