@@ -34,10 +34,13 @@ then
     seq 2 5 | gmx density -sl 900 -dens number -ng 3 -f $traj_file_name -center -symm -relative -o $dens_file_name -xvg none -b 100000 
 fi
 
+# calculate area and area-per-lipid
+area=`bash $scriptdir/area-per-lipid_calculate.sh | grep -e "area" | cut -d " " -f3`
 
 # getting actual bulk concentration from number density profile
 python $scriptdir/get_conc_ion_bulk.py 
 conc=`cut -d " " -f1 conc_ion_bulk_mmolL.dat`
+conc_anion=`cut -d " " -f1 conc_anion_bulk_mmolL.dat`
 conc_wat=`cut -d " " -f1 conc_wat_bulk_mmolL.dat`
 
 #getting nominal concentration from topol.top file (if exists)
@@ -47,6 +50,9 @@ then
     nion=`grep -e "molecules" -A 10 $top | grep -e "^NA"  -e "^CA"  | cut -d " " -f1 --complement `
     [ -z $nion ] && nion=0
 
+    nanion=`grep -e "molecules" -A 10 $top | grep -e "^CL"  | cut -d " " -f1 --complement `
+    [ -z $nanion ] && nanion=0
+
     concnom=`echo $f_conc "*" $nion / $nwat  | bc`
     echo nominal conc: $concnom
     #sed "s/conc/$conc/" -i ${op_out_file}.line
@@ -55,19 +61,10 @@ else
     echo "Topology probably not present, can't calculate concentration."
 fi
 
-surfexc=`echo $nwat "-" $nion '*' $conc_wat"/"$conc  | bc`
+surfexc=`echo scale=4 ; ($nwat "-" $nion '*' $conc_wat"/"$conc)/("2*"$area)  | bc`
+surfexcani=`echo scale=4 ; ($nwat "-" $nanion '*' $conc_wat"/"$conc_anion)/("2*"$area)  | bc`
 
-echo Relative surface excess of ions-water = $surfexc
+echo Relative surface excess of water--ions = $surfexc > surf_excess_wat_ions.dat
+echo Relative surface excess of water--anions = $surfexcani > surf_excess_wat_anions.dat
+echo Relative surface excess of water--ions = $surfexc
 
-exit 0
-
-# remove PBC:
-# center the trajectory around POPC (should be no. 2)
-# and start at 100ns
-! [ -s $traj_pbc_nonwat_file_name ] && echo 2 non-water | gmx trjconv -f $traj_file_name -s topol.tpr -o $traj_pbc_nonwat_file_name -pbc mol -center -b 100000 #-n index
-
-# rename resnames of palmitoyl and oleoyl segments 
-python $scriptdir/rename_residue_lipid14_to_PALM-POPC-OLE.py -i $top_file_name -o $top_file_name 
-
-#CALCULATE ORDER PARAMETERS
-python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $traj_pbc_nonwat_file_name -o $op_out_file && rm $traj_pbc_nonwat_file_name

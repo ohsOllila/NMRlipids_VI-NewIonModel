@@ -32,6 +32,7 @@ def main():
        if line.startswith("Box-Y"):
            ydim=float(line.split()[1])
 
+   print "area= %6.3f nm2" % (xdim*ydim)
    print "apl= (%6.3f*%6.3f)/%3d = %6.3f nm2" % (xdim,ydim,nLipids, xdim*ydim/nLipids)
 
    sys.exit(0)
