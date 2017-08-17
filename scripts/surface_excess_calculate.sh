@@ -35,7 +35,8 @@ then
 fi
 
 # calculate area and area-per-lipid
-area=`bash $scriptdir/area-per-lipid_calculate.sh | grep -e "area" | cut -d " " -f3`
+area=`bash $scriptdir/area-per-lipid_calculate.sh | grep -e "area" | cut -d " " -f2`
+echo area = $area nm2
 
 # getting actual bulk concentration from number density profile
 python $scriptdir/get_conc_ion_bulk.py 
@@ -43,10 +44,21 @@ conc=`cut -d " " -f1 conc_ion_bulk_mmolL.dat`
 conc_anion=`cut -d " " -f1 conc_anion_bulk_mmolL.dat`
 conc_wat=`cut -d " " -f1 conc_wat_bulk_mmolL.dat`
 
+
 #getting nominal concentration from topol.top file (if exists)
 if [ -f $top ]
 then
     nwat=`grep -e "molecules" -A 10 $top | grep -e "^SOL" -e "^TIP" -e "^SPCE" -e "^OPC3" | cut -d " " -f1 --complement `
+    # correct the number density of water with the number of its atoms
+    # unfortunately, this does not really work, all 4-site models I employ use name SOL, however, some 3-site use it too
+    nwat4=`grep -e "molecules" -A 10 $top | grep -e "^TIP4" -e "^OPC4" | cut -d " " -f1 --complement `
+    if ! [ -z $nwat4 ]
+    then
+       watdenom=4.0
+    else
+       watdenom=3.0
+    fi
+
     nion=`grep -e "molecules" -A 10 $top | grep -e "^NA"  -e "^CA"  | cut -d " " -f1 --complement `
     [ -z $nion ] && nion=0
 
@@ -61,10 +73,15 @@ else
     echo "Topology probably not present, can't calculate concentration."
 fi
 
-surfexc=`echo scale=4 ; ($nwat "-" $nion '*' $conc_wat"/"$conc)/("2*"$area)  | bc`
-surfexcani=`echo scale=4 ; ($nwat "-" $nanion '*' $conc_wat"/"$conc_anion)/("2*"$area)  | bc`
+# correct the number density of water with the number of its atoms
+conc_wat=`echo "scale=4 ; "$conc_wat "/" $watdenom | bc `
+echo water concentration = $conc_wat mmol/L
 
-echo Relative surface excess of water--ions = $surfexc > surf_excess_wat_ions.dat
-echo Relative surface excess of water--anions = $surfexcani > surf_excess_wat_anions.dat
-echo Relative surface excess of water--ions = $surfexc
+surfexc=`echo "scale=4 ; ("$nwat "-" $nion '*' $conc_wat"/"$conc")/(2*"$area")"  | bc`
+surfexcani=`echo "scale=4 ; ("$nwat "-" $nanion '*' $conc_wat"/"$conc_anion")/(2*"$area")"  | bc`
+
+echo Relative surface excess of water--ions = $surfexc nm-2 > surf_excess_wat_ions.dat
+echo Relative surface excess of water--anions = $surfexcani nm-2 > surf_excess_wat_anions.dat
+echo Relative surface excess of water--ions = $surfexc nm-2 
+echo Relative surface excess of water--anions = $surfexcani nm-2 
 
