@@ -391,9 +391,9 @@ in the bulk solvent far from the membrane interface.
   }
 
 The ion binding affinities between different models were compared by calculating
-the relative surface excess between water and ions $\Gamma_w^i$ \cite{chattorajBOOK}
+the relative surface excess of ions with respect to water, $\Gamma_i^w$, as \cite{chattorajBOOK}
 \begin{eqnarray}
-  \Gamma_w^i   &=& \Gamma_w-\Gamma_i \frac{C_w-C_w'}{C_i-C_i'} \\
+  \Gamma_i^w   &=& \Gamma_i-\Gamma_w \frac{C_i-C_i'}{C_w-C_w'} \\
   \Gamma_{a} &=& \frac{n_{a} - C_{a} V - C_{a}' V'}{A} \, \, ; \, a=i,w \, ,
 \end{eqnarray}
 where index $i$ and $w$ denote ions and water respectively,
@@ -404,7 +404,7 @@ $C$ denotes bulk concentrations,
 $V$ is the volume of the respective phase separated by the Gibbs divinding plane, 
 $A$ is the area of the interface, 
 and $\Gamma_a$ is the surface excess of water or ions. 
-As $\Gamma_w^i$ does not depend on the definition of the interfacial region
+As $\Gamma_i^w$ does not depend on the definition of the interfacial region
 and the position of the Gibbs dividing plane~\cite{chattorajBOOK},
 we consider the whole simulation box as an interface. 
 Note that phospholipid membranes are bilayers, 
@@ -415,7 +415,7 @@ the bilayer can be expected to vanish, thus $c_{i,w}'=0$.
 This provides us a simplified relation for 
 the relative surface excess of lipid bilayers in simulations
 \begin{equation}\label{surfexcess}
-  \Gamma_w^i=\frac{1}{2A} \left ( n_w - n_i \frac{C_w}{C_i} \right ) ,
+  \Gamma_i^w=\frac{1}{2A} \left ( n_i - n_w \frac{C_i}{C_w} \right ) ,
 \end{equation}
 where the bulk concentrations, $C_w$ and $C_i$, can be determined
 from the simulation as $C_{bulk}$ in Equation~\ref{eq:conc}.

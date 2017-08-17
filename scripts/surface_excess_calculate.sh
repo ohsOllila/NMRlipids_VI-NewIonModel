@@ -77,11 +77,11 @@ fi
 conc_wat=`echo "scale=4 ; "$conc_wat "/" $watdenom | bc `
 echo water concentration = $conc_wat mmol/L
 
-surfexc=`echo "scale=4 ; ("$nwat "-" $nion '*' $conc_wat"/"$conc")/(2*"$area")"  | bc`
-surfexcani=`echo "scale=4 ; ("$nwat "-" $nanion '*' $conc_wat"/"$conc_anion")/(2*"$area")"  | bc`
+surfexc=`echo "scale=4 ; ("$nion "-" $nwat '*' $conc"/"$conc_wat")/(2*"$area")"  | bc`
+surfexcani=`echo "scale=4 ; ("$nanion "-" $nwat '*' $conc_anion"/"$conc_wat")/(2*"$area")"  | bc`
 
-echo Relative surface excess of water--ions = $surfexc nm-2 > surf_excess_wat_ions.dat
-echo Relative surface excess of water--anions = $surfexcani nm-2 > surf_excess_wat_anions.dat
-echo Relative surface excess of water--ions = $surfexc nm-2 
-echo Relative surface excess of water--anions = $surfexcani nm-2 
+echo Relative surface excess of ions  --water = $surfexc nm-2 > surf_excess_wat_ions.dat
+echo Relative surface excess of ions  --water = $surfexc nm-2 
+echo Relative surface excess of anions--water = $surfexcani nm-2 > surf_excess_wat_anions.dat
+echo Relative surface excess of anions--water = $surfexcani nm-2 
 
