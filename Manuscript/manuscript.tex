@@ -723,15 +723,20 @@ also overestimate the amount of bound cations.
   \includegraphics[width=9.0cm,angle=0]{../Fig/CAdensities2.eps}
   \caption{\label{fig:cacl-dens}
     Number density of \ce{Ca^{2+}} and \ce{Cl^-} as a function of membrane normal axis
-    for different force fields. Data for Lipid14 with \AA{}qvist ions are taken directly from Ref. \citenum{catte16}
+    for different force fields. Data for Lipid14 with \AA{}qvist ions are taken directly from Ref. \citenum{catte16}.
+    Relative surface excess for the respective simulations are: 
+    Lipid14 with \AA{}qvist ions $\Gamma_i^w = XX nm^{-3}$; 
+    Lipid14 with Dang ions $\Gamma_i^w = 0.3 nm^{-3}$; 
+    ECC-lipids with ECC-ions $\Gamma_i^w = 0.07 nm^{-3}$. 
     %Normalization factor for ions is 1 for monovalent ions (i.e.~\ce{Na^+} and~\ce{Cl^-}),
-    Densities of~\ce{Cl^-}) and water are divided with 2 and 200, respectively, to visalize them
-    with the same scale as \ce{Ca^{2+}}. The molar concentration in water is 350~mM in all systems
+    Densities of~\ce{Cl^-} and water are divided with 2 and 200, respectively, to visalize them
+    with the same scale as \ce{Ca^{2+}}. The molar concentration of the ions in water is 350~mM in all systems
     presented here. 
     }
+  \todo{Calculate the surface excess for L14+Aqvist sim.}
   \todo{PAVEL: draw phosphate position with its variance, add water density (scaled) and include the number of$\Gamma$-surface access.} \\
   \todo{JOE: Change the figure so that it contains a membrane background} \\
-  \todo{Resuls with Lipid14+Dang to be added once done.}
+  \todo{Resuls with Lipid14+Dang to be added once done -- running with larger box.}
 \end{figure}
 
 
@@ -755,6 +760,15 @@ experiments~\cite{altenbach84}.
 In addition to the ternary complexes, there also is a non-negligable probability
 of one \ce{Ca^{2+}} cross-bridging three POPC molecules.
 Technical details of the analysis are in the SI. 
+
+In addition, we estimated the relative binding affinities of several moieties in POPC:
+phosphate moiety, side chain 1 carbonyl group and side chain 2 carbonyl group.
+Using the probability isodensity contours (see Fig.~\ref{fig:volmaps}), 
+we estimate that the largest contribution
+to the binding of \ce{Ca2+} to POPC membranes likely comes from the phosphate group. 
+Although the isodensity plots are relatively easy to interpret,
+the contours shown in Fig.~\ref{fig:volmaps} cannot conclusively tell on the details
+of \ce{Ca2+} binding to any of the two carbonyl moieties. 
 
 \todo{JOE: Put details of the cation-binding stoichiometry analysis to SI.} \\
 \todo{JOE: Update the binding isotherm figure with new simulations} \\
@@ -788,6 +802,23 @@ JOE: Pavel suggest using volumetric map (e.g. in VMD) to visualise the amounts o
 
 
 %\todo{It might be worth acknowledging each experimental finding in \cite{Altenbach84} and observations in \cite{Javanainen2017-ChemComm}.}
+
+
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=6.0cm]{../Fig/volmap_resid10_Ca_Cl_PO4Cent.png} \\
+  \includegraphics[width=4.0cm]{../Fig/volmap_resid10_Ca_Cl_sn1Cent.png}
+  \includegraphics[width=3.6cm]{../Fig/volmap_resid10_Ca_Cl_sn2Cent.png}
+  \caption{\label{fig:volmaps}
+      Contours of probability isodensities of \ce{Ca2+} with respect to 
+      various moieties fixed in space (highlighted with transparent spheres): 
+      phosphate moiety, side chain 1 carbonyl group and side chain 2 carbonyl group.
+      Shown contours suggest that the dominant contribution 
+      to \ce{Ca2+} binding likely comes from the phosphate group, 
+      but remain inconclusive on the details of the interactions with any of the two carbonyl groups. 
+  }
+\end{figure}
+
 
 
 \section{Conclusions}
