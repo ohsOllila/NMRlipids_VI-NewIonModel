@@ -12,15 +12,21 @@ scriptdir=`dirname $0`
 
 traj_file_name="traj_openMM" #"../traj.trr" 
 top_file_name="conf_init.gro"
+top_file_name2="conf_init_PopcPalmOle.gro"
 #op_def_file="../../Headgroup_Glycerol_OPs.def"
-op_def_file="../../order_parameter_definitions_POPC_all.def"
+#op_def_file="../../order_parameter_definitions_POPC_all.def"
+op_def_file=${scriptdir}"/order_parameter_definitions_Lipid14_POPC_all.def"
 op_out_file="OrdPars.dat"
 top="topol.top"
 f_conc=55430  # in mM/L
 
+
+# rename resnames of palmitoyl and oleoyl segments 
+python $scriptdir/rename_residue_lipid14_to_PALM-POPC-OLE.py -i $top_file_name -o $top_file_name2 
+
 #CALCULATE ORDER PARAMETERS
 # can operate directly on DCD trajectory, cause it has PBC removed already
-python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name -x $traj_file_name -o $op_out_file 
+python $scriptdir/calcOrderParameters.py -i $op_def_file -t $top_file_name2 -x $traj_file_name -o $op_out_file 
 
 
 #getting concentration from topol.top file (if exists)
@@ -36,3 +42,4 @@ then
 else
     echo "Topology probably not present, can't calculate concentration."
 fi
+

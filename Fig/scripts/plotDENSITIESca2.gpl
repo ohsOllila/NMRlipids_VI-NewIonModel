@@ -43,8 +43,9 @@ set ylabel " "
 set label at graph 0.044, graph 0.84 "LIPID14 + Dang ions"
 #set label at graph 0.85,graph 0.14 "304 mM" 
 #set label at graph 0.85,graph 0.35 "856 mM" 
-plot      "../../Data/POPC/no-ions/Lipid14/sim2-1_856mM_CaCl2_full-Dang_OPC3/density.xvg" using 1:2        with lines ls 7 notitle,\
-                                                                                       "" using 1:($3/2.0) with lines ls 2 notitle
+plot      "../../Data/POPC/no-ions/Lipid14/sim2-2_856mM_CaCl2_full-Dang_TIP3p/density_ca_cl_water.xvg" using 1:2        with lines ls 7 notitle,\
+                                                                                       "" using 1:($3/2.0) with lines ls 2 notitle, \
+                                                                                       "" using 1:($4/200.0) with lines ls 3 notitle 
 
 unset label
 

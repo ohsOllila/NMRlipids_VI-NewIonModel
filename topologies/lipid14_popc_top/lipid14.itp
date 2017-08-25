@@ -43,4 +43,11 @@ OWT4   15.9994       0.000       A   0.31589       0.77490
 OPC4    0.0000  0.0000  A   3.16655e-01  8.903586e-01
 ; ECC-water extra atomtypes - work-in-progress model
 OW_ecc  8     15.99940     0.000       A    3.192425184797e-01  4.982446609525e-01 ; PARM 5 6
+; tip3p-FB water extra atomtypes
+OW_tip3pfb    8     15.99940     0.000       A    0.317796456355  0.652143528104
+HW_tip3pfb    1      1.00800     0.000       A    0.00000e+00  0.00000e+00
+; tip4p-FB water extra atomtypes
+OW_tip4pfb    8     15.99940     0.00000     A    3.16555e-01  7.49279e-01
+HW_tip4pfb    1      1.00800     0.00000     A    0.00000e+00  0.00000e+00
+MW_tip4pfb    0      0.00000     0.00000     D    0.00000e+00  0.00000e+00 ; Same as other virtual sites
 
