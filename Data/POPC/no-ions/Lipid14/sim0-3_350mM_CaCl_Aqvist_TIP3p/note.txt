@@ -1,0 +1,4 @@
+taken from
+DOI: 10.1039/C6CP04883H (Paper) Phys. Chem. Chem. Phys., 2016, 18, 32560-32569
+Zenodo link:
+https://doi.org/10.5281/zenodo.34415
