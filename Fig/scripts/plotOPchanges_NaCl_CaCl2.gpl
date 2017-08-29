@@ -35,9 +35,10 @@ set style line ls_eccl17 pt  6 ps 2 dashtype 3 lw 6 lc rgb 'red'  #'#DE7845'
 #set key font ",13"
 set key at screen 1.60,screen 1.11 reverse Left # maxcols 2 maxrows 9 
 
-y_min=-0.12
-set yrange [y_min:0.01]
-set y2range [y_min:0.01]
+y_min=-0.125
+y_max=0.005
+set yrange [y_min:y_max]
+set y2range [y_min:y_max]
 set xtics format " "			
 set ylabel "{/Symbol D}S^{/Symbol b}_{CH}"
 set x2label " "
