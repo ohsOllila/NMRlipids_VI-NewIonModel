@@ -265,19 +265,19 @@ because their response to bound ions was apparently most realistic against NMR d
 in recent work by NMRlipids project (see Fig.~5 in Ref.~\citenum{catte16}).
 Also glycerol backbone and head group structures in Lipid14 model were
 relatively realistic when compared with other state of the art lipid models \cite{botan15}.
-The ECC correction was applied to Lipid14 parameters by scaling partial charges of the headgroup,
+The ECC correction was applied to Lipid14 parameters by scaling partial charges of the head group,
 glycerol backbone and carbonyl regions, which are the most polar parts in lipids and
 are expected to have the largest contribution to the cation binding.
 The hydrocarbon chain parameters are not modified, because they are
 already highly optimized and give generally a good description for
 hydrophobic part of lipid bilayers in various conditions
 in most lipids models, including Lipid14 \cite{ollila16}.
-In contrast, improvements in glycerol backbone and headgroup
+In contrast, improvements in glycerol backbone and head group
 parameters are required in all available lipid models~\cite{botan15}. 
 
-Exploring different scaling factor values, applied to headgroup, glycerol backbone
+Exploring different scaling factor values, applied to head group, glycerol backbone
 and carbonyl charges of Lipid14 model, we found out that ion binding and
-related headgroup order parameter responses become weaker. 
+related head group order parameter responses become weaker. 
 The optimal behaviour of ion binding was observed with
 the scaling factor $f_q = 0.8$. % is optimal for applying ECC on Lipid14 model. 
 Interestingly, this scaling factor is in line with the estimate
@@ -299,7 +299,7 @@ with a factor 0.8.
 
 While, the charge scaling improved the behaviour of lipid-ion interactions,
 it reduced the area per molecule of lipid bilayer without ions below experimental
-values. Simulations with Lipid14 parameters having partial charges of headgroup, glycerol
+values. Simulations with Lipid14 parameters having partial charges of head group, glycerol
 backbone and carbonyls scaled with 0.8 gave the area per molecule value of $\approx$60~\AA$^2$,
 which is significantly smaller than the experimental value 64.3~\AA$^2$ (\cite{}\todo{missing REF for APL experiment})
 and the original Lipid14 value $(65.6 \pm 0.5)$~\AA$^2$~\cite{dickson14}.
@@ -316,7 +316,7 @@ for the same atoms for which charges were scaled, the area per molecule value wa
 again in agreement with experimental value (see Table~\ref{tab:apls}). 
 
 
-\subsection{Comparison of ion binding affinity to experiments by using the electrometer concept} \label{section:electrometer}
+\subsection{Comparing head group order parameter response to bound charge in simulations and experiments by using the electrometer concept} \label{section:electrometer}
 Ion binding was compared between experiments and simulations by 
 using lipid head group order parameters and 
 ''electrometer concept'' \cite{seelig87,catte16}.
@@ -333,7 +333,7 @@ in account \cite{ollila16,catte16}. The concept was also shown
 to be suitable for the comparison of ion binding affinity in lipid 
 bilayers between simulations and experiments~\cite{catte16}.
  
-The order parameters for $\alpha$ and $\beta$ segments in headgroup, as well as for
+The order parameters for $\alpha$ and $\beta$ segments in head group, as well as for
 all C-H bonds in lipid molecules,
 can be accurately measured by using $^2$H NMR or $^{13}$C NMR techniques.
 The order parameters can be calculated from MD simulations 
@@ -363,7 +363,7 @@ Atomic absorption spectra and $^2$H NMR data gave
 $m_\alpha=-20.5$  and $m_\beta=-10.0$ for Ca$^{2+}$ binding to POPC
 bilayer (in the presence of 100~mM NaCl)~\cite{altenbach84,ollila16,catte16}.
 Before using electrometer concept to analyze cation binding, 
-we calibrate the response of headgroup order parameters to the bound
+we calibrate the response of head group order parameters to the bound
 charge in the simulation models. This is done by comparing 
 the slope $m_i$ in Eq. \ref{OPchangeEQ} between simulations and
 experiments of cationic surfactants in POPC bilayer \cite{scherer89}. 
@@ -372,10 +372,13 @@ molar ratio directly gives the amount of bound charge per
 lipid $X^\pm$ is these systems.
 
 \subsection{Ion concentrations and binding affinity}
-The experimental headgroup order parameter data used
+The experimental head group order parameter data used
 in this work is reported as a function of 
 cation concentration remaining in the bulk 
 solvent \cite{akutsu81,altenbach84}. 
+\todo{JOE: Following is hard to understand 
+(even though I think I know the idea. 
+Should be rewritten so that it is clear.}
 To determine the same concentration from simulations, we
 use large enough box to ensure that the ion concetration
 reaches a clear plateau and the electroneutrality
@@ -416,6 +419,7 @@ the relative surface excess of lipid bilayers in simulations
   \Gamma_i^w=\frac{1}{2A} \left ( n_i - n_w \frac{C_i}{C_w} \right ) ,
 \end{equation}
 where the bulk concentrations, $C_w$ and $C_i$, can be determined
+\todo{JOE: I wouldn't use the term plateau. Term ``region where concentration is constant'' is preferred. Applies to the whole text -- replace everywhere. }
 from the concentration plateau at the edge of the simulation box.
 
 \subsection{Comparison of lipid bilayer structure to experiments}
@@ -428,7 +432,7 @@ validates the dimensions of the lipid bilayer (thickness and area per
 molecule)~\cite{ollila16}.
 
 The order parameters were calculated from simulations for all C-H bonds
-in lipid molecule by using Eq. \ref{OP}. Form factors were calculated 
+in lipid molecules by using Eq. \ref{OP}. Form factors were calculated 
 from equation
 \begin{equation}
   F(q) = \int _{-D/2} ^{D/2} \left ( \sum _\alpha f_\alpha (q_z) n_\alpha (z) - \rho _s \right ) \exp (izq_z) \mathrm{d}z,
@@ -498,13 +502,14 @@ mole fractions 10\%, 20\%, 30\%, 42\% and 50\% of surfactant in the POPC bilayer
 All systems contained 50 POPC molecules per leaflet, 6340 TIP3P water molecules and
 6, 14, 21, 35 or 50 surfactants per leaflet.
 The systems were simulated for 200~ns using Lipid14 model for POPC.
-First 20~ns was omitted from the analysis. 
+First 20~ns were omitted from the analysis. 
 
-The same systems were also simulated with ECC-lipid model for POPC \todo{How long?}.
+The same systems were also simulated with ECC-lipid model for POPC using the same setup. 
 In these simulations the ECC correction was also applied to the cationic surfactant 
-by scaling all \todo{Were all scaled? Are there charges is tails? Were those scaled as well in this case?} 
-charges with the same factor as for ECC-lipids, $f_q=0.8$, 
+by scaling all charges with the same factor as for ECC-lipids, $f_q=0.8$, 
 and by using the atom types with reduced $\sigma$ parameters from ECC-lipids. 
+\todo{Were all scaled? Are there charges is tails? Were those scaled as well in this case? 
+      -- JOE: yes, all scaled for simplicity. } 
 
 
 
@@ -573,7 +578,7 @@ in SI along with results with other water models.
 %The optimal value for $f_\sigma$ was found by representing the overall membrane structure well
 %by matching scattering form factors to experimental data~\cite{Petrache06, Kucerka08, Pabst10}.
 
-\subsection{Response of POPC headgroup to bound charge}
+\subsection{Response of POPC head group to bound charge}
 
 \begin{figure}[tbp]
   \centering
@@ -589,35 +594,35 @@ in SI along with results with other water models.
 \end{figure}
 
 Before proceeding to ion binding affinity studies, we quantify
-the response of headgroup order parameters to the amount of 
+the response of head group order parameters to the amount of 
 bound charge by using mixtures of monovalent cationic surfactants
 and POPC~\cite{scherer89}. The amount of bound charge per PC 
 in these systems is 
 given by the molar fraction of cationic surfactants, because essentially all surfactants 
-locate in the lipid bilayers. Comparison of headgroup order parameter
+locate in the lipid bilayers. Comparison of head group order parameter
 changes between simulations and experiments 
 as a function of mole fraction of cationic surfactants 
 can be then used to validate the sensitivity of
-lipid headgroup to bound charge in simulation models.
+lipid head group to bound charge in simulation models.
 
 %depends on both, the
-%binding affinity and the response of the headgroup on bound charge.
-%Thus, the headgroup response to bound charge has to be correctly
+%binding affinity and the response of the head group on bound charge.
+%Thus, the head group response to bound charge has to be correctly
 %described in the model if the concept is used for quantitative studies of
 %binding affinity. Hence, we first quantify the response of head group order
 %parameters to the bound charge by using experimental data measured from
 %mixtures of cationinc surfactants and PC lipids~\cite{scherer89}.
 %
-%Thus, the headgroup order parameter response to bound charge can be first
+%Thus, the head group order parameter response to bound charge can be first
 %quantified aginst experimental data before proceeding to binding affinity studies.
 %Headgroup order parameter response to the amount of bound charge can
 %be quantified by using ionic surfactants with a known valency~\cite{scherer89}.
 %All surfactants locate in lipid bilayers due to their amphiphilic nature,
 %thus the exact amount of bound charge in the membrane is known in these systems.
-%The headgroup order parameter changes as a function of bound charges can be then
+%The head group order parameter changes as a function of bound charges can be then
 %explicitly determined from such systems.
 
-The headgroup order parameter changes as a function of mole fraction
+The head group order parameter changes as a function of mole fraction
 of cationic surfactant dihexadecyldimethylammonium bromide (C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$) 
 is compared between experiments~\cite{scherer89} and simulations in
 Fig. \ref{OrderParameterCHANGESsurf}. 
@@ -626,7 +631,7 @@ in simulations and experiments with increasing amount of cationic
 surfactants up to mole fractions of $\sim$50\%,
 as expected from Eq. \ref{OPchangeEQ}.
 The slope is, however, too steep in Lipid14 model indicating that 
-the headgroup order parameters are too sensitive to a bound charge.
+the head group order parameters are too sensitive to a bound charge.
 The ECC-lipids model gives a slope in very good agreement with experiments
 for the $\alpha$ segment, while the slope is slightly
 underestimated for the $\beta$ segment.
@@ -642,13 +647,13 @@ underestimated for the $\beta$ segment.
 we would actually learn anything useful from this.}
 
 Also the effect of bound cations on the
-headgroup P-N vector angle with respect to the membrane normal
+head group P-N vector angle with respect to the membrane normal
 is shown in Fig.~\ref{OrderParameterCHANGESsurf}.
-The headgroup orients more parallel to the membrane
+The head group orients more parallel to the membrane
 normal with an increasing amount of bound cations, as expected~\cite{seelig87}. 
 The orientation effect is more pronounced in Lipid14 model than 
-in ECC-lipids model, which is in line with the order parameter 
-results and reduced charge--dipole interactions in the ECC-lipid model.
+in ECC-lipids model, which is in line with the higher order parameter 
+response and reduced charge--dipole interactions in the ECC-lipid model.
 Since the response of $\alpha$-order parameter is in very good agreement
 with experiments in ECC-lipid model, we can suggest a relation between
 order parameter and P-N vector angle changes. The data gives
@@ -667,7 +672,7 @@ changes from experiments.}
   \centering
   \includegraphics[width=16.0cm]{../Fig/OrdParChanges_NaCl_CaCl2.eps}
   \caption{\label{OrderParameterCHANGESnewMODELS}
-    Changes of headgroup order parameters of POPC bilayer as a function of NaCl and CaCl$_2$ concentrations
+    Changes of head group order parameters of POPC bilayer as a function of NaCl and CaCl$_2$ concentrations
     are shown from simulations with different force fields together with experimental data 
     (DPPC \cite{akutsu81} and POPC \cite{altenbach84}). 
     Ion concentrations in bulk water are shown in x-axis. 
@@ -677,9 +682,9 @@ changes from experiments.}
   }
 \end{figure*}
 
-The linear decrease of the headgroup order parameters, quantified in previous 
+The linear decrease of the head group order parameters, quantified in previous 
 section, can be used to measure the amount of bound aqueous cations in lipid 
-bilayers~\cite{seelig87,catte16}. The headgroup order parameter response 
+bilayers~\cite{seelig87,catte16}. The head group order parameter response 
 to NaCl and CaCl$_2$ concentrations from experiments (DPPC \cite{akutsu81} 
 and POPC \cite{altenbach84}) and different simulation models for POPC
 are shown in Fig. \ref{OrderParameterCHANGESnewMODELS}.
@@ -688,11 +693,19 @@ are shown in Fig. \ref{OrderParameterCHANGESnewMODELS}.
 %with ions by Dang~\cite{smith94,chang1999,dang2006} and from ECC-lipids simulations with ECC-ions.
 
 As already discussed previously~\cite{catte16}, NaCl has a negligible effect 
-on the headgroup order parameters with submolar 
+\todo{JOE: catte16 is not the original work that introduces NaCl effects -- on the
+           contrary, the presented simulations (which for the core of the original work there)
+           rather suggest that there is some effect. 
+           I think this has to be started from a different perspective.
+           For example, we can start with saying that we use Na and Ca as biologically relevant cations
+           and they also are representants of mono- and divalent cations. 
+           In addition, they also represent different behaviour accordin to experimental
+           measurements of head group order parameter. }
+on the head group order parameters with submolar 
 concentrations due to the very weak binding in PC bilayers. 
 In contrast to almost all the other simulation models, this behaviour 
 is reproduced by Lipid14 model with \AA{}qvist ions \cite{catte16}. 
-The headgroup order parameter response to CaCl$_2$ concentration was,
+The head group order parameter response to CaCl$_2$ concentration was,
 however, overestimated with the same combination of force field
 parameters~\cite{catte16}. The results were not improved when
 ion models by Dang et al.~\cite{smith94,chang1999,dang2006} or
@@ -704,9 +717,9 @@ Together with extensive data in previous work \cite{catte16},
 the results suggest that CaCl$_2$ binding behaviour in PC bilayers
 cannot be corrected by only improving the ion models. 
 
-Significant improvement is achieved when the developed ECC-lipid model 
-is used. The headgroup order parameter changes as a function of CaCl$_2$
-concentration model show a good agreement between ECC-lipid model and 
+Significant improvement is achieved with the newly developed ECC-lipid model. 
+The head group order parameter changes as a function of CaCl$_2$
+concentration show a good agreement between ECC-lipid model and 
 experiments in Fig. \ref{OrderParameterCHANGESnewMODELS}.
 Ion binding affinity is quantified by using the relative surface
 excess between ions and water from Eq.~\ref{surfexcess} and  
@@ -716,6 +729,7 @@ density profiles along membrane normal shown in Fig.~\ref{fig:cacl-dens}.
 The relative surface excess for ECC-lipid model with ECC-ions $\Gamma_i^w = 0.07 nm^{-3}$
 is significantly smaller than for Lipid14 with \AA{}qvist $\Gamma_i^w = XX nm^{-3}$
 and Dang ions $\Gamma_i^w = 0.3 nm^{-3}$.
+\todo{JOE: Add error estimates to Gamma values}
 %The density profiles from simulations with original Lipid14 \cite{dickson14}
 %and Dang ions \cite{smith94,chang1999,dang2006} 
 %show a pronounced peak in the position of the phosphate moieties of POPC. 
@@ -745,7 +759,6 @@ and Dang ions $\Gamma_i^w = 0.3 nm^{-3}$.
   \todo{Calculate the surface excess for L14+Aqvist sim.} \\
   \todo{PAVEL: draw phosphate position with its variance, add water density (scaled) and include the number of$\Gamma$-surface access.} \\
   \todo{JOE: Change the figure so that it contains a membrane background} \\
-  \todo{Resuls with Lipid14+Dang to be added once done -- running with larger box.} \\
   \todo{The current data for Dang simulation seems to contain more ions than others.}
 \end{figure}
 
