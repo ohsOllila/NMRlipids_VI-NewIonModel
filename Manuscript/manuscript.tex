@@ -687,17 +687,18 @@ are shown in Fig. \ref{OrderParameterCHANGESnewMODELS}.
 %are shown together with the results from Lipid14 simulation
 %with ions by Dang~\cite{smith94,chang1999,dang2006} and from ECC-lipids simulations with ECC-ions.
 
-As already discussed previously~\cite{catte16}, NaCl has a negligible effect 
-on the headgroup order parameters with submolar 
-concentrations due to the very weak binding in PC bilayers. 
-In contrast to almost all the other simulation models, this behaviour 
-is reproduced by Lipid14 model with \AA{}qvist ions \cite{catte16}. 
-The headgroup order parameter response to CaCl$_2$ concentration was,
-however, overestimated with the same combination of force field
-parameters~\cite{catte16}. The results were not improved when
-ion models by Dang et al.~\cite{smith94,chang1999,dang2006} or
+Experimentally NaCl has a negligible effect on the headgroup order parameters
+with submolar concentrations due to the very weak binding of Na$^+$
+in PC bilayers \cite{akutsu81,catte16}. 
+While almost all the available simulation models overestimate cation
+binding in PC lipids, the weak binding of Sodium ions was reproduced by
+Lipid14 model when simulated with \AA{}qvist ions~\cite{catte16}.
+However, the headgroup order parameter response to CaCl$_2$ concentration was
+overestimated with the same combination of force field parameters~\cite{catte16}.
+Changing to ion models by Dang et al.~\cite{smith94,chang1999,dang2006} or
 ECC-ions~\cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}
-with more realistic bulk behaviour were used, as seen in 
+with more realistic bulk behaviour were used did not improve the results
+for the CaCl$_2$ interactions with Lipid14 model, as seen in 
 in Figs. \ref{OrderParameterCHANGESnewMODELS} and \ref{??} (in SI), respectively.
 \todo{Add OP-response of Lipid14+ECC-ions plot in SI}.
 Together with extensive data in previous work \cite{catte16}, 
@@ -705,31 +706,41 @@ the results suggest that CaCl$_2$ binding behaviour in PC bilayers
 cannot be corrected by only improving the ion models. 
 
 Significant improvement is achieved when the developed ECC-lipid model 
-is used. The headgroup order parameter changes as a function of CaCl$_2$
-concentration model show a good agreement between ECC-lipid model and 
-experiments in Fig. \ref{OrderParameterCHANGESnewMODELS}.
-Ion binding affinity is quantified by using the relative surface
-excess between ions and water from Eq.~\ref{surfexcess} and  
-density profiles along membrane normal shown in Fig.~\ref{fig:cacl-dens}.
-%This is directly related to the amount of surface excess charge 
-%as shown along with ion density profiles in  Fig.~\ref{fig:cacl-dens}.
-The relative surface excess for ECC-lipid model with ECC-ions $\Gamma_i^w = 0.07 nm^{-3}$
-is significantly smaller than for Lipid14 with \AA{}qvist $\Gamma_i^w = XX nm^{-3}$
-and Dang ions $\Gamma_i^w = 0.3 nm^{-3}$.
-%The density profiles from simulations with original Lipid14 \cite{dickson14}
-%and Dang ions \cite{smith94,chang1999,dang2006} 
-%show a pronounced peak in the position of the phosphate moieties of POPC. 
-%The use of ECC-ion model~\cite{Jungwirth2017,Jungwirth2015,kohagen14,kohagen16}
-%or the ion model by \AA{qvist}~\cite{aqvist90}
-%along with Lipid14 does not significantly change it 
-%(Headgroup order parameter responses for these models in SI).
-%The new ECC-lipids model with ECC-ions~\cite{Jungwirth2017,Jungwirth2015,kohagen14,kohagen16}
-%exhibits on the other hand smaller density in this region 
-%suggesting overall weaker binding of cations (Fig.~\ref{OrderParameterCHANGESnewMODELS}). 
-%It is then likely that the models that overestimate head group order parameter response~\cite{catte16}
-%also overestimate the amount of bound cations.
-\todo{This paragraph is to be finalized when we have the surface excess analysis
-  done by using Eq.~\ref{surfexcess}.}
+is used together with ECC-ions. The headgroup order parameter changes
+as a function of CaCl$_2$ concentration show a good agreement between
+ECC-lipid model and experiments in Fig. \ref{OrderParameterCHANGESnewMODELS}.
+As discussed in previous section, also the response of headgroup order
+parameters to the bound charge is in good agreement with the experiments in this
+model. Thus, we conclude that the ECC-lipid model with ECC-ion parameters
+gives a realistic binding affinity for the Na$^+$ and Ca$^{2+}$ binding
+in POPC bilayer.
+
+Based on the ion density profiles along membrane normal
+in Fig.~\ref{fig:cacl-dens}, the Ca$^{2+}$ binding seems to
+be stronger in Lipid14 model with Dang and ECC-ions.
+This is in agreement 
+This is quantified by calculating the relative surface
+excess from Eq.~\ref{surfexcess}. This gives 
+$\Gamma_i^w = 0.07 nm^{-3}$ for ECC-lipid model simulated with ECC-ions,
+which is significantly smaller than $\Gamma_i^w = XX nm^{-3}$ for
+Lipid14 with \AA{}qvist and $\Gamma_i^w = 0.3 nm^{-3}$ with Dang ions.
+\todo{Surface excess for Lipid14 with Aqvist yet to be added.} \\
+\todo{Surface excess units are not correct. Maybe the numbers needs to be checked also?} \\
+Rough estimates for the free energy difference between bound and unbound cation
+can made from
+\begin{equation}
+  \Delta G={\rm k_b T}\log(\frac{p_o}{p_i}),
+\end{equation}
+where $p_o$ and $p_i$ are estimated from the Ca$^{2+}$densities in bulk water and
+in the maximum density in bilayer, respectively. The density profiles in
+Fig. \ref{fig:cacl-dens} give $\sim 0.8$ k$_{\rm b}$T for the free energy difference
+between bound and unbound Ca$^{2+}$ ions in ECC-lipid model and $\sim 1.4$ k$_{\rm b}$T
+in Lipid14 with \AA{}qvist.
+
+\todo{SAMULI: Maybe we should discuss the repeat distances and
+  area per molecules measured at \cite{petrache06,pabst07,uhrikova08}
+  }
+
 
 \begin{figure}[tbp]
   \centering
@@ -749,13 +760,13 @@ and Dang ions $\Gamma_i^w = 0.3 nm^{-3}$.
   \todo{The current data for Dang simulation seems to contain more ions than others.}
 \end{figure}
 
+Since ECC--lipid model gives a good agreement with experiments for the response
+of headgroup order parameters to the bound charge as well as to the CaCl$_2$
+concentration,
+
 The good agreement with experiments indicates
 that the ECC corrected lipid model has a sufficient accuracy for realistic
 studies of details of ions binding to lipid bilayers.
-
-\todo{SAMULI: Maybe we should discuss the repeat distances and
-  area per molecules measured at \cite{petrache06,pabst07,uhrikova08}
-  }
 
 
 
