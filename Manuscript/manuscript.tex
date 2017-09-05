@@ -588,17 +588,16 @@ in SI along with results with other water models.
   \todo{I would put x-axis from 0 to 51 and maybe zoom y-axis little bit as well.}
 \end{figure}
 
-Before proceeding to ion binding affinity studies, we quantify
+Before proceeding to the ion binding affinity studies, we quantify
 the response of headgroup order parameters to the amount of 
 bound charge by using mixtures of monovalent cationic surfactants
 and POPC~\cite{scherer89}. The amount of bound charge per PC 
-in these systems is 
-given by the molar fraction of cationic surfactants, because essentially all surfactants 
-locate in the lipid bilayers. Comparison of headgroup order parameter
-changes between simulations and experiments 
-as a function of mole fraction of cationic surfactants 
-can be then used to validate the sensitivity of
-lipid headgroup to bound charge in simulation models.
+in these systems is given by the molar fraction of cationic 
+surfactants, because essentially all surfactants locate in the 
+lipid bilayers. Experimental data for these systems can be used to validate 
+the sensitivity of lipid headgroup order parameters
+to the amount of bound charge in simulations.
+
 
 %depends on both, the
 %binding affinity and the response of the headgroup on bound charge.
@@ -617,11 +616,11 @@ lipid headgroup to bound charge in simulation models.
 %The headgroup order parameter changes as a function of bound charges can be then
 %explicitly determined from such systems.
 
-The headgroup order parameter changes as a function of mole fraction
-of cationic surfactant dihexadecyldimethylammonium bromide (C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$) 
+The headgroup order parameter changes with increasing amount of 
+cationic surfactant dihexadecyldimethylammonium bromide (C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$) 
 is compared between experiments~\cite{scherer89} and simulations in
 Fig. \ref{OrderParameterCHANGESsurf}. 
-Approximately linear decrease of the order parameters is observed
+Approximately linear decrease is observed
 in simulations and experiments with increasing amount of cationic
 surfactants up to mole fractions of $\sim$50\%,
 as expected from Eq. \ref{OPchangeEQ}.
@@ -641,24 +640,30 @@ underestimated for the $\beta$ segment.
 \todo{SAMULI: We could calculate the slopes from simulations, but I am not sure if
 we would actually learn anything useful from this.}
 
-Also the effect of bound cations on the
-headgroup P-N vector angle with respect to the membrane normal
-is shown in Fig.~\ref{OrderParameterCHANGESsurf}.
+The headgroup P-N vector angle with respect to the membrane normal
+is also shown in Fig.~\ref{OrderParameterCHANGESsurf}
+as a function of cationic surfactant mole fraction.
 The headgroup orients more parallel to the membrane
-normal with an increasing amount of bound cations, as expected~\cite{seelig87}. 
-The orientation effect is more pronounced in Lipid14 model than 
+normal with increasing amount of bound cations, as expected~\cite{seelig87}. 
+The effect is more pronounced in Lipid14 than 
 in ECC-lipids model, which is in line with the order parameter 
-results and reduced charge--dipole interactions in the ECC-lipid model.
-Since the response of $\alpha$-order parameter is in very good agreement
-with experiments in ECC-lipid model, we can suggest a relation between
-order parameter and P-N vector angle changes. The data gives
-$\Delta \Theta_{\rm P-N}=?? \Delta S_{\rm CH}$, which can be used
-to estimate P-N vector angle changes from experimental results
-for $\alpha$ order parameters. 
+results and the reduced charge--dipole interactions in the ECC-lipid model.
+The response of $\alpha$-order parameter to bound positive charge
+in ECC-lipid model is in good agreement with experiments.
+Therefore we use the data in Fig.~\ref{OrderParameterCHANGESsurf}
+to suggest a linear relation between $\alpha$-carbon order parameter
+and average P-N vector angle changes $\Delta \Theta_{\rm P-N}=?? \Delta S_{\rm CH}^{\alpha}$.
+This can be used to estimate the change in P-N vector angle
+from experiments measuring changes in $\alpha$-carbon order parameter. 
 \todo{SAMULI: I think that we should establish the relation between 
 order parameter and P-N vector angle changes by using ECC-lipids model.
 This would be useful for people measuring aplha order parameter
 changes from experiments.}
+For example, $\Delta S_{\rm CH}^{\alpha}=0.018$ measured due to the
+addition of 66.8 $\mu$M concentration of Mellittin in bulk water \cite{kuchinka89}
+gives $\Delta \Theta_{\rm P-N} = 2.5^{\circ}$.
+\todo{I looked this roughly from the figure, should be calculated from 
+the actual relation if we decide to put this.}
 
 
 \subsection{Cation binding affinity in POPC}
@@ -677,33 +682,40 @@ changes from experiments.}
   }
 \end{figure*}
 
-The linear decrease of the headgroup order parameters, quantified in previous 
-section, can be used to measure the amount of bound aqueous cations in lipid 
-bilayers~\cite{seelig87,catte16}. The headgroup order parameter response 
-to NaCl and CaCl$_2$ concentrations from experiments (DPPC \cite{akutsu81} 
+The binding affinity of aqueous cations in lipid 
+bilayers can be measured by using the headgroup 
+order parameters, because they decrease linearly 
+with the bound positive charge~\cite{seelig87,catte16}. 
+The headgroup order parameter responses 
+to aqueous NaCl and CaCl$_2$ concentrations 
+are shown in Fig. \ref{OrderParameterCHANGESnewMODELS}
+from experiments (DPPC \cite{akutsu81} 
 and POPC \cite{altenbach84}) and different simulation models for POPC
-are shown in Fig. \ref{OrderParameterCHANGESnewMODELS}.
+
 %The simulation results of Lipid14 with \AA{}qvist ions~\cite{aqvist90} (from Ref. \citenum{catte16})
 %are shown together with the results from Lipid14 simulation
 %with ions by Dang~\cite{smith94,chang1999,dang2006} and from ECC-lipids simulations with ECC-ions.
 
-Experimentally NaCl has a negligible effect on the headgroup order parameters
-with submolar concentrations due to the very weak binding of Na$^+$
-in PC bilayers \cite{akutsu81,catte16}. 
-While almost all the available simulation models overestimate cation
-binding in PC lipids, the weak binding of Sodium ions was reproduced by
-Lipid14 model when simulated with \AA{}qvist ions~\cite{catte16}.
-However, the headgroup order parameter response to CaCl$_2$ concentration was
-overestimated with the same combination of force field parameters~\cite{catte16}.
-Changing to ion models by Dang et al.~\cite{smith94,chang1999,dang2006} or
+Negligible changes of the headgroup order parameters are measured
+with submolar concentrations of NaCl due to the very low affinity of Na$^+$
+in PC bilayers \cite{akutsu81}. While Na$^+$ binding and the related 
+headgroup order parameter changes were overestimated in
+almost all the available simulation models, the low affinity
+and negligible order parameter changes were reproduced by Lipid14 
+model when simulated with \AA{}qvist ions~\cite{catte16}.
+However, the same combination of force field parameters
+overestimated the headgroup order parameter response to CaCl$_2$ 
+concentration, which was the case also in all other models tested in
+Ref.~\citenum{catte16}.
+Using ion model by Dang et al.~\cite{smith94,chang1999,dang2006} or
 ECC-ions~\cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}
-with more realistic bulk behaviour were used did not improve the results
+with more realistic bulk behaviour did not improve the results
 for the CaCl$_2$ interactions with Lipid14 model, as seen in 
 in Figs. \ref{OrderParameterCHANGESnewMODELS} and \ref{??} (in SI), respectively.
 \todo{Add OP-response of Lipid14+ECC-ions plot in SI}.
-Together with extensive data in previous work \cite{catte16}, 
-the results suggest that CaCl$_2$ binding behaviour in PC bilayers
-cannot be corrected by only improving the ion models. 
+The results support the conclusion of the previous work \cite{catte16}
+that improvements also in lipid models are needed to 
+correctly describe cation binding in PC bilayers.
 
 Significant improvement is achieved when the developed ECC-lipid model 
 is used together with ECC-ions. The headgroup order parameter changes
