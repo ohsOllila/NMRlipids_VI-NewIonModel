@@ -199,7 +199,7 @@ polarizability \cite{chowdhary13} both for derivation and application.
 
 
 According to ECC, electronic
-polarizability can be included in classical MD simulations by
+polarizability can be implicitly included in classical MD simulations by
 placing all particles into a homogeneous dielectric continuum 
 with a dielectric constant $\epsilon _{el}$, 
 which is the electronic part of the dielectric constant of 
@@ -222,6 +222,7 @@ improves the model performance against experimental scattering data \cite{kohage
 it is not clear if the same factor should be used for partial charges in molecules,
 i.e, lipids in our case. 
 Unlike the total charge of molecules, atomic partial charges within each molecule are not experimental observables.
+\todo{Text should be clarified from here to the end of the paragraph}
 Although there have been proposed several schemes for the assignment of partial charges of molecules, 
 methods targetting at fitting of electrostatic potentials are 
 most popular among classical fixed charge force fields for biomolecules. \cite{Hu2007}
@@ -304,12 +305,12 @@ backbone and carbonyls scaled with 0.8 gave the area per molecule value of $\app
 which is significantly smaller than the experimental value 64.3~\AA$^2$ (\cite{}\todo{missing REF for APL experiment})
 and the original Lipid14 value $(65.6 \pm 0.5)$~\AA$^2$~\cite{dickson14}.
 The decrease of area was found to arise from a lower hydration of the lipid head group region,
-which can be explained by the decreased solvation free energy due to the lower polarity
+which can be explained by the increased solvation free energy due to the lower polarity
 of molecules with scaled charges. The hydration can be increased
 by reducing the effective radius of atoms by changing the 
 the $\sigma$ parameters in Lennard-Jones potential for the selected atoms
 similarly as done for free ions in solution \cite{kohagen14,kohagen16,Pluharova2014}.
-This increases solvation free energy by allowing water molecules to
+This decreases the solvation free energy by allowing water molecules to
 approach closer to lipid atoms and have stonger electrostatic interactions with them.
 After reducing the $\sigma$ parameters with a factor of $f_\sigma = 0.89$
 for the same atoms for which charges were scaled, the area per molecule value was
@@ -641,8 +642,8 @@ underestimated for the $\beta$ segment.
 we would actually learn anything useful from this.}
 
 The headgroup P-N vector angle with respect to the membrane normal
-is also shown in Fig.~\ref{OrderParameterCHANGESsurf}
-as a function of cationic surfactant mole fraction.
+is also shown as a function of cationic surfactant mole fraction
+in Fig.~\ref{OrderParameterCHANGESsurf}.
 The headgroup orients more parallel to the membrane
 normal with increasing amount of bound cations, as expected~\cite{seelig87}. 
 The effect is more pronounced in Lipid14 than 
@@ -717,29 +718,30 @@ The results support the conclusion of the previous work \cite{catte16}
 that improvements also in lipid models are needed to 
 correctly describe cation binding in PC bilayers.
 
-Significant improvement is achieved when the developed ECC-lipid model 
-is used together with ECC-ions. The headgroup order parameter changes
-as a function of CaCl$_2$ concentration show a good agreement between
-ECC-lipid model and experiments in Fig. \ref{OrderParameterCHANGESnewMODELS}.
-As discussed in previous section, also the response of headgroup order
-parameters to the bound charge is in good agreement with the experiments in this
-model. Thus, we conclude that the ECC-lipid model with ECC-ion parameters
-gives a realistic binding affinity for the Na$^+$ and Ca$^{2+}$ binding
-in POPC bilayer.
+Significant improvement can be achieved by using the ECC
+approach also for lipids. The headgroup order parameter changes
+as a function of CaCl$_2$ concentration from ECC-lipid model with ECC-ions
+show a good agreement with experiments in Fig. \ref{OrderParameterCHANGESnewMODELS}.
+As discussed in previous section, the model gives also
+a good agreement with experiments for
+the headgroup response to bound charge.
+Thus, the model can used for more detailed analysis of the
+binding affinity.
 
-Based on the ion density profiles along membrane normal
-in Fig.~\ref{fig:cacl-dens}, the Ca$^{2+}$ binding seems to
-be stronger in Lipid14 model with Dang and ECC-ions.
-This is in agreement 
-This is quantified by calculating the relative surface
-excess from Eq.~\ref{surfexcess}. This gives 
-$\Gamma_i^w = 0.07 nm^{-3}$ for ECC-lipid model simulated with ECC-ions,
+
+The binding affinities are quantified by using
+the ion density profiles along membrane normal shown
+in Fig.~\ref{fig:cacl-dens}. The density profiles show
+larger Ca$^{2+}$ density peak in lipid headgroup region for
+Lipid14 model with Dang and ECC-ions than for the ECC-lipid model.
+The relative surface excess calculated from Eq.~\ref{surfexcess} gives 
+$\Gamma_i^w = 0.07 nm^{-3}$ for the ECC-lipid model,
 which is significantly smaller than $\Gamma_i^w = XX nm^{-3}$ for
 Lipid14 with \AA{}qvist and $\Gamma_i^w = 0.3 nm^{-3}$ with Dang ions.
 \todo{Surface excess for Lipid14 with Aqvist yet to be added.} \\
 \todo{Surface excess units are not correct. Maybe the numbers needs to be checked also?} \\
 Rough estimates for the free energy difference between bound and unbound cation
-can made from
+are given by
 \begin{equation}
   \Delta G={\rm k_b T}\log(\frac{p_o}{p_i}),
 \end{equation}
@@ -772,13 +774,25 @@ in Lipid14 with \AA{}qvist.
   \todo{The current data for Dang simulation seems to contain more ions than others.}
 \end{figure}
 
-Since ECC--lipid model gives a good agreement with experiments for the response
-of headgroup order parameters to the bound charge as well as to the CaCl$_2$
-concentration,
+Since the lipid headgroup order parameter responses to the amount of bound charge
+and to the aqueous ion concentrations are both in good agreement with experiments
+in the ECC-lipid model with ECC-ion parameters, we consider the Na$^+$ and Ca$^{2+}$
+binding affinities to be realistic in this model. On the other hand, the Ca$^{2+}$
+binding affinity is overestimated by Lipid14 model when simulated with all the
+tested ion models. Similar conclusions were previously made based only on the headrogup
+order parameter data with aqueous cations~\cite{catte16}. However,
+the discrepancies with experiments in previous work could partly arise also from
+the inaccurate sensitivity of the headgroup to bound charge. Here we quantify this
+effect and conclude that the improvement due to ECC is partly, but not completely,
+caused by more realistic headgroup sensitivity to bound charge.
+This indicates that the issue should be carefully considered also when
+the electrometer concept is used to compare ion binding between experiments
+and simulations wiht other models.
 
-The good agreement with experiments indicates
-that the ECC corrected lipid model has a sufficient accuracy for realistic
-studies of details of ions binding to lipid bilayers.
+
+%The good agreement with experiments indicates
+%that the ECC corrected lipid model has a sufficient accuracy for realistic
+%studies of details of ions binding to lipid bilayers.
 
 
 
