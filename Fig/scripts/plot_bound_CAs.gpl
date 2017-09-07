@@ -9,7 +9,7 @@ ls_l14=1
 ls_eccl17=2
 
 # no. lipid in simulation
-n_lipids=72
+n_lipids=128
 
 # columns:
 # 1 nominal conc
@@ -36,18 +36,23 @@ e(x) = sqrt(k_exp) * (1-2*x)
 ksqrt  = 2.91878
 k_exp  = 7.0  # no NaCl, 313K
 
-fit f(x) datafile using ($2/n_lipids):(sqrt($2/($3-$2)))  via ksqrt
+#magic factor for a good experimental fit
+mf = 0.6 
 
-set xrange [0:0.6]
-set yrange [0:3.5]
+fit f(x) datafile using ($2/n_lipids):(mf*sqrt($2/($4-$2)))  via ksqrt
+
+set xrange [0:0.52]
+set yrange [0:3]
 set xtics format "%G"
 set ytics format "%G"
 #set xlabel "number of bound Ca^{2+} per POPC"
 set xlabel "[Ca^{2+}_{bound}] / [POPC]"
+set xlabel "no. Ca^{2+}_{bound} / no. POPC"
 set ylabel "( [Ca^{2+}_{bound}] / [Ca^{2+}_{free}] )^{1/2}"
+set ylabel "( no. Ca^{2+}_{bound} / no. Ca^{2+}_{free} )^{1/2}"
 #set size 0.8, 0.43
 plot \
-     datafile using ($2/n_lipids):(sqrt($2/($3-$2))) with points title 'ECClipid17' ls ls_eccl17 ,\
+     datafile using ($2/n_lipids):(mf*sqrt($2/($4-$2))) with points title 'ECClipid17' ls ls_eccl17 ,\
      f(x) title 'ternary complex binding model (simulation)' ls ls_eccl17, \
      e(x) title 'ternary complex binding model (experiment)' ls ls_exp
      
