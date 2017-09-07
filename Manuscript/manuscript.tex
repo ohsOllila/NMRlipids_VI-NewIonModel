@@ -113,7 +113,7 @@ like in signal propagation in neurons and vesicle fusion.
 \todo{This could be maybe extended.}
 Since the direct measurements of ion-membrane interactions from biological systems
 are difficult, lipid bilayers are often used as models systems for cellular
-membranes. The detailed results from simple the model systems can be then
+membranes. The detailed results from simple model systems can be then
 used to understand the role of ions in complex biological systems.
 
 Zwitterionic phosphocholine (PC) lipid bilayers are commonly used model systems for
@@ -137,16 +137,17 @@ Interpretation of these experiments suggests that Na$^+$ ions have
 negligible binding in PC lipid bilayers with submolar concentrations, while Ca$^{2+}$ specifically
 binds to phosphate groups of two lipid molecules. Atomistic resolution
 molecular dynamics (MD) simulation models, however, predict significantly
-stronger binding for both ions and interactions with 3-4 lipids,
+stronger binding for the cations and interactions with 3-4 lipids,
 including also interactions with carbonyl
 oxygens~\cite{bockmann03,bockmann04,melcrova16,javanainen17}.
 Some experiments have also been interpreted to support the predictions from
 MD simulations~\cite{bockmann03,vacha09a}. 
 
 Recent work published by the NMRlipids project (\url{nmrlipids.blogspot.fi})~\cite{catte16}
-made an attempt to resolve the apparent controversies by introducing a direct
-method to compare ion binding affitity between simulations and
-experiments by using the electrometer concept~\cite{seelig87}.
+made an attempt to resolve the apparent controversies. The study presented 
+a direct comparison between ion binding affinity between simulations and
+experiments by using NMR data for lipid headgroup order 
+parameters and the electrometer concept~\cite{seelig87}.
 Using massive data collected by Open Collaboration method, it was concluded
 that the accuracy of the current state of the art lipid models for MD
 simulations is not sufficient for the detailed interpretation of the cation
@@ -170,21 +171,32 @@ polarizability is included by using the electronic
 continuum correction (ECC)~\cite{leontyev11}, which
 has been previously shown to improve the behaviour of
 MD simulations of ions in bulk water~\cite{Jungwirth2017,Jungwirth2015,kohagen14,kohagen16}. 
+As a starting point we use the parameters from Lipid14 model \cite{dickson14},
+which gave the best cation binding behaviour in the previous study \cite{catte16}.
+The developed ECC-lipid parameters reproduce the experimentally
+measurable structural parameters of POPC lipid bilayer with the 
+accuracy comparable to the other state of the art lipid models.
 
+%We will validate such a model by comparing its lipid bilayer structure
+%to x-ray scattering data and its head group structure to NMR experiments. 
+%We will then quantify the accuracy of the head group order parameter response to the bound charge
+%and compare it to the experimental NMR data of sodium and calcium binding in PC lipid bilayers. 
+%In addition, we will quantify relative binding affinities of different moieties in POPC to such cations. 
+%This will be discussed in terms of binding modes, stoichiometry and binding isotherms and their models used in experiments.
 
-We will validate such a model by comparing its lipid bilayer structue
-to x-ray scattering data and its head group structure to NMR experiments. 
-We will then quantify the accuracy of the head group order parameter response to the bound charge
-and compare it to the experimental NMR data of sodium and calcium binding in PC lipid bilayers. 
-In addition, we will quantify relative binding affinities of different moieties in POPC to such cations. 
-This will be discussed in terms of binding modes, stoichiometry and binding isotherms and their models used in experiments.
-The proposed POPC model, ECC-lipids, and the approach to obtain it
-is, hence, highly useful for future MD simulations with physiological salt conditions, 
-and for effects where membrane electrostatics play a major role.
+Since the cation binding affinity and the headgroup 
+order parameter changes are in good agreement with experiments
+in the proposed ECC-lipids, it can be used to interpret the
+related structural changes and ion binding stoichiometry.
+New lipid models with correct ion binding affinity in lipid
+bilayers are necessary in applications of 
+MD simulations with physiological salt conditions. 
+The overestimated cation binding in the current lipid models \cite{catte16}
+may lead to significant artefacts in MD simulations. For example,
+articifially positively charged membranes overestimate interactions
+with biomolecules having opposite sign.
 
-The overestimated specific cation binding observed in current lipid models \cite{catte16}
-may lead to articifially positively charged memranes and significant artefacts in
-MD simualtions (e.g.~divalent cation-induced charge inversion of bacterial membranes~\cite{Luan2016}
+%MD simualtions (e.g.~divalent cation-induced charge inversion of bacterial membranes~\cite{Luan2016}
 
 %\todo{JOE: this may be a too daring statement. \\
 %  SAMULI: I think that the divalent cation induced charge inversion is not an artefact,
