@@ -410,9 +410,10 @@ and $\Gamma_a$ is the surface excess of water or ions.
 As $\Gamma_i^w$ does not depend on the definition of the interfacial region
 and the position of the Gibbs dividing plane~\cite{chattorajBOOK},
 we consider the whole simulation box as an interface. 
-Note that the area of the interface is given by the simulation box area
-multiplied with two $2A_b$, because bilayers have a interface
-in both leaflefts.
+Because bilayers have an interface
+in both leaflefts,
+the total area of the interface in the simulation
+ is given by the simulation box area multiplied by two, $2A_b$.
 The concentrations of water and ions inside
 the bilayer can be expected to vanish, thus $c_{i,w}'=0$.
 This provides us a simplified relation for 
@@ -531,7 +532,7 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
     compared with experimental order parameters from \cite{ferreira13}.}
   \todo{There seems to a typo in experimental value for other order parameter for C2 carbon in sn-2 chain; it should be negative.
     The scale of the y-axis should be then zoomed when this is fixed.} \\
-  \todo{I would put the acyl chain order parameters also for original Lipid14}\\
+  \todo{I would put the acyl chain order parameters also for original Lipid14; JOE: Already done, check whether your figures are up to date. I usually push only *.eps.}\\
   \todo{x-axis scale in form factor figure would be better from 0 to 0.6. The experimental data is available for this range.} \\
   \todo{$S_{CD} -> S_{CH}$}
 \end{figure}
@@ -629,7 +630,7 @@ The headgroup order parameter changes with increasing amount of
 cationic surfactant dihexadecyldimethylammonium bromide (C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$) 
 is compared between experiments~\cite{scherer89} and simulations in
 Fig. \ref{OrderParameterCHANGESsurf}. 
-Approximately linear decrease is observed
+Approximately linear decrease of the order parameters is observed
 in simulations and experiments with increasing amount of cationic
 surfactants up to mole fractions of $\sim$50\%,
 as expected from Eq. \ref{OPchangeEQ}.
@@ -699,7 +700,7 @@ The headgroup order parameter responses
 to aqueous NaCl and CaCl$_2$ concentrations 
 are shown in Fig. \ref{OrderParameterCHANGESnewMODELS}
 from experiments (DPPC \cite{akutsu81} 
-and POPC \cite{altenbach84}) and different simulation models for POPC
+and POPC \cite{altenbach84}) and different simulation models for POPC. 
 
 %The simulation results of Lipid14 with \AA{}qvist ions~\cite{aqvist90} (from Ref. \citenum{catte16})
 %are shown together with the results from Lipid14 simulation
@@ -719,7 +720,7 @@ Ref.~\citenum{catte16}.
 Using ion model by Dang et al.~\cite{smith94,chang1999,dang2006} or
 ECC-ions~\cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}
 with more realistic bulk behaviour did not improve the results
-for the CaCl$_2$ interactions with Lipid14 model, as seen in 
+for the CaCl$_2$ interactions with Lipid14 model, as seen 
 in Figs. \ref{OrderParameterCHANGESnewMODELS} and \ref{??} (in SI), respectively.
 \todo{Add OP-response of Lipid14+ECC-ions plot in SI}.
 The results support the conclusion of the previous work \cite{catte16}
@@ -743,12 +744,9 @@ in Fig.~\ref{fig:cacl-dens}. The density profiles show
 larger Ca$^{2+}$ density peak in lipid headgroup region for
 Lipid14 model with Dang and ECC-ions than for the ECC-lipid model.
 The relative surface excess calculated from Eq.~\ref{surfexcess} gives 
-$\Gamma_i^w = 0.07 nm^{-3}$ for the ECC-lipid model,
-which is significantly smaller than $\Gamma_i^w = XX nm^{-3}$ for
-Lipid14 with \AA{}qvist and $\Gamma_i^w = 0.3 nm^{-3}$ with Dang ions.
-\todo{Surface excess for Lipid14 with Aqvist yet to be added.} \\
-\todo{Surface excess units are not correct. Maybe the numbers needs to be checked also?} \\
-\todo{JOE: Add error estimates to Gamma values}
+$\Gamma_i^w = 0.07 \pm 0.01 nm^{-2}$ for the ECC-lipid model,
+which is significantly smaller than $\Gamma_i^w = 0.13 \pm 0.01 nm^{-2}$ for
+Lipid14 with \AA{}qvist and $\Gamma_i^w = 0.3 \pm 0.03 nm^{-2}$ with Dang ions.
 Rough estimates for the free energy difference between bound and unbound cation
 are given by
 \begin{equation}
@@ -778,7 +776,6 @@ in Lipid14 with \AA{}qvist.
     with the same scale as \ce{Ca^{2+}}. The molar concentration of the ions in water is 350~mM in all systems
     presented here. 
     }
-  \todo{Calculate the surface excess for L14+Aqvist sim.} \\
   \todo{PAVEL: draw phosphate position with its variance, add water density (scaled) and include the number of$\Gamma$-surface access.} \\
   \todo{JOE: Change the figure so that it contains a membrane background} \\
   \todo{The current data for Dang simulation seems to contain more ions than others.}
@@ -885,6 +882,22 @@ JOE: Pavel suggest using volumetric map (e.g. in VMD) to visualise the amounts o
   }
 \end{figure}
 
+
+%\begin{figure}[tbp]
+%  \centering
+%  \includegraphics[height=6.0cm]{../Fig/POPC_binding_labels.eps} 
+%  \includegraphics[height=6.0cm]{../Fig/POPC_binding_ECC-lipids.eps}
+%  \caption{\label{fig:binding_conf}
+%      Configurations of \ce{Ca2+} binding in POPC membranes in the ECC-lipids model.
+%      The binding sites are: 
+%      red circle for phosphate oxygens; 
+%      blue square for sn-1 carbony oxygen; and green triangle for sn-2 carbonyl oxygen.
+%      The configurations along with their probabilities are drawn in the following manner:
+%      each row corresponds to an individual lipid the cation is bound to;
+%      symbols denote the site the cations is bound to the respective lipid.
+%      An empty configuration denotes an unbound cation in a solvent. 
+%  }
+%\end{figure}
 
 
 \section{Conclusions}
