@@ -811,22 +811,27 @@ and simulations wiht other models.
 %2 POPC - 18\% -- 42\% \\
 %3 POPC - 12\% -- 28\% \\
 
-Binding stoichiometry of \ce{Ca2+} and POPC was 
-thoroughly studied in the experimental work~\citenum{altenbach84}.
+Binding stoichiometry of \ce{Ca^{2+}} and POPC was 
+thoroughly studied in the experimental work~\cite{altenbach84}.
 Several binding models were proposed and tested of which only one,
 ternary complex binding model, provided a good fit of the experimental observations. 
-In such a model, it is assumed that \ce{Ca2+} cations bind to a POPC membrane 
+In such a model, it is assumed that \ce{Ca^{2+}} cations bind to a POPC membrane 
 with a stoichiometry 2~POPC:1~\ce{Ca^{2+}}.
-Such a model also provides a good fit 
+In a later work~\cite{macdonald87}, 
+a Langmuir adsorption model (i.e. stoichiometry 1~POPC:1~\ce{Ca^{2+}}) 
+was found to provide as good fit as ternary complex model, 
+when only low concentrations of \ce{CaCl2} are considered.
+
+Ternary complex model also provides a good fit 
 to our simulations with ECC-lipids 
 (see Fig.~\ref{fig:cacl-bind} in SI and its caption for details). 
 Simulations, however, allow us to directly evaluate the stoichiometry 
-by calculating relative propensities of various \ce{Ca2+}:$n\times$POPC clusters
+by calculating relative propensities of various \ce{Ca^{2+}}:$n\times$POPC clusters
 In Figure~\ref{fig:cacl_complexes} we see that ternary complex is indeed 
 the most probable binding mode of calcium at 285~mM concentration. 
 Apart from this complex, we also find complexes with 1~and 3~lipids
 occuring with only a slightly lower but similar probability.
-The fractions of \ce{Ca2+}:$n\times$POPC complexes at 285~mM concetration 
+The fractions of \ce{Ca^{2+}}:$n\times$POPC complexes at 285~mM concetration 
 are then in order:
 $42\%$ for two lipids,
 $30\%$ for one lipid, and
@@ -843,39 +848,46 @@ although it is apparently incorrect.
   \includegraphics[width=6.0cm]{../Fig/number_bound_lipids_p_cation_Ecc-lipids.eps} \\
   \caption{\label{fig:cacl_complexes}
       Histogram of relative probabilities of existence of complexes
-      of \ce{Ca2+} and $n$ POPC lipids. 
+      of \ce{Ca^{2+}} and $n$ POPC lipids. 
   }
 \end{figure}
 
-In addition, we estimated the relative binding affinities of several moieties in POPC:
-phosphate moiety, side chain 1 carbonyl group and side chain 2 carbonyl group.
-Using the probability isodensity contours (see Fig.~\ref{fig:volmaps}), 
+In addition, we estimated relative binding affinities 
+of several moieties in POPC towards \ce{Ca^{2+}}. 
+Based on the probability isodensity contours (see Fig.~\ref{fig:volmaps}), 
 we estimate that the largest contribution
-to the binding of \ce{Ca2+} to POPC membranes likely comes from the phosphate group. 
+to the binding of \ce{Ca^{2+}} to POPC membranes comes from the phosphate group. 
 Although the isodensity plots are relatively easy to interpret,
 the contours shown in Fig.~\ref{fig:volmaps} cannot conclusively tell on the details
-of \ce{Ca2+} binding to any of the two carbonyl moieties. 
+of \ce{Ca^{2+}} binding to any of the two carbonyl moieties
+but their apparently lower affinity compared to phosphate oxygens. 
 
-\todo{JOE: Put details of the cation-binding stoichiometry analysis to SI.} \\
-\todo{JOE: Update the binding isotherm figure with new simulations} \\
+The residence time of \ce{Ca^{2+}} bound to a POPC membrane 
+is experimentally determined to be lower than $10\,\mu\mathrm{s}$~\cite{carrington67}. 
+Recent theoretical work with long enough simulations estimates this time
+in the order of $1\,\mu\mathrm{s}$~\cite{catte16}. 
+This is in contrast to our model, ECC-lipids, 
+which gives a mean residence time in the order of $10\,\mathrm{ns}$, 
+i.e. at least two orders of magnitude lower than previous estimates.
+Such a finding changes the point of view of calcium binding from
+very tight long-term stable binding with rare exchanges to 
+a relatively frequent exchange of cations 
+in equilibrium between membrane and solvent. 
+
+
+
+
+
 \todo{SAMULI: The same authors have also literature, where they say that ternary complex may not
   be the only option. I will recheck and come back to this.
   SAMULI: This is written in \cite{macdonald87}:
-  ''Ca2+binding to POPC bilayers over the whole concentration range can be best described in terms
+  ''\ce{Ca^{2+}} binding to POPC bilayers over the whole concentration range can be best described in terms
   of formation of a ternary complex involving complexation of two lipids to one calcium ion (Altenbach and Seelig, 1984).
-  The addition of a sodium competition term has not changed this conclusion. However, if Ca2+ concentrations
+  The addition of a sodium competition term has not changed this conclusion. However, if \ce{Ca^{2+}} concentrations
   up to 100 mM are considered, the data can be equally well explained by a 1:1 binding mechanism (cf. Figure 7).
   In contrast, the Ca2+ binding to POPC-POPG mixtures can be best described by assuming a 1:l stoichiometry regardless of the range of Ca2+concentrations.''
-  We might or might not want to discuss about this.} \\
-\todo{SAMULI: I would also analyze how much there is contact between ions and different
-parts of the lipid (phosphase, carbonyl, etc.).
-JOE: Pavel suggest using volumetric map (e.g. in VMD) to visualise the amounts of Ca, Na and Cl bound to different moieties.} \\
-\todo{SAMULI: I think we should quantify this, i.e. how much there are these.
-  Maybe also the other possible complexes? Maybe also the correlation betweem complexes
-  and binding sites, if it is not too much work.
-  JOE: This looks like a careful work for the next paper to me. 
-  I'd only add a relatively simple analysis of binding sites and probably the propensity of 1-2-3 membered clusters.
-  SAMULI: I agree that we should not use too much time on this now.}. \\
+  We might or might not want to discuss about this.
+  JOE: I think this is adressed/acknowledged enough now.} \\
 \todo{Finalize stoichiometry analysis for \ce{Na^+}, \ce{Ca^{2+}},
   their interaction energies with the lipid membrane, etc,
   and finalize the discussion after these results.}
@@ -896,14 +908,14 @@ JOE: Pavel suggest using volumetric map (e.g. in VMD) to visualise the amounts o
   \includegraphics[width=4.0cm]{../Fig/volmap_resid10_Ca_Cl_sn1Cent.png}
   \includegraphics[width=3.6cm]{../Fig/volmap_resid10_Ca_Cl_sn2Cent.png}
   \caption{\label{fig:volmaps}
-      Contours of probability isodensities of \ce{Ca2+} with respect to 
+      Contours of probability isodensities of \ce{Ca^{2+}} with respect to 
       various moieties fixed in space (highlighted with transparent spheres): 
       phosphate moiety, side chain 1 carbonyl group and side chain 2 carbonyl group.
       Shown contours suggest that the dominant contribution 
-      to \ce{Ca2+} binding likely comes from the phosphate group, 
-      but remain inconclusive on the details of the interactions with any of the two carbonyl groups. 
+      to \ce{Ca^{2+}} binding comes from the phosphate oxygens,
+      whereas the interactions with any of the two carbonyl groups are considerably milder.
   }
-  \todo{JOE: I'll update this figure with some ensemble of configuration to support binding preference of \ce{Ca2+}}
+  \todo{JOE: I'll update this figure with some ensemble of configuration to support binding preference of \ce{Ca^{2+}}}
 \end{figure}
 
 
@@ -912,7 +924,7 @@ JOE: Pavel suggest using volumetric map (e.g. in VMD) to visualise the amounts o
 %  \includegraphics[height=6.0cm]{../Fig/POPC_binding_labels.eps} 
 %  \includegraphics[height=6.0cm]{../Fig/POPC_binding_ECC-lipids.eps}
 %  \caption{\label{fig:binding_conf}
-%      Configurations of \ce{Ca2+} binding in POPC membranes in the ECC-lipids model.
+%      Configurations of \ce{Ca^{2+}} binding in POPC membranes in the ECC-lipids model.
 %      The binding sites are: 
 %      red circle for phosphate oxygens; 
 %      blue square for sn-1 carbony oxygen; and green triangle for sn-2 carbonyl oxygen.
@@ -974,27 +986,27 @@ It was found in the original work~\cite{altenbach84} that
 a ternary complex binding model (i.e.~2~POPC:1~\ce{Ca^{2+}})
 provides the best fit to experimental measurements of all considered models in that study. 
 In such a model, there is a linear relationship between quantities 
-$C_b$, mole fraction of bound \ce{Ca2+} per POPC, and $\sqrt{C_b/C_I}$, 
+$C_b$, mole fraction of bound \ce{Ca^{2+}} per POPC, and $\sqrt{C_b/C_I}$, 
 where $C_I$ is the concentration of free cations at the plane of ion binding~\cite{altenbach84}.
 The concentration $C_b$ was obtained from an extrapolation of linear relation 
 between deuterium NMR measurements and atomic absorption spectroscopy for low concetrations of \ce{CaCl2}.
-Such an extrapolation is valid as long as the mode of \ce{Ca2+} binding 
+Such an extrapolation is valid as long as the mode of \ce{Ca^{2+}} binding 
 remains constant throughout the extrapolation range. 
 The concentration $C_I$ is determined by using the surface potential by using the Boltzmann equation.
 However, Boltzmann theory yields inaccurate results
-for divalent cations like \ce{Ca2+}~\cite{Andelmann1995}. 
+for divalent cations like \ce{Ca^{2+}}~\cite{Andelman1995}. 
 An atomistic simulation, on the other hand, provides these quantities directly without severe assumptions. 
 Hence we hypothesise that the discrepancy between the results in the experiment~\cite{altenbach84} and 
 our simulations likely lays in the fact that 
 the assumptions and relations used for determinig concentrations $C_b$ and $C_I$ in the experiment~\cite{altenbach84}
-gradually do not hold for higher concentrations of \ce{Ca2+}. 
+gradually do not hold for higher concentrations of \ce{Ca^{2+}}. 
 
 
 \begin{figure}[]
   \centering
   \includegraphics[height=9.0cm,angle=-90]{../Fig/bound-CAs_conc-eccl17.eps}
   \caption{\label{fig:cacl-bind}
-    Ternary complex binding model of \ce{Ca2+} to a POPC membrane 
+    Ternary complex binding model of \ce{Ca^{2+}} to a POPC membrane 
     that assumes the stoichiometry of 2~POPC:1~\ce{Ca^{2+}} (details in reference~\citenum{altenbach84}) 
     provides a good fit to experimental measurements~\cite{altenbach84}
     and it also provides a good fit to our simulation data. 
