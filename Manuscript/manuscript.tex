@@ -350,58 +350,60 @@ again in agreement with experimental value (see Table~\ref{tab:apls}).
 
 \subsection{Electrometer concept} \label{section:electrometer}
 Ion binding was compared between experiments and simulations by 
-using lipid head group order parameters and 
+using lipid head group order parameters and the
 ''electrometer concept'' \cite{seelig87,catte16}.
 The concept is based on the experimental observation that the C-H bond
-order parameters of $\alpha$ and $\beta$ carbons in lipid head group
+order parameters of $\alpha$ and $\beta$ carbons in PC lipid head group
 (see Fig.~\ref{simVSexpNOions}) are proportional to the amount 
-of bound charge in a lipid bilayer \cite{seelig87}.
-This is rationalized as a change of lipid head group dipole tilt to more vertical orientation
-with bound positive charge and {\it vice versa} for negative charge \cite{seelig87}. 
-More recent analysis in the NMRlipids project concluded 
+of unit charge bound per lipid,  $X^\pm$~\cite{seelig87}.
+Change in the order parameters measured with varying aqueous
+ion concentration can be then related to the amount of bound ions.
+
+The change of the head group order parameters is empirically quantified
+as~\cite{seelig87,ferreira16}
+\begin{equation}\label{OPchangeEQ}
+  \Delta S_{\rm{CH}}^{i}= S_{\rm{CH}}^{i}(X^\pm)-S_{\rm{CH}}^{i}(0) \approx \frac{4m_i }{3\chi}X^\pm,
+\end{equation}
+where $S_{\rm{CH}}^{i}(0)$ denote the order parameter in the absence of bound charge,
+$i$ refers to either $\alpha$ or $\beta$ carbon,
+$m_i$ is an empirical constant depending on the valency and position of the bound charge,
+and the experimental value \cite{seelig77,davis83}, $\chi \approx$\,167\,kHz, is used for the quadrupole coupling constant.
+Atomic absorption spectra and $^2$H NMR data gave
+$m_\alpha=-20.5$~kHz  and $m_\beta=-10.0$~kHz for Ca$^{2+}$ binding to POPC
+bilayer (in the presence of 100~mM NaCl)~\cite{altenbach84,ollila16,catte16}.
+The slopes are negative, because recent analysis concluded 
 that the order parameters decrease with bound positive charge 
 and increase with bound negative charge when the signs are taken 
-in account \cite{ollila16,catte16}. The concept was also shown
-to be suitable for the comparison of ion binding affinity in lipid 
-bilayers between simulations and experiments~\cite{catte16}.
- 
-The order parameters for $\alpha$ and $\beta$ segments in head group, as well as for
-all C-H bonds in lipid molecules,
-can be accurately measured by using $^2$H NMR or $^{13}$C NMR techniques.
-The order parameters can be calculated from MD simulations 
-by using the definition
+in account \cite{ollila16,catte16}. This is rationalized as a change
+of lipid head group dipole tilt toward water phase with bound positive
+charge and {\it vice versa} with negative charge \cite{seelig87}. 
+
+The concept can be used to compare the ion binding affinity in lipid 
+bilayers between MD simulations and  NMR experiments, because the order
+parameters can be accurately determined from both techniques~\cite{ollila16}.
+The order parameters for all C-H bonds in lipid molecules, including
+$\alpha$ and $\beta$ segments in head group, can be accurately measured
+by using $^2$H NMR or $^{13}$C NMR techniques. From MD simulations the
+order parameters can be calculated by using the definition
 \begin{equation}\label{OP}
 S_{\rm CH}=\frac{3}{2}\langle \cos^2\theta -1 \rangle,
 \end{equation}
 where $\theta$ is the angle between the bond and membrane
-normal and average is taken over all sampled configurations \cite{ollila16}.
+normal and the average is taken over all sampled configurations \cite{ollila16}.
 
-According to the electrometer concept,
-the change of the head group order parameters as a function of
-the amount of bound charge per lipid $X^\pm$ 
-can be written as~\cite{ferreira16}
-\begin{equation}\label{OPchangeEQ}
-\Delta S_{\rm{CH}}^{i}= S_{\rm{CH}}^{i}(X^\pm)-S_{\rm{CH}}^{i}(0) =\frac{4m_i }{3\chi}X^\pm,
-\end{equation}
-where $S_{\rm{CH}}^{i}(0)$ denote the order parameter in the absence of bound charge,
-$i$ refers to either $\alpha$ or $\beta$ carbon,
-%the empirically observed linear relation %for the change in order parameters %with respect to a bilayer without bound charges              
-%\begin{equation}\label{electrometer_eq}                                                                                                   
-%S_{\rm{CH}}^{i}(X^\pm)=S_{\rm{CH}}^{i}(0) + \frac{4m_i}{3\chi} X^\pm,                                                                     
-%\end{equation}                                                                                                                            
-$m_i$ is an empirical constant depending on the valency and position of bound charge,
-and the value of the quadrupole coupling constant is $\chi \approx$\,167\,kHz.
-Atomic absorption spectra and $^2$H NMR data gave
-$m_\alpha=-20.5$  and $m_\beta=-10.0$ for Ca$^{2+}$ binding to POPC
-bilayer (in the presence of 100~mM NaCl)~\cite{altenbach84,ollila16,catte16}.
-Before using electrometer concept to analyze cation binding, 
-we calibrate the response of head group order parameters to the bound
-charge in the simulation models. This is done by comparing 
-the slope $m_i$ in Eq. \ref{OPchangeEQ} between simulations and
-experiments of cationic surfactants in POPC bilayer \cite{scherer89}. 
-Since essentially all surfactants locate in bilayer, the 
-molar ratio directly gives the amount of bound charge per 
-lipid $X^\pm$ is these systems.
+The measured order parameter change depends on the response of 
+headgroup on bound charge, i.e. $m_i$ in Eq.~\ref{OPchangeEQ},
+and the ion binding affinity. Thus, the former property has to be
+well quantified before using using the electrometer concept to
+analyze binding affinities. This is done experimentally for wide range
+of systems~\cite{seelig87,beschiasvili91}. To calibrate 
+the head group order parameter response also in simulations,
+we use experimental data for dihexadecyldimethylammonium (C$_{12}$C$_{16}$$^+$N2C$_1$Br$^-$)
+in POPC bilayer \cite{scherer89}. Dihexadecyldimethylammonium
+is a cation surfactant having two acyl chains and bearing a unit
+charge in the hydrophilic end. Thus, it is expected to locate
+in bilayer similarly to the phospholipids and the molar ratio then 
+gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems \cite{scherer87}.
 
 \subsection{Ion concentrations and binding affinity}
 The salt concentrations are reported in two different ways
@@ -606,9 +608,18 @@ NMR order parameters measurements and x-ray scattering form factors
 (Fig.~\ref{simVSexpNOions} and Table~\ref{tab:apls}). 
 The tail order parameters being already highly optimized in the original Lipid14 model~\cite{dickson14}
 are found to match the experimental values nicely.
-The head group and glycerol backbone order parameters accuracy is 
-comparable to the state of art lipid models available in literature \cite{ollila16}.
-The agreement between the x-ray scattering form factors and the areas per molecule from simulations and experiments
+\todo{The discussion about acyl chain and headgroup order parameters needs to be
+  finished when the value for C2, the scale are fixed in the figure and
+  size of the points are fixed in the figure.}
+The headgroup order parameters are slightly larger in the ECC-lipid model,
+which is in line with larger P-N vector angle in Fig.~\ref{OrderParameterCHANGESsurf}.
+With the current data we cannot, however, conclude which is the more realistic
+conformation since in both models other headgroup order parameter agrees
+with experiments within error bars and other does not.
+Slight changes are also observed in glycerol backbone order parameters,
+bu the accuracy of both models is comparable to the state of art lipid models
+available in literature \cite{ollila16}. The agreement between the x-ray scattering
+form factors and the areas per molecule from simulations and experiments
 confirm that the membrane structural properties are well captured. 
 A structural comparison of ECC-lipids with Lipid14 can be found 
 in SI along with results with other water models. 
@@ -661,10 +672,9 @@ The headgroup order parameter changes with increasing amount of
 cationic surfactant dihexadecyldimethylammonium bromide (C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$) 
 is compared between experiments~\cite{scherer89} and simulations in
 Fig. \ref{OrderParameterCHANGESsurf}. 
-Approximately linear decrease of the order parameters is observed
-in simulations and experiments with increasing amount of cationic
-surfactants up to mole fractions of $\sim$50\%,
-as expected from Eq. \ref{OPchangeEQ}.
+The observed order parameter decrease is simulations and experiments
+can be approximated to be linear at least with the mole fractions
+below $\sim$30\%, as expected from Eq. \ref{OPchangeEQ}.
 The slope is, however, too steep in Lipid14 model indicating that 
 the head group order parameters are too sensitive to a bound charge.
 The ECC-lipids model gives a slope in very good agreement with experiments
@@ -691,20 +701,25 @@ in ECC-lipids model, which is in line with the order parameter
 results and the reduced charge--dipole interactions in the ECC-lipid model.
 The response of $\alpha$-order parameter to bound positive charge
 in ECC-lipid model is in good agreement with experiments.
-Therefore we use the data in Fig.~\ref{OrderParameterCHANGESsurf}
-to suggest a linear relation between $\alpha$-carbon order parameter
-and average P-N vector angle changes $\Delta \Theta_{\rm P-N}=?? \Delta S_{\rm CH}^{\alpha}$.
-This can be used to estimate the change in P-N vector angle
-from experiments measuring changes in $\alpha$-carbon order parameter. 
-\todo{SAMULI: I think that we should establish the relation between 
-order parameter and P-N vector angle changes by using ECC-lipids model.
-This would be useful for people measuring aplha order parameter
-changes from experiments.}
-For example, $\Delta S_{\rm CH}^{\alpha}=0.018$ measured due to the
-addition of 66.8 $\mu$M concentration of Mellittin in bulk water \cite{kuchinka89}
-gives $\Delta \Theta_{\rm P-N} = 2.5^{\circ}$.
-\todo{I looked this roughly from the figure, should be calculated from 
-the actual relation if we decide to put this.}
+The model can be thus used to study changes of lipid P-N vector
+in varying conditions.
+
+%
+%Therefore we use the data in Fig.~\ref{OrderParameterCHANGESsurf}
+%to suggest a linear relation between $\alpha$-carbon order parameter
+%and average P-N vector angle changes $\Delta \Theta_{\rm P-N}=?? \Delta S_{\rm CH}^{\alpha}$.
+%This can be used to estimate the change in P-N vector angle
+%from experiments measuring changes in $\alpha$-carbon order parameter. 
+%\todo{SAMULI: I think that we should establish the relation between 
+%order parameter and P-N vector angle changes by using ECC-lipids model.
+%This would be useful for people measuring aplha order parameter
+%changes from experiments.}
+%
+%For example, $\Delta S_{\rm CH}^{\alpha}=0.018$ measured due to the
+%addition of 66.8 $\mu$M concentration of Mellittin in bulk water \cite{kuchinka89}
+%gives $\Delta \Theta_{\rm P-N} = 2.5^{\circ}$.
+%\todo{I looked this roughly from the figure, should be calculated from 
+%the actual relation if we decide to put this.}
 
 
 \subsection{Cation binding affinity in POPC}
@@ -778,6 +793,9 @@ The relative surface excess calculated from Eq.~\ref{surfexcess} gives
 $\Gamma_i^w = 0.07 \pm 0.01 nm^{-2}$ for the ECC-lipid model,
 which is significantly smaller than $\Gamma_i^w = 0.13 \pm 0.01 nm^{-2}$ for
 Lipid14 with \AA{}qvist and $\Gamma_i^w = 0.3 \pm 0.03 nm^{-2}$ with Dang ions.
+
+\todo{Below analysis is done in a stupid way to get some idea. I would fine it useful to
+  do this analysis by using the density profiles, but it is not necessary.}
 Rough estimates for the free energy difference between bound and unbound cation
 are given by
 \begin{equation}
