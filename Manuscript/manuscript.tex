@@ -811,22 +811,18 @@ and simulations wiht other models.
 %2 POPC - 18\% -- 42\% \\
 %3 POPC - 12\% -- 28\% \\
 
+This section is rough and will likely require editing. 
+Data -- up to noted exceptions -- shall be all there, however. 
+
 Binding stoichiometry of \ce{Ca^{2+}} and POPC was 
-thoroughly studied in the experimental work~\cite{altenbach84}.
+thoroughly studied in the experimental work~\cite{altenbach84},
+in which the head group order parameter changes to cation binding are determined.
 Several binding models were proposed and tested of which only one,
 ternary complex binding model, provided a good fit of the experimental observations. 
-In such a model, it is assumed that \ce{Ca^{2+}} cations bind to a POPC membrane 
-with a stoichiometry 2~POPC:1~\ce{Ca^{2+}}.
-In a later work~\cite{macdonald87}, 
-a Langmuir adsorption model (i.e. stoichiometry 1~POPC:1~\ce{Ca^{2+}}) 
-was found to provide as good fit as ternary complex model, 
-when only low concentrations of \ce{CaCl2} are considered.
 
-Ternary complex model also provides a good fit 
-to our simulations with ECC-lipids 
-(see Fig.~\ref{fig:cacl-bind} in SI and its caption for details). 
-Simulations, however, allow us to directly evaluate the stoichiometry 
+Simulations allow us to directly evaluate the stoichiometry 
 by calculating relative propensities of various \ce{Ca^{2+}}:$n\times$POPC clusters
+by evaluating contacts between cations and lipids with a cut off radius $0.3\,\mathrm{nm}$. 
 In Figure~\ref{fig:cacl_complexes} we see that ternary complex is indeed 
 the most probable binding mode of calcium at 285~mM concentration. 
 Apart from this complex, we also find complexes with 1~and 3~lipids
@@ -836,7 +832,19 @@ are then in order:
 $42\%$ for two lipids,
 $30\%$ for one lipid, and
 $28\%$ for three lipids.
-The symmetry of such a distribution --  
+
+Several binding models were proposed and tested~\cite{altenbach84} of which only one,
+ternary complex binding model, provided a good fit of the experimental observations. 
+In such a model, it is assumed that \ce{Ca^{2+}} cations bind to a POPC membrane 
+with a stoichiometry 2~POPC:1~\ce{Ca^{2+}}.
+In a later work~\cite{macdonald87}, 
+a Langmuir adsorption model (i.e. stoichiometry 1~POPC:1~\ce{Ca^{2+}}) 
+was found to provide as good fit as ternary complex model, 
+when only low concentrations of \ce{CaCl2} are considered.
+Ternary complex model also provides a good fit 
+to our simulations with ECC-lipids 
+(see Fig.~\ref{fig:cacl-bind} in SI and its caption for details). 
+The symmetry of the distribution of complexes from simulation --  
 i.e. almost equal probabilities of complexes with 1 or 3 lipids 
 that behave in the total average picture as complexes with 2 lipids -- 
 provides clues why ternary complex binding model 
@@ -850,10 +858,12 @@ although it is apparently incorrect.
       Histogram of relative probabilities of existence of complexes
       of \ce{Ca^{2+}} and $n$ POPC lipids. 
   }
+  \todo{Change this figure so that it contains the relative probabilities of finding the particular clusters.}
 \end{figure}
 
 In addition, we estimated relative binding affinities 
 of several moieties in POPC towards \ce{Ca^{2+}}. 
+\todo{Add a simple analysis using number of contacts.}
 Based on the probability isodensity contours (see Fig.~\ref{fig:volmaps}), 
 we estimate that the largest contribution
 to the binding of \ce{Ca^{2+}} to POPC membranes comes from the phosphate group. 
@@ -863,11 +873,12 @@ of \ce{Ca^{2+}} binding to any of the two carbonyl moieties
 but their apparently lower affinity compared to phosphate oxygens. 
 
 The residence time of \ce{Ca^{2+}} bound to a POPC membrane 
-is experimentally determined to be lower than $10\,\mu\mathrm{s}$~\cite{carrington67}. 
-Recent theoretical work with long enough simulations estimates this time
-in the order of $1\,\mu\mathrm{s}$~\cite{catte16}. 
+is experimentally estimated to be lower than $10\,\mu\mathrm{s}$~\cite{altenbach84}. 
+From recent theoretical work with long enough simulations this time can be roughly estimated
+in the order of $1$--$10\,\mu\mathrm{s}$~\cite{Javanainen2017}. 
 This is in contrast to our model, ECC-lipids, 
 which gives a mean residence time in the order of $10\,\mathrm{ns}$, 
+\todo{evaluate this number, mean residence time, accurately based on the contacts data.}
 i.e. at least two orders of magnitude lower than previous estimates.
 Such a finding changes the point of view of calcium binding from
 very tight long-term stable binding with rare exchanges to 
