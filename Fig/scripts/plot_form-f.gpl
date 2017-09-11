@@ -17,6 +17,7 @@ set style line ls_eccl17 pt  6 ps 1 lw 4 lc rgb '#EE1020'
 #set key at screen 2.10,screen 1.1 reverse Left # maxcols 2 maxrows 9 
 
 set yrange [0:2.5]
+set xrange [0:0.7]
 set xtics format "%G"
 set ytics 1.0 format "%G"
 set xtics 0.1 format "%G"
