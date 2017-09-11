@@ -53,7 +53,7 @@
 # in https://github.com/NMRLipids/NMRLipids_V-Review/blob/master/Manuscript/review_manu.pdf
 #
 #label Order_Parameter_1 Order_Parameter_2
-#2.00000000 -0.07958247   0.12251912
+#2.00000000 -0.07958247   -0.12251912
 #3.00000000 -0.18026492    nan
 #4.00000000 -0.18618742    nan
 #5.00000000 -0.19359199    nan
@@ -126,7 +126,7 @@ palmitoyl_C16a PALM C116 H16R -0.01813583    0.2
 palmitoyl_C16b PALM C116 H16S -0.01813583    0.2
 palmitoyl_C16c PALM C116 H16T -0.01813583    0.2
 oleoyl_C2a OLE  C12 H2R -0.07958247   0.2 
-oleoyl_C2b OLE  C12 H2S 0.12251912    0.2
+oleoyl_C2b OLE  C12 H2S -0.12251912   0.2
 oleoyl_C3a OLE  C13 H3R -0.18026492   0.2
 oleoyl_C3b OLE  C13 H3S -0.18026492   0.2
 oleoyl_C4a OLE  C14 H4R -0.18618742   0.2
