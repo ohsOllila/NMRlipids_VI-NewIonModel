@@ -410,29 +410,35 @@ measured using atomic absorption~\cite{altenbach84}.
 In this work, we will use the latter definition. For this we
 will measure the salt concentration in the water bulk region,
 \textit{i.e.}, the farthest point from both lipid leaflets in the water phase. 
-Note that in our previous study, Ref.~\citenum{catte16},
-we calculated the concentration as in the DPPC experiments.
-Despite the two concentrations may differ significantly for CaCl$_2$ systems
-these differences do not affect qualitatively the conclusions neither in this
+Note that in the previous study, Ref.~\citenum{catte16},
+the concentration was calculated as in the DPPC experiments.
+Despite of the measurable differences between two concentrations for CaCl$_2$ systems,
+the qualitatively conclusions are not affected neither in this
 nor in our previous work~\cite{catte16}. 
 
 To quantify the ion binding affinity to a membrane, we
 calculated the relative surface excess of ions with respect to water $\Gamma_i^w$  \cite{chattorajBOOK}.
-This quantity does not depend on the definition of the interfacial region
-and the position of the Gibbs dividing plane. Therefore, we consider our whole simulation box as
-an interface flanked by a water phase and an ideal phase with the characteristics of to
-the hydrophobic region in the middle of the membrane where no ions or waters are present.
+This quantity can be used to compare binding affinity between different models,
+because it does not depend on the definition of the interfacial region
+or the position of the Gibbs dividing plane between two bulk regions.
+Therefore, we consider the hydrophobic interior of a membrane having zero concentrations of ions and water
+as a bulk region, which is separated by a monolayer interface from 
+a another region with bulk concentration of ions in water.
+Since the boundary of the latter region is set to the edge of simulation box,
+all molecules in simulation are within the defined interfacial region. 
+%our whole simulation box as
+%an interface flanked by a water phase and an ideal phase with the characteristics of to
+%the hydrophobic region in the middle of the membrane where no ions or waters are present.
 This setup provides a simplified relation for $\Gamma_i^w$ in lipid bilayers simulations 
 \begin{equation}\label{surfexcess}
   \Gamma_i^w=\frac{1}{2A_b} \left ( n_i - n_w \frac{C_i}{C_w} \right ) ,
 \end{equation}
 where $n_w$ and $n_i$ are the total number of waters and ions in the system;
 $C_w$ and $C_i$ are their respective bulk concentrations in the water phase;
-and $A_b$ is the size of the box in the membrane plane. Therefore, this quantity
-does not depend on any arbitrary definition of a bound ion to a membrane and
-therefore allow us to accurately compare between different models. Note that
-because bilayers have an interface in both leaflefts, the total area of the
-interface is twice the area of the membrane, $2A_b$.
+and $A_b$ is the size of the box in the membrane plane.
+The total area of the interface is twice the area of the membrane, $2A_b$,
+because bilayers have an interface in both leaflefts.
+
 
 
 \subsection{Validation of lipid bilayer structure against experiments}
@@ -513,7 +519,7 @@ dihexadecyldimethylammonium bromide cationic surfactant,
 
 \vspace{0.5cm}
 \chemfig{
-\chemabove{N}{\scriptstyle\oplus} (-[:135]H_3C)(-[:225]H_3C)(-[:315]{(}CH2{)}_{16}-CH_3)(-[:45]{(}CH2{)}_{12}-CH_3)  (-[:0,3.5,,,draw=none]\chemabove{Br}{\scriptstyle\ominus}) 
+(-[:0,1.0,,,draw=none]\chemabove{Br}{\scriptstyle\ominus}) -[:0,3.5,,,draw=none]\chemabove{N}{\scriptstyle\oplus} (-[:135]H_3C)(-[:225]H_3C)(-[:315]{(}CH2{)}_{16}-CH_3)(-[:45]{(}CH2{)}_{12}-CH_3)  
 } .
 \vspace{0.5cm}
 
@@ -524,7 +530,9 @@ to approximately correspond to their equivalent segments in Lipid14 \cite{dickso
 The surfactants were randomly placed among the lipids to form bilayer structures with
 mole fractions 10\%, 20\%, 30\%, 42\% and 50\% of surfactant in the POPC bilayer.
 All systems contained 50 POPC molecules per leaflet, 6340 TIP3P water molecules and
-6, 14, 21, 35 or 50 surfactants per leaflet.
+6, 14, 21, 35 or 50 surfactants per leaflet. Parameters for Bromium ions were
+not available in the standard Gromacs files for Amber force field, thus the
+parameters for Chloride ions were used instead.
 The systems were simulated for 200~ns using Lipid14 model for POPC where reasonable lipid neighbor exchange occurs.
 First 20~ns were omitted from the analysis. 
 
@@ -721,8 +729,8 @@ in varying conditions.
 
 The binding affinity of aqueous cations in lipid 
 bilayers can be measured by using the headgroup 
-order parameters, because they decrease monotonously  
-with the bound positive charge~\cite{seelig87,catte16}. 
+order parameters, because they decrease proportionally  
+to the bound positive charge~\cite{seelig87,catte16}. 
 The headgroup order parameter responses 
 to aqueous NaCl and CaCl$_2$ concentrations 
 are shown in Fig. \ref{OrderParameterCHANGESnewMODELS}
