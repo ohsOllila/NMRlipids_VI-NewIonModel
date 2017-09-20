@@ -112,7 +112,8 @@ This work will continue as an open collaboration project NMRlipids VI (http://nm
 Cation interactions with cellular membranes play a key role in several biological processes,
 like in signal propagation in neurons and vesicle fusion.
 \todo{This could be maybe extended.}
-Since the direct measurements of ion-membrane interactions from biological systems
+\todo{JOE: following doesn't sound right to me. The reasoning is weird.}
+Since direct measurements of ion-membrane interactions from biological systems
 are difficult, lipid bilayers are often used as models systems for cellular
 membranes. The detailed results from simple model systems can be then
 used to understand the role of ions in complex biological systems.
@@ -220,6 +221,7 @@ of electronic polariization effects \cite{chowdhary13} by implicitly including
 electronic polarizability in lipid
 bilayer simulations by using the electronic continuum correction
 (ECC)~\cite{leontyev11}. 
+\todo{JOE: It would be a good idea to be consistent in using ECC resp. MDEC. I think that here shuld be MDEC as it cites Stuchebrukhov.}
 Technically, it is a similar approach to the phenomenological charge-scaling as applied in 
 the early studies where a scaling factor one half was used \cite{jonsson86,egberts94}. 
 However, the concept of ECC is 
@@ -247,21 +249,21 @@ Assuming globally a  high frequency dielectric constant as measured in water (sq
 in a scaling factor of $f_q = 0.75$ \cite{some_orig_source, leontyev11}. This scaling factor has been
 successfully used to improve the performance of force field for ions in solution \cite{kohagen14,kohagen16,??} which then agree with neutron scattering data \cite{kohagen14,kohagen16, Pluharova2014}. 
 
-While the scaling factor of $f_q = 0.75$ for ions in water improves their performance and is physically justifiable within the MDECC theory \cite{Leontyev2011},
+While the scaling factor of $f_q = 0.75$ for ions in water improves their performance and is physically justifiable within the MDEC theory \cite{Leontyev2011},
 it is not clear how the same factor should be used for partial charges in molecules,
 e.g., lipids in our case. Unlike the total charge of molecules, atomic partial charges within each molecule are not physical observables.
 There are several schemes for the assignment of partial charges for biomolecules. \cite{Hu2007}
 Currently, the most commonly employed scheme is RESP~\cite{RESP_paper,Singh1984}, 
 which aims to reproduce the electrostatic potential obtained from quantum mechanical calculations around an ensemble the target molecules. 
-The fixed partial atomic charges obtained by this method is hence 
-the best fit of these partial charges that reproduces the electrostatic potential around the provided target conformations. 
-Such averaging is well suited for the application of ECC, 
+The fixed partial atomic charges obtained by this method are hence 
+the best fit of pint charges reproducing the electrostatic potential around provided target conformations. 
+Such a scheme is well suited for the application of ECC, 
 which targets at improving electrostatic interactions using a mean field correction. 
 In practice, partial charges currently implemented in force fields may already 
 include  to some extend some of the solvent electronic polarizability effects, i.e.,
-the RESP charges are scaled to fit some experimental observable. 
+the RESP charges are scaled to fit some experimental observables. 
 Thus, we expect that the application of the ECC scaling factor, $f_q$, on the molecular partial charges
-included in the available force fields do not necessarily require the integral, $f_q = \epsilon _{el} ^{-1/2}$, 
+included in the available force fields does not necessarily have to follow the relation $f_q = \epsilon _{el} ^{-1/2}$, 
 but instead it lies between 0.75 (no electronic polarizability in the charge calculation)
 and $1$ (full electronic polarizability already included in the charge calculation).
 %
@@ -282,8 +284,8 @@ and $1$ (full electronic polarizability already included in the charge calculati
 
 In this work, we produce a phospholipid model for classical MD simulations that
 accurately describes the lipid head group response to varying concentrations
-of monovalent and divalent cations. This is critical membrane feature, which is
-poorly reproduced by currently available models, can affect not only membrane properties
+of monovalent and divalent cations. This is a critical membrane feature, which is
+poorly reproduced by currently available models; It affects not only membrane properties
 in the presence of ions but also modulates the interaction with charged moieties in the surface.
 Importantly, this response from simulations can be accurately
 compared against experimental NMR data \cite{akutsu81,altenbach84,scherer89},
@@ -295,17 +297,19 @@ Also glycerol backbone and head group structures in Lipid14 model were
 relatively realistic when compared with other state of the art lipid models \cite{botan15}.
 The ECC correction was applied to Lipid14 parameters by scaling partial charges of the head group,
 glycerol backbone and carbonyl regions, which are the most polar parts in lipids and
-are expected to have the largest contribution to the cation binding \todo{Do we really need to scale charges in non charged methylens in the choline and glycerol backbones? why? Does it really make a difference?}.
+are expected to have the largest contribution to the cation binding \todo{Do we really need to scale charges in non charged methylens in the choline and glycerol backbones? why? Does it really make a difference?
+JOE: Cannot answer this without actually doing it. The selection was a matter of choice -- in the beginnig we argued with Samuli about this. I said that we shuld select the polar atoms in this selection and leave out the rest as ECC would mean little difference to them. Samuli then argued in a way that if it makes no difference, why not apply ECC onto such atoms too? Hence we applied ECC on all of the atoms.}.
 However, we do not modify the hydrocarbon chain parameters, because they are
 already highly optimized and give generally a good description for
 hydrophobic part of lipid bilayers in most lipids models, including Lipid14 \cite{ollila16}.
-This contrast with the behavior in glycerol backbone and head group
+This contrasts with the behavior in glycerol backbone and head group order
 parameters which call for improvements in all available lipid models~\cite{botan15}. 
 
 Exploring different scaling factor values, we found out that ion binding and
 related head group order parameter responses become weaker. 
 The optimal behaviour of ion binding was observed with
 the scaling factor $f_q = 0.8$. % is optimal for applying ECC on Lipid14 model. 
+\todo{JOE: following discussion shall be modified in the enlightenment of our recent ECC-discussions.}
 Interestingly, this scaling factor is in line with the estimate
 given by ``implicitly polarized charges'' (IPolQ) \cite{ipolq2013}
 combined with RESP calculations in vacuum and implicit solvent reported
@@ -324,7 +328,7 @@ with a factor 0.8.
 
 
 While, the charge scaling improved the behaviour of lipid-ion interactions,
-it reduced the area per molecule of lipid bilayer without ions below experimental
+it reduced the area per molecule of the lipid bilayer without ions below experimental
 values. Simulations with Lipid14 parameters having partial charges of head group, glycerol
 backbone and carbonyls scaled with 0.8 gave the area per molecule value of $\approx$60~\AA$^2$,
 which is significantly smaller than the experimental value 64.3~\AA$^2$ (\cite{}\todo{missing REF for APL experiment})
@@ -335,7 +339,8 @@ of molecules with scaled charges. The hydration can be increased
 by reducing the effective radius of atoms by changing the 
 the $\sigma$ parameters in Lennard-Jones potential for the selected atoms
 similarly as done for free ions in solution \cite{kohagen14,kohagen16,Pluharova2014}.
-\todo{We should discuss how this can potentially affect the intermolecular interaction when mixing scaled and non scaled molecules}
+\todo{We should discuss how this can potentially affect the intermolecular interaction when mixing scaled and non scaled molecules.
+JOE: I think that we rather increasingly see that there's nothing like ``fully non-scaled'' with the exception of ions with integer charges. So the discussion shall be rather more about the interaction of our ``scaled'' (I'd still rather call it ECC-corrected or whatever) and ``semi-scaled'' models.}
 This decreases the solvation free energy by allowing water molecules to
 approach closer to lipid atoms and have stonger electrostatic interactions with them.
 After reducing the $\sigma$ parameters with a factor of $f_\sigma = 0.89$
@@ -407,6 +412,7 @@ For DPPC, salt concentrations before solvating
 the lipids are used~\cite{akutsu81}. Instead, for POPC,
 the salt concentration of supernatant after solvation is
 measured using atomic absorption~\cite{altenbach84}.
+\todo{JOE: I'm afraid that the above description might sound to the reader like for some reasons one method is used with DPPC, but a different one with POPC. I think simply writing one way is\dots another way is \dots (or similarly) will be less confusing.}
 In this work, we will use the latter definition. For this we
 will measure the salt concentration in the water bulk region,
 \textit{i.e.}, the farthest point from both lipid leaflets in the water phase. 
@@ -421,6 +427,7 @@ calculated the relative surface excess of ions with respect to water $\Gamma_i^w
 This quantity can be used to compare binding affinity between different models,
 because it does not depend on the definition of the interfacial region
 or the position of the Gibbs dividing plane between two bulk regions.
+\todo{JOE: following is very unclear to me. I think we can write it in a more concise way.}
 Therefore, we consider the hydrophobic interior of a membrane having zero concentrations of ions and water
 as a bulk region, which is separated by a monolayer interface from 
 a another region with bulk concentration of ions in water.
@@ -437,7 +444,7 @@ where $n_w$ and $n_i$ are the total number of waters and ions in the system;
 $C_w$ and $C_i$ are their respective bulk concentrations in the water phase;
 and $A_b$ is the size of the box in the membrane plane.
 The total area of the interface is twice the area of the membrane, $2A_b$,
-because bilayers have an interface in both leaflefts.
+because bilayers have an interface in both leaflets.
 
 
 
@@ -554,9 +561,10 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
   \caption{\label{simVSexpNOions}
     Top: Chemical structure of POPC with definitions of different order parameters calculated.
     Middle: Order parameters of head group, glycerol backbone and sn-1 and sn-2 tails  from simulations with Lipid14 \cite{dickson14} and ECC-lipids models
-    compared with experimental order parameters from \cite{ferreira13} {\color {red} X-label misses glycerol region}.
+    compared with experimental order parameters from \cite{ferreira13}.
     Bottom: X-ray scattering form factors from experiments~\cite{Kucerka2011} and simulations using Lipid14 \cite{dickson14} and ECC-lipids models. 
-    }
+    } 
+    \todo{X-label misses glycerol region. JOE: glycerol belongs to the headgroup part, but, yes, it wouldn't hurt to write it explicitly.}
 \end{figure}
 
 \begin{table}
