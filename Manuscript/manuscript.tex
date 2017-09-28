@@ -406,7 +406,7 @@ well quantified before using the electrometer concept to
 analyze binding affinities. This is done experimentally for a wide range
 of systems~\cite{seelig87,beschiasvili91}. To calibrate 
 the head group order parameter response also in simulations,
-we use experimental data for dihexadecyldimethylammonium (C$_{12}$C$_{16}$$^+$N2C$_1$Br$^-$)
+we use experimental data for dihexadecyldimethylammonium (2C$_{16}$$^+$N2C$_1$Br$^-$)
 in a POPC bilayer \cite{scherer89}. Dihexadecyldimethylammonium
 is a cation surfactant having two acyl chains and bearing a unit
 charge in the hydrophilic end. Thus, it is expected to locate
@@ -532,30 +532,29 @@ Simulation trajectories and parameters are available at \cite{??} \todo{To be up
 
 \subsubsection{Simulations of POPC bilayers with cationic surfactants}
 An automated topology builder \cite{malde11} was first used to create the structure of
-dihexadecyldimethylammonium bromide cationic surfactant,
-
-\vspace{0.5cm}
+dihexadecyldimethylammonium \\[0.5cm]
+%\vspace{0.5cm}
 \chemfig{
-(-[:0,1.0,,,draw=none]\chemabove{Br}{\scriptstyle\ominus}) -[:0,3.5,,,draw=none]\chemabove{N}{\scriptstyle\oplus} (-[:135]H_3C)(-[:225]H_3C)(-[:315]{(}CH2{)}_{16}-CH_3)(-[:45]{(}CH2{)}_{12}-CH_3)  
-} .
-\vspace{0.5cm}
-
-AmberTools program \cite{amber} was then used to generate the Amber-type force field
+ -[:0,3.5,,,draw=none]\chemabove{N}{\scriptstyle\oplus} (-[:135]H_3C)(-[:225]H_3C)(-[:315]{(}CH2{)}_{16}-CH_3)(-[:45]{(}CH2{)}_{16}-CH_3)
+} , 
+\vspace{0.5cm} \\
+which is one of the cationic surfactants used to experimentally quantify the electrometer concept~\cite{scherer89}.
+The AmberTools program \cite{amber} was then used to generate the Amber-type force field
 parameters. The parameters were converted to the Gromacs format by using
-acpype tool \cite{acpype}. The partial charges were then manually modified
+the acpype tool \cite{acpype}. The partial charges were then manually modified
 to approximately correspond to their equivalent segments in Lipid14 \cite{dickson14}.
 The surfactants were randomly placed among the lipids to form bilayer structures with
-mole fractions 10\%, 20\%, 30\%, 42\% and 50\% of surfactant in the POPC bilayer.
+mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer.
 All systems contained 50 POPC molecules per leaflet, 6340 TIP3P water molecules and
-6, 14, 21, 35 or 50 surfactants per leaflet. Parameters for Bromium ions were
-not available in the standard Gromacs files for Amber force field, thus the
-parameters for Chloride ions were used instead.
+6, 14, 21, 35, or 50 surfactants per leaflet. Chloride counter ions were used
+in simulations, because parameters for bromide, which was used in the experiment \cite{scherer89},
+were not available in the standard Gromacs files for Amber force field.
 The systems were simulated for 200~ns using Lipid14 model for POPC where reasonable lipid neighbor exchange occurs.
 First 20~ns were omitted from the analysis. 
 
-The same systems were also simulated with ECC-lipid model for POPC using the same setup. 
+The same systems were also simulated with the ECC-lipid model for POPC using the same setup. 
 In these simulations the ECC correction was also applied to the cationic surfactant 
-by scaling all charges with the same factor as for ECC-lipids, $f_q=0.8$, 
+by scaling all charges with the same factor as for ECC-lipids, i.e., $f_q=0.8$, 
 and by using the atom types with reduced $\sigma$ parameters from ECC-lipids. 
 
 
@@ -574,7 +573,9 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
     compared with experimental order parameters from \cite{ferreira13}.
     Bottom: X-ray scattering form factors from experiments~\cite{Kucerka2011} and simulations using Lipid14 \cite{dickson14} and ECC-lipids models. 
     } 
-    \todo{X-label misses glycerol region. JOE: glycerol belongs to the headgroup part, but, yes, it wouldn't hurt to write it explicitly.}
+  \todo{X-label misses glycerol region. JOE: glycerol belongs to the headgroup part, but, yes, it wouldn't hurt to write it explicitly. SAMULI: I would maybe remove the whole text, tell the information in caption and increase the order parameter figure size in z-direction.}
+  \todo{Also acyl chain points should correspond the legends and maybe have the same size as HG and glycerol.}
+  \todo{Legends would be more clear without multiple points.}
 \end{figure}
 
 \begin{table}
@@ -609,18 +610,20 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
 \end{table}
 
 
-In order to validate the newly developed model, ECC-lipids, 
-we compared our simulation results without any ions to
+In order to validate the structural properties of the newly developed ECC-lipids model
+we first compared our simulation results without any ions to
 NMR order parameters measurements and x-ray scattering form factors 
 (Fig.~\ref{simVSexpNOions}). 
-Our tail order parameters, as in the original Lipid14 model~\cite{dickson14},
-match the experimental values. This is expected as the ECC model does not modify
-the already highly optimized parameters of this region in Lipid14. 
-\todo{The discussion about acyl chain and headgroup order parameters needs to be
-  finished when the value for C2, the scale are fixed in the figure and
-  size of the points are fixed in the figure.
-  JOE: I think this is fixed now.}
-The headgroup order parameters $\alpha$ and $\beta$ and P-N vector angle are slightly larger in the ECC-lipid model in comparison to Lipid14 (Figs.~\ref{simVSexpNOions} and \ref{OrderParameterCHANGESsurf}). 
+As in the original Lipid14 model~\cite{dickson14}, the acyl chain order parameters agree
+well with the experimental values. Notably,
+
+and in almost all the other available
+lipid models \cite{ollila16}
+
+%This is expected as the ECC model does not modify
+%the already highly optimized parameters of this region in Lipid14. 
+The headgroup order parameters $\alpha$ and $\beta$ and P-N vector angle are slightly larger
+in the ECC-lipid model in comparison to Lipid14 (Figs.~\ref{simVSexpNOions} and \ref{OrderParameterCHANGESsurf}). 
 With the current data we cannot, however, conclude which is the more realistic
 conformation since in both models one headgroup order parameter agrees
 with experiments within error bars whereas the other does not.
@@ -644,7 +647,7 @@ in SI along with results with other water models.
   \includegraphics[width=8.0cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B_L14-ECCL17_q80_sig89_surf.eps}
   \caption{\label{OrderParameterCHANGESsurf}
     Headgroup order parameter changes and P-N vector orientation as a function of
-    cationic surfactant (dihexadecyldimethylammonium bromide, C$_{12}$Cl$_{16}$$^+$N2C$_1$Br$^-$)
+    cationic surfactant (dihexadecyldimethylammonium bromide, 2C$_{16}$$^+$N2C$_1$Br$^-$)
     in PC bilayer from simulations and experiments \cite{scherer89}.
   }
 \end{figure}
