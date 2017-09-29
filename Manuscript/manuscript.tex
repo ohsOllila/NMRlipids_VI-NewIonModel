@@ -573,8 +573,8 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
     compared with experimental order parameters from \cite{ferreira13}.
     Bottom: X-ray scattering form factors from experiments~\cite{Kucerka2011} and simulations using Lipid14 \cite{dickson14} and ECC-lipids models. 
     } 
-  \todo{X-label misses glycerol region. JOE: glycerol belongs to the headgroup part, but, yes, it wouldn't hurt to write it explicitly. SAMULI: I would maybe remove the whole text, tell the information in caption and increase the order parameter figure size in z-direction.}
-  \todo{Also acyl chain points should correspond the legends and maybe have the same size as HG and glycerol.}
+  \todo{X-label misses glycerol region. JOE: glycerol belongs to the headgroup part, but, yes, it wouldn't hurt to write it explicitly. SAMULI: I would maybe remove the whole text, tell the information in caption and increase the order parameter figure size in z-direction.} \\
+  \todo{Also acyl chain points should correspond the legends and maybe have the same size as HG and glycerol.} \\
   \todo{Legends would be more clear without multiple points.}
 \end{figure}
 
@@ -610,33 +610,44 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
 \end{table}
 
 
-In order to validate the structural properties of the newly developed ECC-lipids model
-we first compared our simulation results without any ions to
-NMR order parameters measurements and x-ray scattering form factors 
-(Fig.~\ref{simVSexpNOions}). 
-As in the original Lipid14 model~\cite{dickson14}, the acyl chain order parameters agree
-well with the experimental values. Notably,
-
-and in almost all the other available
-lipid models \cite{ollila16}
-
-%This is expected as the ECC model does not modify
-%the already highly optimized parameters of this region in Lipid14. 
-The headgroup order parameters $\alpha$ and $\beta$ and P-N vector angle are slightly larger
-in the ECC-lipid model in comparison to Lipid14 (Figs.~\ref{simVSexpNOions} and \ref{OrderParameterCHANGESsurf}). 
-With the current data we cannot, however, conclude which is the more realistic
-conformation since in both models one headgroup order parameter agrees
-with experiments within error bars whereas the other does not.
-Slight changes are also observed in glycerol backbone order parameters,
-but the accuracy of both models is comparable to the state of art lipid models
-available in literature \cite{ollila16}. The agreement between the x-ray scattering
-form factors (Fig.~\ref{simVSexpNOions}) and the areas per molecule from simulations and experiments (Table~\ref{tab:apls}) 
-confirm that the membrane structural properties are well captured. 
-\todo{JOE: I think the following is actually in Fig.~\ref{simVSexpNOions}.}
-A structural comparison of ECC-lipids with Lipid14 can be found 
-in SI along with results with other water models. 
+%In order to validate the structural properties of the newly developed ECC-lipids model
+%we first compared our simulation results without any ions to
+%NMR order parameters measurements and x-ray scattering form factors 
+%(Fig.~\ref{simVSexpNOions}). 
+The x-ray scattering form factor (Fig.~\ref{simVSexpNOions}) and
+the area per lipid (Table~\ref{tab:apls}) of POPC bilayer simulated
+with the ECC-lipid model are in good agreement with the experimental results,
+as well as with the Lipid14 model. Thus, we conclude that the lipid bilayer dimensions
+are well captured by the developed ECC-lipid model. 
 %The optimal value for $f_\sigma$ was found by representing the overall membrane structure well
 %by matching scattering form factors to experimental data~\cite{Petrache06, Kucerka08, Pabst10}.
+
+As in the original Lipid14 model~\cite{dickson14}, the acyl chain order parameters of the
+ECC-lipid model agree well with the experimental values in Fig.~\ref{simVSexpNOions}. Notably, the experimentally measured forking and
+small order parameter values of $C_2$ segment in {\it sn}-2 chain are relatively well
+reproduced by the both models. This has been suggested to indicate that the carbonyl
+region of {\it sn}-2 chain is directed towards the water phase, in contrast to the
+carbonyl in {\it sn}-1 chain, which would orient more along the bilayer
+plane~\cite{seelig75,schindler75,gawrisch92}. While this may be an important
+feature for the ion binding details, it is not necessarily reproduced by the
+available lipid models~\cite{ollila16}
+%This is expected as the ECC model does not modify
+%the already highly optimized parameters of this region in Lipid14. 
+
+The headgroup order parameters of $\alpha$ and $\beta$ carbons are slightly larger
+in the ECC-lipid model than in Lipid14, which is apparently related to the
+smaller P-N vector angle with respect to the membrane normal in
+Fig.~\ref{OrderParameterCHANGESsurf}. With the current data we cannot,
+however, conclude which one of the models give the more realistic
+headgroup conformations. The ECC-lipid model gives
+the $\beta$ carbon order parameter value closer to experiments, while
+value for $\alpha$ carbon is better in Lipid14.
+Despite of some deviations from the experimental order parameter values
+in Fig. \ref{simVSexpNOions},
+the accuracy of the both models in the glycerol backbone region
+is comparable to the other state
+of art lipid models available in literature \cite{botan15}.
+
 
 \todo{Dynamics check is missing: MSD (Hector/Joe)}
 
@@ -806,7 +817,13 @@ which is significantly smaller than $\Gamma_i^w = 0.13 \pm 0.01 nm^{-2}$ for
 Lipid14 with \AA{}qvist and $\Gamma_i^w = 0.3 \pm 0.03 nm^{-2}$ with Dang ions.
 
 \todo{Below analysis is done in a stupid way to get some idea. I would fine it useful to
-  do this analysis by using the density profiles, but it is not necessary.}
+  do this analysis by using the density profiles, but it is not necessary.
+  The reason why I want to do something like this, is that it would be useful to have
+  some easier way to estimate the correct binding affinity than the electrometer concept,
+  which is quite tedious to apply in practise (simulations with different concenrations,
+  cationic surfactant check, etc.). I wuold like to be able to estimate much faster from a
+  simulation if the binding affinity is reasonable or not. This may not be the correct way for
+that anyway.}
 Rough estimates for the free energy difference between bound and unbound cation
 are given by
 \begin{equation}
@@ -873,6 +890,13 @@ and simulations wiht other models.
 
 This section is rough and will likely require editing. 
 Data -- up to noted exceptions -- shall be all there, however. 
+\todo{SAMULI: I think the we should make clear that the current binding
+  constants in, e.g., Marsh's handbook are based on the headgroup order parameter
+  changes intepreted with ternary complex binding model. I.e. the experimental raw data
+  is excatly the same as we have in this work. Our simulations enable much more versatile interpretation
+  of the binding phenomena. I think that this is one the main points of this work, so this comment
+  applies to the previous section, introduction, abstract and conclusions as well.
+}
 
 Binding stoichiometry of \ce{Ca^{2+}} and POPC was 
 thoroughly studied in the experimental work~\cite{altenbach84},
@@ -947,19 +971,6 @@ a relatively frequent exchange of cations
 in equilibrium between membrane and solvent. 
 
 
-
-
-
-\todo{SAMULI: The same authors have also literature, where they say that ternary complex may not
-  be the only option. I will recheck and come back to this.
-  SAMULI: This is written in \cite{macdonald87}:
-  ''\ce{Ca^{2+}} binding to POPC bilayers over the whole concentration range can be best described in terms
-  of formation of a ternary complex involving complexation of two lipids to one calcium ion (Altenbach and Seelig, 1984).
-  The addition of a sodium competition term has not changed this conclusion. However, if \ce{Ca^{2+}} concentrations
-  up to 100 mM are considered, the data can be equally well explained by a 1:1 binding mechanism (cf. Figure 7).
-  In contrast, the Ca2+ binding to POPC-POPG mixtures can be best described by assuming a 1:l stoichiometry regardless of the range of Ca2+concentrations.''
-  We might or might not want to discuss about this.
-  JOE: I think this is adressed/acknowledged enough now.} \\
 \todo{Finalize stoichiometry analysis for \ce{Na^+}, \ce{Ca^{2+}},
   their interaction energies with the lipid membrane, etc,
   and finalize the discussion after these results.}
