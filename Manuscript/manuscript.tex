@@ -704,7 +704,7 @@ for the $\alpha$ segment, while the slope is slightly
 underestimated for the $\beta$ segment.
 %This has to be taken into account when interpreting the
 %head group order parameter response to CaCl$_2$ concentration in Lipid14 model.
-%observed in  Ref. \citenum{catte16}, see also Fig. \ref{OrderParameterCHANGESnewMODELS}.
+%observed in  Ref. \citenum{catte16}, see also Fig. \ref{fig:delta_ordPar_NaCl}.
 %The present comparison of head group order parameter changes 
 %suggests that the observed overestimated response of all models to 
 %increasing CaCl$_2$ concentration in \cite{catte16} 
@@ -746,11 +746,23 @@ in varying conditions.
 
 \subsection{Cation binding affinity in POPC}
 
-\begin{figure*}[tbp]
+\begin{figure}[tbp]
   \centering
-  \includegraphics[width=16.0cm]{../Fig/OrdParChanges_NaCl_CaCl2.eps}
-  \caption{\label{OrderParameterCHANGESnewMODELS}
-    Changes of head group order parameters of POPC bilayer as a function of NaCl and CaCl$_2$ concentrations
+  \includegraphics[width=8.0cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B_L14-ECCL17_q80_sig89_NaCl.pdf}
+  \caption{\label{fig:delta_ordPar_NaCl}
+    Changes of head group order parameters of POPC bilayer as a function of NaCl concentrations
+    are shown from simulations with different force fields together with experimental data \cite{akutsu81}. 
+    Ion concentrations in bulk water are shown in x-axis. 
+    Values from simulations are calculated from the of cation number density $C_{np}$
+    from the region at the simulatin box edge with the constant ion concentration as [ion]=$C_{np}/0.602$.
+    Simulation data with Lipid14 and \AA{}qvist ion parameters is taken directly from Ref. \cite{catte16}.
+  }
+\end{figure}
+\begin{figure}[tbp]
+  \centering
+  \includegraphics[width=7.5cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B-g3_L14-ECCL17_q80_sig89_CaCl.pdf}
+  \caption{\label{fig:delta_ordPar_CaCl}
+    Changes of head group order parameters of POPC bilayer as a function of CaCl$_2$ concentrations
     are shown from simulations with different force fields together with experimental data 
     (DPPC \cite{akutsu81} and POPC \cite{altenbach84}). 
     Ion concentrations in bulk water are shown in x-axis. 
@@ -758,7 +770,7 @@ in varying conditions.
     from the region at the simulatin box edge with the constant ion concentration as [ion]=$C_{np}/0.602$.
     Simulation data with Lipid14 and \AA{}qvist ion parameters is taken directly from Ref. \cite{catte16}.
   }
-\end{figure*}
+\end{figure}
 
 The binding affinity of aqueous cations in lipid 
 bilayers can be measured by using the headgroup 
@@ -766,7 +778,7 @@ order parameters, because they decrease proportionally
 to the bound positive charge~\cite{seelig87,catte16}. 
 The headgroup order parameter responses 
 to aqueous NaCl and CaCl$_2$ concentrations 
-are shown in Fig. \ref{OrderParameterCHANGESnewMODELS}
+are shown in Fig. \ref{fig:delta_ordPar_NaCl} and \ref{fig:delta_ordPar_CaCl}
 from experiments (DPPC \cite{akutsu81} 
 and POPC \cite{altenbach84}) and different simulation models for POPC. 
 
@@ -789,7 +801,7 @@ Using ion model by Dang et al.~\cite{smith94,chang1999,dang2006} or
 ECC-ions~\cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}
 with more realistic bulk behaviour did not improve the results
 for the CaCl$_2$ interactions with Lipid14 model, as seen 
-in Figs. \ref{OrderParameterCHANGESnewMODELS} and \ref{??} (in SI), respectively.
+in Figs. \ref{fig:delta_ordPar_CaCl} and S\ref{fig:ordPars_waterModels} (in SI), respectively.
 \todo{Add OP-response of Lipid14+ECC-ions plot in SI}.
 The results support the conclusion of the previous work \cite{catte16}
 that improvements also in lipid models are needed to 
@@ -798,7 +810,7 @@ correctly describe divalent cation binding in PC bilayers.
 Significant improvement can be achieved by using the ECC
 approach also for lipids. The headgroup order parameter changes
 as a function of CaCl$_2$ concentration from ECC-lipid model with ECC-ions
-show a good agreement with experiments in Fig. \ref{OrderParameterCHANGESnewMODELS}.
+show a good agreement with experiments in Fig. \ref{fig:delta_ordPar_NaCl} and \ref{fig:delta_ordPar_CaCl}.
 As discussed in previous section, the model gives also
 a good agreement with experiments for
 the headgroup response to bound charge.
@@ -1100,6 +1112,20 @@ gradually do not hold for higher concentrations of \ce{Ca^{2+}}.
     and, hence, the observed slope of the linear relationship is different.
     }
 \end{figure}
+
+
+\begin{figure*}[tbp]
+  \centering
+  \includegraphics[width=8.0cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B-g3_L14-ECCL17_q80_sig89_CaCl_waterModels.pdf}
+  \caption{\label{fig:ordPars_waterModels}
+    Changes of head group order parameters of POPC bilayer as a function of CaCl$_2$ concentrations
+    are shown from simulations with different force fields and water models together with experimental data 
+    (DPPC \cite{akutsu81} and POPC \cite{altenbach84}). 
+    Ion concentrations in bulk water are shown in x-axis. 
+    Values from simulations are calculated from the of cation number density $C_{np}$
+    from the region at the simulatin box edge with the constant ion concentration as [ion]=$C_{np}/0.602$.
+  }
+\end{figure*}
 
 
 % Create the reference section using BibTe
