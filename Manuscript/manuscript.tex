@@ -116,7 +116,6 @@ This work will continue as an open collaboration project NMRlipids VI (http://nm
 \section{Introduction}
 Cation interactions with cellular membranes play a key role in several biological processes,
 such as in signal propagation in neurons and vesicle fusion.
-\todo{JOE: following doesn't sound right to me. The reasoning is weird.}
 Since direct measurements of ion-membrane interactions from biological systems
 are difficult, lipid bilayers are often used as models systems for cellular
 membranes. The detailed results from simple model systems can be then
@@ -217,7 +216,6 @@ of electronic polarization effects \cite{chowdhary13} by implicitly including
 electronic polarizability in lipid
 bilayer simulations by using the electronic continuum correction
 (ECC)~\cite{leontyev11}. 
-\todo{JOE: It would be a good idea to be consistent in using ECC resp. MDEC. I think that here shuld be MDEC as it cites Stuchebrukhov.}
 Technically, it is a similar approach to the phenomenological charge-scaling as applied in 
 the early studies where a scaling factor one half was used \cite{jonsson86,egberts94}.
 \todo{We should also cite papers where empirical scaling was used ionic liquids - but there the factor is not 0.5.}
@@ -300,10 +298,6 @@ relatively realistic when compared with other state of the art lipid models \cit
 The ECC correction was applied to Lipid14 parameters by scaling partial charges of the head group,
 glycerol backbone and carbonyl regions, which are the most polar parts in lipids and
 are expected to have the largest contribution to the cation binding
-\todo{Do we really need to scale charges in non charged methylens in the choline and glycerol backbones? why? Does it really make a difference?
-  JOE: Cannot answer this without actually doing it. The selection was a matter of choice -- in the beginnig we argued with Samuli about this.
-  I said that we shuld select the polar atoms in this selection and leave out the rest as ECC would mean little difference to them. Samuli
-  then argued in a way that if it makes no difference, why not apply ECC onto such atoms too? Hence we applied ECC on all of the atoms.}.
 However, we do not modify the hydrocarbon chain parameters, because they
 do not come in contact with salt ions and are
 already highly optimized and give generally a good description for
@@ -499,35 +493,14 @@ We used the ECC-ions model for Sodium, Calcium and Chloride ions \cite{jungwirth
 Simulations with Lipid14 use ion models by Dang~\cite{smith94,chang1999,dang2006}, and by \AA{}qvist~\cite{aqvist90}. 
 MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4).  
 The simulation settings used in this work are 
-summarized in Table \ref{tbl:mdpar}, 
-and they are based on previously used settings in \cite{catte16} available at \cite{lipid14POPC0mMNaClfiles}.
-\todo{As far as remember, I used there Langevin dynamics instead of thermostated MD, because
-  this is done in Amber by default. If this is correct, the information in the
-  table do not match with this sentence. Based on semi-extensive testing I made few years
-ago this do not change anything. Anyway, this should be reported consistently.}
+summarized in Table \ref{tbl:mdpar}. 
+%and they are based on previously used settings in \cite{catte16} available at \cite{lipid14POPC0mMNaClfiles}.
+%\todo{As far as remember, I used there Langevin dynamics instead of thermostated MD, because
+%this is done in Amber by default. If this is correct, the information in the
+%table do not match with this sentence. Based on semi-extensive testing I made few years
+%ago this do not change anything. Anyway, this should be reported consistently.}
 Simulation trajectories and parameters are available at \cite{??} \todo{To be uploaded to Zenodo}. 
 
-\begin{table}[btp]
-  \caption{Simulation parameters}
-  \label{tbl:mdpar}
-  \begin{tabular}{ll}
-    simulation property & parameter   \\
-    \hline
-    time-step           & 2~fs         \\
-    equilibration time  & 100~ns  \\
-    simulation time     & 200~ns  \\
-    temperature         & 313~K       \\
-    thermostat          & v-rescale  \cite{bussi07}   \\
-    barostat            & Parrinello-Rahman, semi-isotropic \cite{parrinello81} \\
-    long-range electrostatics & PME  \cite{darden93}  \\
-    cut-off scheme      & Verlet \cite{Pall13}      \\
-    Coulomb and VdW cut-off & 1.0~nm \\
-    constraints         & LINCS, only hydrogen atoms \cite{hess97} \\
-    constraints for water & SETTLE  \cite{miyamoto92} \\
-    \hline
-  \end{tabular}
-  \todo{This could be moved to SI. Only simulation lengths needs to be mentioned in the main paper.}
-\end{table}
 
 
 \subsubsection{Simulations of POPC bilayers with cationic surfactants}
@@ -570,13 +543,13 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
   \includegraphics[height=8.4cm,angle=-90]{../Fig/form-f_exp-l14-eccl17.eps}
   \caption{\label{simVSexpNOions}
     Top: Chemical structure of POPC with definitions of different order parameters calculated.
-    Middle: Order parameters of head group, glycerol backbone and sn-1 and sn-2 tails  from simulations with Lipid14 \cite{dickson14} and ECC-lipids models
+    Middle: Order parameters of head group, glycerol backbone and sn-1 and sn-2 tails  
+    from simulations with Lipid14 \cite{dickson14} and ECC-lipids models
     compared with experimental order parameters from \cite{ferreira13}.
+    Error bars are approximately the size of the points for head group order parameters.
+    Point size for the order parameters of tails are decreased by a factor of 3 to improve the clarity of the plot.
     Bottom: X-ray scattering form factors from experiments~\cite{Kucerka2011} and simulations using Lipid14 \cite{dickson14} and ECC-lipids models. 
     } 
-  \todo{X-label misses glycerol region. JOE: glycerol belongs to the headgroup part, but, yes, it wouldn't hurt to write it explicitly. SAMULI: I would maybe remove the whole text, tell the information in caption and increase the order parameter figure size in z-direction.} \\
-  \todo{Also acyl chain points should correspond the legends and maybe have the same size as HG and glycerol.} \\
-  \todo{Legends would be more clear without multiple points.}
 \end{figure}
 
 \begin{table}
@@ -841,7 +814,6 @@ in Lipid14 with \AA{}qvist.
     }
   \todo{PAVEL: draw phosphate position with its variance, add water density (scaled) and include the number of$\Gamma$-surface access.} \\
   \todo{JOE: Change the figure so that it contains a membrane background} \\
-  \todo{The current data for Dang simulation seems to contain more ions than others.}
 \end{figure}
 
 Since the lipid headgroup order parameter responds to the amount of bound charge
@@ -1153,6 +1125,30 @@ gradually do not hold for higher concentrations of \ce{Ca^{2+}}.
     \hline
   \end{tabular}
 \end{table}
+
+
+\begin{table}[btp]
+  \caption{Simulation parameters}
+  \label{tbl:mdpar}
+  \begin{tabular}{ll}
+    simulation property & parameter   \\
+    \hline
+    time-step           & 2~fs         \\
+    equilibration time  & 100~ns  \\
+    simulation time     & 200~ns  \\
+    temperature         & 313~K       \\
+    thermostat          & v-rescale  \cite{bussi07}   \\
+    barostat            & Parrinello-Rahman, semi-isotropic \cite{parrinello81} \\
+    long-range electrostatics & PME  \cite{darden93}  \\
+    cut-off scheme      & Verlet \cite{Pall13}      \\
+    Coulomb and VdW cut-off & 1.0~nm \\
+    constraints         & LINCS, only hydrogen atoms \cite{hess97} \\
+    constraints for water & SETTLE  \cite{miyamoto92} \\
+    \hline
+  \end{tabular}
+\end{table}
+
+
 
 % Create the reference section using BibTe
 \bibliography{refs.bib}

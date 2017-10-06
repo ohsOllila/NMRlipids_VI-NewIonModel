@@ -47,6 +47,9 @@ palmitoyl_C14a PALM C114 H14R
 palmitoyl_C14b PALM C114 H14S
 palmitoyl_C15a PALM C115 H15R
 palmitoyl_C15b PALM C115 H15S
+palmitoyl_C16a PALM C116 H16R 
+palmitoyl_C16b PALM C116 H16S
+palmitoyl_C16c PALM C116 H16T
 oleoyl_C2a OLE  C12 H2R
 oleoyl_C2b OLE  C12 H2S
 oleoyl_C3a OLE  C13 H3R
