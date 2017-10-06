@@ -1007,33 +1007,36 @@ in equilibrium between membrane and solvent.
 
 
 \section{Conclusions}
-We show that the \ce{Na^+} and \ce{Ca^2+} binding in phospholipid bilayers can
-be accurately described with classical MD simulation models, where electronic
-polarization is effectively included by using electronic continuum correction (ECC)~\cite{leontyev11}.
+We show that the \ce{Na^+} and \ce{Ca^2+} binding to phospholipid bilayers can
+be accurately described with classical force field MD simulation models, where electronic
+polarization is effectively included using the electronic continuum correction (ECC)~\cite{leontyev11}.
 This is a significant improvement over other available lipid models,
 which all overestimate specific cation binding affinities~\cite{catte16}.  
-The newly proposed model, which we denote as ''ECC-lipids~17'', 
+The newly proposed model, which we denote as ''ECC-lipids'', 
 exhibits accurate head group order parameter response to
-bound cations, monovalent \ce{Na^+} and cationic surfactant dihexadecyldimethylammonium bromide, 
-and divalent \ce{Ca^2+}
-also quantifying their binding affinities.
-Moreover, ECC-lipids~17 reproduce the lipid bilayer structural details
+bound cations, namely monovalent \ce{Na^+} and cationic surfactant dihexadecyldimethylammonium bromide, 
+and divalent \ce{Ca^2+},
+allowing also for quantifying their binding affinities.
+At the same time, ECC-lipids reproduce the lipid bilayer structural details
 with similar accuracy as other state of the art lipid models~\cite{catte16}.
 Several water models 
 (OPC3\cite{Izadi16}, OPC \cite{Izadi14}, SPC/E \cite{Berendsen1987} and TIP4p/2005 \cite{Abascal2005}) 
 were used to exemplify the transferability of 
-the parameters of the new ECC-lipids~17 force field. 
+the parameters of the new ECC-lipids force field. 
 
-Direct analysis of calcium binding details from MD simulations is in agreement
+Direct analysis of the details of calcium binding from MD simulations is in agreement
 with ternary complex model, which is suggested based on NMR data \cite{altenbach84}.
-In this model 1~calcium binds to 2~POPC molecules, which together form a ternary
+In this model one calcium binds to two POPC molecules, which together form a ternary
 complex.
 \todo{Continue summary using previous section once it is finished.}
 
-The electronic continuum correction is applied here on Lipid14 POPC model \cite{dickson14},
-but we expect that the correction can be generalized also for other lipids
+The electronic continuum correction is built here upon the Lipid14 POPC model \cite{dickson14},
+but we expect that the correction can be used also for other lipids
 and force fields.
-The parameters can be used with existing standard nucleic acid and protein force fields, e.g. AMBER-FB15~\cite{Wang2017}. 
+\todo{JOE: Do we want to suggest that ECC-lipids can be used 
+with current force fields to study for example membrane proteins? 
+This was expressed with the following sentence: 
+The parameters can be used with existing standard nucleic acid and protein force fields, e.g. AMBER-FB15~\cite{Wang2017}. }
 We suggest using state of the art water models like OPC3\cite{Izadi16} or OPC \cite{Izadi14},
 which yield higher accuracy than the traditional TIP3p water model~\cite{jorgensen83}.
 
@@ -1045,9 +1048,15 @@ This work can be reached as a repository containing all data at \url{zenodo.org:
 % If you have acknowledgments, this puts in the proper section head.
 \begin{acknowledgments}
 % Put your acknowledgments here.
+P.J. acknowledges support from the Czech Science Foundation (grant no. 16-01074S) 
+and 600 from the Academy of Finland via the FiDiPro award.
 \end{acknowledgments}
+
+
 \newpage
 \appendix
+
+
 \begin{center}
 {\bf SUPPLEMENTARY INFORMATION}
 \end{center}
@@ -1074,7 +1083,7 @@ the assumptions and relations used for determinig concentrations $C_b$ and $C_I$
 gradually do not hold for higher concentrations of \ce{Ca^{2+}}. 
 
 
-\begin{figure}[]
+\begin{figure}[tbp]
   \centering
   \includegraphics[height=9.0cm,angle=-90]{../Fig/bound-CAs_conc-eccl17.eps}
   \caption{\label{fig:cacl-bind}
@@ -1088,7 +1097,7 @@ gradually do not hold for higher concentrations of \ce{Ca^{2+}}.
 \end{figure}
 
 
-\begin{figure*}[tbp]
+\begin{figure}[tbp]
   \centering
   \includegraphics[width=8.0cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B-g3_L14-ECCL17_q80_sig89_CaCl_waterModels.pdf}
   \caption{\label{fig:ordPars_waterModels}
@@ -1099,7 +1108,7 @@ gradually do not hold for higher concentrations of \ce{Ca^{2+}}.
     Values from simulations are calculated from the of cation number density $C_{np}$
     from the region at the simulatin box edge with the constant ion concentration as [ion]=$C_{np}/0.602$.
   }
-\end{figure*}
+\end{figure}
 
 
 \begin{figure}[tbp]
