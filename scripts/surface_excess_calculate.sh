@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Gromacs 5.x version of ...
-# bash wrapper for calculating Order Parameters of lipid bilayer 
-# python script/library calcOrderParameters.py
+# bash wrapper for calculating relative surface excess of a lipid bilayer 
+# using
+# python script/library get_conc_ion_bulk.py
 # meant for use with NMRlipids projects
 #------------------------------------------------------------
-# Made by J.Melcr,  Last edit 2017/03/21
+# Made by J.Melcr,  Last edit 2017/08/21
 #------------------------------------------------------------
 
 scriptdir=`dirname $0`
