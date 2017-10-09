@@ -979,23 +979,23 @@ in equilibrium between membrane and solvent.
 
 
 \section{Conclusions}
-We show that the \ce{Na^+} and \ce{Ca^2+} binding to phospholipid bilayers can
-be accurately described with classical force field MD simulation models, where electronic
-polarization is effectively included using the electronic continuum correction (ECC)~\cite{leontyev11}.
-This is a significant improvement over other available lipid models,
-which all overestimate specific cation binding affinities~\cite{catte16}.  
-The newly proposed model, which we denote as ''ECC-lipids'', 
-exhibits accurate head group order parameter response to
-bound cations, namely monovalent \ce{Na^+} and cationic surfactant dihexadecyldimethylammonium bromide, 
-and divalent \ce{Ca^2+},
-allowing also for quantifying their binding affinities.
-At the same time, ECC-lipids reproduce the lipid bilayer structural details
-with similar accuracy as other state of the art lipid models~\cite{catte16}.
-Several water models 
-(OPC3\cite{Izadi16}, OPC \cite{Izadi14}, SPC/E \cite{Berendsen1987} and TIP4p/2005 \cite{Abascal2005}) 
-were used to exemplify the transferability of 
-the parameters of the new ECC-lipids force field. 
+By using the electrometer concept we show that the binding of \ce{Na^+} and \ce{Ca^2+} ions
+to a POPC lipid bilayer can be accurately described with classical MD simulation 
+force fields, where electronic polarization is implicitly included using 
+the electronic continuum correction (ECC)~\cite{leontyev11}.
+The proposed ECC-lipids model is a significant improvement over 
+other available lipid models, which all overestimate specific cation binding affinities~\cite{catte16}.  
+While the structural details of a POPC lipid bilayer simulated with the ECC-lipids
+model agree with experiments with the comparable accuracy to the other state of the art lipid models,
+it also reproduces the experimental lipid head group order parameter responses to
+the cationic surfactant, NaCl and CaCl$_2$ concentrations. 
 
+The good agreement with experiments enables the atomic resolution 
+interpretation of NMR experiments by using MD simulations.
+In agreement with previous interpretations of experimental data \cite{hauser76,hauser78,herbette84,binder02},
+the Ca$^{2+}$ ions mainly interact with phosphate oxygens.
+However, the stoichiometry of the binding is significantly more complicated 
+that the simple ternary complex model.
 Direct analysis of the details of calcium binding from MD simulations is in agreement
 with ternary complex model, which is suggested based on NMR data \cite{altenbach84}.
 In this model one calcium binds to two POPC molecules, which together form a ternary
@@ -1011,6 +1011,11 @@ This was expressed with the following sentence:
 The parameters can be used with existing standard nucleic acid and protein force fields, e.g. AMBER-FB15~\cite{Wang2017}. }
 We suggest using state of the art water models like OPC3\cite{Izadi16} or OPC \cite{Izadi14},
 which yield higher accuracy than the traditional TIP3p water model~\cite{jorgensen83}.
+Several water models 
+(OPC3\cite{Izadi16}, OPC \cite{Izadi14}, SPC/E \cite{Berendsen1987} and TIP4p/2005 \cite{Abascal2005}) 
+were used to exemplify the transferability of 
+the parameters of the new ECC-lipids force field. 
+
 
 
 This work can be reached as a repository containing all data at \url{zenodo.org:\dots\dots\dots} and as project \mbox{NMRlipids~VI} in \url{nmrlipids.blogspot.fi}.
