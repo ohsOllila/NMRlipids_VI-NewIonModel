@@ -116,13 +116,13 @@ This work will continue as an open collaboration project NMRlipids VI (http://nm
 \section{Introduction}
 Cation interactions with cellular membranes play a key role in several biological processes,
 such as in signal propagation in neurons and vesicle fusion.
-Since direct measurements of ion-membrane interactions from biological systems
+Since the direct measurements of ion-membrane interactions from biological systems
 are difficult, lipid bilayers are often used as models systems for cellular
-membranes. The detailed results from simple model systems can be then
-used to understand the role of ions in complex biological systems.
+membranes. Especially the zwitterionic phosphocholine (PC) lipid bilayers are
+often used as model systems to understand the role of ions in complex biological
+systems~\cite{scherer87,seelig90,cevc90}.
 
-Zwitterionic phosphocholine (PC) lipid bilayers are commonly used model systems for
-cellular membranes. Interactions of biological cations, especially Na$^+$ and
+Interactions of biological cations, especially Na$^+$ and
 Ca$^{2+}$, with PC bilayers are widely studied in
 experiments~\cite{akutsu81,altenbach84,seelig90,cevc90,tocanne90,binder02,pabst07,uhrikova08}
 and classical MD simulations~\cite{bockmann03,bockmann04,Berkowitz12,melcrova16,javanainen17}.
@@ -135,26 +135,24 @@ The details of ion binding are, however, not fully consistent in the literature.
 %The presence of anoinic lipids, like PS or PG,
 %increase the concentration close to the bilayer and thus the amount of bound
 %ions, but do not affect the specific binding constant \cite{seelig90}.
-Non-invansive spectroscopic methods, like nuclear magnetic resonance (NMR), scattering
-and infrared scpectroscopy, give accurate information about ion binding
-in PC lipid bilayers\cite{hauser76,hauser78,herbette84,akutsu81,altenbach84,binder02,pabst07,uhrikova08}.
-Interpretation most of these experiments suggests that Na$^+$ ions exhibit
-negligible binding in PC lipid bilayers with submolar concentrations, while Ca$^{2+}$ specifically
-binds to phosphate groups of two lipid molecules. Atomistic resolution
-molecular dynamics (MD) simulation models, however, predict significantly
+Interpretations of non-invansive spectroscopic methods, like nuclear magnetic resonance (NMR), scattering
+and infrared scpectroscopy suggest that Na$^+$ ions exhibit
+negligible binding to PC lipid bilayers with submolar concentrations, while Ca$^{2+}$ specifically
+binds to phosphate groups of two lipid molecules~\cite{hauser76,hauser78,herbette84,akutsu81,altenbach84,binder02,pabst07,uhrikova08}.
+Atomistic resolution molecular dynamics (MD) simulation models, however, predict significantly
 stronger binding for the cations than NMR experiments \cite{catte16}.
 On the other hand, some experiments have also been interpreted to support the predictions from
 MD simulations~\cite{bockmann03,vacha09a}. 
-Interactions of Calcium ions with 3-4 lipids,
+Furthermore, interactions of Calcium ions with 3-4 lipids,
 including also interactions with carbonyl
 oxygens, have been reported from simulations~\cite{bockmann03,bockmann04,melcrova16,javanainen17}.
 
 
 Recent work published by the NMRlipids project (\url{nmrlipids.blogspot.fi})~\cite{catte16}
-made an attempt to resolve the apparent controversies. This study presented 
-a direct comparison between ion binding affinity between simulations and
-experiments by using NMR data for lipid headgroup order 
-parameters and the electrometer concept~\cite{seelig87}.
+made an attempt to resolve the apparent controversies. A direct comparison of
+ion binding affinities to PC bilayers was presented between simulations and
+experiments by using the electrometer concept, which is based on the experimental NMR data
+for the lipid headgroup order parameters~\cite{seelig87}.
 Using massive amounts of data collected by Open Collaboration method, it was concluded
 that the accuracy of the current state of the art lipid models for MD
 simulations is not sufficient for the detailed interpretation of the cation
@@ -172,7 +170,7 @@ interactions with PC lipid bilayers~\cite{catte16}.
 
 In this work we show that the cation binding behavior
 in MD simulations of 1-Palmitoyl-2-oleoylphosphatidylcholine (POPC) bilayer can be significantly 
-improved by implicitly including electronic polarizability
+improved by implicitly including the electronic polarizability
 in the polar region of lipid molecules. The electronic
 polarizability is included by using the electronic
 continuum correction (ECC)~\cite{leontyev11}, which
@@ -351,34 +349,15 @@ back in agreement with the experimental value (see Table~\ref{tab:apls}).
 
 
 \subsection{Electrometer concept} \label{section:electrometer}
-Ion binding between experiments and simulations was compared by 
-using lipid head group order parameters and the
-''electrometer concept'' \cite{seelig87,catte16}.
-The concept is based on the experimental observation that the C-H bond
+Ion binding in lipid bilayers was compared between experiments and simulations by 
+using the lipid head group order parameters and the
+''electrometer concept'' \cite{seelig87,catte16}, which
+is based on the experimental observation that the C-H bond
 order parameters of $\alpha$ and $\beta$ carbons in PC lipid head group
 (see Fig.~\ref{simVSexpNOions}) are proportional to the amount 
-of unit charge bound per lipid,  $X^\pm$~\cite{seelig87}.
-Change in the order parameters measured with varying aqueous
+of unit charge bound per lipid~\cite{seelig87}.
+The change of order parameters measured with varying aqueous
 ion concentration can be then related to the amount of bound ions.
-
-The change of the head group order parameters is empirically quantified
-as~\cite{seelig87,ferreira16}
-\begin{equation}\label{OPchangeEQ}
-  \Delta S_{\rm{CH}}^{i}= S_{\rm{CH}}^{i}(X^\pm)-S_{\rm{CH}}^{i}(0) \approx \frac{4m_i }{3\chi}X^\pm,
-\end{equation}
-where $S_{\rm{CH}}^{i}(0)$ denote the order parameter in the absence of bound charge,
-$i$ refers to either $\alpha$ or $\beta$ carbon,
-$m_i$ is an empirical constant depending on the valency and position of the bound charge,
-and the experimental value \cite{seelig77,davis83}, $\chi \approx$\,167\,kHz, is used for the quadrupole coupling constant.
-Atomic absorption spectra and $^2$H NMR data gave
-$m_\alpha=-20.5$~kHz  and $m_\beta=-10.0$~kHz for Ca$^{2+}$ binding to POPC
-bilayer (in the presence of 100~mM NaCl)~\cite{altenbach84,ollila16,catte16}.
-The slopes are negative, because recent analysis concluded 
-that the order parameters decrease with bound positive charge 
-and increase with bound negative charge when the signs are taken 
-in account \cite{ollila16,catte16}. This is rationalized as a change
-of lipid head group dipole tilt toward water phase with bound positive
-charge and {\it vice versa} with negative charge \cite{seelig87}. 
 
 The concept can be used to compare the ion binding affinity in lipid 
 bilayers between MD simulations and  NMR experiments, because the order
@@ -393,19 +372,43 @@ S_{\rm CH}=\frac{3}{2}\langle \cos^2\theta -1 \rangle,
 where $\theta$ is the angle between the bond and membrane
 normal and the average is taken over all sampled configurations \cite{ollila16}.
 
-The measured order parameter change depends on the response of 
-the headgroup on the bound charge, i.e. $m_i$ in Eq.~\ref{OPchangeEQ},
-and the ion binding affinity. Thus, the former property has to be
-well quantified before using the electrometer concept to
-analyze binding affinities. This is done experimentally for a wide range
+The relation between bound charge per lipid,  $X^\pm$, and
+the head group order parameter change, $\Delta S_{\rm{CH}}^{i}$,
+is empirically quantified as~\cite{seelig87,ferreira16}
+\begin{equation}\label{OPchangeEQ}
+  \Delta S_{\rm{CH}}^{i}= S_{\rm{CH}}^{i}(X^\pm)-S_{\rm{CH}}^{i}(0) \approx \frac{4m_i }{3\chi}X^\pm,
+\end{equation}
+where $S_{\rm{CH}}^{i}(0)$ denote the order parameter in the absence of bound charge,
+$i$ refers to either $\alpha$ or $\beta$ carbon,
+$m_i$ is an empirical constant depending on the valency and position of the bound charge,
+and the experimental value \cite{seelig77,davis83}, $\chi \approx$\,167\,kHz, is used for the quadrupole coupling constant.
+Atomic absorption spectra and $^2$H NMR data gave
+$m_\alpha=-20.5$~kHz  and $m_\beta=-10.0$~kHz for the binding of
+Ca$^{2+}$ to POPC bilayer (in the presence of 100~mM NaCl)~\cite{altenbach84,ollila16,catte16}.
+The slopes are negative, because the head group order parameters
+decrease with bound positive charge and increase with bound negative
+charge~\cite{ollila16,catte16}. This can be rationalized as a change
+of the lipid head group dipole tilt toward water phase with the bound positive
+charge and {\it vice versa} with the negative charge~\cite{seelig87}. 
+
+The measured order parameter change depends on both, the head group response 
+to the bound charge and the amount of bound charge, i.e. $m_i$ and $X^\pm$
+in Eq.~\ref{OPchangeEQ}, respectively. The former property has to be
+well quantified before the electrometer concept can used to 
+analyze the binding affinities, as done experimentally for a wide range
 of systems~\cite{seelig87,beschiasvili91}. To calibrate 
-the head group order parameter response also in simulations,
-we use experimental data for dihexadecyldimethylammonium (2C$_{16}$$^+$N2C$_1$Br$^-$)
-in a POPC bilayer \cite{scherer89}. Dihexadecyldimethylammonium
+the head group order parameter response to the bound charge in simulations,
+we use the experimental data for dihexadecyldimethylammoniumbromide %(2C$_{16}$$^+$N2C$_1$Br$^-$)
+mixed within a POPC bilayer~\cite{scherer89}. Dihexadecyldimethylammonium\\[0.5cm]
+%\vspace{0.5cm}
+\chemfig{
+ -[:0,3.5,,,draw=none]\chemabove{N}{\scriptstyle\oplus} (-[:150]H_3C)(-[:210]H_3C)(-[:330]{(}CH_2{)}_{15}-CH_3)(-[:30]{(}CH_2{)}_{15}-CH_3)
+}  
+\vspace{0.5cm} \\
 is a cation surfactant having two acyl chains and bearing a unit
 charge in the hydrophilic end. Thus, it is expected to locate
 in the bilayer similarly to the phospholipids and the molar ratio then 
-gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems \cite{scherer87}.
+gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems~\cite{scherer89}.
 
 \subsection{Salt concentrations and binding affinity}
 Experimental studies providing the lipid head group order
@@ -505,13 +508,7 @@ Simulation trajectories and parameters are available at \cite{??} \todo{To be up
 
 \subsubsection{Simulations of POPC bilayers with cationic surfactants}
 An automated topology builder \cite{malde11} was first used to create the structure of
-dihexadecyldimethylammonium \\[0.5cm]
-%\vspace{0.5cm}
-\chemfig{
- -[:0,3.5,,,draw=none]\chemabove{N}{\scriptstyle\oplus} (-[:150]H_3C)(-[:210]H_3C)(-[:330]{(}CH2{)}_{15}-CH_3)(-[:30]{(}CH2{)}_{15}-CH_3)
-} , 
-\vspace{0.5cm} \\
-which is one of the cationic surfactants used to experimentally quantify the electrometer concept~\cite{scherer89}.
+dihexadecyldimethylammonium, which is one of the cationic surfactants used to experimentally quantify the electrometer concept~\cite{scherer89}.
 The AmberTools program \cite{amber} was then used to generate the Amber-type force field
 parameters. The parameters were converted to the Gromacs format by using
 the acpype tool \cite{acpype}. The partial charges were then manually modified
