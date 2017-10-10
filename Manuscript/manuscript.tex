@@ -337,10 +337,11 @@ of molecules with scaled charges. The hydration can be increased back
 by reducing the effective radius of atoms by changing the 
 the $\sigma$ parameters in the Lennard-Jones potential for the selected atoms
 similarly as done for free ions in solution \cite{kohagen14,kohagen16,Pluharova2014}.
-\todo{We should discuss how this can potentially affect the intermolecular interaction when mixing scaled and non scaled molecules.
+\todo{We should discuss how this can potentially affect the intermolecular interaction when mixing scaled and non scaled molecules. \\
   JOE: I think that we rather increasingly see that there's nothing like ``fully non-scaled'' with the exception of ions with integer
   charges. So the discussion shall be rather more about the interaction of our ``scaled'' (I'd still rather call it ECC-corrected or whatever)
-  and ``semi-scaled'' models.}
+  and ``semi-scaled'' models. \\
+SAMULI: There is now a paragraph in the conclusions, which mentions this topic.}
 This decreases the solvation free energy by allowing water molecules to
 approach closer to lipid atoms and have stronger electrostatic interactions with them.
 After reducing the $\sigma$ parameters by a factor of $f_\sigma = 0.89$
@@ -411,35 +412,37 @@ in the bilayer similarly to the phospholipids and the molar ratio then
 gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems~\cite{scherer89}.
 
 \subsection{Salt concentrations and binding affinity}
-Experimental studies providing the lipid head group order
-parameters report salt concentrations in two different ways.
-For DPPC, salt concentrations before solvating
-the lipids are used~\cite{akutsu81}. Alternatively, for POPC,
-the salt concentration of supernatant after solvation is
-measured using atomic absorption~\cite{altenbach84}.
-\todo{JOE: I'm afraid that the above description might sound to the reader
-  like for some reasons one method is used with DPPC, but a different one with POPC.
-  I think simply writing one way is\dots another way is \dots (or similarly) will be less confusing.}
-In this work, we will use the latter definition. For this we
-will calculate the salt concentration in the aqueous bulk region,
-\textit{i.e.}, the farthest point from both lipid leaflets in the water phase. 
+The early experimental electrometer concept data for the lipid head group
+order parameter changes was reported as a function 
+of the salt concentration in water before solvating
+the lipids~\cite{akutsu81}. The later study used atomic absorption
+spectroscopy and reported the order parameter changes as
+a function of the salt concentration in the supernatant after the
+solvation of lipids~\cite{altenbach84}.
+In this work we focus on POPC for which the latter definition was used~\cite{altenbach84}.
+The salt concentration in the aqueous bulk region was calculated from 
+the farthest point from both lipid leaflets in the water phase. 
 Note that in the previous study, Ref.~\citenum{catte16},
-the concentration was calculated as in the DPPC experiments.
+the ion concentrations were calculated in water before solvating the lipids 
+as in the earlier experiments~\cite{akutsu81}.
 Despite of the measurable differences between these two concentrations for CaCl$_2$ systems,
-the qualitative conclusions are affected neither in this
-nor in our previous work~\cite{catte16}. 
+the qualitative conclusions in this or in the previous work~\cite{catte16} are
+not affected. 
 
-To quantify the ion binding affinity to a membrane, we
-calculated the relative surface excess of ions with respect to water $\Gamma_i^w$  \cite{chattorajBOOK}.
-This quantity can be used to compare binding affinity between different models,
-because it does not depend on the definition of the interfacial region
-or the position of the Gibbs dividing plane between two bulk regions.
-\todo{JOE: following is very unclear to me. I think we can write it in a more concise way.}
-Therefore, we consider the hydrophobic interior of a membrane having zero concentrations of ions and water
-as a bulk region, which is separated by a monolayer interface from 
-a another region with bulk concentration of ions in water.
-Since the boundary of the latter region is set to the edge of simulation box,
-all molecules in simulation are within the defined interfacial region. 
+To quantify the ion binding affinity to a lipid bilayer, we
+calculated the relative surface excess of ions with respect to water,~$\Gamma_i^w$~\cite{chattorajBOOK}.
+This quantity was chosen because it does not depend on
+%the definition of the interfacial region or
+the position of the Gibbs dividing plane between two bulk regions.
+%\todo{JOE: following is very unclear to me. I think we can write it in a more concise way.}
+%SAMULI: Here is a new trial.
+Here we assume that the interface locates between the hydrophobic interior
+of a lipid bilayer and the bulk water region far from the membrane.
+The bulk concentration of ions and water is zero inside the bilayer.
+The concentrations in bulk water region can be calculated from 
+the farthest point from both lipid leaflets in the water phase.
+The region between these boundaries contains all the ions and water
+molecules in the simulation box.
 %our whole simulation box as
 %an interface flanked by a water phase and an ideal phase with the characteristics of to
 %the hydrophobic region in the middle of the membrane where no ions or waters are present.
