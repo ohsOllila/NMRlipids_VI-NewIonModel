@@ -460,16 +460,17 @@ because bilayers have an interface at both leaflets.
 
 \subsection{Validation of lipid bilayer structure against experiments}
 
-Lipid bilayer structure without ions was validated against NMR and 
+The structure of lipid bilayers in simulations without ions were validated against NMR and 
 \mbox{x-ray} scattering experiments by calculating order parameters
-for C-H bonds and form factors from our simulations. The former validates the structures sampled by individual
+for C-H bonds and form factors. The former validates the structures sampled by individual
 lipid molecules in simulations with atomic resolution, while the latter
 validates the dimensions of the lipid bilayer (thickness and area per
 molecule)~\cite{ollila16}.
 
 The order parameters were calculated from simulations for all C-H bonds
 in lipid molecules by using Eq. \ref{OP}. Form factors were calculated 
-from equation
+from equation \todo{As Hector suggested, it might be better to write the simpler
+form for this equation.}
 \begin{equation}
   F(q) = \int _{-D/2} ^{D/2} \left ( \sum _\alpha f_\alpha (q_z) n_\alpha (z) - \rho _s \right ) \exp (izq_z) \mathrm{d}z,
 \end{equation}
@@ -485,16 +486,17 @@ spanning until the water bulk region, $D$.
 \subsection{Simulation details}
 
 \subsubsection{Simulations of POPC bilayers in aqueous ions}
-The simulated systems consisted of POPC bilayer in pure water
-or in varying salt concentrations.
-In particular, the periodic orthorhombic simulation box contained 
-128 POPC molecules and approximately 50~water molecules per each lipid.
+Simulations of POPC bilayer in pure water or in varying salt concentrations
+contained 128 POPC molecules and approximately 50~water molecules per each lipid
+in the periodic orthorhombic simulation box.
 As a default, water molecules were described by the OPC3 force field~\cite{Izadi16} 
-which is currently the most accurate three site rigid water model. 
+which is currently the most accurate three site rigid water model
+\todo{More justification for the choosing the OPC3 water model are needed.
+It might be good to show the comparison with the scattering data in bulk water in SI.}. 
 In order to test transferability of our newly developed ECC-lipids model, 
 we also performed several additional simulations with 
 OPC \cite{Izadi14}, SPC/E \cite{Berendsen1987}, TIP3p-FB and TIP4p-FB~\cite{Wang2014}, and TIP4p/2005 \cite{Abascal2005} water models
-presented in Supporting Information (SI). 
+\todo{The normal TIP3P was tested as well, right?} presented in Supporting Information (SI). 
 We used the ECC-ions model for Sodium, Calcium and Chloride ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
 Simulations with Lipid14 use ion models by Dang~\cite{smith94,chang1999,dang2006}, and by \AA{}qvist~\cite{aqvist90}. 
 MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4).  
@@ -1140,7 +1142,8 @@ gradually do not hold for higher concentrations of \ce{Ca^{2+}}.
     experiment  & 68.1  &  333    \\
     %experiment POPE  & 56.6 &  303    \\
     \hline
-  \end{tabular}
+  \end{tabular} \\
+  \todo{Result with normal TIP3P missing?}
 \end{table}
 
 
