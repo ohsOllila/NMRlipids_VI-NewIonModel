@@ -912,8 +912,8 @@ Such a finding is based on the calculated
 number of contacts per lipid between \ce{Ca^{2+}} and POPC oxygen atoms, 
 $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O}$,
 in which a contact between the two groups is counted 
-if their distance is less than or equal $0.3 \, \mathrm{nm}$ (robustness of this definition discussed in reference~\citenum{melcrova16}). 
-The average number of contacts between \ce{Ca^{2+}} and any oxygen atom in POPC is 
+if their distance is less than or equal $0.3 \, \mathrm{nm}$ (robustness of this definition discussed in reference~\citenum{javanainen17}). 
+the average number of contacts between \ce{ca^{2+}} and any oxygen atom in popc is 
 $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O} = 0.47 $,    % = 59.8/128 
 whereas if only phosphate oxygen atoms are considered 
 the average number of contacts decreases only by a tiny amount to 
@@ -926,30 +926,33 @@ which are easier to interpret.
 
 The residence time of \ce{Ca^{2+}} bound to a POPC membrane 
 is experimentally estimated to be lower than $10\,\mu\mathrm{s}$~\cite{altenbach84}. 
-From recent theoretical work with long enough simulations this time can be roughly estimated
+From a recent theoretical work with long simulations 
+(Fig. S17 in \citenum{javanainen17} -- C36 with MK Ca2+, any other model, either different cation or Slipids/C36, just such calcium)
+this time can be roughly estimated -- get the simulation from \url{https://doi.org/10.5281/zenodo.259376} and analyze it -- 
 in the order of $1$--$10\,\mu\mathrm{s}$~\cite{javanainen17}. 
 This is in contrast to our model, ECC-lipids, 
-which gives a mean residence time in the order of $10\,\mathrm{ns}$, 
-\todo{evaluate this number, mean residence time, accurately based on the contacts data.}
+which estimates the residence time of calcium bound to a POPC membrane to be 
+smaller than $53\,\mathrm{ns}$ for 90\% of the time a cation is in a membrane-bound state. 
 i.e. at least two orders of magnitude lower than previous estimates.
+In addition, the longest observed residence time in our simulation is $120\,\mathrm{ns}$, 
+which is well below the length of our simulations.
+This is unfortunately not the case of many theoretical works,
+where the residence time cannot be estimated,
+or the simulation has not even decorrelated from it's 
+initial condition with a population of bound/unbound cations \cite{catte16}, 
+because it is limited by the simulation length, 
+even though it can be very long (order of $\mu\mathrm{s}$) in some works, e.g. reference~\citenum{javanainen17}. 
+Increasing time scales to the order of $\mu\mathrm{s}$ 
+doesn't help to alleviate such a problem in current lipid models \cite{javanainen17}. %and also \cite{catte16}, but same simulation was used. 
 Such a finding changes the point of view of calcium binding from
 very tight long-term stable binding with rare exchanges to 
 a relatively frequent exchange of cations 
 in equilibrium between membrane and solvent. 
+A histogram of residence times from our simulations is in Fig.~S\ref{fig:hist_residence_times} in SI. 
+\todo{JOE: Plot a histogram of residence times based on our simulations and simulation from \citenum{javanainen17} and put it into SI.
+Add data for Na+. }
 
 
-\todo{Finalize stoichiometry analysis for \ce{Na^+}, \ce{Ca^{2+}},
-  their interaction energies with the lipid membrane, etc,
-  and finalize the discussion after these results.}
-
-%It is also suggested that the addition of \ce{NaCl} to the solution of \ce{CaCl_2} enhances the hedgroup 
-%order parameter response compared to the solution with only \ce{CaCl_2}. \cite{altenbach84}
-%\todo{Simulate this effect and discuss it further}
-
-%\todo{The difference between DPPC and POPC -- simulate and compare with experiment. }
-
-
-%\todo{It might be worth acknowledging each experimental finding in \cite{Altenbach84} and observations in \cite{Javanainen2017-ChemComm}.}
 
 
 \begin{figure}[tbp]
