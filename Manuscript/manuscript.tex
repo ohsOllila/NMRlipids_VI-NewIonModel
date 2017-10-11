@@ -497,8 +497,10 @@ In order to test transferability of our newly developed ECC-lipids model,
 we also performed several additional simulations with 
 OPC \cite{Izadi14}, SPC/E \cite{Berendsen1987}, TIP3p-FB and TIP4p-FB~\cite{Wang2014}, and TIP4p/2005 \cite{Abascal2005} water models
 \todo{The normal TIP3P was tested as well, right?} presented in Supporting Information (SI). 
-We used the ECC-ions model for Sodium, Calcium and Chloride ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
-Simulations with Lipid14 use ion models by Dang~\cite{smith94,chang1999,dang2006}, and by \AA{}qvist~\cite{aqvist90}. 
+The ECC-ion models were used for Sodium, Calcium and Chloride ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
+Simulation with the Lipid14 model was also ran with the ion model by Dang et al.~\cite{smith94,chang1999,dang2006}.
+Simulation data for the Lipid14 model with \AA{}qvist~\cite{aqvist90} ion model
+was taken directly from \cite{lipid14POPC0mMNaClfiles}. 
 MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4).  
 The simulation settings used in this work are 
 summarized in Table \ref{tbl:mdpar}. 
@@ -513,22 +515,26 @@ Simulation trajectories and parameters are available at \cite{??} \todo{To be up
 
 \subsubsection{Simulations of POPC bilayers with cationic surfactants}
 An automated topology builder \cite{malde11} was first used to create the structure of
-dihexadecyldimethylammonium, which is one of the cationic surfactants used to experimentally quantify the electrometer concept~\cite{scherer89}.
+dihexadecyldimethylammonium.%, which is one of the cationic surfactants used to experimentally quantify the electrometer concept~\cite{scherer89}.
 The AmberTools program \cite{amber} was then used to generate the Amber-type force field
 parameters. The parameters were converted to the Gromacs format by using
 the acpype tool \cite{acpype}. The partial charges were then manually modified
 to approximately correspond to their equivalent segments in Lipid14 \cite{dickson14}.
+The parameters are available at \cite{??} \todo{To be added}.
 The surfactants were randomly placed among the lipids to form bilayer structures with
 mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer.
 All systems contained 50 POPC molecules per leaflet, 6340 TIP3P water molecules and
-6, 14, 21, 35, or 50 surfactants per leaflet. 
-%Chloride counter ions were used
-%in simulations, because parameters for bromide, which was used in the experiment \cite{scherer89},
-%were not available in the standard Gromacs files for Amber force field.
-The systems were simulated for 200~ns using Lipid14 model for POPC where reasonable lipid neighbor exchange occurs.
-First 20~ns were omitted from the analysis. 
+6, 14, 21, 35, or 50 surfactants per leaflet. Chloride counter ions were used
+in simulations, because parameters for bromide, the counterion in the experimental data \cite{scherer89},
+were not available in the standard Gromacs files for Amber force field.
+The Lipid14 model was used for POPC.
+The first 20~ns of the total simulation time of 200~ns
+was considered as an equlibration time and was omitted from the analysis.
+A reasonable lipid neighbor exchange occured during the simulation.
 
-The same systems were also simulated with the ECC-lipid model for POPC using the same setup. 
+
+The same systems were also simulated with the ECC-lipid model for POPC using the same setup.
+\todo{Which water model was used in these simulations?}
 In these simulations the ECC correction was also applied to the cationic surfactant 
 by scaling all charges with the same factor as for ECC-lipids, i.e., $f_q=0.8$, 
 and by using the atom types with reduced $\sigma$ parameters from ECC-lipids. 
@@ -570,10 +576,6 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
 \end{table}
 
 
-%In order to validate the structural properties of the newly developed ECC-lipids model
-%we first compared our simulation results without any ions to
-%NMR order parameters measurements and x-ray scattering form factors 
-%(Fig.~\ref{simVSexpNOions}). 
 The x-ray scattering form factor (Fig.~\ref{simVSexpNOions}) and
 the area per lipid (Table~\ref{tab:apls}) of POPC bilayer simulated
 with the ECC-lipid model are in good agreement with the experimental results,
