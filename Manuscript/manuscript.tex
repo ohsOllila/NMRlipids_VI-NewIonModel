@@ -924,6 +924,21 @@ $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} = 0.02 $.    % = (59.8-57.2)/128 .
 We corroborate this finding with the probability isodensity contours in Fig.~\ref{fig:volmaps}, 
 which are easier to interpret.
 
+Internal side-note: 
+However, $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}}$ is increased 
+when carbonyl dipoles are scaled only with 0.945 
+(roughly done through charge redistribution)
+ to : $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} \approx 0.08 $.    % = (70.-59.8)/128 . 
+This does not change the dominance of phosphates, which still interact more than 6x times more. That's good.
+In addition, the probability of states, containing sn-1:O increases from 6\% to 10\%.
+The residence times change to 75ns (90\% of bound time) and max is 185ns.
+That's not much, too. It certainly is not a game changer, I'd even call it to be within accuracy. 
+The slight problem may be that with this tweak, there's approx. 20\%  more cations bound to the membrane,
+which means, I'd need to tune the sigma parameter a bit. 
+Not $f_q$ -- that's set by the simulations with the surfactant. 
+That could detune the membrane structure \dots
+I think that's within the accuracy.
+
 The residence time of \ce{Ca^{2+}} bound to a POPC membrane 
 is experimentally estimated to be lower than $10\,\mu\mathrm{s}$~\cite{altenbach84}. 
 From a recent theoretical work with long simulations 
