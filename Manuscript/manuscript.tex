@@ -915,14 +915,18 @@ $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O}$,
 in which a contact between the two atoms is counted 
 if their distance is less than or equal $0.3 \, \mathrm{nm}$ 
 (robustness of this definition discussed in reference~\citenum{javanainen17}). 
-The average number of contacts between \ce{Ca^{2+}} and any oxygen atom in POPC is 
-$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O} = 0.47 $,    % = 59.8/128 
+The average number of contacts per lipid between \ce{Ca^{2+}} and any oxygen atom in POPC is 
+$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O} = 0.264 $,    % = 33.8/128 
 whereas if only phosphate oxygen atoms are considered 
 the average number of contacts decreases only by a tiny amount to 
-$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{PO_4} = 0.45 $,    % = 57.2/128 . 
-and if only carbonyl oxygen atoms are considered,
+$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{PO_4} = 0.262 $,    % = 33.5/128 . 
+and if only carbonyl oxygen atoms are considered 
+(phosphate oxygens contribute, but are not counted as contacts),
 this value is merely
-$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} = 0.02 $.    % = (59.8-57.2)/128 . 
+$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} = 0.066 $.    % = 8.4/128 . 
+This means that calcium is in contact with a phosphate oxygen for 99\% of the time it is bound to the membrane, 
+whereas only 25\% of the time accounts for contact with a carbonyl oxygen,
+and purely carbonyl bound states account for less than 1\% of configurations. 
 We corroborate this finding with the probability isodensity contours in Fig.~\ref{fig:volmaps}, 
 which are easier to interpret.
 
@@ -979,13 +983,28 @@ However, $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}}$ is increased
 when carbonyl dipoles are scaled only with 0.945 
 (roughly done through charge redistribution)
  to : $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} \approx 0.08 $.    % = (70.-59.8)/128 . 
-This does not change the dominance of phosphates, which still interact more than 6x times more. That's good.
-In addition, the states that have a contribution from carbonyl oxygens also contain a bound phosphate, 
+
+The average number of contacts per lipid between \ce{Ca^{2+}} and any oxygen atom in POPC is 
+$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O} = 0.264 \rightarrow 0.309 $,
+whereas if only phosphate oxygen atoms are considered 
+the average number of contacts decreases only by a tiny amount to 
+$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{PO_4} = 0.262 \rightarrow 0.303 $,    % = 33.5/128 . 
+and if only carbonyl oxygen atoms are considered 
+(phosphate oxygens contribute, but are not counted as contacts),
+this value is merely
+$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} = 0.066 \rightarrow 0.139 $.    % = 8.4/128 . 
+
+This means that calcium is in contact with a phosphate oxygen for 98\% of the time it is bound to the membrane, 
+whereas 46\% of the time accounts for contact with a carbonyl oxygen,
+and purely carbonyl bound states account for less than 2\% of configurations. 
+
+The states that have a contribution from carbonyl oxygens also contain a bound phosphate, 
 so it can be thought of rather as a stabilizing moiety. 
-In addition, the probability of states, containing sn-1:O increases from 6\% to 10\%.
+In addition, the probability of states (among bound states), containing sn-1:O increases from 20\% to 28\% (from MSM).
+Purely carbonyl-bound states make only 0.7\% and in carbonyl-dip corrected 1.4\%.
 The residence times change to 75ns (90\% of bound time) and max is 185ns.
 That's not much, too. It certainly is not a game changer, I'd even call it to be within accuracy. 
-The slight problem may be that with this tweak, there's approx. 20\%  more cations bound to the membrane,
+The slight problem may be that with this tweak, there's approx. 17\%  more cations bound to the membrane,
 which means, I'd need to tune the sigma parameter a bit (increase the scaling factor $f_\sigma$). 
 That could detune the membrane structure \dots
 Not $f_q$ -- that's set by the simulations with the surfactant. Good.
