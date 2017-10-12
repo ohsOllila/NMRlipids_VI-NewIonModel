@@ -88,19 +88,29 @@ Prague 6, Czech Republic}
 
 \begin{abstract}
   % insert abstract here
-  \todo{Abstract directly from Joe's conference abstracts. To be rewritten.}
-Classical molecular dynamics simulations give detailed information about membrane structure and dynamics. 
-However, there is still a room for improvements in current force fields – it is known from the literature,
-that the binding of ions, especially cations, to phopholipid membranes is overestimated in all classical models [1]. 
-We suggest that the membrane-ion interactions can be corrected by including implicit electronic polarizability into the
-lipid models through the electronic continuum correction (ECC) [2], which was already applied to monovalent and divalent
-ions yielding models that feature correct ion pairing [3]. 
-Using the electrometer concept [3, 4] and x-ray scattering form factors, our simulations point out that our hypothesis is
-correct and ECC is indeed a missing important contribution in current classical lipid models. 
-Moreover, the solid physical principles behind ECC are found not to hamper other relevant properties of a phospholipid bilayer. 
-The new lipid model, "ECC-lipids", shows accurate binding affinity to sodium and calcium cations and head group order parameter response to bound charge. 
-We also provide for the first time a realistic stochiometry of bound calcium cations to a POPC membrane, and their binding sites. 
-This work will continue as an open collaboration project NMRlipids VI (http://nmrlipids.blogspot.fi).
+  Despite of the significant biological relevance, the binding details of cations in cellular
+  lipid membranes are not fully understood. For example, consistent results for
+  the binding affinities and stoichimetries of Na$^+$ and Ca$^{2+}$ ions to phospholipid bilayers have not been
+  achieved with different experimental and theoretical methods. As recently shown in the 
+  NMRlipids project, a Open Collaboration running at \url{nmrlipids.blogspot.com},
+  the ion binding details could be resolved with unprecendent detail by intepreting
+  the experimental NMR data with classical molecular dynamics (MD) simulations.
+  However, the accuracy of the existing lipid models for MD simulations was not sufficient for this.
+  In this work we show that the binding details of Na$^+$ and Ca$^{2+}$ ions to
+  1-Palmitoyl-2-oleoylphosphatidylcholine (POPC) bilayer
+  can be accurately described with a MD simulation model having implicitly included electronic polarization.
+  This is demonstrated by applying the electronic continuum correction (ECC) to a
+  state of the art lipid model for MD simulations of POPC
+  lipid bilayer. The introduced ECC-lipid model reproduces the experimentally measured structural parameters for the ion-free membrane,
+  the response of lipid headgroup to the bound positive charge, and the binding affinities of
+  Na$^+$ and Ca$^{2+}$ ions. The imperceptible binding of Na$^+$ ions to POPC bilayer
+  and interactions of Ca$^{2+}$ mainly with phoshpate oxygens in the ECC-lipid model give
+  support to the early intepretations of the experimental spectroscopic data.
+  On the other hand, Ca$^{2+}$ ions form complexes with 1-3 lipid molecules with almost
+  equal probabilities, suggesting more complicated binding stoichimetry than 
+  the simple binding model used to interpret the NMR data.
+  The results in this work pave the way for MD simulations of complex biochemical systems
+  with realistic electrostatic interactions in the vicinity of cellular membranes.
 \end{abstract}
 
 %\pacs{}% insert suggested PACS numbers in braces on next line
@@ -119,7 +129,7 @@ such as in signal propagation in neurons and vesicle fusion.
 Since the direct measurements of ion-membrane interactions from biological systems
 are difficult, lipid bilayers are often used as models systems for cellular
 membranes. Especially the zwitterionic phosphocholine (PC) lipid bilayers are
-often used as model systems to understand the role of ions in complex biological
+used to understand the role of ions in complex biological
 systems~\cite{scherer87,seelig90,cevc90}.
 
 Interactions of biological cations, especially Na$^+$ and
@@ -362,10 +372,10 @@ ion concentration can be then related to the amount of bound ions.
 
 The concept can be used to compare the ion binding affinity in lipid 
 bilayers between MD simulations and  NMR experiments, because the order
-parameters can be accurately determined from both techniques~\cite{ollila16}.
+parameters can be accurately determined from both techniques~\cite{catte16,ollila16}.
 The order parameters for all C-H bonds in lipid molecules, including
 $\alpha$ and $\beta$ segments in head group, can be accurately measured
-using $^2$H NMR or $^{13}$C NMR techniques. From MD simulations the
+using $^2$H NMR or $^{13}$C NMR techniques \cite{ollila16}. From MD simulations the
 order parameters can be calculated using the definition
 \begin{equation}\label{OP}
 S_{\rm CH}=\frac{3}{2}\langle \cos^2\theta -1 \rangle,
@@ -425,9 +435,10 @@ the farthest point from both lipid leaflets in the water phase.
 Note that in the previous study, Ref.~\citenum{catte16},
 the ion concentrations were calculated in water before solvating the lipids 
 as in the earlier experiments~\cite{akutsu81}.
-Despite of the measurable differences between these two concentrations for CaCl$_2$ systems,
+Despite of the measurable differences between these two
+definitions of concentrations for CaCl$_2$ systems,
 the qualitative conclusions in this or in the previous work~\cite{catte16} are
-not affected. 
+not affected by this. 
 
 To quantify the ion binding affinity to a lipid bilayer, we
 calculated the relative surface excess of ions with respect to water,~$\Gamma_i^w$~\cite{chattorajBOOK}.
@@ -461,8 +472,8 @@ because bilayers have an interface at both leaflets.
 \subsection{Validation of lipid bilayer structure against experiments}
 
 The structure of lipid bilayers in simulations without ions were validated against NMR and 
-\mbox{x-ray} scattering experiments by calculating order parameters
-for C-H bonds and form factors. The former validates the structures sampled by individual
+\mbox{x-ray} scattering experiments by calculating the order parameters
+for C-H bonds and the scattering form factors. The former validates the structures sampled by individual
 lipid molecules in simulations with atomic resolution, while the latter
 validates the dimensions of the lipid bilayer (thickness and area per
 molecule)~\cite{ollila16}.
@@ -515,7 +526,7 @@ Simulation trajectories and parameters are available at \cite{??} \todo{To be up
 
 \subsubsection{Simulations of POPC bilayers with cationic surfactants}
 An automated topology builder \cite{malde11} was first used to create the structure of
-dihexadecyldimethylammonium.%, which is one of the cationic surfactants used to experimentally quantify the electrometer concept~\cite{scherer89}.
+dihexadecyldimethylammonium.
 The AmberTools program \cite{amber} was then used to generate the Amber-type force field
 parameters. The parameters were converted to the Gromacs format by using
 the acpype tool \cite{acpype}. The partial charges were then manually modified
@@ -538,7 +549,7 @@ The same systems were also simulated with the ECC-lipid model for POPC using the
 In these simulations the ECC correction was also applied to the cationic surfactant 
 by scaling all charges with the same factor as for ECC-lipids, i.e., $f_q=0.8$, 
 and by using the atom types with reduced $\sigma$ parameters from ECC-lipids. 
-
+\todo{Parameters are available at ??}
 
 \section{Results and Discussion}
 
@@ -569,7 +580,8 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
 \end{figure}
 
 \begin{table}
-  \caption{Area per lipid (APL) from different models of POPC with no ions\label{tab:apls} }
+  \caption{Area per lipid (APL) values of POPC with no ions from the Lipid14 simulation
+    ran in this work and from the literature, from ECC-lipid model and from experiments.\label{tab:apls} }
   \begin{tabular}{l|c c}
     model          & APL (\AA$^2$)   & Temperature [K] \\
     \hline
