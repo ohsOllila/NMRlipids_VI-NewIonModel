@@ -854,6 +854,7 @@ Data -- up to noted exceptions -- shall be all there, however.
   is excatly the same as we have in this work. Our simulations enable much more versatile interpretation
   of the binding phenomena. I think that this is one the main points of this work, so this comment
   applies to the previous section, introduction, abstract and conclusions as well.
+  JOE: agree, this would be a good statement in general. I'll try to put it into the text.
 }
 
 Binding stoichiometry of \ce{Ca^{2+}} and POPC was 
@@ -911,44 +912,38 @@ to the binding of \ce{Ca^{2+}} to POPC membranes comes from the phosphate group.
 Such a finding is based on the calculated
 number of contacts per lipid between \ce{Ca^{2+}} and POPC oxygen atoms, 
 $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O}$,
-in which a contact between the two groups is counted 
-if their distance is less than or equal $0.3 \, \mathrm{nm}$ (robustness of this definition discussed in reference~\citenum{javanainen17}). 
-the average number of contacts between \ce{ca^{2+}} and any oxygen atom in popc is 
+in which a contact between the two atoms is counted 
+if their distance is less than or equal $0.3 \, \mathrm{nm}$ 
+(robustness of this definition discussed in reference~\citenum{javanainen17}). 
+The average number of contacts between \ce{Ca^{2+}} and any oxygen atom in POPC is 
 $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O} = 0.47 $,    % = 59.8/128 
 whereas if only phosphate oxygen atoms are considered 
 the average number of contacts decreases only by a tiny amount to 
 $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{PO_4} = 0.45 $,    % = 57.2/128 . 
-and if only carbony oxygen atoms are considered,
+and if only carbonyl oxygen atoms are considered,
 this value is merely
 $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} = 0.02 $.    % = (59.8-57.2)/128 . 
 We corroborate this finding with the probability isodensity contours in Fig.~\ref{fig:volmaps}, 
 which are easier to interpret.
 
-Internal side-note: 
-However, $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}}$ is increased 
-when carbonyl dipoles are scaled only with 0.945 
-(roughly done through charge redistribution)
- to : $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} \approx 0.08 $.    % = (70.-59.8)/128 . 
-This does not change the dominance of phosphates, which still interact more than 6x times more. That's good.
-In addition, the probability of states, containing sn-1:O increases from 6\% to 10\%.
-The residence times change to 75ns (90\% of bound time) and max is 185ns.
-That's not much, too. It certainly is not a game changer, I'd even call it to be within accuracy. 
-The slight problem may be that with this tweak, there's approx. 20\%  more cations bound to the membrane,
-which means, I'd need to tune the sigma parameter a bit. 
-Not $f_q$ -- that's set by the simulations with the surfactant. 
-That could detune the membrane structure \dots
-I think that's within the accuracy.
-
 The residence time of \ce{Ca^{2+}} bound to a POPC membrane 
 is experimentally estimated to be lower than $10\,\mu\mathrm{s}$~\cite{altenbach84}. 
 From a recent theoretical work with long simulations 
 (Fig. S17 in \citenum{javanainen17} -- C36 with MK Ca2+, any other model, either different cation or Slipids/C36, just such calcium)
-this time can be roughly estimated -- get the simulation from \url{https://doi.org/10.5281/zenodo.259376} and analyze it -- 
-in the order of $1$--$10\,\mu\mathrm{s}$~\cite{javanainen17}. 
+this time can be roughly estimated %-- get the simulation from \url{https://doi.org/10.5281/zenodo.259376} and analyze it -- 
+in the order of $1\,\mu\mathrm{s}$~\cite{javanainen17}. 
 
+Improve the above statement so that it contains the reason why I estimate it to this value.
 Quick result (Matti C36 with CaClMK, 800ns total):
 90\% of bound residence time is smaller than 787 ns, 
-The longest is 800 ns
+The longest is 800 ns (the simulation length)
+and it is only less than
+60\% of bound residence time is smaller than 400 ns -- half of the simulation length 
+and it is only less than
+50\% of bound residence time is smaller than 290 ns.
+Apparently the exchange of calcium between membrane and solvent 
+is apparently limited by the length of the simulation. 
+
 
 This is in contrast to our model, ECC-lipids, 
 which estimates the residence time of calcium bound to a POPC membrane to be 
@@ -969,14 +964,34 @@ very tight long-term stable binding with rare exchanges to
 a relatively frequent exchange of cations 
 in equilibrium between membrane and solvent. 
 
-Interestingly, \ce{Na+} cations exhibit much more rapid exchange between membrane and solvent.
+Interestingly, \ce{Na+} cations exhibit much more rapid exchange between membrane and solvent than calcium.
 The residence time of sodium bound to a POPC membrane is
 smaller than $2\,\mathrm{ns}$ for 90\% of the time it is bound to the membrane 
 with the longest measured bound time being $13\,\mathrm{ns}$. 
+This is an order of magnitude faster exchange than for calcium cations. 
 
 A histogram of residence times from our simulations is in Fig.~S\ref{fig:hist_residence_times} in SI. 
 \todo{JOE: Plot a histogram of residence times based on our simulations and simulation from \citenum{javanainen17} and put it into SI.
-Add data for Na+. }
+ }
+
+Internal side-note: 
+However, $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}}$ is increased 
+when carbonyl dipoles are scaled only with 0.945 
+(roughly done through charge redistribution)
+ to : $\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} \approx 0.08 $.    % = (70.-59.8)/128 . 
+This does not change the dominance of phosphates, which still interact more than 6x times more. That's good.
+In addition, the states that have a contribution from carbonyl oxygens also contain a bound phosphate, 
+so it can be thought of rather as a stabilizing moiety. 
+In addition, the probability of states, containing sn-1:O increases from 6\% to 10\%.
+The residence times change to 75ns (90\% of bound time) and max is 185ns.
+That's not much, too. It certainly is not a game changer, I'd even call it to be within accuracy. 
+The slight problem may be that with this tweak, there's approx. 20\%  more cations bound to the membrane,
+which means, I'd need to tune the sigma parameter a bit (increase the scaling factor $f_\sigma$). 
+That could detune the membrane structure \dots
+Not $f_q$ -- that's set by the simulations with the surfactant. Good.
+I think that such a binding detail is within the accuracy of the proposed simple correction.
+It would be worth noting that the model may underestimate slightly the contribution from carbonyls due to this. 
+But we can't say to what extent\dots
 
 
 
