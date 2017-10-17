@@ -837,32 +837,39 @@ to the bound charge between simulations and experiments as done in section \ref{
     Lipid14/Dang          &  $ 0.3 \pm 0.03  $           &  -        &    -       \\
   \end{tabular}
 \end{table}
-To quantify the binding affinities in different models we calculated 
-the relative surface excess from Eq.~\ref{surfexcess}. 
-Calcium cations at a molar concentration of $350\,\mathrm{mM}$ provide
-$\Gamma_i^w = 0.07 \pm 0.01 \rm{nm}^{-2}$ in the ECC-lipid model, which is significantly
-smaller than the values for the Lipid14 model with \AA{}qvist ions, $\Gamma_i^w = 0.13 \pm 0.01 \rm{nm}^{-2}$,
-or with Dang ions, $\Gamma_i^w = 0.3 \pm 0.03 \rm{nm}^{-2}$.
+The binding affinities of Ca$^{2+}$ ions to POPC bilayer in different simulation 
+models were quantified by calculating the relative surface excess using Eq.~\ref{surfexcess} 
+and the bulk concentrations determined from the density profiles in Fig.~\ref{fig:cacl-dens}. 
+All these simulation have the same, $350\,\mathrm{mM}$, concentration of CaCl$_2$ with 
+respect to water (concentration before solvating the lipids in experiments).
+As expected from the changes of the lipid headgroup order parameters in Fig. \ref{fig:delta_ordPar_CaCl}, 
+the relative surface excess for the ECC-lipid model, $\Gamma_{\rm Ca}^w = 0.07 \pm 0.01 \rm{nm}^{-2}$,
+is significantly smaller than for the Lipid14 model with \AA{}qvist ions, $\Gamma_{\rm Ca}^w = 0.13 \pm 0.01 \rm{nm}^{-2}$,
+or with Dang ions, $\Gamma_{\rm Ca}^w = 0.3 \pm 0.03 \rm{nm}^{-2}$.
 \todo{JOE: I'd put the $\Gamma$ values into a table SAMULI: They are now in the table \label{tab:binding} 
-with contacts of calcium with different oxygens. However, I am not sure if there is enough information for the
-table unless we analyze the contacts for Lipid14 models as well.}
+together with probabilities of the calcium binding probabilities to different POPC oxygens. 
+However, I am not sure if there the table is useful in the end.}
 Interestingly, the relative surface excess of 
-\ce{NaCl} at $1\,\mathrm{M}$ concentration (ECC-ions~\cite{Pluharova2014}) is qualitatively different from \ce{CaCl2}
+\ce{NaCl} at $1\,\mathrm{M}$ concentration (ECC-ions~\cite{Pluharova2014}) 
+calculated using density profiles in Fig.~\ref{fig:nacl-dens}
+is qualitatively different from \ce{CaCl2}
 having a negative value $\Gamma_i^w = -0.1 \pm 0.01 \rm{nm}^{-2}$, 
 meaning that water molecules are preferred to sodium and chloride ions at the membrane-water interface. 
 This is in contrast to the most of the available lipid force fields,
-which which predict a specific binding of sodium on 
+which predict a specific binding of sodium on 
 PC lipid bilayers \cite{catte16}.
 %\todo{JOE: Add references to NaCl simulation papers that show peaks.
 %Add a simple note that there is NBFIX trick in Charmm36 (?).} 
 %SAMULI: I think that it is enough to cite NMRlipids II here, which shows all the results
-This finding is depicted in Figures~\ref{fig:nacl-dens} and~\ref{fig:cacl-dens},
-which show the density profile of ions and water along the membrane normal. 
+%
+%This finding is depicted in Figures~\ref{fig:nacl-dens} and~\ref{fig:cacl-dens},
+%which show the density profile of ions and water along the membrane normal. 
+%
 %The density profiles show
 %a larger Ca$^{2+}$ density peak in lipid headgroup region for
 %the Lipid14 model with Dang and ECC-ions than for the ECC-lipid model.
 \todo{Densities and relative surface excess from NaCl systems to be added.
-  The discussion below to be finished after this.}
+  The discussion above to be finished after this.}
 
 
 \begin{figure}[tbp]
