@@ -843,15 +843,19 @@ Calcium cations at a molar concentration of $350\,\mathrm{mM}$ provide
 $\Gamma_i^w = 0.07 \pm 0.01 \rm{nm}^{-2}$ in the ECC-lipid model, which is significantly
 smaller than the values for the Lipid14 model with \AA{}qvist ions, $\Gamma_i^w = 0.13 \pm 0.01 \rm{nm}^{-2}$,
 or with Dang ions, $\Gamma_i^w = 0.3 \pm 0.03 \rm{nm}^{-2}$.
-\todo{JOE: I'd put the $\Gamma$ values into a table}
+\todo{JOE: I'd put the $\Gamma$ values into a table SAMULI: They are now in the table \label{tab:binding} 
+with contacts of calcium with different oxygens. However, I am not sure if there is enough information for the
+table unless we analyze the contacts for Lipid14 models as well.}
 Interestingly, the relative surface excess of 
 \ce{NaCl} at $1\,\mathrm{M}$ concentration (ECC-ions~\cite{Pluharova2014}) is qualitatively different from \ce{CaCl2}
 having a negative value $\Gamma_i^w = -0.1 \pm 0.01 \rm{nm}^{-2}$, 
 meaning that water molecules are preferred to sodium and chloride ions at the membrane-water interface. 
-This is in contrast to previous works employing classical MD simulations,
-which generally agree together on the existence of an increased sodium density at the membrane-water interface.
-\todo{JOE: Add references to NaCl simulation papers that show peaks.
-Add a simple note that there is NBFIX trick in Charmm36 (?).} 
+This is in contrast to the most of the available lipid force fields,
+which which predict a specific binding of sodium on 
+PC lipid bilayers \cite{catte16}.
+%\todo{JOE: Add references to NaCl simulation papers that show peaks.
+%Add a simple note that there is NBFIX trick in Charmm36 (?).} 
+%SAMULI: I think that it is enough to cite NMRlipids II here, which shows all the results
 This finding is depicted in Figures~\ref{fig:nacl-dens} and~\ref{fig:cacl-dens},
 which show the density profile of ions and water along the membrane normal. 
 %The density profiles show
@@ -876,34 +880,13 @@ which show the density profile of ions and water along the membrane normal.
   \todo{JOE: Change the figure so that it contains a membrane background} \\
 \end{figure}
 
-
-We can estimate relative binding affinities 
-of several moieties in POPC towards \ce{Ca^{2+}} and \ce{Na+} cations 
-using the number of contacts per lipid between cations and POPC oxygen atoms, 
-$\Sigma ^\mathrm{Na^{2+}} _\mathrm{O}$,
-in which a contact between the two atoms is counted 
-if their distance is less than or equal $0.3 \, \mathrm{nm}$ 
-(robustness of this definition discussed in reference~\citenum{javanainen17}). 
-
-For sodium at $1000\,mM$ concentration 
-the average number of contacts per lipid with any oxygen atom in POPC is 
-$\Sigma ^\mathrm{Na^{+}} _\mathrm{O} = 0.106 $,    % = 17.1/128 
-whereas if only phosphate oxygen atoms are considered 
-this number decreases to 
-$\Sigma ^\mathrm{Na^{+}} _\mathrm{PO_4} = 0.085 $,    % = 17.0/128 . 
-and if only carbonyl oxygen atoms are counted 
-it is even lower, 
-$\Sigma ^\mathrm{Na^{+}} _\mathrm{O_{carb.}} = 0.048 $.    % = 4.3/128 . 
-This means that interaction of sodium and POPC 
-has balanced contributions of 55\% from only phosphate oxygens 
-(i.e. no contacts with carbonyl oxyens),
-and from only carbonyl oxygens with 20\% of configurations 
-leaving 25\% for mixed phosphate and carbonyl oxygen configurations.  
-This is in line with the calculated negative value of 
-relative surface excess of sodium with respect to water, $\Gamma_i^w$, and
-their density profiles along the membrane normal (Fig.~\ref{fig:nacl-dens})
-suggesting that the populations of bound sodium cations 
-naturally decrease with the decreasing density of water. 
+The contacts between 
+%\ce{Ca^{2+}} 
+ions and different oxygen moieties of POPC,
+%$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O}$,
+were analyzed by calculating the probability of 
+having the smaller or equal distance than $0.3 \, \mathrm{nm}$, 
+as done previously in Ref.~\citenum{javanainen17}. 
 
 In contrast to sodium, the dominant contribution
 to the binding of \ce{Ca^{2+}} to POPC membranes comes from the phosphate group. 
@@ -939,8 +922,6 @@ but the distribution of states between phosphate and carbonyl oxygens remains un
 We corroborate this finding with the probability isodensity contours in Fig.~\ref{fig:volmaps}, 
 and density profiles of ions and water along the membrane normal in Fig.~\ref{fig:cacl-dens}. 
 
-
-
 \begin{figure}[tbp]
   \centering
   \includegraphics[width=6.0cm]{../Fig/volmap_resid10_Ca_Cl_PO4Cent.png} \\
@@ -956,6 +937,29 @@ and density profiles of ions and water along the membrane normal in Fig.~\ref{fi
   }
   \todo{JOE: I'll update this figure with some ensemble of configuration to support binding preference of \ce{Ca^{2+}}}
 \end{figure}
+
+and \ce{Na+}
+For sodium at $1000\,mM$ concentration 
+the average number of contacts per lipid with any oxygen atom in POPC is 
+$\Sigma ^\mathrm{Na^{+}} _\mathrm{O} = 0.106 $,    % = 17.1/128 
+whereas if only phosphate oxygen atoms are considered 
+this number decreases to 
+$\Sigma ^\mathrm{Na^{+}} _\mathrm{PO_4} = 0.085 $,    % = 17.0/128 . 
+and if only carbonyl oxygen atoms are counted 
+it is even lower, 
+$\Sigma ^\mathrm{Na^{+}} _\mathrm{O_{carb.}} = 0.048 $.    % = 4.3/128 . 
+This means that interaction of sodium and POPC 
+has balanced contributions of 55\% from only phosphate oxygens 
+(i.e. no contacts with carbonyl oxyens),
+and from only carbonyl oxygens with 20\% of configurations 
+leaving 25\% for mixed phosphate and carbonyl oxygen configurations.  
+This is in line with the calculated negative value of 
+relative surface excess of sodium with respect to water, $\Gamma_i^w$, and
+their density profiles along the membrane normal (Fig.~\ref{fig:nacl-dens})
+suggesting that the populations of bound sodium cations 
+naturally decrease with the decreasing density of water. 
+
+
 
 
 
