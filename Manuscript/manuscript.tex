@@ -816,7 +816,7 @@ to the bound charge between simulations and experiments as done in section \ref{
 \begin{table}
   \caption{The relative surface excess and the probabilities of contacts between bound Calcium and different
     oxygen moieties in POPC from different simulation models. The CaCl$_2$ concentration of the ions in water
-    is 350mM in the analyzed systems\label{tab:binding} }
+    is 350mM in the analyzed systems. \label{tab:binding}}
   \begin{tabular}{l|c c c}
     model                 & $\Gamma_{Ca}^w$ (nm$^{-2}$)   & $P^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ & $P^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} $ \\
     \hline
@@ -825,18 +825,19 @@ to the bound charge between simulations and experiments as done in section \ref{
     Lipid14/Dang          &  $ 0.3 \pm 0.03  $           &  -        &    -       \\
   \end{tabular}
 \end{table}
+
 The binding affinities of Ca$^{2+}$ ions to POPC bilayer in different simulation 
 models were quantified by calculating the relative surface excess using Eq.~\ref{surfexcess} 
 and the bulk concentrations determined from the density profiles in Fig.~\ref{fig:cacl-dens}. 
 All these simulation have the same, $350\,\mathrm{mM}$, concentration of CaCl$_2$ with 
-respect to water (concentration before solvating the lipids in experiments).
+respect to water, i.e., the concentration before solvating the lipids in experiments.
 As expected from the changes of the lipid headgroup order parameters in Fig. \ref{fig:delta_ordPar_CaCl}, 
 the relative surface excess for the ECC-lipid model, $\Gamma_{\rm Ca}^w = 0.07 \pm 0.01 \rm{nm}^{-2}$,
 is significantly smaller than for the Lipid14 model with \AA{}qvist ions, $\Gamma_{\rm Ca}^w = 0.13 \pm 0.01 \rm{nm}^{-2}$,
 or with Dang ions, $\Gamma_{\rm Ca}^w = 0.3 \pm 0.03 \rm{nm}^{-2}$.
-\todo{JOE: I'd put the $\Gamma$ values into a table SAMULI: They are now in the table \label{tab:binding} 
+\todo{JOE: I'd put the $\Gamma$ values into a table SAMULI: They are now in the table \ref{tab:binding} 
 together with probabilities of the calcium binding probabilities to different POPC oxygens. 
-However, I am not sure if there the table is useful in the end.}
+However, I am not sure if the table is useful in the end.}
 Interestingly, the relative surface excess of 
 \ce{NaCl} at $1\,\mathrm{M}$ concentration (ECC-ions~\cite{Pluharova2014}) 
 calculated using density profiles in Fig.~\ref{fig:nacl-dens}
@@ -875,14 +876,11 @@ PC lipid bilayers \cite{catte16}.
   \todo{JOE: Change the figure so that it contains a membrane background} \\
 \end{figure}
 
-The interactions between 
-%\ce{Ca^{2+}} 
-ions and different oxygen moieties of POPC,
+The probabilities for a bound \ce{Ca^{2+}} ion to interact with
+different oxygen moieties of POPC 
 %$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O}$,
-were analyzed by calculating the probability of the
-contacts with the smaller or equal distance than $0.3 \, \mathrm{nm}$, 
+were analyzed by counting the contacts within the distance of $0.3 \, \mathrm{nm}$, 
 as done previously in Ref.~\citenum{javanainen17}. 
-The results are shown in Table \ref{tab:binding}.
 %
 %SAMULI: I commented out the average number of contacts. All the essential information
 %for this is in the probabilities.
@@ -911,19 +909,21 @@ The results are shown in Table \ref{tab:binding}.
 %(phosphate oxygens contribute, but are not counted as contacts),
 %this value is merely
 %$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} = 0.066 $.    % = 8.4/128 . 
-The probability for the bound Ca$^{2+}$ ions to be in contact with the phosphate oxygens
-is 99\%, indicating the interactions of Calcium ions purely with carbonyl oxygens has the probability of
-less than 1\%. However, the probability for the bound Ca$^{2+}$ ion to be in contact with
-carbonyl oxygen is 25\%, indicating that roughly quarter of the bound Calcium ions are in close contact
-with both, phosphase and carbonyl oxygens. It should be noted that in this analysis carbonyl and
-phospate may or may not belong to the same lipid, and the carbonyl chain locate in either of the 
-acyl chains. While the higher concentrations of \ce{CaCl2} naturally increased the amount of contacts per lipid,
+The results in Table \ref{tab:binding} show that almost all (99\%) of the 
+bound Ca$^{2+}$ ions are in contact with the phosphate oxygens and a quarter
+of them (25\%) interacts with the carbonyl oxygens. Thus, the interactions between
+Calcium ions with only carbonyl oxygens are very unlikely (1\%), but significant
+amount of the ions interact with both, phosphate and carbonyl oxygens.
+The individual lipids or acyl chains were not identified in the analysis,
+thus the ion contacts with both oxygen moieties may be inter or intra molecular
+and occur with the carbonyls in the either of the acyl chains.
+The most likely contacts between Ca$^{2+}$ ions and phosphate oxygens is visualized with
+the probability isodensity contours in Fig.~\ref{fig:volmaps}.
+While the higher concentrations of \ce{CaCl2} naturally increased the amount of contacts per lipid,
 %for $850\,\mathrm{mM}$ concentration of \ce{CaCl2}
 %the average number of contacts per lipid is increased to
 %$\Sigma ^\mathrm{Ca^{2+}} _\mathrm{O} = 0.264 $, 
 the distribution of contacts between phosphate and carbonyl oxygens was not affected.
-The most likely contacts between Ca$^{2+}$ ions and phosphate oxygens is visualized with
-the probability isodensity contours in Fig.~\ref{fig:volmaps}.
 %and density profiles of ions and water along the membrane normal in Fig.~\ref{fig:cacl-dens}. 
 
 \begin{figure}[tbp]
@@ -943,9 +943,9 @@ the probability isodensity contours in Fig.~\ref{fig:volmaps}.
   SAMULI: I am not sure if this would be needed anymore.}
 \end{figure}
 
-Even thought the \ce{Na+} ions bind to POPC bilayer with the very low probability,
-it is possible to analyze the distribution of contacts from simulations with a large
-sodium concetration of $1000\,mM$.
+Even thought \ce{Na+} ions bind to POPC bilayer with a very low probability,
+it was possible to analyze the distribution of contacts from simulations with a large
+sodium concetration of~1\,M.
 %the average number of contacts per lipid with any oxygen atom in POPC is 
 %$\Sigma ^\mathrm{Na^{+}} _\mathrm{O} = 0.106 $,    % = 17.1/128 
 %whereas if only phosphate oxygen atoms are considered 
@@ -966,13 +966,14 @@ simultaneous binding to both, phosphate and carbonyl oxygens.
 
 In conclusion, the results suggest that the Calcium ions specifically bind to phosphate
 oxygens, while occasionally interacting also with carbonyls. This is in good agreement
-with the previous conclusions based in large amount of experimental and theoretical
-studies \cite{hauser76,hauser78,herbette84,cevc90,binder02}, but slightly updates the
-picture given by the previous MD simulation, where the binding to carbonyls was found
-to be more pronounced \cite{bockmann03,bockmann04,melcrova16,javanainen17}.
+with the previous conclusions from several experimental and theoretical
+studies~\cite{hauser76,hauser78,herbette84,cevc90,binder02}, but
+suggests lower relative binding affinity to carbonyls than the previous MD simulation
+studies~\cite{bockmann03,bockmann04,melcrova16,javanainen17}.
 Also the Sodium ions bind most likely to the phosphate oxygens, while the probability
-of binding purely to carbonyls is also significant. The physiological relevance
-of the details of sodium binding is, however, uncertain due to the very weak binding.
+of binding purely to carbonyls is also significant, in contrast to Calcium ions.
+The physiological relevance of the Sodium binding details is, however, uncertain
+due to the very weak binding affinity.
 
 \subsection{Stoichiometry of binding of \ce{Na+} and \ce{Ca^{2+}} cations to POPC membrane}
 
@@ -982,34 +983,40 @@ of the details of sodium binding is, however, uncertain due to the very weak bin
 %2 POPC - 18\% -- 42\% \\
 %3 POPC - 12\% -- 28\% \\
 
-The previous interpretation of the experimental data for the changes of lipid headgroup
-order parameters, shown in Fig. \ref{fig:delta_ordPar_CaCl}, concluded that
-the experimental data was best explained by the ternary complex binding model, 
-where \ce{Ca^{2+}} ion bind to a POPC membrane with a stoichiometry 2~POPC:1~\ce{Ca^{2+}}~\cite{altenbach84}.
-However, also a Langmuir adsorption model (i.e. stoichiometry 1~POPC:1~\ce{Ca^{2+}}) 
+The same experimental data for the lipid headgroup order parameters
+used in this work to validate the simulation models in Fig. \ref{fig:delta_ordPar_CaCl},
+has been previous interpreted by using simple binding models to determine the
+binding constants and stoichimetry of \ce{Ca^{2+}} binding to PC lipid
+bilayers~\cite{altenbach84,macdonald87}. The experimental data was best
+explained by the ternary complex binding model with a binding
+stoichiometry of one \ce{Ca^{2+}} per two POPC lipids~\cite{altenbach84}.
+However, also a Langmuir adsorption model (i.e. \ce{Ca^{2+}}:POPC stoichiometry of 1:1) 
 was successfully fit to the experimental data when only low concentrations of \ce{CaCl2} were considered~\cite{macdonald87}.
-These binding models and the measured headgroup order parameter changes
+The results based on these binding models and the measured headgroup order parameter changes
 are also inluded in the tabulated experimental binding constants~\cite{marsh13}.
 
 Since the experimentally measured changes of the POPC lipid headgroup order parameters
 as a function of CaCl$_2$ concentration are reproduced by the ECC-lipid model,
-it can be used to give more versatile interepration of binding stoichiometry than
-the simple binding models. The stoichiometry was directly evaluated from simulations
-by calculating the relative propensities of various \ce{Ca^{2+}}:$n\times$POPC complexes,
-which were defined to occur when cations and lipids were found within a cut off distance of $0.3\,\mathrm{nm}$. 
-The observed propensities of
-$42\%$ for two lipids,
-$30\%$ for one lipid, and
-$28\%$ for three lipids 
-are shown in Figure~\ref{fig:cacl_complexes} for \ce{Ca^{2+}}:$n\times$POPC complexes at 285~mM concetration.
-\todo{Also the larger complexes were analysed, right? So we can write ''Larger complexes were not existent in simulation.'', or something like that?}
-While the ternary complex had the largest propensity,
-the complexes with 1~and 3~lipids occur with only a slightly lower probability,
+it can be used to give a more versatile interepration of the binding stoichiometry than
+the previously used simple binding models. To directly evaluate the
+stoichiometry from simulations we calculated the relative propensities of \ce{Ca^{2+}}:POPC
+complexes with various stoichiometries by counting the individual lipid
+molecules within the distance of $0.3\,\mathrm{nm}$ from each \ce{Ca^{2+}} ion.
+The results from POPC simulation with 285~mM concetration of CaCl$_2$ in
+Fig.~\ref{fig:cacl_complexes} show the largest propensity (42\%) for the
+ternary complex with the \ce{Ca^{2+}}:POPC stoichiometry of 1:2, but 
+the probabilities for the complexes with stoichimetries of 1:1~(30\%)~and
+1:3~(28\%)~are only slightly lower,
 suggesting more complex binding stoichiometry than the simple ternary complex model.
+%The observed propensities of
+%$42\%$ for two lipids,
+%$30\%$ for one lipid, and
+%$28\%$ for three lipids 
+\todo{Also the larger complexes were analysed, right? So we can write ''Larger complexes were not existent in simulation.'', or something like that?}
 %The symmetry of the distribution of complexes,
 %from simulation as shown in Figure~\ref{fig:cacl_complexes} --   
 %i.e.,
-It should be, however, noted that on average one Calcium binds roughly to two lipids,
+However, one Calcium binds roughly to two lipids on average also in simulations,
 because the probabilities of forming the complexes with 1 or 3 lipids are almost equal.  
 This probably explains the successfull fit of the ternary complex model to the
 experimental data. 
@@ -1032,11 +1039,11 @@ to our simulations with ECC-lipids
 
 Also the probabilities of different complexes formed by \ce{Na+} ions and POPC
 analyzed from the ECC-lipid model simulation with 1 M concentration of NaCl are
-shown in Fig.~\ref{fig:cacl_complexes}. In contrast to Calcium, the Sodium ions
-most likely binds to one POPC, while the probability to bind two lipids is less likely
-and very small for more than two.
+shown in Fig.~\ref{fig:cacl_complexes}. In contrast to Calcium, the
+probability is largest (??\%) for 1:1 complex, significantly smaller (??\%)
+for 1:2 complexes and very small (??\%) for 1:3 of \ce{Na+}:POPC complexes.
 %follows stoichiomtetry \ce{Na^{+}}:$1\times$POPCas shown in 
-
+\todo{Add numbers for Sodium.}
 
 
 
@@ -1046,6 +1053,9 @@ and very small for more than two.
 
 The residence time of \ce{Ca^{2+}} in a POPC membrane 
 is experimentally estimated to be lower than $10\,\mu\mathrm{s}$~\cite{altenbach84}.
+\todo{This experimental estimate is actually for the residence time of Calcium
+  ion at the individual PC lipid. This section is to be finished when the analysis details
+and the results are here.}
 The recent MD simulations indicate that the equilibration of \ce{Ca^{2+}}
 binding to POPC bilayer may take hundreds of nanoseconds~\cite{javanainen17},
 which could become an issue for the detailed binding studies with MD simulation
