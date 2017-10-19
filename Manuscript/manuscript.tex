@@ -259,7 +259,7 @@ included in the available force fields does not necessarily have to follow the a
 but instead it lies between 0.75 i.e., (no electronic polarizability included in the original partial charges)
 and $1$ (i.e., electronic polarizability fully included in the original partial charges).
 It is important to note that even thought the lipid bilayer interface has a large gradient in
-the {\it total} dielectric constant, the electronic polarizability part can be considered to be constant
+the total dielectric constant, the electronic polarizability part can be considered to be constant
 as the measurements of high frequency dielectric constant gives values around 2 
 for almost any biologically relevant material \cite{some_original_work, leontyev11}.
 
@@ -269,11 +269,11 @@ a POPC lipid that accurately describes the binding of Sodium and Calcium ions to
 %This is a biologically highly relevant membrane feature, which is
 %poorly reproduced by currently available models. This can affect not only on membrane properties
 %in the presence of ions but also modulate interactions with charged moieties at the interface.
-The quality of the model in terms of ion binding is measured by directly
+The model quality in terms of the ion binding is measured by directly
 comparing simulations to the experimental NMR data used to measure the ion binding
 affinity~\cite{akutsu81,altenbach84,scherer89}, as discussed in detail in Ref. \citenum{catte16}.
-As a starting point we used the parameters of Lipid14~\cite{dickson14} force field,
-available in Gromacs format at \citenum{lipid14files}, because they apparently give the most
+The Lipid14~\cite{dickson14} force field parameters (available in Gromacs format from Ref. \citenum{lipid14files})
+were used as a starting point, because they give the most
 realistic response to the bound ions and to the NaCl concentration 
 among the available lipid models (see Figs.~5~and~2 in Ref.~\citenum{catte16}).
 Moreover, the Lipid14 model gave relatively realistic glycerol backbone and
@@ -282,39 +282,47 @@ head group structures when compared with the other state of the art lipid models
 The ECC correction was applied to the Lipid14 parameters by scaling partial charges of the head group,
 glycerol backbone, and carbonyl regions, which are the most polar parts in the  lipids and
 are thus expected to have the largest contribution to the cation binding.
-In contrast, we do not modify the hydrocarbon chain parameters, as they
+We do not modify the hydrocarbon chain parameters, as they
 do not come in direct contact with salt ions and are
 already highly optimized to provide a good description for the
-hydrophobic part of lipid bilayers\cite{ollila16}.
-This is in contrasts with the behavior in glycerol backbone and head group order
-parameters in the presence of ions, which call for improvements in all available lipid models~\cite{botan15}.
+hydrophobic part of lipid bilayers \cite{ollila16}.
+This is in contrasts with the glycerol backbone and the head group regions, 
+which call for improvements in all available lipid models~\cite{botan15}.
 
-To find the best scaling factor to reproduce the ion binding affinity,
-we explored the above discussed scaling factor parameter space, $f_q \in (0.75, 1.0)$,
-and compared the results to the available NMR data~\cite{akutsu81,altenbach84,scherer89}.
-Exploring different values of the scaling factor, we found out that ion bindings and the
-related head group order parameter responses become weakened in general. 
-The optimal behaviour  was observed for a
-scaling factor of $f_q = 0.8$.This value is only slighly higher than the original scaling factor of 0.75, which implies
-that electronic polarization effects are only to a small extent effectively accounted for in the Lipid14 force field. 
+The values within the above discussed parameter space for the scaling factor, $f_q~\in~(0.75, 1.0)$,
+were explored to find the optimal value to reproduce the experimental ion binding affinity.
+We observed that the scaling
+of the partial charges reduced the ion binding affinity and the 
+related head group order parameter response in general.
+By comparing the results with different scaling factors to the experimental 
+NMR data~\cite{akutsu81,altenbach84,scherer89} we found the optimal 
+value of $f_q = 0.8$,
+which is only slighly higher than the scaling factor for the ions in water 0.75.
+%, which implies
+%that electronic polarization effects are only to a small extent effectively accounted for in the Lipid14 force field. 
 
-While, the above charge scaling improved the description of lipid-ion interactions,
-it also led to a reduction of the area per molecule of the lipid bilayer in water below experimental
-values. Simulations with Lipid14 parameters having partial charges of head group, glycerol
-backbone and carbonyls scaled with 0.8 gave the area per molecule value of $\approx$60~\AA$^2$, as well as
-which is somewhat smaller than the experimental value of 64.3~\AA$^2$ (\cite{}\todo{missing REF for APL experiment})
-the Lipid14 value of $(65.6 \pm 0.5)$~\AA$^2$~\cite{dickson14}.
+While, the scaling of the partial charges improved the ion binding affinity,
+it reduced the bilayer area per lipid below the experimental value. 
+%Simulations with Lipid14 parameters having 
+After scaling the partial charges of the head group, the glycerol
+backbone and carbonyls with a factor of 0.8, the simulation gave 
+the approximately 60~\AA$^2$ for the area per lipid,
+which is somewhat smaller than the experimental value, 64.3~\AA$^2$ \cite{kucerka11}, 
+as well as the value given by the original Lipid14 parameters, $(65.6 \pm 0.5)$~\AA$^2$~\cite{dickson14}.
 The decrease of the area per lipid is found to arise from a reduced hydration of the lipid head group region,
 due to the lower polarity of molecules with scaled charges. This can be compensated
-by reducing the effective radius of atoms with scaled charges by changing the 
-the $\sigma$ parameters in the Lennard-Jones potential, as done previously for ions in solution \cite{kohagen14,kohagen16,Pluharova2014}.
+by reducing the effective radius of atoms with the scaled charges by changing 
+the $\sigma$ parameters in the Lennard-Jones potential, 
+as previously done for ions in solution \cite{kohagen14,kohagen16,Pluharova2014}.
+After reducing these $\sigma$ parameters by a factor of $f_\sigma = 0.89$, the area per molecule is restored
+back close to the experimental value (see Table~\ref{tab:apls}). 
+
 \todo{We should discuss how this can potentially affect the intermolecular interaction when mixing scaled and non scaled molecules. \\
   JOE: I think that we rather increasingly see that there's nothing like ``fully non-scaled'' with the exception of ions with integer
   charges. So the discussion shall be rather more about the interaction of our ``scaled'' (I'd still rather call it ECC-corrected or whatever)
   and ``semi-scaled'' models. \\
 SAMULI: There is now a paragraph in the conclusions, which mentions this topic.}
-After reducing these $\sigma$ parameters by a factor of $f_\sigma = 0.89$, the area per molecule is restored
-back close to the experimental value (see Table~\ref{tab:apls}). 
+
 
 
 \subsection{Electrometer concept} \label{section:electrometer}
@@ -380,10 +388,10 @@ in the bilayer similarly to the phospholipids and the molar ratio then
 gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems~\cite{scherer89}.
 
 \subsection{Salt concentrations and binding affinity}
-The early experimental electrometer concept data for the lipid head group
-order parameter changes was reported as a function 
+The early electrometer concept data for the lipid head group
+order parameter changes from the NMR experiments was reported as a function 
 of the salt concentration in water before solvating
-the lipids~\cite{akutsu81}. The later study used atomic absorption
+the lipids~\cite{akutsu81}. The later study used also the atomic absorption
 spectroscopy and reported the order parameter changes as
 a function of the salt concentration in the supernatant after the
 solvation of lipids~\cite{altenbach84}.
@@ -551,7 +559,7 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
     \hline
     ECC-lipids                & 62.2$\pm$ 0.6  &  300       \\
     \hline
-    experiment \cite{jambeck12}\todoii{REF}{put original references, not Slipids param. paper.} & 64.3  &  303    \\
+    experiment \cite{kucerka11} & 64.3  &  303    \\
     \hline
   \end{tabular}
 \end{table}
