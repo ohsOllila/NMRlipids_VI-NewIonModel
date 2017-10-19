@@ -63,6 +63,8 @@
 \affiliation{Institute of Organic Chemistry and Biochemistry,
 Academy of Sciences of the Czech Republic, 
 Prague 6, Czech Republic}
+\author{Ji{\v r}{\' i} Kolafa}
+\affiliation{Department of Physical Chemistry, Institute of Chemical Technology, Prague 6, Czech Republic}
 \author{Pavel Jungwirth}
 \affiliation{Institute of Organic Chemistry and Biochemistry,
 Academy of Sciences of the Czech Republic, 
@@ -214,13 +216,8 @@ structural effects of Sodium and Calcium ions.
 The lack of electronic polarizability in the standard MD simulation
 force fields has been considered a higly relevant issue since the early days of
 lipid bilayer simulations.
-%Some pioneering simulation studies scaled
-%the partial charges of atoms by one half to effectively include 
-%polarizability \cite{jonsson86,egberts94}. Also, approaches that
-%explicitly include polarizability has been introduced, but
-%this has turned out to be practically complicated \cite{chowdhary13}.
 In this work we circumvent the rather demanding explicit inclusion
-of electronic polarization effects \cite{chowdhary13} by implicitly including
+of electronic polarization effects \cite{lucas12,chowdhary13} by implicitly including
 electronic polarizability in lipid
 bilayer simulations by using the electronic continuum correction
 (ECC)~\cite{leontyev11}. 
@@ -229,8 +226,6 @@ earlier studies \cite{jonsson86,egberts94}.
 \todo{We should also cite papers where empirical scaling was used ionic liquids DOI: 10.1002/anie.201308760}
 The present concept of ECC is, however, 
 physically well justified and rigorously derived~\cite{leontyev09, leontyev10, leontyev11}.
-%but significantly more simple than the explicit inclusion of electronic
-%polarizability \cite{chowdhary13} both for derivation and application.
 
 
 Following the ECC concept, electronic
@@ -238,9 +233,7 @@ polarizability can be effectively included in classical MD simulations by
 placing all particles into a homogeneous dielectric continuum 
 with a dielectric constant $\epsilon _{el}$, 
 which is the electronic part of the dielectric constant of 
-the media \cite{leontyev11}. Measurements of high frequency 
-dielectric constant gives values around 2 
-for almost any biologically relevant material \cite{some_original_work, leontyev11}.
+the media \cite{leontyev11}. 
 Following the Coulomb's law, such a dielectric continuum can be easily included in standard MD simulation by
 a scaling of charges 
 \begin{equation}
@@ -250,23 +243,14 @@ with a constant scaling factor $f_q = \epsilon _{el} ^{-1/2}$
 effectively representing the newly introduced electronic continuum. 
 Given the  high frequency dielectric constant as measured in water (corresponding to the square of the refraction index) of  $\epsilon _{el} = 1.78$,  
 the scaling factor for aqueous ions is $f_q = 0.75$ \cite{some_orig_source, leontyev11}. This scaling factor has been
-successfully used to improve the performance of force field for ions in solution \cite{kohagen14,kohagen16,??} which then agree quantitatively with neutron scattering data \cite{kohagen14,kohagen16, Pluharova2014}. 
+successfully used to improve the performance of force field for ions in solution \cite{kohagen14,kohagen16,??},
+which then agree quantitatively with neutron scattering data \cite{kohagen14,kohagen16, Pluharova2014}. 
 
 While the scaling factor of $f_q = 0.75$ for ions in water improves their description and is physically well justified within the ECC theory \cite{Leontyev2011},
-it is nota priori  clear whether the same factor should be used for partial charges in molecules,
+it is not a priori  clear whether the same factor should be used for partial charges in molecules,
 e.g., lipids in our case. Unlike the total charge of an atom or molecules, atomic partial charges within molecules are not physical observables.
-There are thus several schemes for the assignment of partial charges for biomolecules. \cite{Hu2007}
+There are thus several schemes for the assignment of partial charges for biomolecules~\cite{Hu2007}.
 Currently, the most commonly employed scheme is the restrained electrostatic potential (RESP) method~\cite{RESP_paper,Singh1984}.
-%
-%PAVEL: i do not understand what you mean by "ensemble" - resp can be done for a single configuration of a single molecule.
-%In any case, tehre is no need to explain here how RESP works so i would drop this part (including the next two sentences).
-%
-%SAMULI: I commented out the suggested sentences
-%which aims to reproduce the electrostatic potential obtained from quantum mechanical calculations around an ensemble the target molecules. 
-%The fixed partial atomic charges obtained by this method are hence 
-%the best fit of pint charges reproducing the electrostatic potential around provided target conformations. 
-%Such a scheme is well suited for the application of ECC, 
-%which targets at improving electrostatic interactions using a mean field correction. 
 By construction, partial charges currently implemented in force fields may already 
 include  to some extend the solvent electronic polarizability effects, i.e.,
 the RESP charges are often scaled to fit certain experimental observables \todo{This needs a citation - Joe please pick 1-2 papers}. 
@@ -274,58 +258,45 @@ Thus, a consistent application of the ECC scaling factor, $f_q$, to the molecula
 included in the available force fields does not necessarily have to follow the above relation $f_q = \epsilon _{el} ^{-1/2}$, 
 but instead it lies between 0.75 i.e., (no electronic polarizability included in the original partial charges)
 and $1$ (i.e., electronic polarizability fully included in the original partial charges).
-%
-% This is not really important for the paper:
-%
-%However, the RESP method has several remedies;  %and these are specific to RESP
-%RESP charges show a dependence on the orientation and position
-%and it does not provide numerically stable partial charges of burried atoms;~\cite{Hu2007}
-%the RESP-derived values depend, for example, on the conformational
-%sampling of the molecules and description of solvent 
-%in the calculations~\cite{RESP_paper, Singh1984, Hu2007, maciejewski14}. 
-%
-%Hirshfeld-E partitioning: \cite{Verstraelen2013}
-%In cases where the partial charges have some physical meaning 
-%(e.g. approximate electrostatic potential as in RESP~~\cite{RESP_paper,Singh1984}),
-%
-%
+It is important to note that even thought the lipid bilayer interface has a large gradient in
+the {\it total} dielectric constant, the electronic polarizability part can be considered to be constant
+as the measurements of high frequency dielectric constant gives values around 2 
+for almost any biologically relevant material \cite{some_original_work, leontyev11}.
 
-In this work, we develop a phospholipid model for classical MD simulations that
-accurately describes the lipid head group response to varying concentrations
-of monovalent and divalent cations. This is a biologically highly relevant membrane feature, which is
-poorly reproduced by currently available models. This can affect not only on membrane properties
-in the presence of ions but also modulate interactions with charged moieties at the interface.
 
-Importantly, results from simulations can be directly
-compared against experimental NMR data \cite{akutsu81,altenbach84,scherer89},
-as discussed in detail in Ref. \citenum{catte16}.
-To this end, we explore the above discussed scaling factor parameter space, $f_q \in (0.75, 1.0)$ for the Lipid14~\cite{dickson14} force field.
-We selected this force field as a starting point because its response to bound ions was apparently the most realistic against NMR data
-in a recent test within NMRlipids project (see Fig.~5 in Ref.~\citenum{catte16}).
-Moreover, the glycerol backbone and head group structures in Lipid14 model were
-more realistically described compared with other state of the art lipid models \cite{botan15}.
-The ECC correction was applied to Lipid14 parameters by scaling partial charges of the head group,
+In this work, we employ the ECC to develop a classical MD simulation model for
+a POPC lipid that accurately describes the binding of Sodium and Calcium ions to a lipid bilayer.
+%This is a biologically highly relevant membrane feature, which is
+%poorly reproduced by currently available models. This can affect not only on membrane properties
+%in the presence of ions but also modulate interactions with charged moieties at the interface.
+The quality of the model in terms of ion binding is measured by directly
+comparing simulations to the experimental NMR data used to measure the ion binding
+affinity~\cite{akutsu81,altenbach84,scherer89}, as discussed in detail in Ref. \citenum{catte16}.
+As a starting point we used the parameters of Lipid14~\cite{dickson14} force field,
+available in Gromacs format at \citenum{lipid14files}, because they apparently give the most
+realistic response to the bound ions and to the NaCl concentration 
+among the available lipid models (see Figs.~5~and~2 in Ref.~\citenum{catte16}).
+Moreover, the Lipid14 model gave relatively realistic glycerol backbone and
+head group structures when compared with the other state of the art lipid models~\cite{botan15}.
+
+The ECC correction was applied to the Lipid14 parameters by scaling partial charges of the head group,
 glycerol backbone, and carbonyl regions, which are the most polar parts in the  lipids and
-are thus expected to have the largest contribution to the cation binding
+are thus expected to have the largest contribution to the cation binding.
 In contrast, we do not modify the hydrocarbon chain parameters, as they
 do not come in direct contact with salt ions and are
 already highly optimized to provide a good description for the
 hydrophobic part of lipid bilayers\cite{ollila16}.
 This is in contrasts with the behavior in glycerol backbone and head group order
-parameters in the presence of ions, which call for improvements in all available lipid models~\cite{botan15}. 
+parameters in the presence of ions, which call for improvements in all available lipid models~\cite{botan15}.
 
+To find the best scaling factor to reproduce the ion binding affinity,
+we explored the above discussed scaling factor parameter space, $f_q \in (0.75, 1.0)$,
+and compared the results to the available NMR data~\cite{akutsu81,altenbach84,scherer89}.
 Exploring different values of the scaling factor, we found out that ion bindings and the
 related head group order parameter responses become weakened in general. 
 The optimal behaviour  was observed for a
 scaling factor of $f_q = 0.8$.This value is only slighly higher than the original scaling factor of 0.75, which implies
 that electronic polarization effects are only to a small extent effectively accounted for in the Lipid14 force field. 
-%-----\footnote----------
-  %{Depending on which QM method you arrive at values from 0.76 to 0.83, averages across atom
-  %types being around 0.78--0.80. Even though the methods are almost identical, authors of Lipid 14 find lower
-  %partial charges in vacuum than here -- so I prefer the higher value. As the choice of charges is arbitrary anyway,
-  %I use 0.80 as an approximate round value, which accounts for the already lower charges in Lipid14. 
-  %The use of 0.78---.79 might be more appropriate, though.}
-
 
 While, the above charge scaling improved the description of lipid-ion interactions,
 it also led to a reduction of the area per molecule of the lipid bilayer in water below experimental
