@@ -1049,16 +1049,50 @@ for 1:2 complexes and very small (??\%) for 1:3 of \ce{Na+}:POPC complexes.
 
 \subsection{Residence times of \ce{Na+} and \ce{Ca^{2+}} cations in POPC membrane}
 
+Equilibration of \ce{Ca^{2+}} binding to POPC bilayer takes hundreds of
+nanoseconds in MD simulations with CHARMM36 and Slipids force fields~\cite{javanainen17}, suggesting that
+simulations with the length of several microseconds would be required
+to study the binding phenomena in equilibrium. However, the density profiles of \ce{Ca^{2+}}
+from the ECC-lipid simulation in Fig.~\ref{fig:cacl-dens} show a relatively shallow
+minimum at the interface, suggesting a smaller barrier for the exchange of Calcium ions.
+To quantify the ion binding exchange in lipid bilayer simulations, we calculated 
+the residence times of ions within the distance of 0.3~nm from any oxygen atom
+belonging to a lipid molecule in a bilayer.
 
-The residence time of \ce{Ca^{2+}} in a POPC membrane 
-is experimentally estimated to be lower than $10\,\mu\mathrm{s}$~\cite{altenbach84}.
-\todo{This experimental estimate is actually for the residence time of Calcium
-  ion at the individual PC lipid. This section is to be finished when the analysis details
-and the results are here.}
-The recent MD simulations indicate that the equilibration of \ce{Ca^{2+}}
-binding to POPC bilayer may take hundreds of nanoseconds~\cite{javanainen17},
-which could become an issue for the detailed binding studies with MD simulation
-trajectories with the having lenght less than several microseconds \cite{catte16}.
+The residence time histograms of \ce{Ca^{2+}}
+in POPC bilayer are shown in Fig.~S\ref{fig:hist_residence_times} in SI 
+from the ECC-lipid simulation with CaCl$_2$ concentration of 1~M
+and from the CHARMM36 simulation with 450~mM concentration of
+ECC-ions taken from the previous study \cite{javanainen17}
+(the simulation data was downloaded from Ref.~\citenum{zenodo.259376}).
+\todo{JOE: Plot a histogram of residence times based on our simulations and simulation from \citenum{javanainen17} and put it into SI.
+}
+\todo{It might be also better to do the analysis from ECC-lipid simulation with concentration closer
+to the data in literature, i.e. 450mM.}
+%Based on Fig. S17 in that work, Ref.~\citenum{javanainen17},
+%we took the simulation with the apparent highest fluctuations of the number of bound calcium,
+%which can be obtained at \url{https://doi.org/10.5281/zenodo.259376}
+%and anaylsed the residence times.
+% simulation: (Matti C36 with CaClMK, 800ns total):
+Approximately 20\% of the \ce{Ca^{2+}} residence times in the CHARMM36 simulation are longer than
+the lenght of the trajectory ($800\,\mathrm{ns}$),
+and only less than 60\% of the bound residence times are shorter than the half
+of the simulation length~(400~ns).
+Even longer residence times are observed
+in the other simulations with CHARMM36 and Slipids models reported in the previous work~\cite{javanainen17}.
+At least order of magnitude faster exchange is observed in the
+ECC-lipid model, where 90\% of the \ce{Ca^{2+}} residence times to a POPC membrane are 
+shorter than $60\,\mathrm{ns}$, % exactly $53\,\mathrm{ns}$
+and the longest observed residence time in the ECC-lipid simulation is $120\,\mathrm{ns}$, 
+which is well below the total length of the simulation (200~ns).
+The exchange of \ce{Na+} ions to a POPC membrane is
+an order of magnitude faster, giving 90\%
+of the residence times smaller than~$2\,\mathrm{ns}$,
+the longest residence time being~$13\,\mathrm{ns}$. 
+All the results are in line with the experimental estimation that 
+the residence time of \ce{Ca^{2+}} at the individual PC headgroup 
+is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}.
+
 
 %give a roughly estimate of the order
 %of $1\,\mu\mathrm{s}$
@@ -1070,46 +1104,20 @@ trajectories with the having lenght less than several microseconds \cite{catte16
 %even though it can be very long (order of $\mu\mathrm{s}$) in some works, e.g. reference~\citenum{javanainen17}. 
 %Increasing time scales to the order of $\mu\mathrm{s}$ 
 %doesn't help to alleviate such a problem in current lipid models \cite{javanainen17}. %and also \cite{catte16}, but same simulation was used. 
-To analyze the residence time in the ECC-lipid model we \todo{describe how the residence time analysis was done}.
-Histograms of the residence times analyzed from the ECC-lipid simulation and from the CHARMM36 simulation data
-\todo{specify the system, POPC?}
-taken from the previous study \cite{javanainen17} (the simulation data was downloaded from Ref.~\citenum{zenodo.259376})
-are shown in Fig.~S\ref{fig:hist_residence_times} in SI. 
-\todo{JOE: Plot a histogram of residence times based on our simulations and simulation from \citenum{javanainen17} and put it into SI.
- }
-%Based on Fig. S17 in that work, Ref.~\citenum{javanainen17},
-%we took the simulation with the apparent highest fluctuations of the number of bound calcium,
-%which can be obtained at \url{https://doi.org/10.5281/zenodo.259376}
-%and anaylsed the residence times.
-% simulation: (Matti C36 with CaClMK, 800ns total):
 
-\todo{This paragraph should be clarified, but I cannot do it, because the residence time figure is not there yet.}
-In the CHARMM36 simulation
-approximately 20\% of bound residence times of \ce{Ca^{2+}} 
-are limited by the length of the simulation, $800\,\mathrm{ns}$, 
-and only less than
-60\% of bound residence time is smaller than half of the simulation length , $400\,\mathrm{ns}$. 
-Other simulations with CHARMM36 and Slipids models reported in the previous work show even longer residence times. 
-The ECC-lipids model estimates 90\% of the residence times of calcium bound to a POPC membrane to be 
-smaller than $60\,\mathrm{ns}$, % exactly $53\,\mathrm{ns}$
-which is at least two orders of magnitude lower than for the CHARMM36.
-In addition, the longest observed residence time in the ECC-lipid simulation is $120\,\mathrm{ns}$, 
-which is well below the length of our simulations.
-
-Interestingly, \ce{Na+} cations exhibit much more rapid exchange between membrane and solvent than calcium.
-The residence time of sodium bound to a POPC membrane is
-smaller than $2\,\mathrm{ns}$ for 90\% of the time it is bound to the membrane 
-with the longest measured bound time being $13\,\mathrm{ns}$. 
-Such an exchange between membrane and solvent 
-is an order of magnitude faster than for calcium cations. 
-
-Such a finding changes the point of view on binding of calcium to PC membranes from
-a very strong long-term stable binding with rare exchanges to 
-a relatively frequent exchange of clacium cations 
-in equilibrium between membrane and solvent. 
-The reduced barrier for the Calcium binding is also visible in the density distributions
-in Fig.~\ref{fig:cacl-dens}, where the more shallow minimum for the Calcuim
-density is observed at the interface.
+In conclusion, the results from ECC-lipid model suggest that the
+exchange of bound Calcium occurs within $\sim$100ns timeframe,
+which is much faster than previously reported~\cite{javanainen17}.
+The sodium exhibit even faster exchange.
+This suggests that simulations with the length of few hundred
+nanoseconds are sufficient to simulate equilibrium ion binding
+to PC lipid bilayers, when realistic force fields are used.
+This has not been the case with the available lipid force fields,
+which overestimate the binding streght of the cations \cite{javanainen17,catte16}.
+%Such a finding changes the point of view on binding of calcium to PC membranes from
+%a very strong long-term stable binding with rare exchanges to 
+%a relatively frequent exchange of clacium cations 
+%in equilibrium between membrane and solvent. 
 
 
 \subsubsection{Internal side-note: }
