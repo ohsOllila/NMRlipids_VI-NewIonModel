@@ -47,7 +47,7 @@
 % Multiple \preprint commands are allowed.
 %\preprint{}
 
-\title{Accurate binding of calcium to phospholipid bilayers by effective inclusion of electronic polarization} %Title of paper
+\title{Accurate binding of sodium and calcium to phospholipid bilayers by effective inclusion of electronic polarization} %Title of paper
 
 % repeat the \author .. \affiliation  etc. as needed
 % \email, \thanks, \homepage, \altaffiliation all apply to the current author.
@@ -93,11 +93,9 @@ Prague 6, Czech Republic}
   Despite of the significant biological relevance, the binding details of cations in cellular
   lipid membranes are not fully understood. For example, consistent results for
   the binding affinities and stoichimetries of Na$^+$ and Ca$^{2+}$ ions to phospholipid bilayers have not been
-  achieved with different experimental and theoretical methods. As recently shown in the 
-  NMRlipids project, a Open Collaboration running at \url{nmrlipids.blogspot.com},
-  the ion binding details could be resolved with unprecendent detail by intepreting
-  the experimental NMR data with classical molecular dynamics (MD) simulations.
-  However, the accuracy of the existing lipid models for MD simulations was not sufficient for this.
+  achieved with different experimental and theoretical methods.
+  The ion binding details could be resolved with classical molecular dynamics (MD) simulations,
+  however, the accuracy of the available lipid models has not been sufficient.
   In this work we show that the binding details of Na$^+$ and Ca$^{2+}$ ions to
   1-Palmitoyl-2-oleoylphosphatidylcholine (POPC) bilayer
   can be accurately described with a MD simulation model having implicitly included electronic polarization.
@@ -110,7 +108,7 @@ Prague 6, Czech Republic}
   support to the early intepretations of the experimental spectroscopic data.
   On the other hand, Ca$^{2+}$ ions form complexes with 1-3 lipid molecules with almost
   equal probabilities, suggesting more complicated binding stoichimetry than 
-  the simple binding model used to interpret the NMR data.
+  the ternary complex binding model used to interpret the NMR data.
   The results in this work pave the way for MD simulations of complex biochemical systems
   with realistic electrostatic interactions in the vicinity of cellular membranes.
 \end{abstract}
@@ -127,7 +125,7 @@ Prague 6, Czech Republic}
 % Beautiful polished sentences will be formed only afte we agree on these basic things
 \section{Introduction}
 Cation interactions with cellular membranes play a key role in several biological processes,
-such as in signal propagation in neurons and vesicle fusion.
+such as signal propagation in neurons and vesicle fusion.
 Since the direct measurements of ion-membrane interactions from biological systems
 are difficult, lipid bilayers are often used as models systems for cellular
 membranes. Especially the zwitterionic phosphocholine (PC) lipid bilayers are
@@ -148,7 +146,7 @@ The details of ion binding are, however, not fully consistent in the literature.
 %increase the concentration close to the bilayer and thus the amount of bound
 %ions, but do not affect the specific binding constant \cite{seelig90}.
 Interpretations of non-invansive spectroscopic methods, like nuclear magnetic resonance (NMR), scattering
-and infrared scpectroscopy suggest that Na$^+$ ions exhibit
+and infrared spectroscopy suggest that Na$^+$ ions exhibit
 negligible binding to PC lipid bilayers with submolar concentrations, while Ca$^{2+}$ specifically
 binds to phosphate groups of two lipid molecules~\cite{hauser76,hauser78,herbette84,akutsu81,altenbach84,binder02,pabst07,uhrikova08}.
 Atomistic resolution molecular dynamics (MD) simulation models, however, predict significantly
@@ -308,7 +306,7 @@ After scaling the partial charges of the head group, the glycerol
 backbone and carbonyls with a factor of 0.8, the simulation gave 
 the approximately 60~\AA$^2$ for the area per lipid,
 which is somewhat smaller than the experimental value, 64.3~\AA$^2$ \cite{kucerka11}, 
-as well as the value given by the original Lipid14 parameters, $(65.6 \pm 0.5)$~\AA$^2$~\cite{dickson14}.
+as well as the value given by the original Lipid14 parameters, $65.6 \pm 0.5$~\AA$^2$~\cite{dickson14}.
 The decrease of the area per lipid is found to arise from a reduced hydration of the lipid head group region,
 due to the lower polarity of molecules with scaled charges. This can be compensated
 by reducing the effective radius of atoms with the scaled charges by changing 
@@ -462,19 +460,25 @@ spanning until the water bulk region, $D$.
 
 \subsection{Simulation details}
 
-\subsubsection{Simulations of POPC bilayers in aqueous ions}
+\subsubsection{Simulations of POPC bilayers with aqueous ions}
 Simulations of POPC bilayer in pure water or in varying salt concentrations
 contained 128 POPC molecules and approximately 50~water molecules per each lipid
-in the periodic orthorhombic simulation box.
-As a default, water molecules were described by the OPC3 force field~\cite{Izadi16} 
-which is currently the most accurate three site rigid water model
-\todo{More justification for the choosing the OPC3 water model are needed.
-It might be good to show the comparison with the scattering data in bulk water in SI.}. 
-In order to test transferability of our newly developed ECC-lipids model, 
-we also performed several additional simulations with 
-OPC \cite{Izadi14}, SPC/E \cite{Berendsen1987}, TIP3p-FB and TIP4p-FB~\cite{Wang2014}, and TIP4p/2005 \cite{Abascal2005} water models
-\todo{The normal TIP3P was tested as well, right?} presented in Supporting Information (SI). 
-The ECC-ion models were used for Sodium, Calcium and Chloride ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
+in the periodic orthorhombic simulation box. The water was described using 
+SPC/E \cite{Berendsen1987} model. This model has the optimal dielectric constant
+to be used with ECC modified molecules \todo{Citation or discussion.} and has been 
+was also used in the parametrization of ECC
+ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}.
+The results with other water models are available in SI.
+%As a default, water molecules were described by the OPC3 force field~\cite{Izadi16} 
+%which is currently the most accurate three site rigid water model
+%In order to test transferability of our newly developed ECC-lipids model, 
+%we also performed several additional simulations with 
+%OPC \cite{Izadi14}, SPC/E \cite{Berendsen1987}, TIP3p-FB and TIP4p-FB~\cite{Wang2014},
+%and TIP4p/2005 \cite{Abascal2005} water models
+%\todo{The normal TIP3P was tested as well, right?}
+%presented in Supporting Information (SI). 
+The ECC-ion models \todo{Specify the exact version.} were used for Sodium, Calcium and Chloride
+ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
 Simulation with the Lipid14 model was also ran with the ion model by Dang et al.~\cite{smith94,chang1999,dang2006}.
 Simulation data for the Lipid14 model with \AA{}qvist~\cite{aqvist90} ion model
 was taken directly from \cite{lipid14POPC0mMNaClfiles}. \todo{Which water model was used in these simulations?} 
