@@ -462,11 +462,11 @@ spanning until the water bulk region, $D$.
 
 \subsubsection{Simulations of POPC bilayers with aqueous ions}
 Simulations of POPC bilayer in pure water or in varying salt concentrations
-contained 128 POPC molecules and approximately 50~water molecules per each lipid
-in the periodic orthorhombic simulation box. The water was described using 
-SPC/E \cite{Berendsen1987} model. This model has the optimal dielectric constant
-to be used with ECC modified molecules \todo{Citation or discussion.} and has been 
-was also used in the parametrization of ECC
+contained 128 POPC molecules and approximately 50~SPC/E~water~\cite{Berendsen1987} molecules per each lipid
+in the periodic orthorhombic simulation box. The chosen water model 
+has the optimal dielectric constant
+to be used with the ECC modified molecules \todo{Citation or discussion.} and it has been 
+was also used in the previous parametrization of ECC
 ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}.
 The results with other water models are available in SI.
 %As a default, water molecules were described by the OPC3 force field~\cite{Izadi16} 
@@ -479,9 +479,11 @@ The results with other water models are available in SI.
 %presented in Supporting Information (SI). 
 The ECC-ion models \todo{Specify the exact version.} were used for Sodium, Calcium and Chloride
 ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
-Simulation with the Lipid14 model was also ran with the ion model by Dang et al.~\cite{smith94,chang1999,dang2006}.
-Simulation data for the Lipid14 model with \AA{}qvist~\cite{aqvist90} ion model
-was taken directly from \cite{lipid14POPC0mMNaClfiles}. \todo{Which water model was used in these simulations?} 
+Simulation with the Lipid14 model was also ran with the ion model by
+Dang et al.~\cite{smith94,chang1999,dang2006}\todo{Which water model was used in this simulation?}.
+Simulation data for the Lipid14 model with \AA{}qvist~\cite{aqvist90} ion and TIP3P~\cite{jorgensen83}
+water models are reported in \cite{catte16} and
+were taken directly from \cite{lipid14POPC0mMNaClfiles,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC,lipid14POPC1000mMNaClfiles}. 
 MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4).  
 The simulation settings used in this work are 
 summarized in Table \ref{tbl:mdpar}. 
@@ -505,12 +507,13 @@ The parameters together with the simulation data are available
 at~\cite{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCATsurfT313K,POPClipid1430perCATsurfT313K,POPClipid1442perCATsurfT313K,POPClipid1450perCATsurfT313K}.
 The surfactants were randomly placed among the lipids to form bilayer structures with
 mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer.
-All systems contained 50 POPC molecules per leaflet, 6340 TIP3P water molecules and
+All systems contained 50 POPC molecules per leaflet, 6340 TIP3P~\cite{jorgensen83} water molecules and
 6, 14, 21, 35, or 50 surfactants per leaflet. 
 Chloride counter ions were used
 in simulations, because parameters for bromide, the counterion in the experimental data \cite{scherer89},
 were not available in the standard Gromacs files for Amber force field.
-\todo{JOE: We cannot present an intricate cool new model for a lipid and claim at the same time that we can't simulate bromide. }
+%\todo{JOE: We cannot present an intricate cool new model for a lipid and claim at the same time that we can't simulate bromide. }
+% Yes we can.
 The Lipid14 model was used for POPC.
 The first 20~ns of the total simulation time of 200~ns
 was considered as an equlibration time and was omitted from the analysis.
@@ -538,23 +541,23 @@ and by using the atom types with reduced $\sigma$ parameters from ECC-lipids.
     Middle: Order parameters of POPC head group, glycerol backbone and acyl chains 
     from simulations with the Lipid14 \cite{dickson14} and the ECC-lipid models
     compared with the experimental values from \cite{ferreira13}.
-    The size of the points for the head group order parameters correspond the
-    of the error bars ($\pm 0.02$ for experiments \cite{botan15,ollila16} and ?? for simulations).
+    The size of the points for the head group order parameters correspond 
+    the error bars ($\pm 0.02$ for experiments \cite{botan15,ollila16} and ?? for
+    simulations {\bf Add the size of the error bars in simulations.}).
     The size of the points for acyl chains are decreased by a factor of 3 to improve the clarity of the plot.
     Bottom: X-ray scattering form factors from simulations with the Lipid14 \cite{dickson14} and
     the ECC-lipid models compared with experiments~\cite{Kucerka2011}.
   } 
   \todo{Increase the height of the order parameter figure} \\
   \todo{sn-1 and sn-2 order parameters should be somehow labelled in the order parameter figure. Maybe empty and filled points?} \\
-  \todo{Add size of the error bars in simulations to the caption.} \\
   \todo{Would it be possible to increase the size of points for acyl chain order parameters only in z-direction such that
     it would correspond the error bars?} \\
-  \todo{x-axis in form factor plot from 0 to 0.6, where experimental data ends. y-axis from 0 to $\sim$2.5 to remove the empty space.} \\
+  \todo{x-axis in form factor plot from 0 to 0.6, where experimental data ends. y-axis from 0 to $\sim$2.2 to remove the empty space.} \\
 \end{figure}
 
 \begin{table}
-  \caption{Area per lipid (APL) values of POPC with no ions from the Lipid14 simulation
-    ran in this work and from the literature, from ECC-lipid model and from experiments.\label{tab:apls} }
+  \caption{Area per lipid (APL) values of POPC bilayer without ions from the Lipid14 simulation
+    ran in this work and from the literature, from the ECC-lipid model and from experiments.\label{tab:apls} }
   \begin{tabular}{l|c c}
     model          & APL (\AA$^2$)   & Temperature [K] \\
     \hline
@@ -696,23 +699,19 @@ previously \cite{botan15}.
   \centering
   \includegraphics[width=8.0cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B-g3_L14-ECCL17_q80_sig89_CaCl.pdf}
   \caption{\label{fig:delta_ordPar_CaCl}
-    Changes of head group order parameters of POPC bilayer as a function of CaCl$_2$ concentrations
+    The changes of the head group order parameters of POPC bilayer as a function of CaCl$_2$ concentrations
     are shown from simulations with different force fields together with experimental data 
     (DPPC \cite{akutsu81} and POPC \cite{altenbach84}). 
     Ion concentrations in bulk water are shown in x-axis. 
     Values from simulations are calculated from the of cation number density $C_{np}$
     from the region at the simulatin box edge with the constant ion concentration as [ion]=$C_{np}/0.602$.
-    Simulation data with Lipid14 and \AA{}qvist ion parameters is taken directly from Ref. \cite{catte16}.
+    Simulation data with Lipid14 and \AA{}qvist ion parameters are taken directly from
+    Refs.~\cite{lipid14POPC0mMNaClfiles,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC}.
   }
-  \todo{I think that we must show the NaCl results in the main paper. I think that the best would
-    be to use similar two column format, which we had before. This is used also in NMRlipids II and makes the
-    comparison easier} \\
-  \todo{The DPPC and POPC should be shown and properly labelled as we had previously.} \\
-  \todo{The labeling should be consistent with previous figures, i.e., experiments with diamonds.} \\
-  \todo{Start x-axis scale from -1 to make the point in zero fully visible.} \\
-  \todo{Start y-axis scale of the two top figures from -0.13 to remove the empty space.} \\
+  \todo{Maybe experimental points and lines could be larger to make a more clear differentce to simulations} \\
+  \todo{Add temperatures for POPC and DPPC experiments} \\
   \todo{y-axis scale of the bottom figure from 59 to 78 to remove the empty space.} \\
-  \todo{Empty space between figures and from the right column could be reduced.} \\
+  \todo{Empty space from the right column could be reduced.} \\
   \todo{Experimental values from \cite{akutsu81} to be put in the $g_3$ figure:
     the value of $g_3$ order parameter of DPPC was -0.214 
     in the absence of ions [average of two closely spaced splittings] and -0.211 in the presence
@@ -725,13 +724,18 @@ previously \cite{botan15}.
   \centering
   \includegraphics[width=8.0cm]{../Fig/ipython_nb/OrdPars-A-B_L14-ECCL17_q80_sig89_NaCl.pdf}
   \caption{\label{fig:delta_ordPar_NaCl}
-    Changes of head group order parameters $\alpha$ and $\beta$ of POPC bilayer as a function of NaCl concentrations
-    are shown from simulations with different force fields together with experimental data \cite{akutsu81}. 
-    Ion concentrations in bulk water are shown in x-axis. 
-    Values from simulations are calculated from the of cation number density $C_{np}$
-    from the region at the simulatin box edge with the constant ion concentration as [ion]=$C_{np}/0.602$.
-    Simulation data with Lipid14 and \AA{}qvist ion parameters is taken directly from Ref. \cite{catte16}.
+    The changes of the head group order parameters of POPC bilayer as a function of NaCl concentrations
+    from simulations with different force fields together with experimental data for DPPC~\cite{akutsu81} and POPC~\cite{altenbach84}.
+    Ion concentrations in x-axis are calculated as in Fig.~\ref{fig:delta_ordPar_CaCl}.
+    Simulation data with Lipid14 and \AA{}qvist ion parameters is taken directly from
+    Refs.~\cite{lipid14POPC0mMNaClfiles,lipid14POPC1000mMNaClfiles}.
   }
+  \todo{Add also the POPC result to the figure. Ref.\cite{altenbach84} gives for
+    POPC at 1M of NaCl $\Delta S^\alpha=(6.1-5.5)*0.00784=0.004704$.} \\
+  \todo{Add temperatures to the experimental data.} \\
+  \todo{Labeling should be consistent with the previous figure, i.e. experimental data with diamonds etc.} \\
+  \todo{x-axis scale from -1 to 1100 to make the point in zero fully visible and to remove empty space.} \\
+  \todo{Empty space between figures and from the right column could be reduced.}
 \end{figure}
 
 
@@ -753,7 +757,7 @@ and imperceptible Na$^+$ binding to PC bilayers \cite{akutsu81,altenbach84}.
 However, the changes of the headgroup order parameters as a function of CaCl$_2$ 
 concentration were overestimated by the same combination of force field parameters.
 
-Since significant artefacts are reported in simulations with \AA{}qvist ions is water \cite{??},
+Since significant artefacts are reported in simulations with \AA{}qvist ions is water \cite{??} \todo{Add citations},
 we also simulated the Lipid14 model with the ion models by Dang et al.~\cite{smith94,chang1999,dang2006} and
 ECC-ions~\cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014} having
 more realistic bulk behaviour. Instead of the improvement in the binding behaviour,
@@ -777,9 +781,14 @@ response the to the bound positive charge the ECC-lipid model
 was in good agreement with experiments in section \ref{section:boundCHARGE},
 we conclude that the model correctly reproduces the binding affinity of
 Na$^{+}$ and Ca$^{2+}$ ions to POPC lipid bilayer.
-%In conclusion, the results suggest that 
-%the ECC-lipid model together with the ECC-ion parameters gives a realistic
-%description for the binding affinities of Na$^+$ and Ca$^{2+}$ ions to POPC lipid bilayer. 
+Also the response of the glycerol backbone $g_3$ order parameter to CaCl$_2$ was
+signifincantly overestimated in the original Lipid14 model, while the ECC-lipid
+gives a good agreement with exepriments, as seen in Fig.~\ref{fig:delta_ordPar_CaCl}.
+Also the changes of the P-N vector angle are more prononced
+for the Lipid14 model, for which the maximum CaCl$_2$ induced tilting 
+toward water phase is approximately 17$^{\circ}$, while the corresponding
+value for ECC-lipid model is 6$^{\circ}$.
+
 Furthermore, the overestimated lipid headgroup order parameter changes of POPC in the Lipid14
 model as a function of CaCl$_2$ concentration arise from both, the overestimated
 binding affinity and sensitivity of the headgroup tilt to the bound positive charge.
@@ -787,9 +796,15 @@ This probably applies also to the other lipid models considered in the previous 
 emphasizing the importance of the comparison of the lipid headgroup order parameter response
 to the bound charge between simulations and experiments as done in section \ref{section:boundCHARGE}.
 
-\todo{SAMULI: Maybe we should discuss the repeat distances and
-  area per molecules measured at \cite{petrache06,pabst07,uhrikova08}
-  }
+The ion binding affinity of ECC-lipid model with different water models is compared
+in SI. The performance with all water models is better than in in the original Lipid14
+parameteres, but the order parameter changes are slightly overestimated
+with all four-site water models and with TIP3P.
+
+
+%\todo{SAMULI: Maybe we should discuss the repeat distances and
+%  area per molecules measured at \cite{petrache06,pabst07,uhrikova08}
+%  }
 
 
 
@@ -1233,6 +1248,8 @@ and 600 from the Academy of Finland via the FiDiPro award.
 {\bf SUPPLEMENTARY INFORMATION}
 \end{center}
 
+\todo{This should be either done properly with the correct $C_I$ or removed. Removing
+might be a better idea at this point.}
 It was found in the original work~\cite{altenbach84} that 
 a ternary complex binding model (i.e.~2~POPC:1~\ce{Ca^{2+}})
 provides the best fit to experimental measurements of all considered models in that study. 
@@ -1247,8 +1264,6 @@ The concentration $C_I$ is determined by using the surface potential by using th
 However, Boltzmann theory yields inaccurate results
 for divalent cations like \ce{Ca^{2+}}~\cite{Andelman1995}. 
 An atomistic simulation, on the other hand, provides these quantities directly without severe assumptions.
-\todo{Did you really calculate the $C_I$ from simulations without severe assumptions?
-Note that this conctration at the plane of biding, which do not equal the concentration of free cations.}
 Hence we hypothesise that the discrepancy between the results in the experiment~\cite{altenbach84} and 
 our simulations likely lays in the fact that 
 the assumptions and relations used for determinig concentrations $C_b$ and $C_I$ in the experiment~\cite{altenbach84}
@@ -1318,7 +1333,7 @@ gradually do not hold for higher concentrations of \ce{Ca^{2+}}.
     %oMM 4xbig patch           & 63.7   &         \\
     \hline
     experiment   & 62.7  &  293    \\
-    experiment \cite{jambeck12}\todoii{REF}{put original references, not Slipids param. paper.} & 64.3  &  303    \\
+    experiment \cite{kucerka11} & 64.3  &  303    \\
     experiment  & 67.3  &  323    \\
     experiment  & 68.1  &  333    \\
     %experiment POPE  & 56.6 &  303    \\
@@ -1336,7 +1351,7 @@ gradually do not hold for higher concentrations of \ce{Ca^{2+}}.
     \hline
     time-step           & 2~fs         \\
     equilibration time  & 100~ns  \\
-    simulation time     & 200~ns  \\
+    total simulation time     & 300~ns  \\
     temperature         & 313~K       \\
     thermostat          & v-rescale  \cite{bussi07}   \\
     barostat            & Parrinello-Rahman, semi-isotropic \cite{parrinello81} \\
