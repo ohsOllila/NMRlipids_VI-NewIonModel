@@ -283,7 +283,7 @@ are thus expected to have the largest contribution to the cation binding.
 We do not modify the hydrocarbon chain parameters, as they
 do not come in direct contact with salt ions and are
 already highly optimized to provide a good description for the
-hydrophobic part of lipid bilayers \cite{ollila16}.
+hydrophobic part of lipid bilayers \cite{dickson14,ollila16}.
 This is in contrasts with the glycerol backbone and the head group regions, 
 which call for improvements in all available lipid models~\cite{botan15}.
 
@@ -330,7 +330,7 @@ using the lipid head group order parameters and the
 is based on the experimental observation that the C-H bond
 order parameters of $\alpha$ and $\beta$ carbons in PC lipid head group
 (see Fig.~\ref{simVSexpNOions}) are proportional to the amount 
-of unit charge bound per lipid~\cite{seelig87}.
+of charge bound per lipid~\cite{seelig87}.
 The change of order parameters measured with varying aqueous
 ion concentration can be then related to the amount of bound ions.
 
@@ -347,7 +347,7 @@ S_{\rm CH}=\frac{3}{2}\langle \cos^2\theta -1 \rangle,
 where $\theta$ is the angle between the bond and membrane
 normal and the average is taken over all sampled configurations \cite{ollila16}.
 
-The relation between bound charge per lipid,  $X^\pm$, and
+The relation between the amount of the bound charge per lipid,  $X^\pm$, and
 the head group order parameter change, $\Delta S_{\rm{CH}}^{i}$,
 is empirically quantified as~\cite{seelig87,ferreira16}
 \begin{equation}\label{OPchangeEQ}
@@ -628,7 +628,9 @@ of art lipid models available in literature \cite{botan15}.
   }
   \todo{Labeling should be consistent with the previous figure, i.e. experimental data with diamonds.} \\
   \todo{x-axis scale from -1 to 51 to make the point in zero fully visible and to remove empty space.} \\
-  \todo{Empty space between figures and from the right column could be reduced.}
+  \todo{Empty space between figures and from the right column could be reduced.} \\
+  \todo{Put the experimental data with larger points and thicker line in this and in the next two figures to
+    make more clear separation between simulation and experimental data.}
 \end{figure}
 
 Before proceeding to the ion binding affinity, we quantify
@@ -1204,9 +1206,10 @@ oberved in the simulation.
 The improved cation binding behaviour to POPC bilayer pave the way for
 simulations of complex biochemical systems with correctly described
 electrostatic interactions in the vicinity of cellular membranes.
-The ECC-lipids model is build by scaling the partial charges and
-the LJ-radius of the headgroup, glycerol backbone and carbonyl atoms of
-the Lipid14 POPC model~\cite{dickson14}. While the Lipid14 model
+The ECC-lipids model is build by scaling the partial charges
+and the LJ-radius of the headgroup, glycerol backbone and carbonyl atoms of
+the Lipid14 POPC model~\cite{dickson14} with the constant factor
+of 0.8 and 0.89, respectively. While the Lipid14 model
 is compatible with the AMBER force field family, the compatibility of
 the ECC-lipids model may be compromised due to the changes in intermolecular
 interactions of the scaled atoms. On the other hand, a fully consistent
