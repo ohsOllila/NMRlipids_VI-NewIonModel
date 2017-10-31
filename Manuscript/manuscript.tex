@@ -865,17 +865,18 @@ PC lipid bilayers \cite{catte16}.
 
 \begin{figure}[tbp]
   \centering
-  \includegraphics[width=9.0cm,angle=0]{../Fig/CAdensities2.eps}
+  \includegraphics[width=8.0cm]{../Fig/ipython_nb/density_profiles_ca_cl_wat_phos_models-compar.pdf}
   \caption{\label{fig:cacl-dens}
-    Number density of \ce{Ca^{2+}} and \ce{Cl^-} as a function of membrane normal axis
+    Number density profiles of \ce{Ca^{2+}}, \ce{Na^{+}} and \ce{Cl^-} along membrane normal axis
     for different force fields. Data for Lipid14 with \AA{}qvist ions are taken directly from Ref. \citenum{catte16}.
     %Normalization factor for ions is 1 for monovalent ions (i.e.~\ce{Na^+} and~\ce{Cl^-}),
-    Densities of~\ce{Cl^-} and water are divided with 2 and 200, respectively, to visalize them
-    with the same scale as \ce{Ca^{2+}}. The molar concentration of the ions in water is 350~mM in all systems
+    In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}}, 
+    densities of~\ce{Cl^-} and \ce{Na^{+}} are divided by 2, and
+    densities of phosphate group resp. water are divided by 5 resp. 200. 
+    The molar concentration of ions in water is 350~mM in all systems
     presented here. 
     }
-  \todo{PAVEL: draw phosphate position with its variance, add water density (scaled) and include the number of$\Gamma$-surface access.} \\
-  \todo{JOE: Change the figure so that it contains a membrane background} \\
+  \todo{PAVEL: include the number of$\Gamma$-surface access.} \\
 \end{figure}
 
 The probabilities for a bound \ce{Ca^{2+}} ion to interact with
@@ -1083,12 +1084,12 @@ in the other simulations with CHARMM36 and Slipids models reported in the previo
 At least order of magnitude faster exchange is observed in the
 ECC-lipid model, where 90\% of the \ce{Ca^{2+}} residence times to a POPC membrane are 
 shorter than $60\,\mathrm{ns}$, % exactly $53\,\mathrm{ns}$
-and the longest observed residence time in the ECC-lipid simulation is $120\,\mathrm{ns}$, 
+and the longest observed residence time in the ECC-lipid simulation is $141\,\mathrm{ns}$, 
 which is well below the total length of the simulation (200~ns).
 The exchange of \ce{Na+} ions to a POPC membrane is
 an order of magnitude faster, giving 90\%
-of the residence times smaller than~$2\,\mathrm{ns}$,
-the longest residence time being~$13\,\mathrm{ns}$. 
+of the residence times smaller than~$1\,\mathrm{ns}$,
+the longest residence time being~$6\,\mathrm{ns}$. 
 All the results are in line with the experimental estimation that 
 the residence time of \ce{Ca^{2+}} at the individual PC headgroup 
 is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}.

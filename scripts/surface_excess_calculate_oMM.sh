@@ -86,3 +86,4 @@ echo Relative surface excess of ions  --water = $surfexc nm-2
 echo Relative surface excess of anions--water = $surfexcani nm-2 > surf_excess_wat_anions.dat
 echo Relative surface excess of anions--water = $surfexcani nm-2 
 
+rename mmolL mmolL_oMM conc*.dat

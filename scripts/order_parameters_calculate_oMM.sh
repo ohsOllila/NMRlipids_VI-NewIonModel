@@ -16,7 +16,7 @@ top_file_name2="conf_init_PopcPalmOle.gro"
 #op_def_file="../../Headgroup_Glycerol_OPs.def"
 #op_def_file="../../order_parameter_definitions_POPC_all.def"
 op_def_file=${scriptdir}"/order_parameter_definitions_Lipid14_POPC_all.def"
-op_out_file="OrdPars.dat"
+op_out_file="OrdPars_omm.dat"
 top="topol.top"
 f_conc=55430  # in mM/L
 
