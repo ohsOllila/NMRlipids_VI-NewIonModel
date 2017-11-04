@@ -1034,49 +1034,57 @@ for 1:2 complexes and very small (4\%) for 1:3 of \ce{Na+}:POPC complexes.
 \subsection{Residence times of \ce{Na+} and \ce{Ca^{2+}} cations in POPC membrane}
 
 Equilibration of \ce{Ca^{2+}} binding to POPC bilayer takes hundreds of
-nanoseconds in MD simulations with CHARMM36 and Slipids force fields~\cite{javanainen17}, suggesting that
-simulations with the length of several microseconds would be required
-to study the binding phenomena in equilibrium. However, the density profiles of \ce{Ca^{2+}}
-from the ECC-lipids simulation in Fig.~\ref{fig:cacl-dens} show a relatively shallow
-minimum at the interface, suggesting a smaller barrier for the exchange of calcium ions.
-To quantify the ion binding exchange in lipid bilayer simulations, we calculated 
-the residence times of ions within the distance of 0.3~nm from any oxygen atom
+nanoseconds in MD simulations with current state of the art force fields,
+e.g. CHARMM36 and Slipids force fields~\cite{javanainen17}, suggesting that
+simulations at a temporal scale of several microseconds are required
+for studies of cation binding in equilibrium. 
+This is in line with the density profiles of \ce{Ca^{2+}} 
+from simulations in Fig.~\ref{fig:cacl-dens}, 
+which all show a region of a very small calcium density 
+around the level of cholines in POPC (i.e. around $2.5\,\mathrm{nm}$)
+with the exception of ECC-lipids, 
+which exhibits only a relatively shallow local
+minimum at that level.
+This suggests that such a smaller barrier for the exchange of calcium ions 
+shall lead to their faster exchange with the solvent.
+To quantify the exchange of ions between the membrane and solvent in simulations, we calculated 
+residence times of ions bound to the membrane.
+We again use the definition for ions binding to the membrane as in the above section~\ref{sec:affinity},
+i.e. ion is bound if it is within 0.3~nm from any oxygen atom
 belonging to a lipid molecule in a bilayer.
 
-The residence time histograms of \ce{Ca^{2+}}
-in POPC bilayer are shown in Fig.~S\ref{fig:hist_residence_times} in SI 
-from the ECC-lipids simulation with CaCl$_2$ concentration of 1~M
-and from the CHARMM36 simulation with 450~mM concentration of
-ECC-ions taken from the previous study \cite{javanainen17}
-(the simulation data was downloaded from Ref.~\citenum{zenodo.259376}).
-\todo{JOE: Plot a histogram of residence times based on our simulations and simulation from \citenum{javanainen17} and put it into SI.
-}
-\todo{It might be also better to do the analysis from ECC-lipids simulation with concentration closer
-to the data in literature, i.e. 450mM.}
+The histograms of residence times of \ce{Ca^{2+}} in a POPC bilayer 
+at $450\,\mathrm{mM}$ concentration of \ce{CaCl_2} in water before adsorption to phospholipids
+from simulations with ECC-lipids 
+and CHARMM36 (taken from previous study \cite{javanainen17}, 
+simulation data available at Ref.~\citenum{zenodo.259376})
+are shown in Fig.~S\ref{fig:hist_residence_times} in SI. 
 %Based on Fig. S17 in that work, Ref.~\citenum{javanainen17},
 %we took the simulation with the apparent highest fluctuations of the number of bound calcium,
 %which can be obtained at \url{https://doi.org/10.5281/zenodo.259376}
 %and anaylsed the residence times.
-% simulation: (Matti C36 with CaClMK, 800ns total):
-Approximately 20\% of the \ce{Ca^{2+}} residence times in the CHARMM36 simulation are longer than
-the lenght of the trajectory ($800\,\mathrm{ns}$),
-and only less than 60\% of the bound residence times are shorter than the half
-of the simulation length~(400~ns).
+In the CHARMM36 simulation, approximately 20\% of the \ce{Ca^{2+}} residence times are longer than
+the length of the trajectory ($800\,\mathrm{ns}$).
+With such a simulation, which is hence relatively short for the employed model,
+we can merely estimate an upper bound that 
+only less than 60\% of the bound residence time 
+is formed by cations interacting with the phospholipid membrane 
+for less then half of the simulation length~(400~ns).
 Even longer residence times are observed
 in the other simulations with CHARMM36 and Slipids models reported in the previous work~\cite{javanainen17}.
-At least order of magnitude faster exchange is observed in the
+
+On the other hand, at least an order of magnitude faster exchange is observed in the
 ECC-lipids model, where 90\% of the \ce{Ca^{2+}} residence times to a POPC membrane are 
 shorter than $60\,\mathrm{ns}$, % exactly $53\,\mathrm{ns}$
 and the longest observed residence time in the ECC-lipids simulation is $141\,\mathrm{ns}$, 
-which is well below the total length of the simulation (200~ns).
+which is well below the total length of the simulation used for analysis, 200~ns.
 The exchange of \ce{Na+} ions to a POPC membrane is
-an order of magnitude faster, giving 90\%
+another order of magnitude faster, giving 90\%
 of the residence times smaller than~$1\,\mathrm{ns}$,
 the longest residence time being~$6\,\mathrm{ns}$. 
-All the results are in line with the experimental estimation that 
+Note that the results from both analyzed models are in line with the experimental estimation that 
 the residence time of \ce{Ca^{2+}} at the individual PC headgroup 
 is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}.
-
 
 %give a roughly estimate of the order
 %of $1\,\mu\mathrm{s}$
@@ -1089,15 +1097,15 @@ is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}.
 %Increasing time scales to the order of $\mu\mathrm{s}$ 
 %doesn't help to alleviate such a problem in current lipid models \cite{javanainen17}. %and also \cite{catte16}, but same simulation was used. 
 
-In conclusion, the results from ECC-lipids model suggest that the
-exchange of bound calcium occurs within $\sim$100ns timeframe,
+In conclusion, the results from the ECC-lipids model suggest that the
+exchange of calcium between membrane and solvent occurs within $\sim 100\,$ns timeframe,
 which is much faster than previously reported~\cite{javanainen17}.
-The sodium exhibit even faster exchange.
-This suggests that simulations with the length of few hundred
-nanoseconds are sufficient to simulate equilibrium ion binding
-to PC lipid bilayers, when realistic force fields are used.
+Sodium cations exhibit even a faster exchange.
+This suggests that simulations with the length of a few hundreds of
+nanoseconds are sufficient to simulate ion binding
+to phospholipid bilayers in equilibrium, when realistic force fields are used.
 This has not been the case with the available lipid force fields,
-which overestimate the binding streght of the cations \cite{javanainen17,catte16}.
+which overestimate the binding strength of the cations \cite{javanainen17,catte16}.
 %Such a finding changes the point of view on binding of calcium to PC membranes from
 %a very strong long-term stable binding with rare exchanges to 
 %a relatively frequent exchange of clacium cations 
@@ -1112,36 +1120,37 @@ which overestimate the binding streght of the cations \cite{javanainen17,catte16
 
 \section{Conclusions}
 
-By using the electrometer concept we show that the binding of \ce{Na^+} and \ce{Ca^2+} ions
-to a POPC lipid bilayer can be accurately described with the classical MD simulation 
+We used the electrometer concept to show that the binding of \ce{Na^+} and \ce{Ca^2+} ions
+to a POPC lipid bilayer can be accurately described with a classical MD simulation 
 force field, where the electronic polarization is implicitly included using 
 the electronic continuum correction (ECC)~\cite{leontyev11}.
 The proposed ECC-lipids model is a significant improvement over 
 other available lipid models, which all overestimate specific cation binding affinities~\cite{catte16}.  
 While the structural details of a POPC lipid bilayer simulated with the ECC-lipids
-model agree with experiments with the comparable accuracy to the other state of the art lipid models,
+model agree with experiments with an accuracy comparable to the other state of the art lipid models,
 it also reproduces the experimental lipid head group order parameter responses to
-the cationic surfactant, NaCl and CaCl$_2$ concentrations. 
+a cationic surfactant, NaCl and CaCl$_2$ concentrations. 
 
-The good agreement with experiments enables the atomic resolution 
-interpretation of NMR experiments by using MD simulations.
-In agreement with previous interpretations of experimental data \cite{hauser76,hauser78,herbette84,binder02},
-the Ca$^{2+}$ ions mainly interact with phosphate oxygens.
-However, the stoichiometry of the binding is significantly more complicated 
+The good agreement with experiments enables us to 
+interpret NMR experiments in atomistic details using MD simulations.
+In line with previous interpretations of experimental data \cite{hauser76,hauser78,herbette84,binder02},
+Ca$^{2+}$ ions interact mainly with phosphate oxygens.
+However, the stoichiometry of calcium binding is significantly more complicated 
 than in the previous interpretation of the NMR data based on 
 the ternary complex model, where one calcium binds to two POPC molecules~\cite{altenbach84}.
 The complexes of one calcium bound to two lipids are the most probable also in the
 ECC-lipids model, but the complexes of one or three lipids per one calcium
 were observed to be almost equally likely. While the success of the ternary
 compex model is understandable based on the simulation results,
-a simple binding model cannot detec the complex binding
+a simple binding model cannot detect 
+the complex nature of calcium binding to phospholipid bilayers
 oberved in the simulation.
 
-The improved cation binding behaviour to POPC bilayer pave the way for
-simulations of complex biochemical systems with correctly described
+The accurate description of cation binding to POPC bilayer paves the way for
+simulations of complex biochemical systems with realistically described
 electrostatic interactions in the vicinity of cellular membranes.
 The ECC-lipids model is build by scaling the partial charges
-and the LJ-radius of the headgroup, glycerol backbone and carbonyl atoms of
+and the Van der Waals radii of the headgroup, glycerol backbone and carbonyl atoms of
 the Lipid14 POPC model~\cite{dickson14} with the constant factor
 of 0.8 and 0.89, respectively. While the Lipid14 model
 is compatible with the AMBER force field family, the compatibility of
@@ -1149,7 +1158,7 @@ the ECC-lipids model may be compromised due to the changes in intermolecular
 interactions of the scaled atoms. On the other hand, a fully consistent
 ECC-force field should include the correction also in other than lipid
 molecules, including water. The work toward this direction and the extension
-to other lipid molecules and force fields is left for the future studies.
+to other lipid molecules and force fields is left for future studies.
 
 %but we expect that the correction can be used also for other lipids
 %and force fields.
@@ -1174,6 +1183,7 @@ This work can be reached as a repository containing all data at \url{zenodo.org:
 P.J. acknowledges support from the Czech Science Foundation (grant no. 16-01074S) 
 and 600 from the Academy of Finland via the FiDiPro award.
 \todo{Add acknowledgments of Jiri Kolafa.}
+\todo{Joe: Thank Metacentrum.}
 \end{acknowledgments}
 
 
@@ -1250,6 +1260,34 @@ gradually do not hold for higher concentrations of \ce{Ca^{2+}}.
     Values from simulations are calculated from the of cation number density $C_{np}$
     from the region at the simulatin box edge with the constant ion concentration as [ion]=$C_{np}/0.602$.
     Simulation data with Lipid14 and \AA{}qvist ion parameters is taken directly from Ref. \cite{catte16}.
+  }
+\end{figure}
+
+
+
+\begin{figure}[tbp!]
+  \centering
+  \includegraphics[width=8.0cm]{../Fig/ipython_nb/histogram_bound_times_ECC-lipids_346mM_CaCl.pdf} \\
+  \includegraphics[width=8.0cm]{../Fig/ipython_nb/histogram_bound_times_Charmm36_450mM_CaCl_Matti.pdf}
+  \caption{\label{fig:hist_residence_times}
+   Histograms of residence times of \ce{Ca^{2+}} in a POPC bilayer 
+   at $450\,\mathrm{mM}$ concentration of \ce{CaCl_2} in water before adsorption to phospholipids
+   from simulations with ECC-lipids/ECC-ions (top)
+   and CHARMM36/ECC-ions (bottom), which was taken from previous study \cite{javanainen17} 
+   (simulation data available at Ref.~\citenum{zenodo.259376}).
+   The maxima on the x-axis represent the lengths of the simulations used for analysis. 
+   For the ECC-lipids model, 90\% of the residence times of \ce{Ca^{2+}} in a POPC membrane are 
+   shorter than $60\,\mathrm{ns}$, % exactly $53\,\mathrm{ns}$
+   with the longest observed residence time being $141\,\mathrm{ns}$, 
+   which is well below the total length of the simulation (200~ns).
+   This is, however not true for the simulation with CHARMM36 model,
+   where there are several calcium cations with their residence time 
+   apparently limited by the length of the simulation. 
+   With such a simulation, which is relatively short for the employed model,
+   we can merely estimate an upper bound that 
+   only less than 60\% of the bound residence time 
+   is formed by cations interacting with the phospholipid membrane 
+   for less then half of the simulation length~(400~ns).
   }
 \end{figure}
 
