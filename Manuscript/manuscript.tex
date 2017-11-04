@@ -782,6 +782,7 @@ is better than the original Lipid14 model.
 
 
 \subsection{Structure and affinity of cation binding to POPC membrane}
+\label{sec:affinity}
 
 \begin{table}[tb!]
   \caption{Relative surface excess of calcium with respect to water, 
@@ -958,7 +959,7 @@ but in contrast to calcium, the interactions with only carbonyls are also signif
 The physiological relevance of the sodium binding details is, however, uncertain
 due to its very weak binding affinity.
 
-\subsection{Binding stoichiometry to POPC membrane}
+\subsection{Binding stoichiometry of \ce{Na+} and \ce{Ca^{2+}} cations to POPC membrane}
 
 %Binding probability:
 %\ce{Ca2+} complex with \\
@@ -966,15 +967,15 @@ due to its very weak binding affinity.
 %2 POPC - 18\% -- 42\% \\
 %3 POPC - 12\% -- 28\% \\
 
-Simple binding models have been previous used to interpreted 
-the same experimental data, which is used in this work to validate
-the simulation models in Fig. \ref{fig:delta_ordPar_CaCl}~\cite{altenbach84,macdonald87}.
+Simple binding models have been previously used to interpret
+the same experimental data \cite{altenbach84,macdonald87} 
+which are used in this work to validate the simulation models in Fig. \ref{fig:delta_ordPar_CaCl}.
 The experimental results from the lipid headgroup order parameters and from the
 atomic absorption spectroscopy were best
-explained by the ternary complex binding model with a binding
+explained by a ternary complex binding model with a binding
 stoichiometry of one \ce{Ca^{2+}} per two POPC lipids~\cite{altenbach84}.
 However, also a Langmuir adsorption model (i.e. \ce{Ca^{2+}}:POPC stoichiometry of 1:1) 
-was successfully fit to the experimental data when only low concentrations of \ce{CaCl2} were considered~\cite{macdonald87}.
+provided a good fit to the experimental data when only low concentrations of \ce{CaCl2} were considered~\cite{macdonald87}.
 The results based on these binding models and the measured headgroup order parameter changes
 are also inluded in the tabulated experimental binding constants~\cite{marsh13}.
 
@@ -983,29 +984,33 @@ it can be used to give a more versatile interepration of the binding stoichiomet
 the previously used simple binding models~\cite{altenbach84,macdonald87}. To directly evaluate the
 stoichiometry from simulations we calculated the relative propensities of \ce{Ca^{2+}}:POPC
 complexes with various stoichiometries by counting the individual lipid
-molecules within the distance of $0.3\,\mathrm{nm}$ from each \ce{Ca^{2+}} ion.
+molecules within the distance $0.3\,\mathrm{nm}$ from each \ce{Ca^{2+}} ion
+as already used in previous section~\ref{sec:affinity}.
 The results from POPC simulation with 285~mM concetration of CaCl$_2$ in
 Fig.~\ref{fig:cacl_complexes} show the largest propensity (41\%) for the
 ternary complex with the \ce{Ca^{2+}}:POPC stoichiometry of 1:2, but 
-the probabilities for the complexes with the stoichimetries of 1:1~(25\%)~and
-1:3~(34\%)~are only slightly lower,
-suggesting more complex binding stoichiometry than the simple ternary complex model.
+the probabilities of complexes with the stoichimetries of 1:1~(25\%)~and
+1:3~(34\%)~are only slightly lower
+suggesting a more complex binding model than the simple ternary complex model.
 %The observed propensities of
 %$41\%$ for two lipids,
 %$25\%$ for one lipid, and
 %$34\%$ for three lipids 
-However, one calcium binds roughly to two lipids on average also in simulations,
-because the probabilities of forming the complexes with 1 or 3 lipids are almost equal.  
-This probably explains the successfull fit of the ternary complex model to the
+However, the simulation data can also be viewed from such an angle that
+one calcium binds roughly to two lipids on average,
+because the probabilities of the complexes with 1 or 3 lipids are almost equal.  
+This probably explains the success of the ternary complex model fitting well the
 experimental data. 
 Complexes with more than three lipids per one calcium ion were not observed in 
 simulations with the ECC-lipids model.
-\todo{I think that we either have to do the analysis in SI properly,
+\todo{Samuli: I think that we either have to do the analysis in SI properly,
   i.e., using the real $C_I$ from simulations or remove the sentence below and
-the related concent from SI.}
+the related concent from SI.\\
+Joe: I think it shows that ternary complex makes a good fit to our simulation data. 
+The fact that we use a different (and more accurate) estimate of $C_I$ and other quantities does not hamper this statement.}
 Ternary complex model also provides a good fit 
 to our simulations with ECC-lipids 
-(see Fig.~\ref{fig:cacl-bind} in SI and its caption for details). 
+(see Fig.~S\ref{fig:cacl-bind} in SI and its caption for details). 
 \begin{figure}[tb!]
   \centering
   \includegraphics[width=8.0cm]{../Fig/ipython_nb/stoichiometry_NaCl-CaCl2_comparison_Ecc-lipids.pdf} \\
@@ -1017,8 +1022,8 @@ to our simulations with ECC-lipids
   }
 \end{figure}
 
-Also the probabilities of different complexes formed by \ce{Na+} ions and POPC
-analyzed from the ECC-lipids model simulation with 1 M concentration of NaCl are
+The probabilities of different complexes formed by \ce{Na+} ions and POPC
+analyzed from the simulation with the ECC-lipids model at $1\,$M concentration of NaCl are also 
 shown in Fig.~\ref{fig:cacl_complexes}. In contrast to calcium, the
 probability is largest (67\%) for 1:1 complex, significantly smaller (29\%)
 for 1:2 complexes and very small (4\%) for 1:3 of \ce{Na+}:POPC complexes.
