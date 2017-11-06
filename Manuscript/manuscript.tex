@@ -729,7 +729,6 @@ we also simulated the Lipid14 model with more realistic ion models by Dang et al
 ECC-ions~\cite{jungwirth17-new-paper-to-be-published, Pluharova2014}. 
 However, we still observed overestimated binding for both \ce{Ca^{2+}} and Na$^+$ with these ions models 
 (Figs.~\ref{fig:delta_ordPar_CaCl} and~\ref{fig:delta_ordPar_NaCl}). 
-\todo{Add OP-response of Lipid14+ECC-ions plot in SI}.
 The results are in line with the previous work \cite{catte16},
 suggesting that additional improvements in the lipid parameters are
 required to correctly describe the binding of cations to phospholipid bilayers.
@@ -785,17 +784,19 @@ with the four-site water models and with TIP3p model.
   bound to phosphate or carbonyl moieties 
   to the amount of such cations bound to both moieties in a POPC bilayer 
   from various simulation models. 
-  The CaCl$_2$ concentration of the ions in water before adsorption to the phospholipid bilayer
-  is 350mM in the analyzed systems. \label{tab:binding}}
-  \todo{Add columns with concentrations of calcium -- bulk/molar fraction.}
-  \todo{Changing symbol $P$ to $R$ or $r$ might reflect better that it is rather a ratio, and not that much a probability.}
-  \begin{tabular}{l|c c c}
-    model                 & $\Gamma_{Ca}^w$ (nm$^{-2}$)   & $P^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ & $P^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} $ \\
+  $C_w$ is the concentration of CaCl$_2$ in water before adsorbing to the phospholipid bilayer. 
+  \label{tab:binding}}
+  \begin{tabular}{l|c | c c | c c}
+    model                 & $\Gamma_{Ca}^w \,/\, \mathrm{nm}^{-2}$ & $C_{w}$ & $C_b\,/\,\mathrm{mM}$   & $r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ & $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} $ \\
     \hline
-    ECC-lipids            &  $0.06 \pm 0.01 $            &  99\%   &    25\%    \\
-    Lipid14/\AA{}qvist    &  $0.13 \pm 0.01 $            &  -       &     -       \\
-    Lipid14/Dang          &  $0.23 \pm 0.03 $            &  -        &    -       \\
-    Lipid14/ECC-ions      &  $0.35 \pm 0.11 $            &  -        &    -       \\
+    ECC-lipids            &  $0.06 \pm 0.01 $ &  350  &  $280\pm 10 $  &  99\%  &    25\%    \\
+    Lipid14/\AA{}qvist    &  $0.13 \pm 0.01 $ &  350  &  $210\pm 10 $  & 100\%  &    37\%     \\
+    Lipid14/Dang          &  $0.23 \pm 0.03 $ &  350  &  $160\pm 10 $  & 100\%  &    14\%    \\
+    Lipid14/ECC-ions      &  $0.35 \pm 0.11 $ &  350  &  $120\pm 100$  & 100\%  &    23\%    \\
+%Average no. of bound cations:
+%L14+Aqvist: all:22.7, phos:22.7, carb:8.5
+%L14+Dang:   all:29.2, phos:29.2, carb:4.0
+%L14+ECC-ion:all:37.7, phos:37.7, carb:8.5
   \end{tabular}
 \end{table}
 
