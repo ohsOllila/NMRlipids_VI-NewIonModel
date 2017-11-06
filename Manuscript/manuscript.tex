@@ -312,7 +312,7 @@ due a reduced head group polarity after scaling charges.
 This effect is compensated
 by reducing the effective radii of atoms with the scaled charges.
 This is in practice done by changing the parameters $\sigma$ in the Lennard-Jones potential 
-in a similar way as was done previously for the ECC ions in solution \cite{kohagen14,kohagen16,Pluharova2014}.
+in a similar way as was done previously for the ECC-ions in solution \cite{kohagen14,kohagen16,Pluharova2014}.
 After reducing the $\sigma$ parameters of affected atoms by a factor of $f_\sigma = 0.89$, 
 the area per molecule is restored
 back, being very close to the experimental value (Table~\ref{tab:apls}). 
@@ -413,7 +413,7 @@ of the lipid bilayer and the aqueous region far from the membrane.
 %our whole simulation box as
 %an interface flanked by a water phase and an ideal phase with the characteristics of to
 %the hydrophobic region in the middle of the membrane where no ions or waters are present.
-Such a setup and the above definition of bulk ion concentration provide a simple relation for the normalized surface excess $\Gamma_i^w$ for simulations of lipid bilayers, 
+Such a setup and the above definition of bulk ion concentration provide a simple relation for the relative surface excess $\Gamma_i^w$ for simulations of lipid bilayers, 
 \begin{equation}\label{surfexcess}
   \Gamma_i^w=\frac{1}{2A_b} \left ( n_i - n_w \frac{C_i}{C_w} \right ) .
 \end{equation}
@@ -466,7 +466,7 @@ and TIP4p/2005 \cite{Abascal2005}), performed to check for robustness of our app
 Sodium, calcium, and chloride 
 were modeled as ECC-ions with parameters from \citenum{jungwirth17-new-paper-to-be-published, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
 Scaled charges and van der Waals radii for atoms forming the POPC lipid were derived here, starting from the Lipid14 force field.
-For comparison, simulation with unscaled charges were perfomed using the Lipid14 model used the TIP3p water model \cite{jorgensen83} and the ion model by
+For comparison, simulations with unscaled charges were perfomed using the Lipid14 model, the TIP3p model for water \cite{jorgensen83} and the ion model by
 Dang et al.~\cite{smith94,chang1999,dang2006}.
 Simulation data for the Lipid14 model with \AA{}qvist~\cite{aqvist90} ions and TIP3P~\cite{jorgensen83}
 water models reported in \cite{catte16} 
@@ -504,6 +504,7 @@ In these simulations ECC was also applied to the cationic surfactant
 in the same way as to POPC, i.e.,
 all partial charges were scaled with the same factor as for ECC-lipids, i.e. $f_q=0.8$, 
 and the same atom types with reduced $\sigma$ parameters from ECC-lipids were used. 
+\todo{Joe: I think that the followin is already said in the beginning of this section -- Lipid14 simulaitons.}
 For comparison, simulations with unscaled charges were also performed.
 
 \todo{Provide the parameteres for ECC-surfactant somewere.}
@@ -950,7 +951,7 @@ studies~\cite{bockmann03,bockmann04,melcrova16,javanainen17}.
 Sodium ions also interact primarily with phosphate oxygens of the POPC, 
 but in contrast to calcium, the interactions purely with carbonyls are also significant.
 The physiological relevance of these details of sodium interactions is, however, unclear
-due to its overal very weak binding affinity.
+due to its overall very weak binding affinity.
 
 \subsection{Binding stoichiometry of \ce{Na+} and \ce{Ca^{2+}} cations to the POPC membrane}
 
@@ -993,7 +994,7 @@ With a broad brushstroke, the simulation data can, however, be viewed such that
 one calcium binds to two lipids on average,
 because the probabilities of the complexes with 1 or 3 lipids are almost equal to each other 
 (and complexes with more than three lipids per one calcium ion were not observed).  
-This probably explains why the simple the ternary complex model fitts the
+This probably explains why the simple the ternary complex model fits the
 experimental data, as well as the ECC-lipids simulation results, rather well
 (see Fig.~S\ref{fig:cacl-bind} in SI and its caption for details). 
 
@@ -1074,6 +1075,9 @@ The exchange of \ce{Na+} ions at the POPC membrane is
 another order of magnitude faster, yielding 90\%
 of the residence times smaller than~$1\,\mathrm{ns}$, with
 the longest residence time being~$6\,\mathrm{ns}$. 
+\todo{Joe: the following is a bit more subtle argument. 
+I deem it not necessary to include it in the paper, however, 
+the experimental estimate of less tan 10us holds likely also for Charmm36/ECC-ions, as stated before.}
 Note that the ECC-lipids calcium results are in line with the experimental estimate that 
 the residence time of \ce{Ca^{2+}} at each individual PC headgroup 
 is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}.
@@ -1142,7 +1146,8 @@ oberved in the present simulation.
 Accurate description of cation binding to POPC bilayer paves the way for
 simulations of complex biochemical systems at cellular membranes with realistically described
 electrostatic interactions. To this end, the compatibility of
-the ECC-lipids model with existing models for proteins and other biological molecules should to be verified and, if necessary, further adjustments along the ECC concept in force fields of molecules interacting with the lipids need to be done.
+the ECC-lipids model with existing models for proteins and other biological molecules should to be verified and, if necessary, 
+further adjustments along the ECC concept in force fields of molecules interacting with the lipids need to be done.
 
 %but we expect that the correction can be used also for other lipids
 %and force fields.
