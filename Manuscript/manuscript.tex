@@ -1003,11 +1003,6 @@ This probably explains why the simple the ternary complex model fits the
 experimental data, as well as the ECC-lipids simulation results, rather well
 (see Fig.~S\ref{fig:cacl-bind} in SI and its caption for details). 
 
-\todo{Samuli: I think that we either have to do the analysis in SI properly,
-  i.e., using the real $C_I$ from simulations or remove the sentence below and
-the related concent from SI.\\
-Joe: I think it shows that ternary complex makes a good fit to our simulation data. 
-The fact that we use a different (and more accurate) estimate of $C_I$ and other quantities does not hamper this statement.}
 
 \begin{figure}[tb!]
   \centering
@@ -1194,8 +1189,6 @@ Computational resources were supplied by the Ministry of Education, Youth and Sp
 {\bf SUPPLEMENTARY INFORMATION}
 \end{center}
 
-\todo{This should be either done properly with the correct $C_I$ or removed. Removing
-might be a better idea at this point.}
 It was found in the original work~\cite{altenbach84} that 
 a ternary complex binding model (i.e.~2~POPC:1~\ce{Ca^{2+}})
 provides the best fit to experimental measurements of all considered models in that study. 
@@ -1206,14 +1199,16 @@ The concentration $C_b$ was obtained from an extrapolation of linear relation
 between deuterium NMR measurements and atomic absorption spectroscopy for low concetrations of \ce{CaCl2}.
 Such an extrapolation is valid as long as the mode of \ce{Ca^{2+}} binding 
 remains constant throughout the extrapolation range. 
-The concentration $C_I$ is determined by using the surface potential by using the Boltzmann equation.
+The concentration $C_I$ is determined from the surface potential using the Boltzmann equation.
 However, Boltzmann theory yields inaccurate results
 for divalent cations like \ce{Ca^{2+}}~\cite{Andelman1995}. 
-An atomistic simulation, on the other hand, provides these quantities directly without severe assumptions.
-Hence we hypothesise that the discrepancy between the results in the experiment~\cite{altenbach84} and 
-our simulations likely lays in the fact that 
-the assumptions and relations used for determinig concentrations $C_b$ and $C_I$ in the experiment~\cite{altenbach84}
-gradually do not hold for higher concentrations of \ce{Ca^{2+}}. 
+An atomistic simulation, on the other hand, provides these quantities directly without severe assumptions;
+$C_b$ can be calculated from simulation using the robust definition in section~\ref{sec:affinity},
+and $C_I$ can be obtained from the density profiles in Fig.~\ref{fig:cacl-density} 
+as the minimum concentration at the shallow depression separating the bulk water phase 
+and the peak of adsorbed cations around 2.6\,nm from the membrene centre. 
+The small discrepancy between the results in the experiment~\cite{altenbach84} and 
+our simulations are likely caused by the difference in the evaluation of the concentrations. 
 
 
 \begin{figure}[tbp]
@@ -1224,8 +1219,11 @@ gradually do not hold for higher concentrations of \ce{Ca^{2+}}.
     that assumes the stoichiometry of 2~POPC:1~\ce{Ca^{2+}} (details in reference~\citenum{altenbach84}) 
     provides a good fit to experimental measurements~\cite{altenbach84}
     and it also provides a good fit to our simulation data. 
+    This supports our statement that the success of the ternary complex model in the experiments
+    can be understood with the atomistic detail of our simulations as an average 
+    stoichiometry of otherwise almost evenly distributed clusters of one cation with 1,2 or 3 lipids (Fig.~\ref{fig:cacl_complexes}). 
     Note that the units in the reference~\citenum{altenbach84} are different from the units presented here,
-    and, hence, the observed slope of the linear relationship is different.
+    and, hence, the observed slope of the linear relationship is slightly different.
     }
 \end{figure}
 
