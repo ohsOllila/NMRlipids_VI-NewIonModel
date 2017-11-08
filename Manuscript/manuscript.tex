@@ -90,26 +90,34 @@ Prague 6, Czech Republic}
 
 \begin{abstract}
   % insert abstract here
-  The binding affinities and stoichimetries of Na$^+$ and Ca$^{2+}$ ions to phospholipid bilayers have not been
-  consistently determined with experimental and computational methods,
-  despite their significance and biological relevance in cellular membranes. 
-  The details concerning ion binding could be resolved with classical molecular dynamics (MD) simulations,
-  however, the accuracy of the available lipid models has not been sufficient.
-  In this work we show that the binding details of Na$^+$ and Ca$^{2+}$ ions to the
-  1-Palmitoyl-2-oleoylphosphatidylcholine (POPC) bilayer
-  can be accurately described with a MD simulation model implicitly including electronic polarization.
-  This is demonstrated by applying the electronic continuum correction (ECC) to a
-  state of the art lipid model for MD simulations of the POPC
-  lipid bilayer. The newly introduced ECC-lipids model reproduces the experimentally measured structural parameters for the ion-free membrane,
-  the response of lipid headgroup to a bound positive charge, and the binding affinities of
-  Na$^+$ and Ca$^{2+}$ ions. The observed negligible binding of Na$^+$ ions to POPC bilayer
-  and stronger interactions of Ca$^{2+}$ primarily with phoshpate oxygens give
-  support to the early intepretations of the experimental spectroscopic data.
-  At the same time, Ca$^{2+}$ ions form complexes with 1-3 lipid molecules with almost
-  equal probabilities, suggesting a more complicated binding stoichimetry than 
-  the ternary complex binding model used to interpret the NMR data.
-  The results of this work pave the way to accurate MD simulations of complex biochemical systems
-  with realistic electrostatic interactions in the vicinity of cellular membranes.
+Binding affinities and stoichiometries of Na$^+$ and Ca$^{2+}$ ions to phospholipid
+bilayers are of paramount significance in the properties and functionality of cellular
+membranes. For example, possible accumulation of ions at the membrane interface determines
+the interaction affinity with charged species. Current estimates of binding affinities and
+stoichiometries of cations are controversial due to limitations in the experimental and
+theoretical methods available. Experimentally one can assess these parameters by titrating
+several membrane properties as a function of the ions concentration. However, the
+interpretation of the obtained results requires theoretical models. Considering that the
+real behavior is unknown these models are at best idealizations. Classical molecular
+dynamics (MD) simulations provide details of the ions binding process with atomistic
+resolution. Therefore, MD a priory offers all necessary information to interpret
+experimental data without the need to resort to simplified models. However, the accuracy
+of the available lipid models when interacting with ions is currently limited. In this
+work, we improve the binding details of Na$^+$ and Ca$^{2+}$ ions to the
+1-Palmitoyl-2-oleoyl-phosphatidylcholine POPC) bilayer by implicitly including electronic
+polarization. We do this by applying a mean field correction to the partial charges known
+as the electronic continuum correction (ECC) to a selected state of the art POPC lipid
+model for MD simulations. Our improved ECC-POPC model reproduces not only the
+experimentally measured structural parameters for the ion-free membrane, but also the
+response of lipid headgroup to a bound positive charge, and the binding affinities of 
+Na$^+$ and Ca$^{2+}$ ions. We also observe negligible binding of Na$^+$ ions to POPC
+bilayer and stronger interactions of Ca$^{2+}$ primarily with phosphate oxygens in our new
+model is in agreement with available experimental spectroscopic data. This new model
+results in Ca$^{2+}$ ions forming complexes with one to three POPC molecules with almost
+equal probabilities which suggests that previous models used to interpret NMR data are too
+simple. The results of this work pave the way to quantitative MD simulations of complex
+biochemical systems with realistic electrostatic interactions in the vicinity of cellular
+membranes.
 \end{abstract}
 
 %\pacs{}% insert suggested PACS numbers in braces on next line
