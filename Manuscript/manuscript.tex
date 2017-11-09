@@ -131,49 +131,13 @@ membranes.
 % Here I write pseudo-article statements that will make the main argument.
 % Beautiful polished sentences will be formed only afte we agree on these basic things
 \section{Introduction}
-Cation interactions with cellular membranes play a key role in important biological processes,
-such as signal propagation in neurons and vesicle fusion.
-Since direct measurements of ion-membrane interactions in biological systems
-are difficult, lipid bilayers are often used as models systems for cellular
-membranes. In particular, the zwitterionic phosphocholine (PC) lipid bilayers are
-used as entry level models, helping to understand the role of ions in complex biological
-systems~\cite{scherer87,seelig90,cevc90}.
+Ions interactions with cellular membranes play a key role in critical biological processes~\cite{REF_REVIEW}. Ions, especially cations, modify general properties of the membrane which ultimately modulate their embedded transmembrane proteins~\cite{REF}. Ions also have a more direct effect by modulating lipid--, protein--, and sugar--lipid interactions at the membrane surface. For example, Ca$^{2+}$  is crucial in neural signal propagation. It promotes membrane fusion by bridging lipids in the vesicles carrying neurotransmitters and the neuron synapsis membrane~\cite{REF}. Ca$^{2+}$ also participates in the T-cell receptor activation. It induces the detachment of the positively charged cytosolic tails of the CD3 protein complex from the negatively charged intracellular membrane making it accessible for Lck protein~\cite{Shi2013}. A final example involving sugar-lipid interactions mediated by ions is that Ca$^{2+}$ can modulate the presentation of the sugars found in the PI(4,5)P$_2$ lipid which ultimately modulates phospholipase C delta 1 pleckstrin homology domain (PLC $\delta$1-H)~\cite{Bilkova2017Calcium}. Interestingly, this modulation is lost when using Mg$^{2+}$ instead of Ca$^{2+}$ illustrating the selectivity of these processes towards particular ions. Despite our increasing understanding of the role of ions in cell membrane-related processes the exact molecular details of the mechanisms behind such processes remain elusive.
 
-Interactions of biologically relevant cations, especially Na$^+$ and
-Ca$^{2+}$, with PC bilayers have been widely studied in
-experiments~\cite{akutsu81,altenbach84,seelig90,cevc90,tocanne90,binder02,pabst07,uhrikova08}
-and classical MD simulations~\cite{bockmann03,bockmann04,Berkowitz12,melcrova16,javanainen17}.
-The details of ion binding are, however, not fully consistent in the literature.
-%not agreed in the literature \cite{cevc90,tocanne90,seelig90,binder02,catte16,??}.
-%General conclusion from experimental
-%studies has been that multivalent ions and lithium have weak specific binding in
-%phopholipid bilayers, while other monovalent ions do not essentially
-%bind 
-%The presence of anoinic lipids, like PS or PG,
-%increase the concentration close to the bilayer and thus the amount of bound
-%ions, but do not affect the specific binding constant \cite{seelig90}.
-Interpretations of non-invansive spectroscopic methods, like nuclear magnetic resonance (NMR), as well as scattering
-and infrared spectroscopies, suggest that Na$^+$ ions exhibit only
-negligible binding to PC lipid bilayers wat submolar concentrations, while Ca$^{2+}$ is observed to specifically
-bind to phosphate groups of two lipid molecules~\cite{hauser76,hauser78,herbette84,akutsu81,altenbach84,binder02,pabst07,uhrikova08}.
-Atomistic resolution molecular dynamics (MD) simulation models, however, typically predict a
-stronger binding for the cations than NMR experiments \cite{catte16}.
-On the other hand, several experiments have also been interpreted to support the predictions from
-earlier MD simulations~\cite{bockmann03,vacha09a}. 
-Furthermore, interactions of calcium ions with up to 3-4 lipids,
-including not only interactions with phosphates but also with carbonyl
-oxygens, have been reported from simulations~\cite{bockmann03,bockmann04,melcrova16,javanainen17}.
+Direct measurements of ion-membrane interactions in real biological systems are difficult. Simplified lipid bilayers are often used instead as entry-level models to shed light on the role of ions in complex biological membranes~\cite{scherer87,seelig90,cevc90}. For this reason, interactions of biologically relevant cations, especially Na$^+$ and Ca$^{2+}$, with zwitterionic phosphocholine (PC) bilayers have been widely studied in experiments~\cite{akutsu81, altenbach84, seelig90, cevc90, tocanne90, binder02, pabst07, uhrikova08} and classical MD simulations~\cite{bockmann03, bockmann04, Berkowitz12, melcrova16, javanainen17}. The details of ion binding are, however, not fully consistent in the literature. Non-invasive spectroscopic methods, like nuclear magnetic resonance (NMR), scattering, and infrared spectroscopies mainly suggest that Na$^+$ ions exhibit negligible binding to PC lipid bilayers. On the contrary, Ca$^{2+}$ is observed to specifically bind to a couple of PC molecules using their phosphate groups~\cite{hauser76, hauser78, herbette84, akutsu81, altenbach84, binder02, pabst07, uhrikova08}. On the other hand, {\color{red} in general} \todo{Not CHARMM36 or amber14} atomistic resolution molecular dynamics (MD) simulation models predict a stronger binding for the cations~\cite{catte16}. For example, simulations report Na$^+$ accumulating in the lipid interface~\cite{bockmann03} or Ca$^{2+}$ binding up to 4 PC lipids simultaneously, including not only interactions with phosphates but also with carbonyl oxygens~\cite{bockmann04, melcrova16, javanainen17}. {\color{red} Also, several experiments have also been interpreted to support the predictions from earlier MD simulations~\cite{bockmann03, vacha09a}. \todo{remove? Why we need this?}}
+
+Recent studies within the NMRlipids project \url{nmrlipids.blogspot.fi})~\cite{catte16} made an attempt to resolve these apparent controversies. A direct comparison of ion binding affinities to PC bilayers between simulations and experiments was performed using the electrometer concept. Namely, the changes in NMR order parameters of the headgroup upon ions additions~\cite{seelig87} is directly compared to the MD simulations results. Analyzing massive amounts of data collected by the Open Collaboration method, it was concluded that the accuracy of the current state of the art lipid models for MD simulations is not sufficient for a detailed interpretation of the interactions of cations with PC lipid bilayers~\cite{catte16}.
 
 
-Recent studies within the NMRlipids project (\url{nmrlipids.blogspot.fi})~\cite{catte16}
-made an attempt to resolve these apparent controversies. A direct comparison of
-ion binding affinities to PC bilayers between simulations and
-experiments was done using the electrometer concept, which is based on experimental NMR data
-for the lipid headgroup order parameters~\cite{seelig87}.
-Analyzing massive amounts of data collected by the Open Collaboration method, it was concluded
-that the accuracy of the current state of the art lipid models for MD
-simulations is not sufficient for a detailed interpretation of the
-interactions of cations with PC lipid bilayers~\cite{catte16}.
 
 %\todo{PAVEL: introduce previous theoretical work that discusses cation binding to POPC w.r.t. its specific moiteties, e.g. Lukas' paper}.
 
@@ -185,22 +149,8 @@ interactions of cations with PC lipid bilayers~\cite{catte16}.
 %Ca2+ interacts mainly with the choline groups \cite{hauser76,hauser78,herbette84} of two
 %phospholipid molecules \cite{altenbach84}.
 
-In this work, we show that the cation binding behavior
-in MD simulations of the 1-Palmitoyl-2-oleoylphosphatidylcholine (POPC) bilayer can be significantly 
-improved via an implicit inclusion of the electronic polarizability
-in the polar region of phospholipids,
-which we apply using to the 
-electronic continuum correction (ECC)~\cite{leontyev11}.
-Such an approach has been previously shown to improve the behaviour of
-of ions in bulk water simulations ~\cite{jungwirth17-new-paper-to-be-published,Pluharova2014,kohagen14,kohagen16}. 
-We employ here the the Lipid14 model \cite{dickson14} as a starting point,
-because it provided one of the best available descriptions of cation binding \cite{catte16}.
-The newly developed ECC-lipids model reproduces the experimentally
-measurable structural parameters of an ion-free POPC lipid bilayer with the 
-accuracy comparable to the other state of the art lipid models, while surpassing
-them significantly in the description of the membrane binding affinities to cations and induced
-structural effects of sodium and calcium ions.
-
+In this work, we improve the cation binding of a POPC bilayer in MD simulations via the implicit inclusion of the electronic polarizability in the polar region of phospholipids. For this, we apply a simple mean-field electronic continuum correction (ECC)~\cite{leontyev11} which implies scaling the partial charges of the atoms to account for the missing electronic polarizability in MD simulations~\cite{leontyev11}. Such an approach has been previously shown to improve the behavior of ions in bulk water simulations ~\cite{jungwirth17-new-paper-to-be-published, Pluharova2014, kohagen14, kohagen16}. As a starting template for our POPC model, we will use the Lipid14~\cite{dickson14}. This force field provides one of the best available descriptions of cation binding \cite{catte16}. The newly developed ECC-lipids model reproduces the experimentally
+measurable structural parameters of an ion-free POPC lipid bilayer with the accuracy comparable to the best state of the art lipid models, while improving the membrane binding affinities significantly to sodium and calcium cations.
 
 %Since the cation binding affinity and the headgroup 
 %order parameter changes are in good agreement with experiments
