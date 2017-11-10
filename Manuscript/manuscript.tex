@@ -189,68 +189,26 @@ We solve this difficulty by reducing the effective radii of the modified atoms b
 
 
 \subsection{Electrometer concept} \label{section:electrometer}
-Ion binding in lipid bilayers was compared between experiments and simulations 
-using the lipid head group order parameters and the
-''electrometer concept'' \cite{seelig87,catte16}, which
-is based on the experimental observation that the C-H bond
-order parameters of $\alpha$ and $\beta$ carbons in a PC lipid head group
-(Fig.~\ref{simVSexpNOions}) are proportional to the amount 
-of charge bound per lipid~\cite{seelig87}.
-The change of the order parameters measured with varying aqueous
-ion concentrations can be then related to the amount of bound ions.
-
-The electrometer concept can be used to compare the ion binding affinity to lipid 
-bilayers between MD simulations and  NMR experiments, because the order
-parameters can be accurately determined from both techniques~\cite{catte16,ollila16}.
-The order parameters for all C-H bonds in lipid molecules, including
-$\alpha$ and $\beta$ segments in head group, can be accurately measured
-using $^2$H NMR or $^{13}$C NMR techniques \cite{ollila16}. From MD simulations the
-order parameters can be calculated using the definition
+Comparing MD simulation to NMR experiments, we can validate the simulation ion binding affinity to lipid bilayers using the ''electrometer concept''~ \cite{seelig87, catte16}. This method relies on the experimental observation that the C-H bond order parameters of $\alpha$ and $\beta$ carbons in a PC lipid head group (Fig.~\ref{simVSexpNOions}) are proportional to the amount of charge bound per lipid~\cite{seelig87}. Comparing this response is an excellent way to validate force fields as both NMR and MD can accurately determine order parameters ~\cite{catte16, ollila16}. The order parameters for all C-H bonds in lipid molecules can be accurately measured using $^2$H NMR or $^{13}$C NMR techniques \cite{ollila16}. From MD simulations the order parameters can be calculated using the definition
 \begin{equation}\label{OP}
 S_{\rm CH}=\frac{3}{2}\langle \cos^2\theta -1 \rangle,
 \end{equation}
-where $\theta$ is the angle between the bond and membrane
-normal and the average is taken over all sampled configurations \cite{ollila16}.
+where $\theta$ is the angle between the C-H bond and membrane normal. Angular brackets point to the average over all sampled configurations.
 
-The relation between the amount of the bound charge per lipid,  $X^\pm$, and
-the head group order parameter change, $\Delta S_{\rm{CH}}^{i}$,
-is empirically quantified as~\cite{seelig87,ferreira16}
+The relation between the amount of the bound charge per lipid, $X^\pm$, and the head group order parameter change, $\Delta S_{\rm{CH}}^{i}$, is empirically quantified as~\cite{seelig87,ferreira16}
 \begin{equation}\label{OPchangeEQ}
-  \Delta S_{\rm{CH}}^{i}= S_{\rm{CH}}^{i}(X^\pm)-S_{\rm{CH}}^{i}(0) \approx \frac{4m_i }{3\chi}X^\pm,
+\Delta S_{\rm{CH}}^{i}= S_{\rm{CH}}^{i}(X^\pm)-S_{\rm{CH}}^{i}(0) \approx m_i \frac{4 }{3\chi}X^\pm,
 \end{equation}
-where $S_{\rm{CH}}^{i}(0)$ denote the order parameter in the absence of bound charge,
-$i$ refers to either $\alpha$ or $\beta$ carbon,
-$m_i$ is an empirical constant depending on the valency and position of the bound charge,
-and the experimental value \cite{seelig77,davis83}, $\chi \approx$\,167\,kHz, is used for the quadrupole coupling constant.
-Atomic absorption spectra and $^2$H NMR data gave
-$m_\alpha=-20.5$~kHz  and $m_\beta=-10.0$~kHz for the binding of
-Ca$^{2+}$ to POPC bilayer (in the presence of 100~mM NaCl)~\cite{altenbach84,ollila16,catte16}.
-The slopes are negative, because the head group order parameters
-decrease with a bound positive charge and increase with a bound negative
-charge~\cite{ollila16,catte16}. This can be rationalized in terms of a change
-of the lipid head group dipole tilt towards water phase with the bound positive
-charge and {\it vice versa} with the negative charge~\cite{seelig87}. 
+where $i$ refers to either $\alpha$ or $\beta$ carbon, $S_{\rm{CH}}^{i}(0)$ denote the order parameter in the absence of bound charge, $\chi$ is the quadrupole coupling constant ($\chi \approx$\,167\,kHz), and $m_i$ empirical experimental constant depending on the valency and position of the bound charge.
 
-The measured change of the order parameter depends both on the head group response 
-to the bound charge and on the amount of the bound charge 
-(i.e. $m_i$ and $X^\pm$ in Eq.~\ref{OPchangeEQ}, respectively). 
-The empirical factor $m_i$ has to be
-properly quantified before the electrometer concept can used to 
-analyze the binding affinities.
-This has been done experimentally for a wide range
-of systems~\cite{seelig87,beschiasvili91}. To calibrate 
-the response of the head group order parameter to the bound charge in simulations,
-we use experimental data for a strong cationic surfactant dihexadecyldimethylammoniumbromide %(2C$_{16}$$^+$N2C$_1$Br$^-$)
-mixed within a POPC bilayer~\cite{scherer89}. Dihexadecyldimethylammonium\\[0.5cm]
+
+The measured change of the order parameter depends both on the head group response to the bound charge and on the amount of the bound charge (\textit{i.e.,} $m_i$ and $X^\pm$ in Eq.~\ref{OPchangeEQ}, respectively).  The empirical factor $m_i$ has to be adequately quantified before the electrometer concept can be used to analyze the binding affinities. This calibration has been done experimentally for a wide range of systems~\cite{seelig87, beschiasvili91}. To calibrate the response of the head group order parameter to the bound charge in simulations, we use experimental data for a strong cationic surfactant dihexadecyldimethylammoniumbromide  (DHAB) bilayer~\cite{scherer89}. DHAB\\[0.5cm]
 %\vspace{0.5cm}
 \chemfig{
- -[:0,3.5,,,draw=none]\chemabove{N}{\scriptstyle\oplus} (-[:150]H_3C)(-[:210]H_3C)(-[:330]{(}CH_2{)}_{15}-CH_3)(-[:30]{(}CH_2{)}_{15}-CH_3)
+  -[:0,3.5,,,draw=none]\chemabove{N}{\scriptstyle\oplus} (-[:150]H_3C)(-[:210]H_3C)(-[:330]{(}CH_2{)}_{15}-CH_3)(-[:30]{(}CH_2{)}_{15}-CH_3)
 }  
 \vspace{0.5cm} \\
-is a cationic surfactant having two acyl chains and bearing a unit
-charge in the hydrophilic end. Thus, it is expected to locate
-in the bilayer similarly to the phospholipids and its molar ratio then 
-gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems~\cite{scherer89}.
+is a cationic surfactant having two acyl chains and bearing a unit charge in the hydrophilic end. Thus, it is expected to locate in the bilayer similarly to the phospholipids, and its molar ratio then gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems~\cite{scherer89}.
 
 \subsection{Salt concentrations and binding affinity}
 The concentrations of salts are reported in two different ways
