@@ -211,40 +211,15 @@ The measured change of the order parameter depends both on the head group respon
 is a cationic surfactant having two acyl chains and bearing a unit charge in the hydrophilic end. Thus, it is expected to locate in the bilayer similarly to the phospholipids, and its molar ratio then gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems~\cite{scherer89}.
 
 \subsection{Salt concentrations and binding affinity}
-The concentrations of salts are reported in two different ways
-in the NMR measurements of head group order parameters \cite{akutsu81, altenbach84}.
-The early work on the NMR electrometer concept 
-reports the salt concentrations in water before solvating
-the lipids~\cite{akutsu81}. 
-The later study uses the atomic absorption
-spectroscopy, and reports the salt concentration in the supernatant after the
-solvation of lipids~\cite{altenbach84}.
-In this work, we focus on POPC for which the latter definition was used~\cite{altenbach84}.
-The salt concentration in the aqueous bulk region was taken as that at 
-the farthest point from the lipid bilayer in the aqueous phase. 
-Note that in the previous study~\cite{catte16},
-the ion concentrations were calculated in water before solvating the lipids, 
-as in the earlier experiments~\cite{akutsu81}.
-Although there are noticable differences between these two
-definitions for concentrations of the CaCl$_2$ systems,
-they do not affect significantly conclusions drawn in this work or in the previous one~\cite{catte16}.
+NMR experiments report the used salt concentrations in two different ways when measuring head group order parameters. Some use the salt concentrations in water before solvating the lipids~\cite{akutsu81} while others use atomic absorption spectroscopy and report the salt concentration in the supernatant after the solvation of lipids~\cite{altenbach84}. In this work, we use the latter definition. In particular, we measure the salt concentration in the aqueous bulk region as that at the farthest point from the lipid bilayer in the aqueous phase. Notice that this definition differs from the one used by Catte et al.~\cite{catte16} where the former definition is used. Although these two definitions vary when applied to Ca$^{2+}$, they do not affect significantly the conclusions of this work.
 
-To quantify the ion binding affinities to a lipid bilayer, we
-calculate the relative surface excess of ions with respect to water,~$\Gamma_i^w$~\cite{chattorajBOOK}.
-Such a quantity compares the adsorption of ions to the adsorption of water molecules 
-at the interface without the necessity of defining a Gibbs dividing plane 
-between the membrane interior and the water bulk region. 
-In our simulations we only assume that the interface is located between the ion-free hydrophobic interior
-of the lipid bilayer and the aqueous region far from the membrane.
-%our whole simulation box as
-%an interface flanked by a water phase and an ideal phase with the characteristics of to
-%the hydrophobic region in the middle of the membrane where no ions or waters are present.
-Such a setup and the above definition of bulk ion concentration provide a simple relation for the relative surface excess $\Gamma_i^w$ for simulations of lipid bilayers, 
+To quantify the ion binding affinities to a lipid bilayer, we calculate the relative surface excess of ions with respect to water, $\Gamma_{ion}^{water}$~\cite{chattorajBOOK}. Such a quantity compares the adsorption of ions to the adsorption of water molecules at the interface without the necessity of defining a Gibbs dividing plane between the membrane interior and the water bulk region. In our simulations, we only assume that the interface is located between the ion-free hydrophobic interior of the lipid bilayer and the aqueous region far from the membrane.  Such a setup and the above definition of bulk ion concentration provide a simple relation for the relative surface excess $\Gamma_{ion}^{water}$ for simulations of lipid bilayers,
+ 
 \begin{equation}\label{surfexcess}
-  \Gamma_i^w=\frac{1}{2A_b} \left ( n_i - n_w \frac{C_i}{C_w} \right ) .
+  \Gamma_{ion}^{water}=\frac{1}{2A_b} \left ( n_{ion} - n_{water} \frac{C_{ion}}{C_{water}} \right ).
 \end{equation}
-Here, $n_w$ and $n_i$ are the total numbers of water molecules and ions in the system,
-$C_w$ and $C_i$ are their respective bulk concentrations in the aqueous phase,
+Here, $n_{water}$ and $n_{ion}$ are the total numbers of water molecules and ions in the system,
+$C_{water}$ and $C_{ion}$ are their respective bulk concentrations in the aqueous phase,
 and $A_b$ is the area of the unit cell in the membrane plane.
 The total area of the interface is then twice the area of the membrane, i.e., $2A_b$,
 because the bilayer has an interface at each of the two leaflets.
@@ -252,25 +227,14 @@ because the bilayer has an interface at each of the two leaflets.
 
 
 \subsection{Validation of lipid bilayer structure against experiments}
+The structures of lipid bilayers in simulations without ions were validated against NMR by calculating the order parameters for the C-H bonds and \mbox{x-ray} scattering experiments by the scattering form factors. NMR order parameters validate the structures sampled by the individual lipid molecules with atomic resolution. The simulated order parameters were calculated for all C-H bonds in lipid molecules from Eq. \ref{OP}. Scattering form factors validate the dimensions of the lipid bilayer (e.g., thickness and area per molecule). Form factors were calculated using
 
-The structures of lipid bilayers in simulations without ions were validated against NMR and 
-\mbox{x-ray} scattering experiments by calculating the order parameters
-for the C-H bonds and the scattering form factors. The former validates the structures sampled by the individual
-lipid molecules in simulations with atomic resolution, while the latter
-validates the dimensions of the lipid bilayer (i.e., its thickness and area per
-molecule)~\cite{ollila16}.
-
-The simulated order parameters were calculated for all C-H bonds
-in lipid molecules from Eq. \ref{OP}. Form factors were calculated 
-from the equation
 \begin{equation}
   F(q) = \int _{-D/2} ^{D/2} \left ( \rho_{el}(z) - \rho_{el}^s \right ) \cos (zq_z) \mathrm{d}z,
   %F(q) = \int _{-D/2} ^{D/2} \left ( \sum _\alpha f_\alpha (q_z) n_\alpha (z) - \rho _s \right ) \exp (izq_z) \mathrm{d}z,
 \end{equation}
-where $\rho_{el} (z)$ is the total electron density,
-$\rho_{el}^s$ is the electron density of the solvent far in the aqueous bulk,
-and $z$ is the distance from the membrane centre along its normal 
-with $D/2$ being half of the unit cell size. 
+
+\noindent where $\rho_{el} (z)$ is the total electron density, $\rho_{el}^s$ is the electron density of the solvent far in the aqueous bulk, and $z$ is the distance from the membrane center along its normal with $D/2$ being half of the unit cell size.  
 
 
 
