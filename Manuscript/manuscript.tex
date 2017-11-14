@@ -215,130 +215,52 @@ We solve this difficulty by reducing the effective radii of the modified atoms b
 
 
 \subsection{Electrometer concept} \label{section:electrometer}
-Ion binding in lipid bilayers was compared between experiments and simulations 
-using the lipid head group order parameters and the
-''electrometer concept'' \cite{seelig87,catte16}, which
-is based on the experimental observation that the C-H bond
-order parameters of $\alpha$ and $\beta$ carbons in a PC lipid head group
-(Fig.~\ref{simVSexpNOions}) are proportional to the amount 
-of charge bound per lipid~\cite{seelig87}.
-The change of the order parameters measured with varying aqueous
-ion concentrations can be then related to the amount of bound ions.
-
-The electrometer concept can be used to compare the ion binding affinity to lipid 
-bilayers between MD simulations and  NMR experiments, because the order
-parameters can be accurately determined from both techniques~\cite{catte16,ollila16}.
-The order parameters for all C-H bonds in lipid molecules, including
-$\alpha$ and $\beta$ segments in head group, can be accurately measured
-using $^2$H NMR or $^{13}$C NMR techniques \cite{ollila16}. From MD simulations the
-order parameters can be calculated using the definition
+Comparing MD simulation to NMR experiments, we can validate the simulation ion binding affinity to lipid bilayers using the ''electrometer concept''~ \cite{seelig87, catte16}. This method relies on the experimental observation that the C-H bond order parameters of $\alpha$ and $\beta$ carbons in a PC lipid head group (Fig.~\ref{simVSexpNOions}) are proportional to the amount of charge bound per lipid~\cite{seelig87}. Comparing this response is an excellent way to validate force fields as both NMR and MD can accurately determine order parameters ~\cite{catte16, ollila16}. The order parameters for all C-H bonds in lipid molecules can be accurately measured using $^2$H NMR or $^{13}$C NMR techniques \cite{ollila16}. From MD simulations the order parameters can be calculated using the definition
 \begin{equation}\label{OP}
 S_{\rm CH}=\frac{3}{2}\langle \cos^2\theta -1 \rangle,
 \end{equation}
-where $\theta$ is the angle between the bond and membrane
-normal and the average is taken over all sampled configurations \cite{ollila16}.
+where $\theta$ is the angle between the C-H bond and membrane normal. Angular brackets point to the average over all sampled configurations.
 
-The relation between the amount of the bound charge per lipid,  $X^\pm$, and
-the head group order parameter change, $\Delta S_{\rm{CH}}^{i}$,
-is empirically quantified as~\cite{seelig87,ferreira16}
+The relation between the amount of the bound charge per lipid, $X^\pm$, and the head group order parameter change, $\Delta S_{\rm{CH}}^{i}$, is empirically quantified as~\cite{seelig87,ferreira16}
 \begin{equation}\label{OPchangeEQ}
-  \Delta S_{\rm{CH}}^{i}= S_{\rm{CH}}^{i}(X^\pm)-S_{\rm{CH}}^{i}(0) \approx \frac{4m_i }{3\chi}X^\pm,
+\Delta S_{\rm{CH}}^{i}= S_{\rm{CH}}^{i}(X^\pm)-S_{\rm{CH}}^{i}(0) \approx m_i \frac{4 }{3\chi}X^\pm,
 \end{equation}
-where $S_{\rm{CH}}^{i}(0)$ denote the order parameter in the absence of bound charge,
-$i$ refers to either $\alpha$ or $\beta$ carbon,
-$m_i$ is an empirical constant depending on the valency and position of the bound charge,
-and the experimental value \cite{seelig77,davis83}, $\chi \approx$\,167\,kHz, is used for the quadrupole coupling constant.
-Atomic absorption spectra and $^2$H NMR data gave
-$m_\alpha=-20.5$~kHz  and $m_\beta=-10.0$~kHz for the binding of
-Ca$^{2+}$ to POPC bilayer (in the presence of 100~mM NaCl)~\cite{altenbach84,ollila16,catte16}.
-The slopes are negative, because the head group order parameters
-decrease with a bound positive charge and increase with a bound negative
-charge~\cite{ollila16,catte16}. This can be rationalized in terms of a change
-of the lipid head group dipole tilt towards water phase with the bound positive
-charge and {\it vice versa} with the negative charge~\cite{seelig87}. 
+where $i$ refers to either $\alpha$ or $\beta$ carbon, $S_{\rm{CH}}^{i}(0)$ denote the order parameter in the absence of bound charge, $\chi$ is the quadrupole coupling constant ($\chi \approx$\,167\,kHz), and $m_i$ empirical experimental constant depending on the valency and position of the bound charge.
 
-The measured change of the order parameter depends both on the head group response 
-to the bound charge and on the amount of the bound charge 
-(i.e. $m_i$ and $X^\pm$ in Eq.~\ref{OPchangeEQ}, respectively). 
-The empirical factor $m_i$ has to be
-properly quantified before the electrometer concept can used to 
-analyze the binding affinities.
-This has been done experimentally for a wide range
-of systems~\cite{seelig87,beschiasvili91}. To calibrate 
-the response of the head group order parameter to the bound charge in simulations,
-we use experimental data for a strong cationic surfactant dihexadecyldimethylammoniumbromide %(2C$_{16}$$^+$N2C$_1$Br$^-$)
-mixed within a POPC bilayer~\cite{scherer89}. Dihexadecyldimethylammonium\\[0.5cm]
+
+The measured change of the order parameter depends both on the head group response to the bound charge and on the amount of the bound charge (\textit{i.e.,} $m_i$ and $X^\pm$ in Eq.~\ref{OPchangeEQ}, respectively).  The empirical factor $m_i$ has to be adequately quantified before the electrometer concept can be used to analyze the binding affinities. This calibration has been done experimentally for a wide range of systems~\cite{seelig87, beschiasvili91}. To calibrate the response of the head group order parameter to the bound charge in simulations, we use experimental data for a strong cationic surfactant dihexadecyldimethylammoniumbromide  (DHAB) bilayer~\cite{scherer89}. DHAB\\[0.5cm]
 %\vspace{0.5cm}
 \chemfig{
- -[:0,3.5,,,draw=none]\chemabove{N}{\scriptstyle\oplus} (-[:150]H_3C)(-[:210]H_3C)(-[:330]{(}CH_2{)}_{15}-CH_3)(-[:30]{(}CH_2{)}_{15}-CH_3)
+  -[:0,3.5,,,draw=none]\chemabove{N}{\scriptstyle\oplus} (-[:150]H_3C)(-[:210]H_3C)(-[:330]{(}CH_2{)}_{15}-CH_3)(-[:30]{(}CH_2{)}_{15}-CH_3)
 }  
 \vspace{0.5cm} \\
-is a cationic surfactant having two acyl chains and bearing a unit
-charge in the hydrophilic end. Thus, it is expected to locate
-in the bilayer similarly to the phospholipids and its molar ratio then 
-gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems~\cite{scherer89}.
+is a cationic surfactant having two acyl chains and bearing a unit charge in the hydrophilic end. Thus, it is expected to locate in the bilayer similarly to the phospholipids, and its molar ratio then gives directly the amount of bound unit charge per lipid $X^\pm$ in these systems~\cite{scherer89}.
 
 \subsection{Salt concentrations and binding affinity}
-The concentrations of salts are reported in two different ways
-in the NMR measurements of head group order parameters \cite{akutsu81, altenbach84}.
-The early work on the NMR electrometer concept 
-reports the salt concentrations in water before solvating
-the lipids~\cite{akutsu81}. 
-The later study uses the atomic absorption
-spectroscopy, and reports the salt concentration in the supernatant after the
-solvation of lipids~\cite{altenbach84}.
-In this work, we focus on POPC for which the latter definition was used~\cite{altenbach84}.
-The salt concentration in the aqueous bulk region was taken as that at 
-the farthest point from the lipid bilayer in the aqueous phase. 
-Note that in the previous study~\cite{catte16},
-the ion concentrations were calculated in water before solvating the lipids, 
-as in the earlier experiments~\cite{akutsu81}.
-Although there are noticable differences between these two
-definitions for concentrations of the CaCl$_2$ systems,
-they do not affect significantly conclusions drawn in this work or in the previous one~\cite{catte16}.
+NMR experiments report the used salt concentrations in two different ways when measuring head group order parameters. Some use the salt concentrations in water before solvating the lipids~\cite{akutsu81} while others use atomic absorption spectroscopy and report the salt concentration in the supernatant after the solvation of lipids~\cite{altenbach84}. In this work, we use the latter definition. In particular, we measure the salt concentration in the aqueous bulk region as that at the farthest point from the lipid bilayer in the aqueous phase. Notice that this definition differs from the one used by Catte et al.~\cite{catte16} where the former definition is used. Although these two definitions vary when applied to Ca$^{2+}$, they do not affect significantly the conclusions of this work.
 
-To quantify the ion binding affinities to a lipid bilayer, we
-calculate the relative surface excess of ions with respect to water,~$\Gamma_i^w$~\cite{chattorajBOOK}.
-Such a quantity compares the adsorption of ions to the adsorption of water molecules 
-at the interface without the necessity of defining a Gibbs dividing plane 
-between the membrane interior and the water bulk region. 
-In our simulations we only assume that the interface is located between the ion-free hydrophobic interior
-of the lipid bilayer and the aqueous region far from the membrane.
-%our whole simulation box as
-%an interface flanked by a water phase and an ideal phase with the characteristics of to
-%the hydrophobic region in the middle of the membrane where no ions or waters are present.
-Such a setup and the above definition of bulk ion concentration provide a simple relation for the relative surface excess $\Gamma_i^w$ for simulations of lipid bilayers, 
+To quantify the ion binding affinities to a lipid bilayer, we calculate the relative surface excess of ions with respect to water, $\Gamma_{ion}^{water}$~\cite{chattorajBOOK}. Such a quantity compares the adsorption of ions to the adsorption of water molecules at the interface without the necessity of defining a Gibbs dividing plane between the membrane interior and the water bulk region. In our simulations, we only assume that the interface is located between the ion-free hydrophobic interior of the lipid bilayer and the aqueous region far from the membrane.  Such a setup and the above definition of bulk ion concentration provide a simple relation for the relative surface excess $\Gamma_{ion}^{water}$ for simulations of lipid bilayers,
+ 
 \begin{equation}\label{surfexcess}
-  \Gamma_i^w=\frac{1}{2A_b} \left ( n_i - n_w \frac{C_i}{C_w} \right ) .
+  \Gamma_{ion}^{water}=\frac{1}{2A_b} \left ( n_{ion} - n_{water} \frac{C_{ion}}{C_{water}} \right ).
 \end{equation}
-Here, $n_w$ and $n_i$ are the total numbers of water molecules and ions in the system,
-$C_w$ and $C_i$ are their respective bulk concentrations in the aqueous phase,
+Here, $n_{water}$ and $n_{ion}$ are the total numbers of water molecules and ions in the system,
+$C_{water}$ and $C_{ion}$ are their respective bulk concentrations in the aqueous phase,
 and $A_b$ is the area of the unit cell in the membrane plane.
 The total area of the interface is then twice the area of the membrane, i.e., $2A_b$,
 because the bilayer has an interface at each of the two leaflets.
 
 
 
-\subsection{Validation of lipid bilayer structure against experiments}
+\subsection{Validation of lipid bilayer structure against NMR and scattering experiments}
+The structures of lipid bilayers in simulations without ions were validated against NMR by calculating the order parameters for the C-H bonds and \mbox{x-ray} scattering experiments by the scattering form factors. NMR order parameters validate the structures sampled by the individual lipid molecules with atomic resolution. The simulated order parameters were calculated for all C-H bonds in lipid molecules from Eq. \ref{OP}. Scattering form factors validate the dimensions of the lipid bilayer (e.g., thickness and area per molecule). Form factors were calculated using
 
-The structures of lipid bilayers in simulations without ions were validated against NMR and 
-\mbox{x-ray} scattering experiments by calculating the order parameters
-for the C-H bonds and the scattering form factors. The former validates the structures sampled by the individual
-lipid molecules in simulations with atomic resolution, while the latter
-validates the dimensions of the lipid bilayer (i.e., its thickness and area per
-molecule)~\cite{ollila16}.
-
-The simulated order parameters were calculated for all C-H bonds
-in lipid molecules from Eq. \ref{OP}. Form factors were calculated 
-from the equation
 \begin{equation}
   F(q) = \int _{-D/2} ^{D/2} \left ( \rho_{el}(z) - \rho_{el}^s \right ) \cos (zq_z) \mathrm{d}z,
   %F(q) = \int _{-D/2} ^{D/2} \left ( \sum _\alpha f_\alpha (q_z) n_\alpha (z) - \rho _s \right ) \exp (izq_z) \mathrm{d}z,
 \end{equation}
-where $\rho_{el} (z)$ is the total electron density,
-$\rho_{el}^s$ is the electron density of the solvent far in the aqueous bulk,
-and $z$ is the distance from the membrane centre along its normal 
-with $D/2$ being half of the unit cell size. 
+
+\noindent where $\rho_{el} (z)$ is the total electron density, $\rho_{el}^s$ is the electron density of the solvent far in the aqueous bulk, and $z$ is the distance from the membrane center along its normal with $D/2$ being half of the unit cell size.  
 
 
 
@@ -346,60 +268,18 @@ with $D/2$ being half of the unit cell size.
 \subsection{Simulation details}
 
 \subsubsection{Simulations of POPC bilayers with aqueous ions}
-Simulations of a POPC bilayer in pure water or at varying salt concentrations
-consisted of 128 POPC molecules and approximately 50~SPC/E~water~\cite{Berendsen1987} molecules per each lipid
-in an orthorhombic simulation box with periodic boundary conditions. 
-The chosen SPC/E water model, used also in the previous parametrization of 
-ECC-ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014},
-has a lowered dielectric constant, consistent with the ECC concept~\cite{leontyev11, leontyev14}.
-Results from simulations with other water models 
-(OPC \cite{Izadi14}, OPC3~\cite{Izadi16}, 
-TIP3P~\cite{jorgensen83},
-TIP3p-FB and TIP4p-FB~\cite{Wang2014},
-and TIP4p/2005 \cite{Abascal2005}), performed to check for robustness of our approach, are available in SI.
-Sodium, calcium, and chloride 
-were modeled as ECC-ions with parameters from \citenum{jungwirth17-new-paper-to-be-published, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
-Scaled charges and van der Waals radii for atoms forming the POPC lipid were derived here, starting from the Lipid14 force field.
-For comparison, simulations with unscaled charges were perfomed using the Lipid14 model, the TIP3p model for water \cite{jorgensen83} and the ion model by
-Dang et al.~\cite{smith94,chang1999,dang2006}.
-Simulation data for the Lipid14 model with \AA{}qvist~\cite{aqvist90} ions and TIP3P~\cite{jorgensen83}
-water models reported in \cite{catte16} 
-were taken directly from \cite{lipid14POPC0mMNaClfiles,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC,lipid14POPC1000mMNaClfiles}. 
-MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4).  
-The simulation settings employed in this work are 
-summarized in Table \ref{tbl:mdpar}. 
-The simulatied trajectories and parameters are available at \cite{??} \todo{To be uploaded to Zenodo}. 
+Simulations of a POPC bilayer in pure water or at varying salt concentrations consisted of 128 POPC molecules and approximately 50~SPC/E~water~\cite{Berendsen1987} molecules per lipid in an orthorhombic simulation box with periodic boundary conditions.  The chosen SPC/E water model, also used in the previous parametrization of ECC-ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}, has a lowered dielectric constant, consistent with the ECC concept~\cite{leontyev11, leontyev14}.  We checked other water models (OPC \cite{Izadi14}, OPC3~\cite{Izadi16}, TIP3P~\cite{jorgensen83}, TIP3p-FB and TIP4p-FB~\cite{Wang2014}, and TIP4p/2005 \cite{Abascal2005}) to confirm the robustness of our approach (See SI). Sodium, calcium, and chloride ions were modeled as ECC-ions with parameters from Ref. \citenum{jungwirth17-new-paper-to-be-published, Pluharova2014}.  
+% cite order: [Ca_2s, Na_s, Cl_2s] 
+Scaled charges and van der Waals radii for atoms forming the POPC lipid are derived in this work starting from the Lipid14 force field~\cite{REF}. For comparison, simulations with unscaled charges were performed using the Lipid14 model~\cite{REF}, the TIP3p model for water \cite{jorgensen83}\todo{HECTOR: Do we compare this against scaled with SPC or TIP3P?}, and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}. Simulation data for the Lipid14 model with \AA{}qvist ions~\cite{aqvist90} and TIP3P~\cite{jorgensen83} water models were taken directly from Ref.~\citenum{catte16}.  
+
+MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4). The simulation settings employed in this work are summarized in Table \ref{tbl:mdpar}\todo{HECTOR: Is this the SI? If so we have to indicate it. Now reference is weird.}. The simulated trajectories and parameters files are available at \cite{??} \todo{To be uploaded to Zenodo}.
 
 
 
 \subsubsection{Simulations of POPC bilayers with cationic surfactants}
-The topology of dihexadecyldimethylammonium
-was created with an automated topology builder \cite{malde11}. 
-The AmberTools program \cite{amber} was then used to generate the Amber-type force field
-parameters. These parameters were then converted to the Gromacs format with
-the acpype tool \cite{acpype}. The partial charges were then manually modified
-to approximately correspond to their equivalent segments in Lipid14 \cite{dickson14}.
-The parameters together with the simulation data are available
-at~\cite{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCATsurfT313K,POPClipid1430perCATsurfT313K,POPClipid1442perCATsurfT313K,POPClipid1450perCATsurfT313K}.
-The cationic surfactants were randomly mixed among the phospholipids to form bilayer structures with
-mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer.
-All these systems contained 50 POPC molecules per leaflet, 6340 TIP3P~\cite{jorgensen83} water molecules, and
-6, 14, 21, 35, or 50 surfactants per leaflet. 
-Chloride counter ions were used in simulations, 
-while bromide was the counter ion in the experiment \cite{scherer89}.
-The Lipid14 model was used for POPC.
-The first 20~ns of the total simulation time of 200~ns
-was considered as an equlibration time and was omitted from the analysis.
-Sufficient lipid neighbor exchange occured during the simulations.
+The topology of dihexadecyldimethylammonium was created with the automated topology builder \cite{malde11}. The AmberTools program~\cite{amber} was then used to generate the Amber-type force field parameters. These parameters were then converted to the Gromacs format with the acpype tool \cite{acpype}. The partial charges were then manually modified in the non-scaled version~\cite{catte16} to approximately match similar segments in Lipid14 \cite{dickson14}. For simulation with ECC-POPC, the partial charges of the headgroup were scaled, i.e., $f_q=0.8$, and the $\sigma$ of the scale atoms reduced as in POPC-ECC.
 
-The systems were simulated with the ECC-lipids model for POPC 
-and SPC/E model for water using the same setup.
-In these simulations ECC was also applied to the cationic surfactant 
-in the same way as to POPC, i.e.,
-all partial charges were scaled with the same factor as for ECC-lipids, i.e. $f_q=0.8$, 
-and the same atom types with reduced $\sigma$ parameters from ECC-lipids were used. 
-\todo{Joe: I think that the followin is already said in the beginning of this section -- Lipid14 simulaitons.}
-For comparison, simulations with unscaled charges were also performed.
+The cationic surfactants were randomly mixed among the phospholipids to form bilayer structures with mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer. All these systems contained 50 POPC molecules per leaflet, 6340 TIP3P~\cite{jorgensen83} water molecules, and 6, 14, 21, 35, or 50 surfactants per leaflet.  Chloride counter ions were used in simulations, while bromide was the counter ion in the experiment \cite{scherer89}. For POPC either the Lipid14 or ECC-POPC model was used. The first 20~ns of the total simulation time of 200~ns was considered as an equilibration time and was omitted from the analysis. Sufficient lipid neighbor exchange occurred during the simulations. Further details for the unscaled simulations and the trajectories are in Ref.~\citenum{catte16}.
 
 \todo{Provide the parameteres for ECC-surfactant somewere.}
 
@@ -429,14 +309,14 @@ For comparison, simulations with unscaled charges were also performed.
 
 \begin{table}[tb!]
   \caption{Values of the area per lipid (APL) of POPC bilayers without ions from the Lipid14 simulation
-    ran in this work and from the literature \cite{dickson14}, from the ECC-lipids model, and from experiments.\label{tab:apls} }
+    ran in this work and from the literature \cite{dickson14}, from the ECC-lipids model, and from experiments.{ \color{red} HECTOR:Are we using here the same water model? If not is it fair the comparison considering the large changes observed in the SI table?}\label{tab:apls} }
   \begin{tabular}{l|c c}
     model          & APL (\AA$^2$)   & Temperature [K] \\
     \hline
     Lipid14                   & 65.1$\pm$ 0.6  &  300 \\
     Lipid14 \cite{dickson14}  & 65.6$\pm$ 0.5  &  303 \\
     \hline
-    ECC-lipids                & 63.2$\pm$ 0.6  &  300       \\
+    ECC-lipids                & {\color{red}63.2}$\pm$ 0.6  &  300       \\
     \hline
     experiment \cite{kucerka11} & 64.3  &  303    \\
     \hline
@@ -447,42 +327,20 @@ For comparison, simulations with unscaled charges were also performed.
 First, we present results for bilayers in pure water.
 The ECC-lipids and Lipid14 models both reproduce the experimental x-ray scattering form factors
 of a POPC bilayer with a comparable accuracy in Fig.~\ref{simVSexpNOions}.
-The area per lipid from the Lipid14 model is slightly larger than the
+The area per lipid from the Lipid14 model is $\approx$1\AA{} larger than the
 experimental value in Table~\ref{tab:apls}, while the value from the ECC-lipids model
-is slightly smaller. The values of the area per lipid of the ECC-lipids model show small variations
-when simulated with different water models (see Table~\ref{tab:apls_si} in SI),
-with all being close to the experimentally reported values.
+is $\approx$1\AA{} smaller\todo{The 63.2 value does not appear in the SI table. There it is 62.2 but I'm not sure corresponds to the same system}. The values of the area per lipid of the ECC-lipids model show larger variations
+when simulated with different water models (i.e., 62.2--66.8 \AA{}, see Table~\ref{tab:apls_si} in SI\todo{HECTOR: change to real reference in SI}),
+while still being close to the experimentally reported values.
 We can thus conclude that the ECC-lipids model reproduces the experimental dimensions of the POPC
-lipid bilayer with accuracy comparable to that for other state of the art lipid models \cite{ollila16}.
+lipid bilayer with accuracy comparable to that for another state of the art lipid models \cite{ollila16}.
 %The optimal value for $f_\sigma$ was found by representing the overall membrane structure well
 %by matching scattering form factors to experimental data~\cite{Petrache06, Kucerka08, Pabst10}.
 
-Similarly, the acyl chain order parameters of the
-ECC-lipids model, as well as the Lipid14 model~\cite{dickson14}, agree 
-with the experimental values with in the error bars, as presented
-in Fig.~\ref{simVSexpNOions}. Notably, the experimentally measured forking and
-small order parameter values of $C_2$ segment in {\it sn}-2 chain are well
-reproduced by both models. This feature has been suggested to indicate that the carbonyl
-of {\it sn}-2 chain is directed towards the water phase, in contrast to the
-carbonyl in {\it sn}-1 chain, which would orient more along the bilayer
-plane~\cite{seelig75,schindler75,gawrisch92}. This may be an important
-feature for the ion binding details, which it is not fully reproduced by other
-available lipid models~\cite{ollila16}
-%This is expected as the ECC model does not modify
-%the already highly optimized parameters of this region in Lipid14. 
+Similarly, the acyl chain order parameters of the ECC-lipids model, as well as the Lipid14 model~\cite{dickson14}, agree with the experimental values within the error bars, as presented in Fig.~\ref{simVSexpNOions}. Notably, the experimentally measured forking and small order parameter values of $C_2$ segment in {\it sn}-2 chain are well reproduced by both models. This feature has been suggested to indicate that the carbonyl of {\it sn}-2 chain is directed towards the water phase, in contrast to the carbonyl in {\it sn}-1 chain, which would orient more along the bilayer plane~\cite{seelig75,schindler75,gawrisch92}. This arrangement may be a relevant feature for the ion binding details, which it is not fully reproduced by other available lipid models~\cite{ollila16}.
+%This is expected as the ECC model does not modify the already highly optimized parameters of this region in Lipid14
 
-The order parameters of the $\alpha$ and $\beta$ carbons in the headgroup are slightly larger
-in the ECC-lipids model than in the Lipid14 model, which is apparently related to the
-P-N vector orienting by about 7$^{\circ}$ more toward the water phase in the ECC-lipids model, 
-see Fig.~\ref{OrderParameterCHANGESsurf}. This is a small change and with the current experimental data we cannot decide which of the two models provides more realistic
-headgroup conformations. The ECC-lipids model gives
-the $\beta$ carbon order parameter value closer to experiments than the Lipid14 model, while
-the oposite is true for the $\alpha$ carbon.
-Despite small deviations from the experimental order parameter values
-in Fig. \ref{simVSexpNOions},
-the accuracy of both models in the glycerol backbone region
-is comparable to other state
-of art lipid models available in literature \cite{botan15}.
+The order parameters of the $\alpha$ and $\beta$ carbons in the headgroup are slightly larger in the ECC-lipids model than in the Lipid14 model, which is apparently related to the P-N vector orienting by about 7$^{\circ}$ more toward the water phase in the ECC-lipids model, see Fig.~\ref{OrderParameterCHANGESsurf}. Considering the available experimental evidence, it is not possible to suggest which of the two models provides more realistic headgroup orientation. The ECC-lipids model gives the $\beta$ carbon order parameter value closer to experiments than the Lipid14 model, while the opposite is true for the $\alpha$ carbon. The accuracy of both models in the glycerol backbone region is equally footed with any other state of art lipid model available in literature \cite{botan15}, see Fig.~\ref{simVSexpNOions}.
 
 
 \todo{Dynamics check is missing: MSD (Hector/Joe)}
@@ -500,47 +358,11 @@ of art lipid models available in literature \cite{botan15}.
   }
 \end{figure}
 
-Before proceeding to the sodium and calcium  ion binding affinities, we quantify
-the response of the headgroup order parameters to the amount of 
-bound charge by using mixtures of monovalent cationic
-surfactants (dihexadecyldimethylammonium)
-and POPC~\cite{scherer89}. The amount of bound charge per PC 
-in these systems is given simply by the molar fraction of cationic 
-surfactants, because essentially all the surfactants with two hydrophopic
-acyl chains can be assumed to locate in the lipid bilayers.
-The experimental data for these systems can be used to validate 
-the sensitivity of lipid headgroup order parameters
-to the amount of bound charge in simulations.
+Before studying the sodium and calcium ion binding affinities, we have to quantify as reference the response of the headgroup order parameters to the amount of bound charge by using mixtures of monovalent cationic surfactants (dihexadecyldimethylammonium) and POPC~\cite{scherer89}. These mixtures have a well-defined amount of bound charge per PC, i.e., the molar fraction of cationic surfactants. This direct relation results from the ability of dihexadecyldimethylammonium to be inserted in the lipid bilayers as any lipid because of its two hydrophobic acyl chains. Furthermore, available experimental data for these systems can be used to validate the sensitivity of lipid headgroup order parameters to the amount of bound charge in simulations \cite{REF}.
 
-The changes of the headgroup order parameters with increasing amount of 
-the cationic surfactant are compared for simulations and experiments~\cite{scherer89} in Fig. \ref{OrderParameterCHANGESsurf}.
-An approximately linear decrease of the order parameters, as expected from Eq. \ref{OPchangeEQ},
-is observed in both simulations and experiments at least for mole fractions
-below $\sim$30\%. The slope is, however, too steep in the Lipid14 model indicating that 
-the head group order parameters respond too sensitively to the bound positive charge.
-In contrast, the slope for the ECC-lipids model is in a very good agreement with experiments
-for the $\alpha$ segment, while being slightly
-underestimated for the $\beta$ segment.
+The changes of the headgroup order parameters with increasing amount of the cationic surfactant are compared between simulations and experiments~\cite{scherer89} in Fig.~\ref{OrderParameterCHANGESsurf}. An approximately linear decrease of the order parameters, as expected from Eq. \ref{OPchangeEQ}, is observed in both simulations and experiments at least for mole fractions below $\sim$30\%. The slope is, however, too steep in the Lipid14 model indicating that the head group order parameters response is too large to the bound positive charge. In contrast, the slope of the ECC-lipids model is in a very good agreement with experiments for the $\alpha$ segment, while being slightly underestimated for the $\beta$ segment.
 
-The headgroup P-N vector angle with respect to the membrane normal
-is also shown in Fig.~\ref{OrderParameterCHANGESsurf}
-as a function of the mole fraction of the cationic surfactant.
-As suggested previously~\cite{seelig87}, the headgroup orients
-more towards the water phase with the increasing amount of positive
-charge in a PC lipid bilayer. The effect is more pronounced in the
-Lipid14 model, for which the addition of 50\% mole fraction of the cationic
-surfactant leads to the decrease of 20$^{\circ}$ of the P-N vector angle,
-while the corresponding change in the ECC-lipids model is 11$^{\circ}$.
-The difference is in line with the smaller order parameter 
-changes and the reduced charge--dipole interactions in the latter model.
-The lower sensitivity of the P-N vector angle response in the ECC-lipid
-model can be considered to be more realistic, because the changes of the headgroup
-order parameters as a function of the bound positive charge
-are in better agreement with experiments in this model.
-The results also imply that validation and improvements of MD simulation
-models are generally required for reliable simulation studies of the
-lipid headgroup responses to ions or other biomolecules, as also suggested
-previously \cite{botan15}.
+In Fig.~\ref{OrderParameterCHANGESsurf}, we show the headgroup P-N vector angle as a function of the mole fraction of the cationic surfactant. As suggested previously~\cite{seelig87}, the headgroup orients more towards the water phase with the increasing amount of positive charge in a PC lipid bilayer. The effect is more pronounced in the Lipid14 model than in the ECC-POPC model.   For example, the addition of 50\% mole fraction of the cationic surfactant leads to the decrease of 20$^{\circ}$ of the P-N vector angle for the Lipid14 model while only 11$^{\circ}$ in the ECC-POPC model. The difference is in line with the smaller order parameter changes and the reduced charge--dipole interactions in the latter model. The lower sensitivity of the P-N vector angle response in the ECC-POPC model agrees better with experiments. The results imply that improvements are required in MD models for reliable studies of the lipid headgroup responses to ions or other biomolecules{\color{red}, as also suggested previously \cite{botan15}} \todo{Do you want to finish each paragraph with a citation to your previous works?}.
 
 
 %
