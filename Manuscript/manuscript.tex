@@ -242,60 +242,18 @@ The structures of lipid bilayers in simulations without ions were validated agai
 \subsection{Simulation details}
 
 \subsubsection{Simulations of POPC bilayers with aqueous ions}
-Simulations of a POPC bilayer in pure water or at varying salt concentrations
-consisted of 128 POPC molecules and approximately 50~SPC/E~water~\cite{Berendsen1987} molecules per each lipid
-in an orthorhombic simulation box with periodic boundary conditions. 
-The chosen SPC/E water model, used also in the previous parametrization of 
-ECC-ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014},
-has a lowered dielectric constant, consistent with the ECC concept~\cite{leontyev11, leontyev14}.
-Results from simulations with other water models 
-(OPC \cite{Izadi14}, OPC3~\cite{Izadi16}, 
-TIP3P~\cite{jorgensen83},
-TIP3p-FB and TIP4p-FB~\cite{Wang2014},
-and TIP4p/2005 \cite{Abascal2005}), performed to check for robustness of our approach, are available in SI.
-Sodium, calcium, and chloride 
-were modeled as ECC-ions with parameters from \citenum{jungwirth17-new-paper-to-be-published, Pluharova2014}.  % cite order: [Ca_2s, Na_s, Cl_2s]
-Scaled charges and van der Waals radii for atoms forming the POPC lipid were derived here, starting from the Lipid14 force field.
-For comparison, simulations with unscaled charges were perfomed using the Lipid14 model, the TIP3p model for water \cite{jorgensen83} and the ion model by
-Dang et al.~\cite{smith94,chang1999,dang2006}.
-Simulation data for the Lipid14 model with \AA{}qvist~\cite{aqvist90} ions and TIP3P~\cite{jorgensen83}
-water models reported in \cite{catte16} 
-were taken directly from \cite{lipid14POPC0mMNaClfiles,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC,lipid14POPC1000mMNaClfiles}. 
-MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4).  
-The simulation settings employed in this work are 
-summarized in Table \ref{tbl:mdpar}. 
-The simulatied trajectories and parameters are available at \cite{??} \todo{To be uploaded to Zenodo}. 
+Simulations of a POPC bilayer in pure water or at varying salt concentrations consisted of 128 POPC molecules and approximately 50~SPC/E~water~\cite{Berendsen1987} molecules per lipid in an orthorhombic simulation box with periodic boundary conditions.  The chosen SPC/E water model, also used in the previous parametrization of ECC-ions \cite{jungwirth17-new-paper-to-be-published, kohagen16, Pluharova2014}, has a lowered dielectric constant, consistent with the ECC concept~\cite{leontyev11, leontyev14}.  We checked other water models (OPC \cite{Izadi14}, OPC3~\cite{Izadi16}, TIP3P~\cite{jorgensen83}, TIP3p-FB and TIP4p-FB~\cite{Wang2014}, and TIP4p/2005 \cite{Abascal2005}) to confirm the robustness of our approach (See SI). Sodium, calcium, and chloride ions were modeled as ECC-ions with parameters from Ref. \citenum{jungwirth17-new-paper-to-be-published, Pluharova2014}.  
+% cite order: [Ca_2s, Na_s, Cl_2s] 
+Scaled charges and van der Waals radii for atoms forming the POPC lipid are derived in this work starting from the Lipid14 force field~\cite{REF}. For comparison, simulations with unscaled charges were performed using the Lipid14 model~\cite{REF}, the TIP3p model for water \cite{jorgensen83}\todo{HECTOR: Do we compare this against scaled with SPC or TIP3P?}, and ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006}. Simulation data for the Lipid14 model with \AA{}qvist ions~\cite{aqvist90} and TIP3P~\cite{jorgensen83} water models were taken directly from Ref.~\citenum{catte16}.  
+
+MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4). The simulation settings employed in this work are summarized in Table \ref{tbl:mdpar}\todo{HECTOR: Is this the SI? If so we have to indicate it. Now reference is weird.}. The simulated trajectories and parameters files are available at \cite{??} \todo{To be uploaded to Zenodo}.
 
 
 
 \subsubsection{Simulations of POPC bilayers with cationic surfactants}
-The topology of dihexadecyldimethylammonium
-was created with an automated topology builder \cite{malde11}. 
-The AmberTools program \cite{amber} was then used to generate the Amber-type force field
-parameters. These parameters were then converted to the Gromacs format with
-the acpype tool \cite{acpype}. The partial charges were then manually modified
-to approximately correspond to their equivalent segments in Lipid14 \cite{dickson14}.
-The parameters together with the simulation data are available
-at~\cite{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCATsurfT313K,POPClipid1430perCATsurfT313K,POPClipid1442perCATsurfT313K,POPClipid1450perCATsurfT313K}.
-The cationic surfactants were randomly mixed among the phospholipids to form bilayer structures with
-mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer.
-All these systems contained 50 POPC molecules per leaflet, 6340 TIP3P~\cite{jorgensen83} water molecules, and
-6, 14, 21, 35, or 50 surfactants per leaflet. 
-Chloride counter ions were used in simulations, 
-while bromide was the counter ion in the experiment \cite{scherer89}.
-The Lipid14 model was used for POPC.
-The first 20~ns of the total simulation time of 200~ns
-was considered as an equlibration time and was omitted from the analysis.
-Sufficient lipid neighbor exchange occured during the simulations.
+The topology of dihexadecyldimethylammonium was created with the automated topology builder \cite{malde11}. The AmberTools program~\cite{amber} was then used to generate the Amber-type force field parameters. These parameters were then converted to the Gromacs format with the acpype tool \cite{acpype}. The partial charges were then manually modified in the non-scaled version~\cite{catte16} to approximately match similar segments in Lipid14 \cite{dickson14}. For simulation with ECC-POPC, the partial charges of the headgroup were scaled, i.e., $f_q=0.8$, and the $\sigma$ of the scale atoms reduced as in POPC-ECC.
 
-The systems were simulated with the ECC-lipids model for POPC 
-and SPC/E model for water using the same setup.
-In these simulations ECC was also applied to the cationic surfactant 
-in the same way as to POPC, i.e.,
-all partial charges were scaled with the same factor as for ECC-lipids, i.e. $f_q=0.8$, 
-and the same atom types with reduced $\sigma$ parameters from ECC-lipids were used. 
-\todo{Joe: I think that the followin is already said in the beginning of this section -- Lipid14 simulaitons.}
-For comparison, simulations with unscaled charges were also performed.
+The cationic surfactants were randomly mixed among the phospholipids to form bilayer structures with mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer. All these systems contained 50 POPC molecules per leaflet, 6340 TIP3P~\cite{jorgensen83} water molecules, and 6, 14, 21, 35, or 50 surfactants per leaflet.  Chloride counter ions were used in simulations, while bromide was the counter ion in the experiment \cite{scherer89}. For POPC either the Lipid14 or ECC-POPC model was used. The first 20~ns of the total simulation time of 200~ns was considered as an equilibration time and was omitted from the analysis. Sufficient lipid neighbor exchange occurred during the simulations. Further details for the unscaled simulations and the trajectories are in Ref.~\citenum{catte16}.
 
 \todo{Provide the parameteres for ECC-surfactant somewere.}
 
