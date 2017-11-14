@@ -283,14 +283,14 @@ The cationic surfactants were randomly mixed among the phospholipids to form bil
 
 \begin{table}[tb!]
   \caption{Values of the area per lipid (APL) of POPC bilayers without ions from the Lipid14 simulation
-    ran in this work and from the literature \cite{dickson14}, from the ECC-lipids model, and from experiments.\label{tab:apls} }
+    ran in this work and from the literature \cite{dickson14}, from the ECC-lipids model, and from experiments.{ \color{red} HECTOR:Are we using here the same water model? If not is it fair the comparison considering the large changes observed in the SI table?}\label{tab:apls} }
   \begin{tabular}{l|c c}
     model          & APL (\AA$^2$)   & Temperature [K] \\
     \hline
     Lipid14                   & 65.1$\pm$ 0.6  &  300 \\
     Lipid14 \cite{dickson14}  & 65.6$\pm$ 0.5  &  303 \\
     \hline
-    ECC-lipids                & 63.2$\pm$ 0.6  &  300       \\
+    ECC-lipids                & {\color{red}63.2}$\pm$ 0.6  &  300       \\
     \hline
     experiment \cite{kucerka11} & 64.3  &  303    \\
     \hline
@@ -301,42 +301,20 @@ The cationic surfactants were randomly mixed among the phospholipids to form bil
 First, we present results for bilayers in pure water.
 The ECC-lipids and Lipid14 models both reproduce the experimental x-ray scattering form factors
 of a POPC bilayer with a comparable accuracy in Fig.~\ref{simVSexpNOions}.
-The area per lipid from the Lipid14 model is slightly larger than the
+The area per lipid from the Lipid14 model is $\approx$1\AA{} larger than the
 experimental value in Table~\ref{tab:apls}, while the value from the ECC-lipids model
-is slightly smaller. The values of the area per lipid of the ECC-lipids model show small variations
-when simulated with different water models (see Table~\ref{tab:apls_si} in SI),
-with all being close to the experimentally reported values.
+is $\approx$1\AA{} smaller\todo{The 63.2 value does not appear in the SI table. There it is 62.2 but I'm not sure corresponds to the same system}. The values of the area per lipid of the ECC-lipids model show larger variations
+when simulated with different water models (i.e., 62.2--66.8 \AA{}, see Table~\ref{tab:apls_si} in SI\todo{HECTOR: change to real reference in SI}),
+while still being close to the experimentally reported values.
 We can thus conclude that the ECC-lipids model reproduces the experimental dimensions of the POPC
-lipid bilayer with accuracy comparable to that for other state of the art lipid models \cite{ollila16}.
+lipid bilayer with accuracy comparable to that for another state of the art lipid models \cite{ollila16}.
 %The optimal value for $f_\sigma$ was found by representing the overall membrane structure well
 %by matching scattering form factors to experimental data~\cite{Petrache06, Kucerka08, Pabst10}.
 
-Similarly, the acyl chain order parameters of the
-ECC-lipids model, as well as the Lipid14 model~\cite{dickson14}, agree 
-with the experimental values with in the error bars, as presented
-in Fig.~\ref{simVSexpNOions}. Notably, the experimentally measured forking and
-small order parameter values of $C_2$ segment in {\it sn}-2 chain are well
-reproduced by both models. This feature has been suggested to indicate that the carbonyl
-of {\it sn}-2 chain is directed towards the water phase, in contrast to the
-carbonyl in {\it sn}-1 chain, which would orient more along the bilayer
-plane~\cite{seelig75,schindler75,gawrisch92}. This may be an important
-feature for the ion binding details, which it is not fully reproduced by other
-available lipid models~\cite{ollila16}
-%This is expected as the ECC model does not modify
-%the already highly optimized parameters of this region in Lipid14. 
+Similarly, the acyl chain order parameters of the ECC-lipids model, as well as the Lipid14 model~\cite{dickson14}, agree with the experimental values within the error bars, as presented in Fig.~\ref{simVSexpNOions}. Notably, the experimentally measured forking and small order parameter values of $C_2$ segment in {\it sn}-2 chain are well reproduced by both models. This feature has been suggested to indicate that the carbonyl of {\it sn}-2 chain is directed towards the water phase, in contrast to the carbonyl in {\it sn}-1 chain, which would orient more along the bilayer plane~\cite{seelig75,schindler75,gawrisch92}. This arrangement may be a relevant feature for the ion binding details, which it is not fully reproduced by other available lipid models~\cite{ollila16}.
+%This is expected as the ECC model does not modify the already highly optimized parameters of this region in Lipid14
 
-The order parameters of the $\alpha$ and $\beta$ carbons in the headgroup are slightly larger
-in the ECC-lipids model than in the Lipid14 model, which is apparently related to the
-P-N vector orienting by about 7$^{\circ}$ more toward the water phase in the ECC-lipids model, 
-see Fig.~\ref{OrderParameterCHANGESsurf}. This is a small change and with the current experimental data we cannot decide which of the two models provides more realistic
-headgroup conformations. The ECC-lipids model gives
-the $\beta$ carbon order parameter value closer to experiments than the Lipid14 model, while
-the oposite is true for the $\alpha$ carbon.
-Despite small deviations from the experimental order parameter values
-in Fig. \ref{simVSexpNOions},
-the accuracy of both models in the glycerol backbone region
-is comparable to other state
-of art lipid models available in literature \cite{botan15}.
+The order parameters of the $\alpha$ and $\beta$ carbons in the headgroup are slightly larger in the ECC-lipids model than in the Lipid14 model, which is apparently related to the P-N vector orienting by about 7$^{\circ}$ more toward the water phase in the ECC-lipids model, see Fig.~\ref{OrderParameterCHANGESsurf}. Considering the available experimental evidence, it is not possible to suggest which of the two models provides more realistic headgroup orientation. The ECC-lipids model gives the $\beta$ carbon order parameter value closer to experiments than the Lipid14 model, while the opposite is true for the $\alpha$ carbon. The accuracy of both models in the glycerol backbone region is equally footed with any other state of art lipid model available in literature \cite{botan15}, see Fig.~\ref{simVSexpNOions}.
 
 
 \todo{Dynamics check is missing: MSD (Hector/Joe)}
