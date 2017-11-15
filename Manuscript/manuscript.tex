@@ -547,43 +547,9 @@ In conclusion, the results suggest that calcium ions bind specifically to phosph
 %2 POPC - 18\% -- 42\% \\
 %3 POPC - 12\% -- 28\% \\
 
-Simple binding models have been used previously to interpret
-the same experimental data \cite{altenbach84,macdonald87} 
-that are used in this work to validate the simulation models in Fig. \ref{fig:delta_ordPar_CaCl}.
-Results from measurements of the lipid headgroup order parameters and from
-atomic absorption spectroscopy were best
-explained by a ternary complex binding model with a binding
-stoichiometry of one \ce{Ca^{2+}} per two POPC lipids~\cite{altenbach84}.
-However, a Langmuir adsorption model (i.e. \ce{Ca^{2+}}:POPC stoichiometry of 1:1) 
-also provided a good fit to the experimental data when only low concentrations of \ce{CaCl2} were considered~\cite{macdonald87}.
-Note that the results based on these binding models and the measured headgroup order parameter changes
-are also inluded in the tabulated experimental binding constants~\cite{marsh13}.
+Simple binding models have been used previously to interpret the experimental data \cite{altenbach84,macdonald87} we use in this work to validate the simulation models (Fig.~\ref{fig:delta_ordPar_CaCl}). In particular, NMR data about PC headgroup order parameters response and atomic absorption spectroscopy were best explained using a ternary complex binding model with a binding stoichiometry of one \ce{Ca^{2+}} per two POPC lipids~\cite{altenbach84}. However, a Langmuir adsorption model assuming a \ce{Ca^{2+}}:POPC stoichiometry of 1:1 also provided a good fit to the experimental data when considering only \ce{CaCl2}low concentrations~\cite{macdonald87}. \todo{HECTOR: Why is the following sentence remotely significant. I will vote for removing it} Note that the results based on these binding models and the measured headgroup order parameter changes are also included in the tabulated experimental binding constants~\cite{marsh13}.
 
-Since the same experimental data are reproduced by the present ECC-lipids model,
-we can use the model to provide a more detailed interepration of the binding stoichiometry than
-the previously used simple binding models~\cite{altenbach84,macdonald87}. To directly evaluate the
-stoichiometry from simulations we calculated the relative propensities of \ce{Ca^{2+}}:POPC
-complexes with various stoichiometries by counting the individual lipid
-molecules within the distance $0.3\,\mathrm{nm}$ from each \ce{Ca^{2+}} ion,
-as already done in the previous section~\ref{sec:affinity}.
-The results from POPC simulation with a 285~mM concetration of CaCl$_2$ in
-Fig.~\ref{fig:cacl_complexes} demonstrate the largest propensity (41\%) for the
-ternary complex with the \ce{Ca^{2+}}:POPC stoichiometry of 1:2, but 
-the probabilities of complexes with the stoichimetries of 1:1~(25\%)~and
-1:3~(34\%)~are only slightly lower. This
-suggests a more complex binding model than the previous simple ternary complex model.
-%The observed propensities of
-%$41\%$ for two lipids,
-%$25\%$ for one lipid, and
-%$34\%$ for three lipids 
-With a broad brushstroke, the simulation data can, however, be viewed such that
-one calcium binds to two lipids on average,
-because the probabilities of the complexes with 1 or 3 lipids are almost equal to each other 
-(and complexes with more than three lipids per one calcium ion were not observed).  
-This probably explains why the simple the ternary complex model fits the
-experimental data, as well as the ECC-lipids simulation results, rather well
-(see Fig.~S\ref{fig:cacl-bind} in SI and its caption for details). 
-
+In this work, we reproduce the same experimental data used to calculate binding stoichiometry with our ECC-POPC model. Using our simulations, we have direct access to exact details of the binding stoichiometry without requiring any middle model as in experiments~\cite{altenbach84, macdonald87}. To evaluate the relative propensities for each stoichiometric complex (e.i., 1 Ca$^{2+}$: n POPC), we calculated for each bound Ca$^{2+}$ the number of POPC molecules within a distance of 0.3~nm.  In Fig.~\ref{fig:cacl_complexes}, from the POPC bilayer simulation with a 285~mM bulk concentration of CaCl$_2$ we found that the largest propensity is for the 1:2 complex (41\%). \todo {I seriously doubt that this is what they call a ternary complex but correct me if you know better}. Still, the probabilities of complexes with the stoichiometries of 1:1~(25\%)~and 1:3~(34\%)~are only slightly lower. This variability suggests a more complex binding model than the previously considered in a simple ternary complex model. With a broad brushstroke, the simulation data can, however, be viewed such that one calcium binds to two lipids on average, because the probabilities of the complexes with 1 or 3 lipids are almost equal to each other  (and complexes with more than three lipids per one calcium ion were not observed). This probably explains why the simple the ternary complex model fits adequately the experimental data, as well as the ECC-POPC simulation results (see Fig.~S\ref{fig:cacl-bind} in SI).
 
 \begin{figure}[tb!]
   \centering
@@ -607,61 +573,9 @@ for 1:2 complexes and very small (4\%) for 1:3 of \ce{Na+}:POPC complexes.
 
 \subsection{Residence times of \ce{Na+} and \ce{Ca^{2+}} cations in POPC membrane}
 
-Equilibration of \ce{Ca^{2+}} ions at the POPC bilayer takes hundreds of
-nanoseconds in MD simulations with current state of the art force fields,
-e.g. CHARMM36 and Slipids force fields~\cite{javanainen17}, suggesting that
-simulations at a temporal scale of several microseconds are required
-to reach the binding/unbinding equilibrium. 
-This is in line with the density profiles of \ce{Ca^{2+}} 
-from simulations in Fig.~\ref{fig:cacl-dens}, 
-which all show a region of a very small calcium density 
-around the level of cholines in POPC (i.e. around $2.5\,\mathrm{nm}$).
-In contrast, simulations with  ECC-lipids 
-exhibits only a relatively shallow local
-minimum at that level.
-This suggests that the smaller barrier for the exchange of calcium ions 
-shall lead to their faster exchange with the solvent within ECC-lipids.
-To quantify the exchange of ions between the membrane and solvent in simulations, we thus calculated 
-residence times of ions bound to the membrane.
-We use the same definition for ions bound to the membrane as in the above section~\ref{sec:affinity},
-i.e., an ion is considered as bound if it is within 0.3~nm from any oxygen atom
-belonging to a lipid molecule in a bilayer.
+Equilibration of \ce{Ca^{2+}} ions at a POPC bilayer in MD simulations is a microsecond time scale process with current state of the art force fields, e.g., CHARMM36 and Slipids force fields~\cite{javanainen17}. This suggests that at least several microseconds are required to reach the binding/unbinding equilibrium. \todo{HECTOR: I disagree with the following lines. In the case of most of the unscale force fields the issue is that the binding of Calcium to the membrane is very strong. Therefore, the reorganization takes too long leading to a very slow equilibration process. In this case, the size of the hill in the choline region is nothing compared to the size between the bound and solvated state which is the real bottleneck. Even in the case of the scaled simulations, I believe the same applies but to a lesser extent. I might be wrong in this last part. If you do not agree we can discuss it tomorrow via skype.} {\color {red} This is in line with the density profiles of \ce{Ca^{2+}} from simulations in Fig.~\ref{fig:cacl-dens}, which all show a region of a very small calcium density around the level of choline groups in POPC (i.e., around $2.5\,\mathrm{nm}$). In contrast, simulations with  ECC-lipids exhibits only a relatively shallow local minimum at that level. This suggests that the smaller barrier for the exchange of calcium ions shall lead to their faster exchange with the solvent within ECC-lipids.} To quantify the exchange of ions between the membrane and solvent in simulations, we thus calculated residence times of ions bound to the membrane. In our analysis, an ion is considered to be bound when it is within 0.3~nm from any oxygen atom belonging to a POPC molecule.
 
-The histograms of residence times of \ce{Ca^{2+}} in a POPC bilayer 
-at a $450\,\mathrm{mM}$ concentration of \ce{CaCl_2} in water before adsorption to phospholipids
-from simulations with ECC-lipids 
-compared to CHARMM36 (taken from previous study \cite{javanainen17}, 
-simulation data available at Ref.~\citenum{zenodo.259376})
-are shown in Fig.~S\ref{fig:hist_residence_times} in SI. 
-%Based on Fig. S17 in that work, Ref.~\citenum{javanainen17},
-%we took the simulation with the apparent highest fluctuations of the number of bound calcium,
-%which can be obtained at \url{https://doi.org/10.5281/zenodo.259376}
-%and anaylsed the residence times.
-In the CHARMM36 simulation, approximately 20\% of the \ce{Ca^{2+}} residence times are longer than
-the whole length of the trajectory ($800\,\mathrm{ns}$).
-Within such a relatively short simulation, 
-we can only estimate that 
-less than 60\% of the bound residence times 
-is due to cations interacting with the phospholipid membrane 
-for less then half of the simulation length~(400~ns).
-Even longer residence times are observed
-in  simulations with CHARMM36 and Slipids models reported in previous works~\cite{javanainen17}.
-
-In contrast, at least an order of magnitude faster bound/unbound calcium exchange is observed within the
-ECC-lipids model, where 90\% of the \ce{Ca^{2+}} residence times to a POPC membrane are 
-shorter than $60\,\mathrm{ns}$, % exactly $53\,\mathrm{ns}$.
-The longest observed residence time is now $141\,\mathrm{ns}$, 
-which is well below the total length of the simulation used for analysis, i.e., 200~ns.
-The exchange of \ce{Na+} ions at the POPC membrane is
-another order of magnitude faster, yielding 90\%
-of the residence times smaller than~$1\,\mathrm{ns}$, with
-the longest residence time being~$6\,\mathrm{ns}$. 
-\todo{Joe: the following is a bit more subtle argument. 
-I deem it not necessary to include it in the paper, however, 
-the experimental estimate of less tan 10us holds likely also for Charmm36/ECC-ions, as stated before.}
-Note that the ECC-lipids calcium results are in line with the experimental estimate that 
-the residence time of \ce{Ca^{2+}} at each individual PC headgroup 
-is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}.
+\todo{HECTOR: I do fully understand the content of this paragraph. I will discuss this with Joe tomorrow. Please be carefull with my changes.} The histograms of residence times of \ce{Ca^{2+}} ($C_w$ = 450~nM) in a POPC bilayer for simulations using either ECC-POPC or CHARMM36 (Simulation from Ref.~\citenum{javanainen17}) are shown in Fig.~S\ref{fig:hist_residence_times} in SI. In the CHARMM36 simulation, a significant number of the calciums are bound for the whole length of the trajectory ({\color{red} 800~ns}). In contrast, at least an order of magnitude faster bound/unbound calcium exchange is observed within the ECC-lipids model, where 90\% of the \ce{Ca^{2+}} residence times to a POPC membrane are shorter than $60\,\mathrm{ns}$. The longest observed residence time is around 150~ns, which is well below the total length of the simulation used for analysis, i.e., 200~ns. Note that these results are in line with the experimental estimate that the residence time of \ce{Ca^{2+}} at each PC headgroup is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}. The exchange of \ce{Na+} ions at the POPC membrane is another order of magnitude faster, yielding 90\% of the residence times smaller than~1~ns, with the longest residence time being~6~ns.
 
 %give a roughly estimate of the order
 %of $1\,\mu\mathrm{s}$
@@ -674,15 +588,7 @@ is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}.
 %Increasing time scales to the order of $\mu\mathrm{s}$ 
 %doesn't help to alleviate such a problem in current lipid models \cite{javanainen17}. %and also \cite{catte16}, but same simulation was used. 
 
-In conclusion, the results from the ECC-lipids model suggest that the
-exchange of calcium between the POPC bilayer and the solvent occurs within $\sim 100\,$ns timeframe,
-which is significantly faster than previously reported~\cite{javanainen17}.
-Sodium cations exhibit an even a faster exchange.
-This all suggests that simulations with a length of a several hundreds of
-nanoseconds are sufficient to simulate ion binding
-to phospholipid bilayers in equilibrium, when realistic force fields are used.
-This has not been the case with previous lipid force fields,
-which overestimate the binding strength of the sodium and calcium cations \cite{javanainen17,catte16}.
+In conclusion, the results from the ECC-lipids model suggest that the exchange of calcium between the POPC bilayer and the solvent occurs within $\sim$100~ns timeframe, which is significantly faster than observed in most of the available lipid models~\cite{javanainen17}. Sodium cations exhibit an even a more rapid exchange. This all suggests that simulations with a length of several hundreds of nanoseconds are sufficient to simulate ion binding to phospholipid bilayers in equilibrium when realistic force fields are used. This has not been the case with previous lipid force fields, which overestimate the binding strength of the sodium and calcium cations \cite{javanainen17, catte16}.
 %Such a finding changes the point of view on binding of calcium to PC membranes from
 %a very strong long-term stable binding with rare exchanges to 
 %a relatively frequent exchange of clacium cations 
@@ -691,44 +597,13 @@ which overestimate the binding strength of the sodium and calcium cations \cite{
 
 
 
-
-
-
-
 \section{Conclusions}
 
-In this study, we employed the electrometer concept to demonstrate that the binding of \ce{Na^+} and \ce{Ca^2+} ions
-to a POPC lipid bilayer can be accurately described within a classical MD simulation 
-force field, provided that electronic polarization is implicitly included via 
-the electronic continuum correction~\cite{leontyev11}.
-While the structural details of a POPC lipid bilayer simulated with the newly developed ECC-lipids
-model agree with experiments with an accuracy comparable to the other state of the art lipid models,
-the model also reproduces the experimental lipid head group order parameter responses to
-a cationic surfactant, NaCl and CaCl$_2$ concentrations. 
-It thus represents a significant improvement over 
-other available lipid models, which overestimate cation binding affinities~\cite{catte16}.  
-The ECC-lipids model is build upon
-the Lipid14 POPC model~\cite{dickson14} by scaling the partial charges by a factor of 0.8
-and reducing the Van der Waals radii by a factor of 0.89 for the headgroup, glycerol backbone and carbonyl atoms. 
+In this study, we employed the electrometer concept to demonstrate that the binding of \ce{Na^+} and \ce{Ca^2+} ions to a POPC lipid bilayer can be accurately described within a classical MD simulation force field, provided that electronic polarization is implicitly included via the electronic continuum correction~\cite{leontyev11}. While the structural details of a POPC lipid bilayer simulated with the newly developed ECC-lipids model agree with experiments with an accuracy comparable to the other state of the art lipid models, the model also reproduces the experimental lipid head group order parameter responses to a cationic surfactant, NaCl, and CaCl$_2$ concentrations. It thus represents a significant improvement over other available lipid models, which overestimate cation binding affinities~\cite{catte16}. The ECC-lipids model is built upon the Lipid14 POPC model~\cite{dickson14} by scaling the partial charges by a factor of 0.8 and reducing the Van der Waals radii by a factor of 0.89 for the headgroup, glycerol backbone, and carbonyl atoms. 
 
-The good agreement with experiments enables us to 
-interpret NMR experiments with atomistic details using MD simulations with the ECC-lipid model.
-In line with previous interpretations of experimental data \cite{hauser76,hauser78,herbette84,binder02},
-Ca$^{2+}$ ions interact mainly with phosphate oxygens.
-However, the stoichiometry of calcium binding is significantly more complicated than
-the simple ternary complex model, used to interpret NMR data, where one calcium binds to two POPC molecules~\cite{altenbach84}.
-While complexes with one calcium ion bound to two lipids are the most probable also in the
-ECC-lipids model, complexes of one or three lipids per one calcium
-were observed to relatively abundant and also almost equally likely. While the success of the simple ternary
-compex model in fitting NMR data is understandable based on the simulation results,
-it cannot capture the complex nature of calcium binding to phospholipid bilayers
-oberved in the present simulation.
+The good agreement with experiments enables us to interpret NMR experiments with atomistic details using MD simulations with the ECC-lipid model. In line with previous interpretations of experimental data \cite{hauser76,hauser78,herbette84,binder02}, Ca$^{2+}$ ions interact mainly with phosphate oxygens. However, the stoichiometry of calcium binding is significantly more complicated than the simple ternary complex model, used to interpret NMR data, where one calcium binds to two POPC molecules~\cite{altenbach84}. While complexes with one calcium ion bound to two lipids are the most probable also in the ECC-lipids model, complexes of one or three lipids per one calcium were observed to relatively abundant and also almost equally likely. While the success of the simple ternary complex model in fitting NMR data is understandable based on the simulation results, it cannot capture the complex nature of calcium binding to phospholipid bilayers observed in the present simulation.
 
-Accurate description of cation binding to POPC bilayer paves the way for
-simulations of complex biochemical systems at cellular membranes with realistically described
-electrostatic interactions. To this end, the compatibility of
-the ECC-lipids model with existing models for proteins and other biological molecules should to be verified and, if necessary, 
-further adjustments along the ECC concept in force fields of molecules interacting with the lipids need to be done.
+Accurate description of cation binding to POPC bilayer paves the way for simulations of complex biochemical systems at cellular membranes with realistically described electrostatic interactions. To this end, the compatibility of the ECC-lipids model with existing models for proteins and other biological molecules should be verified and, if necessary, further adjustments following ECC concept to the force fields of the interacting molecules with the lipids should be addressed.
 
 %but we expect that the correction can be used also for other lipids
 %and force fields.
