@@ -171,7 +171,8 @@ measurable structural parameters of an ion-free POPC lipid bilayer with the accu
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc}
 The lack of electronic polarizability in standard MD simulation force fields has been considered a serious issue since the early days of lipid bilayer simulations. In this work, we circumvent the demanding explicit inclusion of electronic polarization effects~\cite{lucas12, chowdhary13} by including the electronic part of polarizability in lipid bilayer simulations implicitly via the electronic continuum correction (ECC)~\cite{leontyev11}. Technically, this is similar to the phenomenological charge-scaling applied in earlier studies of surfactants, lipids or ionic liquids \cite{jonsson86, egberts94, beichel14}. However, the present concept of ECC is physically well justified and rigorously derived~\cite{leontyev09, leontyev10, leontyev11, leontyev14}.
 
-According to ECC mean-field correction\todo{HECTOR: I added this back because it is an important detail.}, the electronic polarizability can be modeled in non-polarizable MD by effectively embedding the ions in a homogeneous dielectric continuum with a dielectric constant $\epsilon_{el}$, which is the electronic part of the dielectric constant of the medium~\cite{leontyev11}. Following Coulomb's law,  ECC can be directly incorporated by scaling the charges with a constant scaling factor of $f_q = \epsilon _{el} ^{-1/2}$, giving
+According to ECC, the electronic polarizability can be modeled in non-polarizable MD in a mean-field way by 
+embedding the ions in a homogeneous dielectric continuum with a dielectric constant $\epsilon_{el}$, which is the electronic part of the dielectric constant of the medium~\cite{leontyev11}. Following Coulomb's law,  ECC can be directly incorporated by scaling the charges with a constant scaling factor of $f_q = \epsilon _{el} ^{-1/2}$, giving
 \begin{equation}
 Q^{ECC} = f_q \cdot Q
 \end{equation}
@@ -308,9 +309,8 @@ forming the POPC lipid are derived in this work starting from the Lipid14 force 
 For comparison, simulations with the Lipid14 model~\cite{dickson14} and
 ion models by Dang and coworkers~\cite{smith94,chang1999,dang2006} or ECC-ions \cite{martinek17, kohagen16, Pluharova2014}
 were also performed. The TIP3p water model~\cite{jorgensen83} was used in all simulations with the original Lipid14 model.
-\todo{Joe, please confirm that this is correct.}
 Simulation data for the Lipid14 model with \AA{}qvist ions~\cite{aqvist90} and TIP3P~\cite{jorgensen83} water models were taken directly from
-Refs.~\citenum{catte16,lipid14POPC0mMNaClfiles,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC,lipid14POPC1000mMNaClfiles}.  
+Refs.~\citenum{catte16,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC,lipid14POPC1000mMNaClfiles}.  
 
 MD simulations were performed using the GROMACS \cite{Abraham15} simulation package (version 5.1.4). The simulation parameters used
 in this work are summarized in Table~S1. Combability with openMM simulation package \cite{openmm7} was also
@@ -339,16 +339,15 @@ Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCAT
   %\includegraphics[height=8.4cm,angle=-90]{../Fig/form-f_exp-l14-eccl17.eps}
   \caption{\label{simVSexpNOions}
     Top: X-ray scattering form factors from simulations with the Lipid14 \cite{dickson14} and
-    the ECC-POPC models compared with experiments~\cite{kucerka11} at {\color{red}??K}.
+    the ECC-POPC models compared with experiments~\cite{kucerka11} at 303~K.
     Middle: Order parameters of POPC head group, glycerol backbone and acyl chains 
     from simulations with the Lipid14 \cite{dickson14} and the ECC-POPC models
-    compared with experiments \cite{ferreira13} at {\color{red}??K}.
+    compared with experiments \cite{ferreira13} at 300~K.
     The size of the markers for the head group order parameters correspond to
     the error estimate $\pm 0.02$ for experiments \cite{botan15,ollila16},
     while the error estimate for simulations is $\pm 0.005$.
     The size of the points for acyl chains are decreased by a factor of 3 to improve the clarity of the plot.
     Bottom: The chemical structure of POPC and the labeling of the carbon segments.
-    {\color{red}Joe, please add the temperatures}
   } 
 \end{figure}
 
@@ -535,8 +534,8 @@ Finally, the ion binding affinities for the ECC-POPC model with different water 
     and the percetages of Ca$^{2+}$ bound to phosphate or carbonyl oxyges ($r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ and $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}}$)
     in different POPC bilayer models. All systems have the same molar concentration of Ca$^{2+}$ respect to water ($C_{ion}'$=350mM).
     %{\color{red}HECTOR:PLEASE CHECK}
-    {\color{red}Joe, please confirm that $r^\mathrm{Ca^{2+}} _\mathrm{PO_4}$ is really 100\% for all the Lipid14 simulations
-      (i.e. that this is not a typo).}
+    %{\color{red}Joe, please confirm that $r^\mathrm{Ca^{2+}} _\mathrm{PO_4}$ is really 100\% for all the Lipid14 simulations
+    %  (i.e. that this is not a typo).}
   \label{tab:binding}}
   \begin{tabular}{l|c c | c | c c}
     model                  & $C_{ion}'$ & $C_{ion}\,/\,\mathrm{mM}$ & $\Gamma_{Ca}^{\rm water} \,/\, \mathrm{nm}^{-2}$  & $r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ & $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} $ \\
@@ -570,11 +569,11 @@ Interestingly, the calculated relative surface excess of \ce{NaCl} at $1\,\mathr
     for different force fields.
     %Data for Lipid14 with \AA{}qvist ions are taken directly from Ref. \citenum{catte16}.
     %Normalization factor for ions is 1 for monovalent ions (i.e.~\ce{Na^+} and~\ce{Cl^-}),
-    {\color{red} Joe, please clarify the sentence below}
-    In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}}, 
-    densities of~\ce{Cl^-} and \ce{Na^{+}} are divided by 2, and
-    densities of phosphate group resp. water are divided by 5 resp. 200. 
-    All the simulations shown here have the same molar concentration of ions in water ($C_{ion}'$=350~mM).
+    %In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}}, 
+    The density profiles of~\ce{Cl^-} and \ce{Na^{+}} ions are divided by 2, and
+    the density profiles of phosphate groups resp. water are divided by 5 resp. 200. 
+    All simulations with \ce{CaCl2} shown here have the same molar concentration of ions in water ($C_{ion}'$=350~mM).
+    The simulation with \ce{NaCl} has $C_{ion}'$=1000~mM.
     }
 \end{figure}
 
@@ -646,7 +645,8 @@ Equilibration of \ce{Ca^{2+}} ions at a POPC bilayer in MD simulations is a micr
 %\todo{HECTOR: I disagree with the following lines. In the case of most of the unscale force fields the issue is that the binding of Calcium to the membrane is very strong. Therefore, the reorganization takes too long leading to a very slow equilibration process. In this case, the size of the hill in the choline region is nothing compared to the size between the bound and solvated state which is the real bottleneck. Even in the case of the scaled simulations, I believe the same applies but to a lesser extent. I might be wrong in this last part. If you do not agree we can discuss it tomorrow via skype.} {\color{red} This is in line with the density profiles of \ce{Ca^{2+}} from simulations in Fig.~\ref{fig:cacl-dens}, which all show a region of a very small calcium density around the level of choline groups in POPC (i.e., around $2.5\,\mathrm{nm}$). In contrast, simulations with  ECC-lipids exhibits only a relatively shallow local minimum at that level. This suggests that the smaller barrier for the exchange of calcium ions shall lead to their faster exchange with the solvent within ECC-lipids.}
 To quantify the exchange of ions between the membrane and solvent in simulations, we thus calculated residence times of ions bound to the membrane. In our analysis, an ion is considered to be bound when it is within 0.3~nm from any oxygen atom belonging to a POPC molecule.
 
-\todo{HECTOR: I do fully understand the content of this paragraph. I will discuss this with Joe tomorrow. Please be carefull with my changes.} The histograms of residence times of \ce{Ca^{2+}} ($C_{ion}'$ = 450~mM) in a POPC bilayer for simulations using either ECC-POPC or CHARMM36 (Simulation from Refs.~\citenum{javanainen17,zenodo.259376}) are shown in Fig.~S4 in SI. In the CHARMM36 simulation, a significant number of the calciums are bound for the whole length of the trajectory ({\color{red} 800~ns}). In contrast, at least an order of magnitude faster bound/unbound calcium exchange is observed within the ECC-POPC model, where 90\% of the \ce{Ca^{2+}} residence times to a POPC membrane are shorter than $60\,\mathrm{ns}$. The longest observed residence time is around 150~ns, which is well below the total length of the simulation used for analysis, i.e., 200~ns. Note that these results are in line with the experimental estimate that the residence time of \ce{Ca^{2+}} at each PC headgroup is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}. The exchange of \ce{Na+} ions at the POPC membrane is another order of magnitude faster, yielding 90\% of the residence times smaller than~1~ns, with the longest residence time being~6~ns.
+\todo{HECTOR: I do fully understand the content of this paragraph. I will discuss this with Joe tomorrow. Please be carefull with my changes.} 
+The histograms of residence times of \ce{Ca^{2+}} ($C_{ion}'$ = 450~mM) in a POPC bilayer for simulations using either ECC-POPC or CHARMM36 (Simulation from Refs.~\citenum{javanainen17,zenodo.259376}) are shown in Fig.~S4 in SI. In the CHARMM36 simulation, a significant number of the calciums are bound for the whole length of the trajectory (800~ns). In contrast, at least an order of magnitude faster bound/unbound calcium exchange is observed within the ECC-POPC model, where 90\% of the \ce{Ca^{2+}} residence times to a POPC membrane are shorter than $60\,\mathrm{ns}$. The longest observed residence time is around 150~ns, which is well below the total length of the simulation used for analysis, i.e., 200~ns. Note that these results are in line with the experimental estimate that the residence time of \ce{Ca^{2+}} at each PC headgroup is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}. The exchange of \ce{Na+} ions at the POPC membrane is another order of magnitude faster, yielding 90\% of the residence times smaller than~1~ns, with the longest residence time being~6~ns.
 
 %give a roughly estimate of the order
 %of $1\,\mu\mathrm{s}$
