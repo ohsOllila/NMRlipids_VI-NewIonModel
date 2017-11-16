@@ -255,9 +255,9 @@ is a cationic surfactant having two acyl chains and bearing a unit charge in the
 
 \subsection{Salt concentrations and binding affinity}
 NMR experiments report the used salt concentrations in two different ways when measuring head group order parameters.
-Some use the salt concentrations in water before solvating the lipids~\cite{akutsu81}, $C_w$,
+Some use the salt concentrations in water before solvating the lipids~\cite{akutsu81}, $C_{ion}'$,
 while others use atomic absorption spectroscopy and report the salt concentration in
-the supernatant after the solvation of lipids~\cite{altenbach84}, $C_b$. In this work,
+the supernatant after the solvation of lipids~\cite{altenbach84}, $C_{ion}$. In this work,
 %we use the latter definition. In particular,
 we measure the latter concentration in the aqueous
 bulk region using the farthest point from the lipid bilayer in the aqueous phase.
@@ -444,7 +444,7 @@ In Fig.~\ref{OrderParameterCHANGESsurf}, we show the headgroup P-N vector angle 
   \includegraphics[width=8.0cm]{../Fig/ipython_nb/OrdPars-A-B_L14-ECCL17_q80_sig89_NaCl.pdf}
   \caption{\label{fig:delta_ordPar_NaCl}
     Changes of the head group order parameters of a POPC bilayer as a function of NaCl concentration
-    in bulk ($C_b$) from simulations with different force fields at 313 K together with 
+    in bulk ($C_{ion}$) from simulations with different force fields at 313 K together with 
     experimental data for DPPC (323\,K) \cite{akutsu81} and POPC (313\,K) \cite{altenbach84}.
     %Ion concentrations in x-axis are calculated as in Fig.~\ref{fig:delta_ordPar_CaCl}.
     Simulation data with Lipid14 and \AA{}qvist ion parameters at 298 K are taken directly from
@@ -458,7 +458,7 @@ In Fig.~\ref{OrderParameterCHANGESsurf}, we show the headgroup P-N vector angle 
   \includegraphics[width=8.0cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B-g3_L14-ECCL17_q80_sig89_CaCl.pdf}
   \caption{\label{fig:delta_ordPar_CaCl}
     Changes of the head group order parameters and P-N vector orientation of a POPC bilayer 
-    as a function of the CaCl$_2$ concentration in bulk ($C_b$)
+    as a function of the CaCl$_2$ concentration in bulk ($C_{ion}$)
     from simulations at 313 K together with experimental data 
     (DPPC (323\,K) \cite{akutsu81} and POPC (313\,K) \cite{altenbach84}). 
     %Ion concentrations in bulk water are shown in x-axis. 
@@ -533,13 +533,13 @@ Finally, the ion binding affinities for the ECC-POPC model with different water 
 \begin{table}[tb!]
   \caption{Bulk concentrations of Ca$^{2+}$ (C$_b$), relative surface excess of calcium with respect to water ($\Gamma_{Ca}^{\rm water}$),
     and the percetages of Ca$^{2+}$ bound to phosphate or carbonyl oxyges ($r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ and $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}}$)
-    in different POPC bilayer models. All systems have the same molar concentration of Ca$^{2+}$ respect to water (C$_w$=350mM).
+    in different POPC bilayer models. All systems have the same molar concentration of Ca$^{2+}$ respect to water ($C_{ion}'$=350mM).
     %{\color{red}HECTOR:PLEASE CHECK}
     {\color{red}Joe, please confirm that $r^\mathrm{Ca^{2+}} _\mathrm{PO_4}$ is really 100\% for all the Lipid14 simulations
       (i.e. that this is not a typo).}
   \label{tab:binding}}
   \begin{tabular}{l|c c | c | c c}
-    model                  & $C_{w}$ & $C_b\,/\,\mathrm{mM}$ & $\Gamma_{Ca}^{\rm water} \,/\, \mathrm{nm}^{-2}$  & $r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ & $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} $ \\
+    model                  & $C_{ion}'$ & $C_{ion}\,/\,\mathrm{mM}$ & $\Gamma_{Ca}^{\rm water} \,/\, \mathrm{nm}^{-2}$  & $r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ & $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} $ \\
     \hline
     ECC-POPC             &  350  &  $280\pm 10 $  &  $0.06 \pm 0.01 $                           &  99\%  &    25\%    \\
     Lipid14/\AA{}qvist     &  350  &  $210\pm 10 $  &  $0.13 \pm 0.01 $                          & 100\%  &    37\%     \\
@@ -555,7 +555,7 @@ Finally, the ion binding affinities for the ECC-POPC model with different water 
 Binding affinities of Ca$^{2+}$ ions to a POPC bilayer in different simulation models were quantified by calculating the relative surface excess of calcium respect to water molecules, $\Gamma_{\rm ion}^{\rm water}$, from Eq.~\ref{surfexcess}.
 The values of $\Gamma_{\rm ion}^{\rm water}$
 from different POPC simulations with then same molar concetration respect
-to water ($C_w$=350mM) are shown in Table~\ref{tab:binding}.
+to water ($C_{ion}'$=350mM) are shown in Table~\ref{tab:binding}.
 As expected from the changes of the lipid headgroup order parameters in Fig.~ \ref{fig:delta_ordPar_CaCl}, the relative surface excess for the ECC-POPC model, $\Gamma_{\rm Ca}^{\rm water}$ = 0.06~nm$^{-2}$, is significantly smaller than for the other models, 0.13--0.35~nm$^{-2}$.
 %\todo{HECTOR: I have deleted the sentence relating the uncertainty and the error as in my opinion there are other factors which are more important. The most important the slow convergence. SAMULI: I think that this was a good idea.}.
 Interestingly, the calculated relative surface excess of \ce{NaCl} at $1\,\mathrm{M}$ concentration (ECC-ions~\cite{Pluharova2014}) using our POPC-ECC model is not only quantitatively but also qualitatively different from \ce{CaCl2} having a negative value $\Gamma_{Na}^{water} = (-0.11 \pm 0.01) \rm{nm}^{-2}$ (Fig.~\ref{fig:cacl-dens}). This value means that water molecules are preferred to sodium and chloride ions at the membrane-water interface.  This is in contradiction with most of the available lipid force fields, which predict a positive binding of sodium to PC lipid bilayers \cite{catte16}.
@@ -574,7 +574,7 @@ Interestingly, the calculated relative surface excess of \ce{NaCl} at $1\,\mathr
     In order to visualize the density profiles with a scale comparable to the profile of \ce{Ca^{2+}}, 
     densities of~\ce{Cl^-} and \ce{Na^{+}} are divided by 2, and
     densities of phosphate group resp. water are divided by 5 resp. 200. 
-    All the simulations shown here have the same molar concentration of ions in water ($C_w$=350~mM).
+    All the simulations shown here have the same molar concentration of ions in water ($C_{ion}'$=350~mM).
     }
 \end{figure}
 
@@ -646,7 +646,7 @@ Equilibration of \ce{Ca^{2+}} ions at a POPC bilayer in MD simulations is a micr
 %\todo{HECTOR: I disagree with the following lines. In the case of most of the unscale force fields the issue is that the binding of Calcium to the membrane is very strong. Therefore, the reorganization takes too long leading to a very slow equilibration process. In this case, the size of the hill in the choline region is nothing compared to the size between the bound and solvated state which is the real bottleneck. Even in the case of the scaled simulations, I believe the same applies but to a lesser extent. I might be wrong in this last part. If you do not agree we can discuss it tomorrow via skype.} {\color{red} This is in line with the density profiles of \ce{Ca^{2+}} from simulations in Fig.~\ref{fig:cacl-dens}, which all show a region of a very small calcium density around the level of choline groups in POPC (i.e., around $2.5\,\mathrm{nm}$). In contrast, simulations with  ECC-lipids exhibits only a relatively shallow local minimum at that level. This suggests that the smaller barrier for the exchange of calcium ions shall lead to their faster exchange with the solvent within ECC-lipids.}
 To quantify the exchange of ions between the membrane and solvent in simulations, we thus calculated residence times of ions bound to the membrane. In our analysis, an ion is considered to be bound when it is within 0.3~nm from any oxygen atom belonging to a POPC molecule.
 
-\todo{HECTOR: I do fully understand the content of this paragraph. I will discuss this with Joe tomorrow. Please be carefull with my changes.} The histograms of residence times of \ce{Ca^{2+}} ($C_w$ = 450~mM) in a POPC bilayer for simulations using either ECC-POPC or CHARMM36 (Simulation from Refs.~\citenum{javanainen17,zenodo.259376}) are shown in Fig.~S4 in SI. In the CHARMM36 simulation, a significant number of the calciums are bound for the whole length of the trajectory ({\color{red} 800~ns}). In contrast, at least an order of magnitude faster bound/unbound calcium exchange is observed within the ECC-POPC model, where 90\% of the \ce{Ca^{2+}} residence times to a POPC membrane are shorter than $60\,\mathrm{ns}$. The longest observed residence time is around 150~ns, which is well below the total length of the simulation used for analysis, i.e., 200~ns. Note that these results are in line with the experimental estimate that the residence time of \ce{Ca^{2+}} at each PC headgroup is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}. The exchange of \ce{Na+} ions at the POPC membrane is another order of magnitude faster, yielding 90\% of the residence times smaller than~1~ns, with the longest residence time being~6~ns.
+\todo{HECTOR: I do fully understand the content of this paragraph. I will discuss this with Joe tomorrow. Please be carefull with my changes.} The histograms of residence times of \ce{Ca^{2+}} ($C_{ion}'$ = 450~mM) in a POPC bilayer for simulations using either ECC-POPC or CHARMM36 (Simulation from Refs.~\citenum{javanainen17,zenodo.259376}) are shown in Fig.~S4 in SI. In the CHARMM36 simulation, a significant number of the calciums are bound for the whole length of the trajectory ({\color{red} 800~ns}). In contrast, at least an order of magnitude faster bound/unbound calcium exchange is observed within the ECC-POPC model, where 90\% of the \ce{Ca^{2+}} residence times to a POPC membrane are shorter than $60\,\mathrm{ns}$. The longest observed residence time is around 150~ns, which is well below the total length of the simulation used for analysis, i.e., 200~ns. Note that these results are in line with the experimental estimate that the residence time of \ce{Ca^{2+}} at each PC headgroup is shorter than $10\,\mu\mathrm{s}$~\cite{altenbach84}. The exchange of \ce{Na+} ions at the POPC membrane is another order of magnitude faster, yielding 90\% of the residence times smaller than~1~ns, with the longest residence time being~6~ns.
 
 %give a roughly estimate of the order
 %of $1\,\mu\mathrm{s}$
