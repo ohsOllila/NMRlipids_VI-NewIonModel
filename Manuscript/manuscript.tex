@@ -119,7 +119,7 @@ of complex biochemical systems at cellular membranes.
 % References should be done using the \cite, \ref, and \label commands
 
 \section{Introduction}
-Interactions of ions with cellular membranes play a key role in many important biological processes~\cite{seelig90,cevc90}. Ions, especially multivalent cations, modify general properties of the membrane which also modulate the embedded transmembrane proteins~\cite{cevc90,tocanne90, pabst07}. For example, Ca$^{2+}$  is crucial in propagation of neural signals. It promotes membrane fusion by bridging lipids in the vesicles carrying neurotransmitters and the neuron synapsis membrane~\cite{REF}. Ca$^{2+}$ also participates in the T-cell receptor activation. It induces the detachment of the positively charged cytosolic tails of the CD3 protein complex from the negatively charged intracellular membrane making it accessible for the Lck protein~\cite{Shi2013Ca2}. Another example involving sugar-lipid interactions mediated by ions concerns Ca$^{2+}$ modulating the presentation of the sugars present in the PI(4,5)P$_2$ lipid which ultimately modulates the phospholipase C delta 1 pleckstrin homology domain (PLC $\delta$1-H)~\cite{Bilkova2017Calcium}. Interestingly, this effect is not present for Mg$^{2+}$, which illustrates the selectivity of these processes with respect to particular ions. Despite our increasing understanding of the role of ions in cell membrane-related processes the molecular details of the mechanisms behind such processes remain elusive in many cases. 
+Interactions of ions with cellular membranes play a key role in many important biological processes~\cite{seelig90,cevc90}. Ions, especially multivalent cations, modify general properties of the membrane which also modulate the embedded transmembrane proteins~\cite{cevc90,tocanne90, pabst07}. For example, Ca$^{2+}$  is crucial in propagation of neural signals. It promotes membrane fusion by bridging lipids in the vesicles carrying neurotransmitters and the neuron synapsis membrane~\cite{papahadjopoulos90,brouwer15}. Ca$^{2+}$ also participates in the T-cell receptor activation. It induces the detachment of the positively charged cytosolic tails of the CD3 protein complex from the negatively charged intracellular membrane making it accessible for the Lck protein~\cite{Shi2013Ca2}. Another example involving sugar-lipid interactions mediated by ions concerns Ca$^{2+}$ modulating the presentation of the sugars present in the PI(4,5)P$_2$ lipid which ultimately modulates the phospholipase C delta 1 pleckstrin homology domain (PLC $\delta$1-H)~\cite{Bilkova2017Calcium}. Interestingly, this effect is not present for Mg$^{2+}$, which illustrates the selectivity of these processes with respect to particular ions. Despite our increasing understanding of the role of ions in cell membrane-related processes the molecular details of the mechanisms behind such processes remain elusive in many cases. 
 
 Direct measurements of ion-membrane interactions in complex biological systems are difficult. 
 Hence, simplified lipid bilayers are often used as entry-level models to shed light on the role of ions in complex biological membranes~\cite{scherer87,seelig90,cevc90}. 
@@ -153,7 +153,7 @@ It is important to note that the value of the
 high frequency dielectric constant 
 is around 2 for almost any biologically relevant environment \cite{leontyev11}.
 The dielectric discontinuity in a lipid bilayer thus arises only
-from the nuclear (orientational) polarization of the molecules, which is accounted for explicitly in standard MD simulations. 
+from the orientational polarization of the molecules, which is accounted for explicitly in standard MD simulations. 
 Therefore, the same correction for the electronic polarizability can be 
 applied throughout the lipid bilayer/aqueous solution interface.
 
@@ -166,7 +166,7 @@ The Lipid14~\cite{dickson14} force field
 point since 
 it provides the most accurate response of the head groups to ions among the available 
 lipid models (see Figs.~2~and~5 in Ref.~\citenum{catte16}). Additionally, the Lipid14 model 
-provides realistic head group, glycerol backbone, and acyl chain structures~\cite{dickson14,botan15}.
+provides relatively realistic head group, glycerol backbone, and acyl chain structures~\cite{dickson14,botan15}.
 We applied the ECC correction 
 to the Lipid14 model of POPC by scaling 
 partial charges of the head group, glycerol 
@@ -354,7 +354,7 @@ lipid bilayer with a comparable accuracy to other state-of-the-art lipid models~
 Similarly, the acyl chain order parameters of the ECC-POPC model, as well as those of the Lipid14 model~\cite{dickson14}, agree with the experimental values within the error bars, as presented in Fig.~\ref{simVSexpNOions}. Notably, the experimentally measured forking and small order parameter values of the $C_2$ segment in {\it sn}-2 chain are well reproduced by both models. This feature has been suggested to indicate that the carbonyl of the {\it sn}-2 chain is directed towards the water phase, in contrast to the carbonyl in the {\it sn}-1 chain, which orients more along the bilayer plane~\cite{seelig75,schindler75,gawrisch92}.
 This arrangement, which is not fully reproduced by other available lipid models~\cite{ollila16}, may be a relevant feature for the ion binding details.
 
-The order parameters of the $\alpha$ and $\beta$ carbons in the head group are slightly larger in the ECC-POPC model than in the Lipid14 model, which is apparently related to the P-N vector orienting by about 7$^{\circ}$ more toward the water phase in the former model, see Fig.~\ref{OrderParameterCHANGESsurf}. While both models perform satisfactorily, considering the available experimental evidence, it is not possible to decide which of the two models provides more realistic head group orientations. The ECC-POPC model gives the $\beta$ carbon order parameter value closer to experiments than the Lipid14 model, while the opposite is true for the $\alpha$ carbon. The accuracy of both models in the glycerol backbone region is comparable to other state-of-the-art lipid model available in literature \cite{botan15}, see Fig.~\ref{simVSexpNOions}.
+The order parameters of the $\alpha$ and $\beta$ carbons in the head group are slightly larger in the ECC-POPC model than in the Lipid14 model, which is apparently related to the P-N vector orienting by about 7$^{\circ}$ more toward the water phase in the former model, see Fig.~\ref{OrderParameterCHANGESsurf}. While both models perform relatively well, considering the available experimental evidence, it is not possible to decide which of the two models provides more realistic head group orientations. The ECC-POPC model gives the $\beta$ carbon order parameter value closer to experiments than the Lipid14 model, while the opposite is true for the $\alpha$ carbon. The accuracy of both models in the glycerol backbone region is comparable to other state-of-the-art lipid model available in literature \cite{botan15}, see Fig.~\ref{simVSexpNOions}.
 
 
 \todo{Dynamics check is missing: MSD (Hector/Joe)}
@@ -475,7 +475,7 @@ to water ($C_{ion}'$=350mM) are shown in Table~\ref{tab:binding}.
 As expected from the changes of the lipid headgroup order parameters in Fig.~ \ref{fig:delta_ordPar_CaCl}, the relative surface excess of calcium, $\Gamma_{\rm Ca}^{\rm water}$ = 0.06~nm$^{-2}$, is significantly smaller for the ECC-POPC model than for the other models, 0.13--0.35~nm$^{-2}$.
 Interestingly, the calculated relative surface excess of \ce{NaCl} at $1\,\mathrm{M}$ concentration (ECC-ions~\cite{Pluharova2014}) using our ECC-POPC model is not only quantitatively but also qualitatively different from \ce{CaCl2} having actually a negative value of $\Gamma_{Na}^{water} = -0.11 \pm 0.01) \rm{nm}^{-2}$ (Fig.~\ref{fig:cacl-dens}. This 
 means that on average water molecules are preferred to sodium and chloride ions at the membrane-water interface.  
-This is in contradiction with most of the available lipid force fields, which predict a small but positive surface excess of sodium at PC lipid bilayers \cite{catte16}.
+This is in contradiction with most of the available lipid force fields, which predict a positive surface excess of sodium at PC lipid bilayers \cite{catte16}.
 
 \begin{figure}[htbp!]
   \centering
@@ -514,7 +514,7 @@ We analyzed the ratio of the number of calcium cations bound to either phosphate
 
 Even though \ce{Na+} ions do not bind strongly to a POPC bilayer, they still interact mostly with its oxygen moieties. The results from a simulation at a $1\,$M \ce{NaCl} concentration show that 55\% of \ce{Na+} ions at the bilayer interact with phosphate oxygens of POPC only and 20\% with carbonyl oxygens only, with the remaining 25\%, is interacting with both negatively charged groups.
 
-In conclusion, the results suggest that calcium ions bind specifically to the phosphate oxygens, occasionally interacting also with the carbonyls of the PC lipids. This is in a qualitative agreement with previous conclusions from several experimental and computational studies~\cite{hauser76, hauser78, herbette84, cevc90, binder02}. However, the present results suggest, in
+In conclusion, the results suggest that calcium ions bind specifically to the phosphate oxygens, occasionally interacting also with the carbonyls of the PC lipids. This is in a qualitative agreement with previous conclusions from several experimental studies~\cite{hauser76, hauser78, herbette84, cevc90, binder02}. However, the present results suggest, in
 agreement with experiments, an overally weaker binding to the bilayer, in particular with a lower relative binding affinity to the carbonyls than inferred from previous MD simulation studies~\cite{bockmann03, bockmann04, melcrova16, javanainen17}. Sodium ions, which do not exhibit any appreciable affinity for the bilayer, also interact primarily with phosphate oxygens of the POPC, but in contrast to calcium, the interactions purely with carbonyls are also significant.
 
 
