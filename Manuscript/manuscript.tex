@@ -1,31 +1,17 @@
-%% ****** Start of file aiptemplate.tex ****** %
-%%
-%%   This file is part of the files in the distribution of AIP substyles for REVTeX4.
-%%   Version 4.1 of 9 October 2009.
-%%
-%
-% This is a template for producing documents for use with 
-% the REVTEX 4.1 document class and the AIP substyles.
-% 
-% Copy this file to another name and then work on that file.
-% That way, you always have this original template file to use.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% This is a (brief) model paper using the achemso class
+%% The document class accepts keyval options, which should include
+%% the target journal and optionally the manuscript type.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[journal=jpcbfk,manuscript=article]{achemso}
 
-%\documentclass[aip,graphicx]{revtex4-1}
-%\documentclass[aip,reprint]{revtex4-1}
-
-%\usepackage{graphicx}
-
-%\draft % marks overfull lines with a black rule on the right
-%\documentclass[pre,aps,floatfix,authordate1-4,twocolumn]{revtex4-1}
-%\documentclass[pre,aps,floatfix,authordate1-4]{revtex4-1}
-
-\documentclass[aip,jcp,twocolumn]{revtex4}
-%\documentclass[aip,jcp]{revtex4}
-%\documentclass{article}
-
-
-
-%\documentclass[aps,prl,preprint,groupedaddress]{revtex4}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Place any additional packages needed here.  Only include packages
+%% which are essential, to avoid problems later. Do NOT use any
+%% packages which require e-TeX (for example etoolbox): the e-TeX
+%% extensions are not currently available on the ACS conversion
+%% servers.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{rotating} 
 \usepackage{times}
@@ -40,23 +26,41 @@
 
 %\usepackage{markdown} 
 
-\begin{document}
 
-% Use the \preprint command to place your local institutional report number 
-% on the title page in preprint mode.
-% Multiple \preprint commands are allowed.
-%\preprint{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% If issues arise when submitting your manuscript, you may want to
+%% un-comment the next line.  This provides information on the
+%% version of every file you have used.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%\listfiles
 
-\title{Accurate binding of sodium and calcium to phospholipid bilayers by effective inclusion of electronic polarization} %Title of paper
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Place any additional macros here.  Please use \newcommand* where
+%% possible, and avoid layout-changing macros (which are not used
+%% when typesetting).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*\mycommand[1]{\texttt{\emph{#1}}}
 
-% repeat the \author .. \affiliation  etc. as needed
-% \email, \thanks, \homepage, \altaffiliation all apply to the current author.
-% Explanatory text should go in the []'s, 
-% actual e-mail address or url should go in the {}'s for \email and \homepage.
-% Please use the appropriate macro for the type of information
-
-% \affiliation command applies to all authors since the last \affiliation command. 
-% The \affiliation command should follow the other information.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Meta-data block
+%% ---------------
+%% Each author should be given as a separate \author command.
+%%
+%% Corresponding authors should have an e-mail given after the author
+%% name as an \email command. Phone and fax numbers can be given
+%% using \phone and \fax, respectively; this information is optional.
+%%
+%% The affiliation of authors is given after the authors; each
+%% \affiliation command applies to all preceding authors not already
+%% assigned an affiliation.
+%%
+%% The affiliation takes an option argument for the short name.  This
+%% will typically be something like "University of Somewhere".
+%%
+%% The \altaffiliation macro should be used for new address, etc.
+%% On the other hand, \alsoaffiliation is used on a per author basis
+%% when authors are associated with multiple institutions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author{Josef Melcr}
 \author{Hector Martinez-Seara}
@@ -69,27 +73,98 @@ Prague 6, Czech Republic}
 \affiliation{Institute of Organic Chemistry and Biochemistry,
 Academy of Sciences of the Czech Republic, 
 Prague 6, Czech Republic}
-\affiliation{Department of Physics, Tampere University of Technology, P.O. Box 692, FI-33101
+\alsoaffiliation{Department of Physics, Tampere University of Technology, P.O. Box 692, FI-33101
 Tampere, Finland}
 
 \author{O. H. Samuli Ollila}
-\email[]{samuli.ollila@helsinki.fi}
+\email{samuli.ollila@helsinki.fi}
 %\homepage[]{Your web page}
 \affiliation{Institute of Organic Chemistry and Biochemistry,
 Academy of Sciences of the Czech Republic, 
 Prague 6, Czech Republic}
-\affiliation{Institute of Biotechnology, University of Helsinki}
+\alsoaffiliation{Institute of Biotechnology, University of Helsinki}
 
 
-% Collaboration name, if desired (requires use of superscriptaddress option in \documentclass). 
-% \noaffiliation is required (may also be used with the \author command).
-%\collaboration{}
-%\noaffiliation
+%\author{Andrew N. Other}
+%\altaffiliation{A shared footnote}
+%\author{Fred T. Secondauthor}
+%\altaffiliation{Current address: Some other place, Othert\"own,
+%Germany}
+%\author{I. Ken Groupleader}
+%\altaffiliation{A shared footnote}
+%\email{i.k.groupleader@unknown.uu}
+%\phone{+123 (0)123 4445556}
+%\fax{+123 (0)123 4445557}
+%\affiliation[Unknown University]
+%{Department of Chemistry, Unknown University, Unknown Town}
+%\alsoaffiliation[Second University]
+%{Department of Chemistry, Second University, Nearby Town}
+%\author{Susanne K. Laborator}
+%\email{s.k.laborator@bigpharma.co}
+%\affiliation[BigPharma]
+%{Lead Discovery, BigPharma, Big Town, USA}
+%\author{Kay T. Finally}
+%\affiliation[Unknown University]
+%{Department of Chemistry, Unknown University, Unknown Town}
+%\alsoaffiliation[Second University]
+%{Department of Chemistry, Second University, Nearby Town}
 
-\date{\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The document title should be given as usual. Some journals require
+%% a running title from the author: this should be supplied as an
+%% optional argument to \title.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title[An \textsf{achemso} demo]
+  {Accurate binding of sodium and calcium to phospholipid bilayers by effective inclusion of electronic polarization} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Some journals require a list of abbreviations or keywords to be
+%% supplied. These should be set up here, and will be printed after
+%% the title and author information, if needed.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\abbreviations{IR,NMR,UV}
+\keywords{American Chemical Society, \LaTeX}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The manuscript does not need to include \maketitle, which is
+%% executed automatically.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The "tocentry" environment can be used to create an entry for the
+%% graphical table of contents. It is given here as some journals
+%% require that it is printed as part of the abstract page. It will
+%% be automatically moved as appropriate.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tocentry}
+
+Some journals require a graphical entry for the Table of Contents.
+This should be laid out ``print ready'' so that the sizing of the
+text is correct.
+
+Inside the \texttt{tocentry} environment, the font used is Helvetica
+8\,pt, as required by \emph{Journal of the American Chemical
+Society}.
+
+The surrounding frame is 9\,cm by 3.5\,cm, which is the maximum
+permitted for  \emph{Journal of the American Chemical Society}
+graphical table of content entries. The box will not resize if the
+content is too big: instead it will overflow the edge of the box.
+
+This box and the associated title will always be printed on a
+separate page at the end of the document.
+
+\end{tocentry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The abstract environment will automatically gobble the contents
+%% if an abstract is not used by the target journal.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \begin{abstract}
-  % insert abstract here
 Binding affinities and stoichiometries of Na$^+$ and Ca$^{2+}$ ions to phospholipid
 bilayers are of paramount significance in the properties and functionality of cellular
 membranes. Current estimates of binding affinities and
@@ -111,12 +186,26 @@ The results of this work pave the way to quantitative molecular simulations with
 of complex biochemical systems at cellular membranes.
 \end{abstract}
 
-%\pacs{}% insert suggested PACS numbers in braces on next line
 
-\maketitle %\maketitle must follow title, authors, abstract and \pacs
+%\begin{abstract}
+%  This is an example document for the \textsf{achemso} document
+%  class, intended for submissions to the American Chemical Society
+%  for publication. The class is based on the standard \LaTeXe\
+%  \textsf{report} file, and does not seek to reproduce the appearance
+%  of a published paper.
 
-% Body of paper goes here. Use proper sectioning commands. 
-% References should be done using the \cite, \ref, and \label commands
+%  This is an abstract for the \textsf{achemso} document class
+%  demonstration document.  An abstract is only allowed for certain
+%  manuscript types.  The selection of \texttt{journal} and
+%  \texttt{manuscript} will determine if an abstract is valid.  If
+%  not, the class will issue an appropriate error.
+%\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start the main part of the manuscript here.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \section{Introduction}
 Interactions of ions with cellular membranes play a key role in many important biological processes~\cite{seelig90,cevc90}. Ions, especially multivalent cations, modify general properties of the membrane which also modulate the embedded transmembrane proteins~\cite{cevc90,tocanne90, pabst07}. For example, Ca$^{2+}$  is crucial in propagation of neural signals. It promotes membrane fusion by bridging lipids in the vesicles carrying neurotransmitters and the neuron synapsis membrane~\cite{papahadjopoulos90,brouwer15}. Ca$^{2+}$ also participates in the T-cell receptor activation. It induces the detachment of the positively charged cytosolic tails of the CD3 protein complex from the negatively charged intracellular membrane making it accessible for the Lck protein~\cite{Shi2013Ca2}. Another example involving sugar-lipid interactions mediated by ions concerns Ca$^{2+}$ modulating the presentation of the sugars present in the PI(4,5)P$_2$ lipid which ultimately modulates the phospholipase C delta 1 pleckstrin homology domain (PLC $\delta$1-H)~\cite{Bilkova2017Calcium}. Interestingly, this effect is not present for Mg$^{2+}$, which illustrates the selectivity of these processes with respect to particular ions. Despite our increasing understanding of the role of ions in cell membrane-related processes the molecular details of the mechanisms behind such processes remain elusive in many cases. 
@@ -584,7 +673,7 @@ This work can be reached as a repository containing all data at \url{zenodo.org:
 
 
 % If you have acknowledgments, this puts in the proper section head.
-\begin{acknowledgments}
+\begin{acknowledgement}
 % Put your acknowledgments here.
 P.J. acknowledges support from the Czech Science Foundation (grant no. 16-01074S) 
 and from the Academy of Finland via the FiDiPro award.
@@ -596,16 +685,27 @@ Development and Innovations Infrastructures.
 O.H.S.O. acknowledges financial support from
 Integrated Structural Biology Research Infrastructure of
 Helsinki Institute of Life Science (Instruct-HiLIFE).
-\end{acknowledgments}
+\end{acknowledgement}
 
-%\newpage
-%\appendix
+\begin{suppinfo}
 
-% Create the reference section using BibTe
+%A listing of the contents of each file supplied as Supporting Information
+%should be included. For instructions on what should be included in the
+%Supporting Information as well as how to prepare this material for
+%publications, refer to the journal's Instructions for Authors.
+
+The following files are available free of charge.
+\begin{itemize}
+  \item SI.pdf: Simulation details and further analysis.
+%  \item Filename: brief description
+\end{itemize}
+
+\end{suppinfo}
+
+
 \bibliography{refs.bib}
 
 \listoftodos
 
 \end{document}
-%
-% ****** End of file aiptemplate.tex ******
+
