@@ -537,20 +537,25 @@ We analyzed the ratio of the number of calcium cations bound to either phosphate
 
 \begin{figure}[tb!]
   \centering
-  \includegraphics[width=8.0cm]{../Fig/volmap_resid10_Ca_Cl_PO4Cent.png} %\\
+  \includegraphics[width=8.0cm]{../Fig/isocontours_r37_ca_O-carb.png} %\\
+%  \includegraphics[width=8.0cm]{../Fig/volmap_resid10_Ca_Cl_PO4Cent.png} %\\
 %  \includegraphics[width=4.0cm]{../Fig/volmap_resid10_Ca_Cl_sn1Cent.png}
 %  \includegraphics[width=3.6cm]{../Fig/volmap_resid10_Ca_Cl_sn2Cent.png}
   \caption{\label{fig:volmaps}
-      Isocontours of probability density of \ce{Ca^{2+}} with respect to 
-      the phosphate oxygens of POPC from ECC-POPC simulation.
-      The probability density was evaluated around a single lipid, 
+      Isocontours of spatial number density of \ce{Ca^{2+}} (cyan, 0.0015~\AA$^{-3}$) 
+      and POPC carbonyl oxygen atoms (red, 0.0075~\AA$^{-3}$). 
+      Calcium cations localize mostly around phosphate oxygens.
+      Interactions with carbonyl oxygens is less likely than with phosphate oxygens, 
+      and it is contributed more by other neighbouring phospholipids than by the same lipid. 
+      Transparent structures are shown to depict the variability of POPC configurations. 
+      The number density was evaluated for each lipid, 
       after its strucutral alignment using only phosphate group. 
       %moiety, side chain 1 carbonyl group and side chain 2 carbonyl group.
       %Shown contours suggest that the dominant contribution 
       %to \ce{Ca^{2+}} binding comes from the phosphate oxygens,
       %whereas the interactions with any of the two carbonyl groups are considerably milder.
   }
-  \todo{The figure should be updated as discussed last week.}
+  \todo{The figure should be updated as discussed last week. Joe: Will only smoothen the isosurfaces now. }
 \end{figure}
 
 Even though \ce{Na+} ions do not specifically bind to a POPC bilayer, they still interact mostly with its oxygen moieties. The results from the simulation at $1\,$M \ce{NaCl} concentration show that 55\% of \ce{Na+} ions interact with only phosphate oxygens of POPC and 20\% with only carbonyl oxygens, and the rest, 25\%, is interacting with both.
