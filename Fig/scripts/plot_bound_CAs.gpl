@@ -20,7 +20,7 @@ datafile="../../Data/POPC/CaCl/lipid14/bound_Ca_non-tail_q-sc_0.80_sig-sc_0.875_
 # simulaiton: no NaCl, 313K
 
 set style line ls_exp    pt 13 ps 2 lw 4 lc rgb '#000000' 
-set style line ls_l14    pt  6 ps 2 lw 4 lc rgb '#33AA66' dashtype 3
+set style line ls_l14    pt  6 ps 2 lw 4 lc rgb '#e04010' dashtype 3
 set style line ls_eccl17 pt  6 ps 2 lw 4 lc rgb '#DE3322' dashtype 3
 
 #set key font ",13"
@@ -42,14 +42,16 @@ set xrange [0:0.52]
 set yrange [0:3.0]
 set xtics format "%G"
 set ytics format "%G"
-set xlabel "[Ca^{2+}_{bound}/POPC]"
+set xlabel "C_b"
+#set xlabel "[Ca^{2+}_{bound}/POPC]"
 #set xlabel "number of Ca^{2+}_{bound} / POPC"
-set ylabel "( [Ca^{2+}_{bound}/POPC] / [Ca^{2+}_{binding plane}] )^{1/2}"
+set ylabel "( C_b / C_I )^{1/2}"
+#set ylabel "( [Ca^{2+}_{bound}/POPC] / [Ca^{2+}_{binding plane}] )^{1/2}"
 #set ylabel "( Ca^{2+}_{bound} / Ca^{2+}_{free} )^{1/2}"
 #set size 0.8, 0.43
 plot \
-     f(x) title 'fit of ternary complex binding model' ls ls_eccl17, \
-     datafile using ($2/n_lipids):(sqrt(1000*$2/n_lipids/($4))) with points title 'ECC-lipids' ls ls_eccl17 ,\
+     f(x) title 'fit of ternary complex binding model to simulation' ls ls_eccl17, \
+     datafile using ($2/n_lipids):(sqrt(1000*$2/n_lipids/($4))) with points title 'ECC-POPC (simulations)' ls ls_eccl17 ,\
      e(x) title 'ternary complex binding model (experiment)' ls ls_exp
      #datafile using ($2/n_lipids):(sqrt($2/n_lipids/($4))) with points title 'ECC-lipids' ls ls_l14 ,\
      
