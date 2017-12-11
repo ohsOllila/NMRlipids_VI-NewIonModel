@@ -324,7 +324,7 @@ Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCAT
   %\includegraphics[height=8.4cm,angle=-90]{../Fig/form-f_exp-l14-eccl17.eps}
   \caption{\label{simVSexpNOions}
     Top: X-ray scattering form factors from simulations with the Lipid14 \cite{dickson14} and
-    the ECC-POPC models compared with experiments~\cite{kucerka11} at 303~K.
+    the ECC-POPC models compared with experiments~\cite{kucerka11} at 303~K. \\
     Middle: Order parameters of POPC head group, glycerol backbone and acyl chains 
     from simulations with the Lipid14 \cite{dickson14} and the ECC-POPC models
     compared with experiments \cite{ferreira13} at 300~K.
@@ -332,7 +332,8 @@ Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCAT
     the error estimate $\pm 0.02$ for experiments \cite{botan15,ollila16},
     while the error estimate for simulations is $\pm 0.005$.
     The size of the points for acyl chains are decreased by a factor of 3 to improve the clarity of the plot.
-    Bottom: The chemical structure of POPC and the labeling of the carbon segments.
+    Open/closed symbols are used for palmitoyl/oleoyl chains of POPC. \\
+    Bottom: Chemical structure of POPC and the labeling of hydrocarbon segments.
   } 
 \end{figure}
 
@@ -418,15 +419,15 @@ In Fig.~\ref{OrderParameterCHANGESsurf}, we show the headgroup P-N vector angle 
   \includegraphics[width=8.0cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B-g3_L14-ECCL17_q80_sig89_CaCl.pdf}
   \caption{\label{fig:delta_ordPar_CaCl}
     Changes of the head group order parameters and P-N vector orientation of a POPC bilayer 
-    as a function of the CaCl$_2$ concentration in bulk ($C_{ion}$)
-    from simulations at 313 K together with experimental data 
+    as a function of the CaCl$_2$ concentration in a bulk water ($C_{ion}$)
+    from simulations at 313~K together with experimental data 
     (DPPC (323\,K) \cite{akutsu81} and POPC (313\,K) \cite{altenbach84}). 
-    The error estimate for bulk concentrations was approximately 10\,mM.
-    Exception was the order of magnitude larger error in
-    simulation with Lipid14 and ECC-ions due to the unconverged densities  (shown if Fig.~\ref{fig:cacl-dens}) because the 
-    small simulation box. 
-    Simulation data with Lipid14 and \AA{}qvist ion parameters at 298 K are taken directly from
-    Refs.~\cite{lipid14POPC0mMNaClfiles,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC}.
+    The error estimate for bulk concentrations is approximately 10\,mM.
+    The order of magnitude larger error in the
+    simulation with Lipid14 and ECC-ions is due to unconverged bulk densities  
+    (shown if Fig.~\ref{fig:cacl-dens}) limited by the simulation box. 
+    Simulation data with Lipid14 and \AA{}qvist ion parameters at 298~K are taken directly from
+    Refs.~\citenum{lipid14POPC0mMNaClfiles,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC}.
   }
   %Experimental values from \cite{akutsu81} for $g_3$ figure:
   %the value of $g_3$ order parameter of DPPC was -0.214 
@@ -517,7 +518,7 @@ This is in contradiction with most of the available lipid force fields, which pr
 
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[height=19.5cm]{../Fig/ipython_nb/density_profiles_ca_cl_wat_phos_models-compar.pdf}
+  \includegraphics[height=19.9cm]{../Fig/ipython_nb/density_profiles_ca_cl_wat_phos_models-compar.pdf}
   \caption{\label{fig:cacl-dens}
     Number density profiles of \ce{Ca^{2+}}, \ce{Na^{+}} and \ce{Cl^-} along membrane normal axis
     for different force fields.
@@ -542,13 +543,14 @@ We analyzed the ratio of the number of calcium cations bound to either phosphate
 %  \includegraphics[width=3.6cm]{../Fig/volmap_resid10_Ca_Cl_sn2Cent.png}
   \caption{\label{fig:volmaps}
       Isocontours of spatial number density of \ce{Ca^{2+}} (cyan, 0.0015~\AA$^{-3}$) 
-      and POPC carbonyl oxygen atoms (red, 0.0075~\AA$^{-3}$). 
-      Calcium cations localize mostly around phosphate oxygens.
+      and POPC carbonyl oxygen atoms (red, 0.0075~\AA$^{-3}$, all POPC lipids contribute). 
+      Calcium cations localize mostly around phosphate oxygens (red and bronze).
       Interactions with carbonyl oxygens is less likely than with phosphate oxygens, 
       and it is contributed more by other neighbouring phospholipids than by the same lipid. 
       Transparent structures are shown to depict the variability of POPC configurations. 
       The number density was evaluated for each lipid, 
       after its strucutral alignment using only phosphate group. 
+      Carbon atoms are cyan, hydrogen atoms white, oxygen atoms red, nitrogen blue.
       %moiety, side chain 1 carbonyl group and side chain 2 carbonyl group.
       %Shown contours suggest that the dominant contribution 
       %to \ce{Ca^{2+}} binding comes from the phosphate oxygens,
