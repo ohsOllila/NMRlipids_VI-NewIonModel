@@ -298,7 +298,10 @@ MD simulations were performed using the GROMACS \cite{Abraham15} simulation pack
 in this work are summarized in Table~S1. 
 Compatibility with the openMM simulation package \cite{openmm7} was also
 tested in SI. 
-The simulated trajectories and parameters files are available at \cite{??} \todo{To be uploaded to Zenodo}.
+The simulated trajectories and parameters files are available at 
+Refs.~\citenum{lipid14_POPC_Dang_and_ECC-ions_files, ECC-POPC_nacl_cacl2_files, ECC-POPC_nacl_cacl2_wat-models_files} 
+\todo{To be uploaded to Zenodo, references are only placeholders. }.
+
 
 
 
@@ -306,11 +309,10 @@ The simulated trajectories and parameters files are available at \cite{??} \todo
 The topology of dihexadecyldimethylammonium was created with the automated topology builder \cite{malde11}. The AmberTools program~\cite{amber} was then used to generate the Amber-type force field parameters. These parameters were then converted to the Gromacs format with the acpype tool \cite{acpype}. The partial charges were then manually modified in the non-scaled version to approximately match similar segments in Lipid14 \cite{dickson14}. For simulation with ECC-POPC, the partial charges of the headgroup were scaled, i.e., $f_q=0.8$, and the $\sigma$ of the scale atoms reduced as in POPC-ECC.
 
 The cationic surfactants were randomly mixed among the phospholipids to form bilayer structures with mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer. All these systems contained 50 POPC molecules per leaflet, 6340 water molecules, and 6, 14, 21, 35, or 50 surfactants per leaflet.  Chloride counter ions were used in simulations, while bromide was the counter ion in the experiment~\cite{scherer89}. For POPC either the Lipid14 with TIP3P~\cite{jorgensen83} or ECC-POPC with SPC/E~\cite{Berendsen1987}  were used. The first 20~ns of the total simulation time of 200~ns was considered as an equilibration time and was omitted from the analysis. Sufficient lipid neighbor exchange occurred during the simulations.
-The trajectories and simulation files for unscaled systems are available from
+The simulated trajectories and parameters files are available at Ref.~\citenum{ECC-POPC_cationic-surf_files} 
+\todo{To be uploaded to Zenodo, references are only placeholders. }.
+The trajectories and simulation files for the unscaled systems are available from
 Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCATsurfT313K,POPClipid1430perCATsurfT313K,POPClipid1442perCATsurfT313K,POPClipid1450perCATsurfT313K}.
-
-\todo{Provide the parameteres for ECC-surfactant somewere.
-      Joe: They will appear along with the Zenodo upload of the trajectories.}
 
 \section{Results and Discussion}
 
