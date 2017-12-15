@@ -371,7 +371,9 @@ MD simulations were performed using the GROMACS \cite{Abraham15} simulation pack
 in this work are summarized in Table~S1 in the SI. 
 Compatibility with the openMM simulation package \cite{openmm7} was also
 tested and is presented in the SI. 
-The simulated trajectories and parameters files are available at \cite{??} \todo{To be uploaded to Zenodo}.
+The simulated trajectories and parameters files are available at
+Refs.~\citenum{lipid14_POPC_Dang_and_ECC-ions_files, ECC-POPC_nacl_cacl2_files, ECC-POPC_nacl_cacl2_wat-models_files}.
+\todo{To be uploaded to Zenodo, references are only placeholders. }.
 
 
 
@@ -379,11 +381,10 @@ The simulated trajectories and parameters files are available at \cite{??} \todo
 The topology of the dihexadecyldimethylammonium cation was created with the automated topology builder \cite{malde11}. The AmberTools program~\cite{amber} was used to generate the Amber-type force field parameters. These parameters were then converted to the Gromacs format with the acpype tool \cite{acpype}. The partial charges were manually modified in the non-scaled version to approximately match similar segments in Lipid14 \cite{dickson14}. For simulation with ECC-POPC, the partial charges of the head group of the cation were scaled by a factor of $f_q=0.8$, and the $\sigma$ of the scale atoms reduced by a factor of 0.89 similarly as for POPC-ECC.
 
 The cationic surfactants were randomly mixed among the phospholipids to form bilayer structures with mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer. All these systems contained 50 POPC molecules per leaflet, 6340 water molecules, and 6, 14, 21, 35, or 50 surfactants per leaflet.  Chloride counter ions were used in all the simulations, while bromide was the counter ion in the experiment~\cite{scherer89}. For POPC, either Lipid14 with TIP3P~\cite{jorgensen83} or ECC-POPC with SPC/E~\cite{Berendsen1987} parameters  were used. The first 20~ns of the total simulation time of 200~ns was considered as an equilibration period and was thus omitted from the analysis. We checked that a sufficient lipid  exchange occurred during the simulations.
-The trajectories and simulation files for unscaled systems are available from
+The simulated trajectories and parameters files are available at Ref.~\citenum{ECC-POPC_cationic-surf_files} 
+\todo{To be uploaded to Zenodo, references are only placeholders. }.
+The trajectories and simulation files for unscaled systems are available at
 Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCATsurfT313K,POPClipid1430perCATsurfT313K,POPClipid1442perCATsurfT313K,POPClipid1450perCATsurfT313K}.
-
-\todo{Provide the parameters for ECC-surfactant somewhere.
-      Joe: They will appear along with the Zenodo upload of the trajectories.}
 
 \section{Results and Discussion}
 
@@ -391,13 +392,13 @@ Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCAT
 
 \begin{figure}[tb!]
   \centering
-  \includegraphics[width=8.2cm]{../Fig/ipython_nb/Order-parameters_form-factors_exp-L14-ECCL17_q80_sig89.pdf}
-  \includegraphics[width=7.4cm]{../Fig/POPCstructure.eps}
+  \includegraphics[width=8.2cm]{../Fig/ipython_nb/Order-parameters_form-factors_exp-L14-ECCL17_q80_sig89_POPC-struct.pdf}
+  %\includegraphics[width=7.4cm]{../Fig/POPCstructure.eps}
   %\includegraphics[width=8.0cm]{../Fig/ipython_nb/Order-parameters_exp-L14-ECCL17_q80_sig89.pdf}
   %\includegraphics[height=8.4cm,angle=-90]{../Fig/form-f_exp-l14-eccl17.eps}
   \caption{\label{simVSexpNOions}
     Top: X-ray scattering form factors from simulations with the Lipid14 \cite{dickson14} and
-    the ECC-POPC models compared with experiments~\cite{kucerka11} at 303~K.
+    the ECC-POPC models compared with experiments~\cite{kucerka11} at 303~K. \\
     Middle: Order parameters of POPC head group, glycerol backbone and acyl chains 
     from simulations with the Lipid14 \cite{dickson14} and the ECC-POPC models
     compared with experiments \cite{ferreira13} at 300~K.
@@ -405,9 +406,9 @@ Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCAT
     the error estimate $\pm 0.02$ for experiments \cite{botan15,ollila16},
     while the error estimate for simulations is $\pm 0.005$.
     The size of the points for acyl chains are decreased by a factor of 3 to improve the clarity of the plot.
+    Open/closed symbols are used for palmitoyl/oleoyl chains of POPC. \\
     Bottom: The chemical structure of POPC and the labeling of the carbon segments.
   } 
-    \todo{Joe: I'm fine with the name change from ECC-lipids to ECC-POPC, but we have to be consistent throughout the text. I changed all accurences of ECC-lipids to ECC-POPC in the text, I yet need to change all figure legends then.}
 \end{figure}
 
 \begin{table}[tb!]
@@ -446,7 +447,7 @@ This arrangement, which is not fully reproduced by other available lipid models~
 The order parameters of the $\alpha$ and $\beta$ carbons in the head group are slightly larger in the ECC-POPC model than in the Lipid14 model, which is apparently related to the P-N vector orienting by about 7$^{\circ}$ more toward the water phase in the former model, see Fig.~\ref{OrderParameterCHANGESsurf}. While both models perform relatively well, considering the available experimental evidence, it is not possible to decide which of the two models provides more realistic head group orientations. The ECC-POPC model gives the $\beta$ carbon order parameter value closer to experiments than the Lipid14 model, while the opposite is true for the $\alpha$ carbon. The accuracy of both models in the glycerol backbone region is comparable to other state-of-the-art lipid model available in literature \cite{botan15}, see Fig.~\ref{simVSexpNOions}.
 
 
-\todo{Dynamics check is missing: MSD (Hector/Joe)}
+%\todo{Dynamics check is missing: MSD (Hector/Joe)}
 
 \subsection{Calibration of head group response to membrane-bound charge using cationic surfactant}\label{section:boundCHARGE}
 
@@ -458,6 +459,7 @@ The order parameters of the $\alpha$ and $\beta$ carbons in the head group are s
     a molar fraction of the cationic surfactant dihexadecyldimethylammonium in a POPC bilayer
     from simulations and experiments \cite{scherer89} at 313 K.
   }
+  \todo{Joe: currenct figure depicts simulations with OPC3 water. Simulations with SPCE are running now.}
 \end{figure}
 
 Before studying the sodium and calcium ion binding affinities, we quantify the response of the head group order parameters to the amount of bound charge by using mixtures of monovalent cationic surfactants (dihexadecyldimethylammonium) and POPC~\cite{scherer89}. These mixtures have a well-defined amount of bound charge per PC, namely, the molar fraction of cationic surfactants. This is due to the ability of dihexadecyldimethylammonium to directly insert in the lipid bilayer due to its two hydrophobic acyl chains. Furthermore, available experimental data for these systems can be used to validate the sensitivity of lipid head group order parameters to the amount of bound charge in simulations \cite{scherer89}.
@@ -492,12 +494,12 @@ In Fig.~\ref{OrderParameterCHANGESsurf}, we show the headgroup P-N vector angle 
     as a function of the CaCl$_2$ concentration in bulk ($C_{ion}$)
     from simulations at 313 K together with experimental data 
     (DPPC (323\,K) \cite{akutsu81} and POPC (313\,K) \cite{altenbach84}). 
-    The error estimate for bulk concentrations was approximately 10\,mM.
-    Exception was the order of magnitude larger error in
-    simulation with Lipid14 and ECC-ions due to the unconverged densities  (shown if Fig.~\ref{fig:cacl-dens}) because the 
-    small simulation box. 
+    The error estimate for bulk concentrations is approximately 10\,mM.
+    The order of magnitude larger error in the
+    simulation with Lipid14 and ECC-ions is due to unconverged bulk densities  (shown if Fig.~\ref{fig:cacl-dens}) limited by
+    the simulation box. 
     Simulation data with Lipid14 and \AA{}qvist ion parameters at 298 K are taken directly from
-    Refs.~\cite{lipid14POPC0mMNaClfiles,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC}.
+    Refs.~\citenum{lipid14POPC0mMNaClfiles,lipid14POPC350mMCaClfiles,lipid14POPC350mMCaClfilesNC}.
   }
   %Experimental values from \cite{akutsu81} for $g_3$ figure:
   %the value of $g_3$ order parameter of DPPC was -0.214 
@@ -568,7 +570,7 @@ This is in contradiction with most of the available lipid force fields, which pr
 
 \begin{figure}[htbp!]
   \centering
-  \includegraphics[height=19.5cm]{../Fig/ipython_nb/density_profiles_ca_cl_wat_phos_models-compar.pdf}
+  \includegraphics[height=19.9cm]{../Fig/ipython_nb/density_profiles_ca_cl_wat_phos_models-compar.pdf}
   \caption{\label{fig:cacl-dens}
     Number density profiles of \ce{Ca^{2+}}, \ce{Na^{+}} and \ce{Cl^-} along membrane normal axis
     for different force fields.
@@ -585,20 +587,25 @@ We analyzed the ratio of the number of calcium cations bound to either phosphate
 
 \begin{figure}[tb!]
   \centering
-  \includegraphics[width=8.0cm]{../Fig/volmap_resid10_Ca_Cl_PO4Cent.png} %\\
+  \includegraphics[width=8.0cm]{../Fig/isocontours_r37_ca_O-carb.png} %\\
 %  \includegraphics[width=4.0cm]{../Fig/volmap_resid10_Ca_Cl_sn1Cent.png}
 %  \includegraphics[width=3.6cm]{../Fig/volmap_resid10_Ca_Cl_sn2Cent.png}
   \caption{\label{fig:volmaps}
-      Isocontours of probability density of \ce{Ca^{2+}} with respect to 
-      the phosphate oxygens of POPC from ECC-POPC simulation.
-      The probability density was evaluated around a single lipid, 
-      after its strucutral alignment using only phosphate group. 
-      %moiety, side chain 1 carbonyl group and side chain 2 carbonyl group.
-      %Shown contours suggest that the dominant contribution 
-      %to \ce{Ca^{2+}} binding comes from the phosphate oxygens,
-      %whereas the interactions with any of the two carbonyl groups are considerably milder.
+    Isocontours of spatial number density of \ce{Ca^{2+}} (dark blue, 0.0016~\AA$^{-3}$) 
+    and POPC carbonyl oxygen atoms (light semi-transparent red, 0.007~\AA$^{-3}$, all POPC lipids contribute). 
+    Calcium cations localize mostly around phosphate oxygens (red and bronze).
+    Interactions with carbonyl oxygens is less likely than with phosphate oxygens, 
+    and it is contributed more by other neighbouring phospholipids than by the same lipid. 
+    Transparent structures are shown to depict the variability of choline configurations 
+    (colour warps from red to blue along the simulation time). 
+    The number density was evaluated for each lipid, 
+    after its strucutral alignment using only phosphate group.
+    MDAnalysis \cite{mdanalysis2011} library was used for 
+    the calculations of the structural alignment and the spatial number density. 
+    VMD \cite{hump96} was used for visualisation. 
+    Carbon atoms are cyan, hydrogen atoms white, oxygen atoms red, nitrogen blue.
   }
-  \todo{The figure should be updated as discussed last week.}
+ %\todo{The figure should be updated as discussed last week. Joe: Will only smoothen the isosurfaces now. }
 \end{figure}
 
 Even though \ce{Na+} ions do not bind strongly to a POPC bilayer, they still interact mostly with its oxygen moieties. The results from a simulation at a $1\,$M \ce{NaCl} concentration show that 55\% of \ce{Na+} ions at the bilayer interact with phosphate oxygens of POPC only and 20\% with carbonyl oxygens only, with the remaining 25\%, is interacting with both negatively charged groups.
@@ -669,7 +676,7 @@ The good agreement with experiments enables us to interpret NMR experiments with
 Accurate description of cation binding to POPC bilayer paves the way for simulations of complex biochemical systems at cellular membranes with realistically described electrostatic interactions, including a mean-field account for electronic polarization effects. To this end, the compatibility of the ECC-POPC model with existing models for proteins and other biological molecules needs to be verified and, if necessary, further adjustments following the ECC concept to the force fields of the biomolecules interacting with the lipids should be made.
 
 
-This work can be reached as a repository containing all data at \url{zenodo.org:\dots\dots\dots}.
+This work can be reached as a repository containing all data and scripts for analysis at \url{zenodo.org:\dots\dots\dots}.
 
 
 % If you have acknowledgments, this puts in the proper section head.
