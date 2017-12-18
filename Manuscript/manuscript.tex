@@ -595,8 +595,8 @@ We analyzed the ratio of the number of calcium cations bound to either phosphate
 %  \includegraphics[width=4.0cm]{../Fig/volmap_resid10_Ca_Cl_sn1Cent.png}
 %  \includegraphics[width=3.6cm]{../Fig/volmap_resid10_Ca_Cl_sn2Cent.png}
   \caption{\label{fig:volmaps}
-    Isocontours of spatial number density of \ce{Ca^{2+}} (dark blue, 0.0016~\AA$^{-3}$) 
-    and POPC carbonyl oxygen atoms (light semi-transparent red, 0.007~\AA$^{-3}$, all POPC lipids contribute). 
+    Isocontours of spatial number density of \ce{Ca^{2+}} (dark blue, 0.001~\AA$^{-3}$) 
+    and POPC carbonyl oxygen atoms (light semi-transparent red, 0.008~\AA$^{-3}$, all POPC lipids contribute). 
     Calcium cations localize mostly around phosphate oxygens (oxygens red, phosphorus bronze).
     Interactions with carbonyl oxygens is less likely than with phosphate oxygens, 
     and it is contributed more by other neighbouring phospholipids than by the same lipid. 
@@ -1058,7 +1058,8 @@ Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCAT
     compared with experiments \cite{ferreira13} at 300~K.
     The size of the markers for the head group order parameters correspond to
     the error estimate $\pm 0.02$ for experiments \cite{botan15,ollila16},
-    while the error estimate for simulations is $\pm 0.005$.
+    while the error estimate for simulations is $\pm 0.005$ 
+    (Bayesian estimate of 95\% confidence interval \cite{scipy}).
     The size of the points for acyl chains are decreased by a factor of 3 to improve the clarity of the plot.
     Open/closed symbols are used for palmitoyl/oleoyl chains of POPC. \\
     Bottom: Chemical structure of POPC and the labeling of hydrocarbon segments.
@@ -1114,7 +1115,6 @@ The order parameters of the $\alpha$ and $\beta$ carbons in the headgroup are sl
     a molar fraction of the cationic surfactant dihexadecyldimethylammonium in a POPC bilayer
     from simulations and experiments \cite{scherer89} at 313 K.
   }
-  \todo{Joe: currenct figure depicts simulations with OPC3 water. Simulations with SPCE are running now.}
 \end{figure}
 
 Before studying the sodium and calcium ion binding affinities, we quantify the response of the headgroup order parameters to the amount of bound charge by using mixtures of monovalent cationic surfactants (dihexadecyldimethylammonium) and POPC~\cite{scherer89}. These mixtures have a well-defined amount of bound charge per PC, i.e., the molar fraction of cationic surfactants. This direct relation results from the ability of dihexadecyldimethylammonium to be inserted in the lipid bilayers as any lipid because of its two hydrophobic acyl chains. Furthermore, available experimental data for these systems can be used to validate the sensitivity of lipid headgroup order parameters to the amount of bound charge in simulations \cite{scherer89}.
