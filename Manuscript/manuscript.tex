@@ -229,7 +229,7 @@ measurable structural parameters of an ion-free POPC lipid bilayer with the accu
 \section{Methods}
 
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc}
-The lack of electronic polarizability in standard MD force fields has been considered a serious issue since the early days of lipid bilayer simulations. In this work, we circumvent the demanding explicit inclusion of electronic polarization effects~\cite{lucas12, chowdhary13} by accounting for the electronic part of polarizability in lipid bilayer simulations implicitly via the electronic continuum correction (ECC)~\cite{leontyev11}. Technically, this is similar to the phenomenological charge-scaling applied in earlier studies of surfactants, lipids or ionic liquids \cite{jonsson86, egberts94, beichel14}. However, the present concept of ECC is physically well justified and rigorously derived~\cite{leontyev09, leontyev10, leontyev11, leontyev14}.
+The lack of electronic polarizability in standard MD force fields has been considered a serious issue since the early days of lipid bilayer simulations. In this work, we circumvent the demanding explicit inclusion of electronic polarization effects~\cite{lucas12, chowdhary13} by accounting for the electronic part of polarizability in lipid bilayer simulations implicitly via the electronic continuum correction (ECC)~\cite{leontyev11}. Technically, this is similar to the phenomenological charge-scaling applied in earlier studies of surfactants, lipids or ionic liquids \cite{jonsson86, egberts94, beichel14}. However, the present concept of ECC is physically well justified and has obtained theoretical support~\cite{leontyev09, leontyev10, leontyev11, leontyev14}.
 
 According to ECC, the electronic polarizability can be included into non-polarizable MD in a mean-field way by 
 embedding the ions in a homogeneous dielectric continuum with a dielectric constant $\epsilon_{el}$, which is the electronic part of the dielectric constant of the medium~\cite{leontyev11}. Following Coulomb's law,  ECC can be directly incorporated by scaling the charges with a constant scaling factor of $f_q = \epsilon _{el} ^{-1/2}$, yielding
@@ -246,7 +246,7 @@ from the orientational polarization of the molecules, which is accounted for exp
 Therefore, the same correction for the electronic polarizability can be 
 applied throughout the lipid bilayer/aqueous solution interface.
 
-While using the scaling factor of $f_q = 0.75$ for ions in water is well justified in the ECC theory \cite{leontyev11}, it is not clear whether the same factor should be applied to partial charges used to describe molecules in MD models, e.g., lipids in our case. Unlike the total charge of an ion, atomic partial charges within molecules are not physical observables. Several schemes exist for the assignment of partial charges for biomolecules~\cite{Hu2007}, with the restrained electrostatic potential method (RESP) being commonly used~\cite{RESP_paper, Singh1984}. Considering that water is often included in RESP calculations or charges are refined to improve certain experimental observables, the electronic polarizability effects of the solvent may to some extent be included in standard force fields~\cite{RESP_paper, Singh1984, jorgensen96, ipolq2013, benavides17}. Thus, our application of the scaling factor, $f_q$, to existing partial charges in molecules does not necessarily follow $f_q = \epsilon _{el} ^{-1/2}$. Instead, a consistent scaling factor should lie between the value of 0.75  (\textit{i.e.,} no electronic polarizability included in the original partial charges) and 1 (\textit{i.e.,} electronic polarizability fully included in the original partial charges). 
+While using the scaling factor of $f_q = 0.75$ for ions in water is well justified in the ECC theory \cite{leontyev11}, it is not clear whether the same factor should be applied to partial charges used to describe molecules in MD models, e.g., lipids in our case \cite{leontyev14}. Unlike the total charge of an ion, atomic partial charges within molecules are not physical observables. Several computational schemes exist for the assignment of partial charges for biomolecules~\cite{Hu2007}, with the restrained electrostatic potential method (RESP) being commonly used~\cite{RESP_paper, Singh1984}. Considering that water is often included in RESP calculations or charges are refined to improve certain experimental observables, the electronic polarizability effects of the solvent may to some extent be included in standard force fields~\cite{RESP_paper, Singh1984, jorgensen96, ipolq2013, benavides17}. Thus, our application of the scaling factor, $f_q$, to existing partial charges in molecules does not necessarily follow $f_q = \epsilon _{el} ^{-1/2}$. Instead, a consistent scaling factor should lie between the value of 0.75  (\textit{i.e.,} no electronic polarizability included in the original partial charges) and 1 (\textit{i.e.,} electronic polarizability fully included in the original partial charges). 
 
 Here we develop a ECC-POPC lipid model that accurately describes binding 
 of sodium and calcium ions to the POPC  lipid bilayer. 
@@ -271,6 +271,9 @@ as discussed more detail in the next section.
 Scaling down the partial charges reduced the ion binding affinity.
 We found the most accurate ion binding affinities with a scaling factor of $f_q = 0.8$,
 which is only slightly higher than the ECC one ($f_q=0.75$).
+Note that common scaling factors for monovalent ions in water are 0.8 or
+larger \cite{benavides17,skinner14,nacleps}.  In contrast, modern force fields
+for ionic liquids suggest values 0.6--0.65 which are lower than $\epsilon^{-1/2}_{el}$\cite{holm14}.
 Directly applying
 the 0.8 scaling to the partial charges of the head group, the glycerol backbone, and
 the carbonyls reduced the area per lipid to 60~\AA$^2$. This area is smaller than in the
@@ -291,7 +294,7 @@ binding affinity in lipid bilayer simulations using the 'electrometer concept'~ 
 This method is based on the experimental observation that the C-H bond order parameters of $\alpha$ and $\beta$ carbons in a PC lipid head group (Fig.~\ref{simVSexpNOions}) are proportional to the amount of charge bound per lipid~\cite{seelig87}.
 The order parameters for all C-H bonds in lipid molecules can be accurately measured using $^2$H NMR or $^{13}$C NMR techniques \cite{ollila16}. From MD simulations the order parameters can be calculated using the relation
 \begin{equation}\label{OP}
-S_{\rm CH}=\frac{3}{2}\langle \cos^2\theta -1 \rangle,
+S_{\rm CH}=\frac{1}{2}\langle 3\cos^2\theta -1 \rangle,
 \end{equation}
 where $\theta$ is the angle between the C-H bond and the membrane normal. Angular brackets point to the average over all sampled configurations.
 
@@ -326,7 +329,8 @@ To quantify the ion binding affinities to a lipid bilayer, we calculate the rela
   \Gamma_{ion}^{water}=\frac{1}{2A_b} \left ( n_{ion} - n_{water} \frac{C_{ion}}{C_{water}} \right ).
 \end{equation}
 Here, $n_{water}$ and $n_{ion}$ are the total numbers of water molecules and ions in the system,
-$C_{water}$ and $C_{ion}$ are their respective bulk concentrations in the aqueous phase,
+$C_{water}$ and $C_{ion}$ are their respective bulk concentrations in the aqueous phase
+(measured from the density of farthest point between periodic bilayers),
 and $A_b$ is the area of the unit cell in the membrane plane.
 The total area of the interface is then twice the area of the membrane, i.e., $2A_b$,
 because the bilayer has an interface at each of the two leaflets.
@@ -431,9 +435,9 @@ Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCAT
 First, we present results for bilayers in pure water.
 The ECC-POPC and Lipid14 models both reproduce the experimental X-ray scattering form factors
 of a POPC bilayer with a comparable accuracy (see Fig.~\ref{simVSexpNOions}).
-The area per lipid from the Lipid14 model is $\approx$1\AA{} larger than the
+The area per lipid from the Lipid14 model is by $\approx$1\AA{} larger than the
 experimental value in Table~\ref{tab:apls}, while the value from the ECC-POPC model
-is $\approx$1\AA{} smaller than the experimental one.
+is by $\approx$1\AA{} smaller than the experimental one.
 The values of the area per lipid of the ECC-POPC model vary slightly
 when simulated with different water models (i.e., within the interval of 62.2--66.8 \AA{}, see Table~S2 in SI),
 while still being close to the experimentally reported values.
@@ -593,7 +597,7 @@ We analyzed the ratio of the number of calcium cations bound to either phosphate
   \caption{\label{fig:volmaps}
     Isocontours of spatial number density of \ce{Ca^{2+}} (dark blue, 0.0016~\AA$^{-3}$) 
     and POPC carbonyl oxygen atoms (light semi-transparent red, 0.007~\AA$^{-3}$, all POPC lipids contribute). 
-    Calcium cations localize mostly around phosphate oxygens (red and bronze).
+    Calcium cations localize mostly around phosphate oxygens (oxygens red, phosphate bronze).
     Interactions with carbonyl oxygens is less likely than with phosphate oxygens, 
     and it is contributed more by other neighbouring phospholipids than by the same lipid. 
     Transparent structures are shown to depict the variability of choline configurations 
@@ -625,7 +629,9 @@ agreement with experiments, an overally weaker binding to the bilayer, in partic
 Simple binding models have been used previously to interpret the same experimental data \cite{altenbach84,macdonald87} as employed in this work to validate the simulation models (Fig.~\ref{fig:delta_ordPar_CaCl}). In particular, NMR data concerning the PC headgroup order parameters response and atomic absorption spectra were explained best using a ternary complex binding model with a binding stoichiometry of one \ce{Ca^{2+}} per two POPC lipids~\cite{altenbach84}. Nevertheless, a Langmuir adsorption model assuming a \ce{Ca^{2+}}:POPC stoichiometry of 1:1 also provided a good fit to the experimental data when considering \ce{CaCl2} at low concentrations only~\cite{macdonald87}.
 
 
-In this work, we reproduce the same experimental data used to infer binding stoichiometries employing our ECC-POPC model. Thanks to our simulations, we have a direct access to atomistic details of the binding stoichiometry without a need for any binding model as employed for interpreting in experiments~\cite{altenbach84, macdonald87}. To evaluate the relative propensities for each of the stoichiometric complexes (i.e.,~1~Ca$^{2+}$:~n~POPC), we calculated for each bound Ca$^{2+}$ the number of POPC molecules within a distance of 0.3~nm.
+In this work, we reproduce the same experimental data used to infer binding stoichiometries employing our ECC-POPC model. Thanks to our simulations, we have a direct access to atomistic details of the binding stoichiometry without a need for any binding model as employed for interpreting in experiments~\cite{altenbach84, macdonald87}.
+To evaluate the relative propensities for each of the stoichiometric complexes (i.e.,~1~Ca$^{2+}$:~n~POPC),
+we calculated for each bound Ca$^{2+}$ the number of POPC molecules having oxygen atoms within a distance of 0.3~nm.
 Results from the POPC bilayer simulation with a 285~mM bulk concentration of CaCl$_2$ are shown in Fig.~\ref{fig:cacl_complexes}.
 We found the largest propensity for the 1:2 complex (41\%), with probabilities of complexes with the stoichiometries of 1:1~(25\%)~and 1:3~(34\%)~being only slightly lower. This suggests a more complex binding model than considered in a simple 1:2 ternary complex model previously. Nevertheless, with a broad brushstroke, the simulation data can be viewed such that one calcium binds to two lipids on average, because the probabilities of the complexes with 1 or 3 lipids are almost equal to each other  (and complexes with more than three lipids per one calcium ion were not observed). This probably explains why the simple the ternary complex model fits adequately the experimental data, as well as the ECC-POPC simulation results (see Fig.~S3 in SI).
 
@@ -869,7 +875,8 @@ measurable structural parameters of an ion-free POPC lipid bilayer with the accu
 \section{Methods}
 
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc}
-The lack of electronic polarizability in standard MD simulation force fields has been considered a serious issue since the early days of lipid bilayer simulations. In this work, we circumvent the demanding explicit inclusion of electronic polarization effects~\cite{lucas12, chowdhary13} by including the electronic part of polarizability in lipid bilayer simulations implicitly via the electronic continuum correction (ECC)~\cite{leontyev11}. Technically, this is similar to the phenomenological charge-scaling applied in earlier studies of surfactants, lipids or ionic liquids \cite{jonsson86, egberts94, beichel14}. However, the present concept of ECC is physically well justified and rigorously derived~\cite{leontyev09, leontyev10, leontyev11, leontyev14}.
+The lack of electronic polarizability in standard MD simulation force fields has been considered a serious issue since the early days of lipid bilayer simulations. In this work, we circumvent the demanding explicit inclusion of electronic polarization effects~\cite{lucas12, chowdhary13} by including the electronic part of polarizability in lipid bilayer simulations implicitly via the electronic continuum correction (ECC)~\cite{leontyev11}. Technically, this is similar to the phenomenological charge-scaling applied in earlier studies of surfactants, lipids or ionic liquids \cite{jonsson86, egberts94, beichel14}. However, the present concept of ECC is physically well justified and has
+obtained theoretical support~\cite{leontyev09, leontyev10, leontyev11, leontyev14}.
 
 According to ECC, the electronic polarizability can be modeled in non-polarizable MD in a mean-field way by 
 embedding the ions in a homogeneous dielectric continuum with a dielectric constant $\epsilon_{el}$, which is the electronic part of the dielectric constant of the medium~\cite{leontyev11}. Following Coulomb's law,  ECC can be directly incorporated by scaling the charges with a constant scaling factor of $f_q = \epsilon _{el} ^{-1/2}$, giving
