@@ -75,6 +75,8 @@ Prague 6, Czech Republic}
   \end{tabular}
 \end{table}
 
+OpenMM simulations were run with 4~fs time step using 4 times heavier hydrogen atoms (mass subtracted from neighbouring atoms). 
+
 \newpage
 \section{Area per molecule and calcium binding with different water models}
 
@@ -109,11 +111,22 @@ Prague 6, Czech Republic}
 
 \begin{figure}[!hp]
   \centering
+  \includegraphics[width=8.0cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B-g3_L14-ECCL17_q80_sig89_surf_waterModels_compar.pdf}
+  \caption{\label{fig:ordPars_waterModels_surf}
+    Changes of head group and glycerol carbon $g_3$ order parameters, and P-N vector orientation of POPC bilayer
+    as a function of a molar fraction of the cationic surfactant dihexadecyldimethylammonium in a POPC bilayer
+    from simulations with different water models (OPC3~\cite{Izadi16}, SPC/E~\cite{Berendsen1987})
+    and experiments \cite{scherer89} at 313 K.
+  }
+\end{figure}
+
+\begin{figure}[!hp]
+  \centering
   \includegraphics[width=8.0cm]{../Fig/ipython_nb/PN_angle_OrdPars-A-B-g3_L14-ECCL17_q80_sig89_CaCl_waterModels.pdf}
   \caption{\label{fig:ordPars_waterModels}
     Changes of head group and glycerol carbon $g_3$ order parameters, and P-N vector orientation of POPC bilayer
     as a function of CaCl$_2$ concentrations in bulk ($C_{ion}$) from ECC-POPC simulations at 313K with different
-    water models (OPC \cite{Izadi14}, OPC3~\cite{Izadi16}, TIP3P~\cite{jorgensen83}, TIP3p-FB and TIP4p-FB~\cite{Wang2014}, and TIP4p/2005 \cite{Abascal2005})
+    water models (SPC/E~\cite{Berendsen1987}, OPC \cite{Izadi14}, OPC3~\cite{Izadi16}, TIP3P~\cite{jorgensen83}, TIP3p-FB and TIP4p-FB~\cite{Wang2014}, and TIP4p/2005 \cite{Abascal2005})
     together with experimental data (DPPC (323~K) \cite{akutsu81} and POPC (313~K) \cite{altenbach84}). 
     Ion concentrations ($C_{ion}$) are calculated from the cation number density $C_{np}$
     at the farthest point from the lipid bilayer in the aqueous phase as [ion]=$C_{np}/0.602$.
