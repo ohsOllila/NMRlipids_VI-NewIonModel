@@ -115,7 +115,7 @@ Prague 6, Czech Republic}
 %% optional argument to \title.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title[An \textsf{achemso} demo]
-  {Accurate binding of sodium and calcium to phospholipid bilayers by effective inclusion of electronic polarization} 
+  {Accurate Binding of Sodium and Calcium to Phospholipid Bilayers by Effective Inclusion of Electronic Polarization} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Some journals require a list of abbreviations or keywords to be
@@ -229,7 +229,7 @@ measurable structural parameters of an ion-free POPC lipid bilayer with the accu
 \section{Methods}
 
 \subsection{Electronic continuum correction for lipid bilayers}\label{section:ecc}
-The lack of electronic polarizability in standard MD force fields has been considered a serious issue since the early days of lipid bilayer simulations. In this work, we circumvent the demanding explicit inclusion of electronic polarization effects~\cite{lucas12, chowdhary13} by accounting for the electronic part of polarizability in lipid bilayer simulations implicitly via the electronic continuum correction (ECC)~\cite{leontyev11}. Technically, this is similar to the phenomenological charge-scaling applied in earlier studies of surfactants, lipids or ionic liquids \cite{jonsson86, egberts94, beichel14}. However, the present concept of ECC is physically well justified and has obtained theoretical support~\cite{leontyev09, leontyev10, leontyev11, leontyev14}.
+The lack of electronic polarizability in standard MD force fields has been considered a serious issue since the early days of lipid bilayer simulations. In this work, we circumvent the demanding explicit inclusion of electronic polarization effects~\cite{lucas12, chowdhary13} by accounting for the electronic part of polarizability in lipid bilayer simulations implicitly via the electronic continuum correction (ECC)~\cite{leontyev11}. Technically, this is similar to the phenomenological charge-scaling applied in earlier studies of surfactants, lipids or ionic liquids \cite{jonsson86, egberts94, beichel14}. However, the present concept of ECC is physically well justified and has theoretical support~\cite{leontyev09, leontyev10, leontyev11, leontyev14}.
 
 According to ECC, the electronic polarizability can be included into non-polarizable MD in a mean-field way by 
 embedding the ions in a homogeneous dielectric continuum with a dielectric constant $\epsilon_{el}$, which is the electronic part of the dielectric constant of the medium~\cite{leontyev11}. Following Coulomb's law,  ECC can be directly incorporated by scaling the charges with a constant scaling factor of $f_q = \epsilon _{el} ^{-1/2}$, yielding
@@ -271,9 +271,9 @@ as discussed more detail in the next section.
 Scaling down the partial charges reduced the ion binding affinity.
 We found the most accurate ion binding affinities with a scaling factor of $f_q = 0.8$,
 which is only slightly higher than the ECC one ($f_q=0.75$).
-Note that common scaling factors for monovalent ions in water are 0.8 or
-larger \cite{benavides17,skinner14,nacleps}.  In contrast, modern force fields
-for ionic liquids suggest values 0.6--0.65 which are lower than $\epsilon^{-1/2}_{el}$\cite{holm14}.
+Note that common empirical scaling factors for monovalent ions in water are 0.8 or
+even closer to unity \cite{benavides17,skinner14,nacleps}.  In contrast, modern force fields
+for ionic liquids suggest values of 0.6--0.65, which are lower than $\epsilon^{-1/2}_{el}$\cite{holm14}.
 Directly applying
 the 0.8 scaling to the partial charges of the head group, the glycerol backbone, and
 the carbonyls reduced the area per lipid to 60~\AA$^2$. This area is smaller than in the
@@ -330,7 +330,7 @@ To quantify the ion binding affinities to a lipid bilayer, we calculate the rela
 \end{equation}
 Here, $n_{water}$ and $n_{ion}$ are the total numbers of water molecules and ions in the system,
 $C_{water}$ and $C_{ion}$ are their respective bulk concentrations in the aqueous phase
-(measured from the density of farthest point between periodic bilayers),
+(estimated from the solution density of farthest point between periodic bilayers),
 and $A_b$ is the area of the unit cell in the membrane plane.
 The total area of the interface is then twice the area of the membrane, i.e., $2A_b$,
 because the bilayer has an interface at each of the two leaflets.
@@ -375,7 +375,7 @@ MD simulations were performed using the GROMACS \cite{Abraham15} simulation pack
 in this work are summarized in Table~S1 in the SI. 
 Compatibility with the openMM simulation package \cite{openmm7} was also
 tested and is presented in the SI. 
-The simulated trajectories and parameters files are available at
+For deposited trajectories and parameter files see 
 Refs.~\citenum{lipid14_POPC_Dang_and_ECC-ions_files, ECC-POPC_nacl_cacl2_files, ECC-POPC_nacl_cacl2_wat-models_files}.
 \todo{To be uploaded to Zenodo, references are only placeholders. }.
 
@@ -385,10 +385,10 @@ Refs.~\citenum{lipid14_POPC_Dang_and_ECC-ions_files, ECC-POPC_nacl_cacl2_files, 
 The topology of the dihexadecyldimethylammonium cation was created with the automated topology builder \cite{malde11}. The AmberTools program~\cite{amber} was used to generate the Amber-type force field parameters. These parameters were then converted to the Gromacs format with the acpype tool \cite{acpype}. The partial charges were manually modified in the non-scaled version to approximately match similar segments in Lipid14 \cite{dickson14}. For simulation with ECC-POPC, the partial charges of the head group of the cation were scaled by a factor of $f_q=0.8$, and the $\sigma$ of the scale atoms reduced by a factor of 0.89 similarly as for POPC-ECC.
 
 The cationic surfactants were randomly mixed among the phospholipids to form bilayer structures with mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer. All these systems contained 50 POPC molecules per leaflet, 6340 water molecules, and 6, 14, 21, 35, or 50 surfactants per leaflet.  Chloride counter ions were used in all the simulations, while bromide was the counter ion in the experiment~\cite{scherer89}. For POPC, either Lipid14 with TIP3P~\cite{jorgensen83} or ECC-POPC with SPC/E~\cite{Berendsen1987} parameters  were used. The first 20~ns of the total simulation time of 200~ns was considered as an equilibration period and was thus omitted from the analysis. We checked that a sufficient lipid  exchange occurred during the simulations.
-The simulated trajectories and parameters files are available at Ref.~\citenum{ECC-POPC_cationic-surf_files} 
+For deposited trajectories and parameter files of scaled and unscaled simulations see
+Refs.~\citenum{ECC-POPC_cationic-surf_files} and~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCATsurfT313K,POPClipid1430perCATsurfT313K,POPClipid1442perCATsurfT313K,POPClipid1450perCATsurfT313K}, respectively.
 \todo{To be uploaded to Zenodo, references are only placeholders. }.
-The trajectories and simulation files for unscaled systems are available at
-Refs.~\citenum{POPClipid14T313K,POPClipid1410perCATsurfT313K,POPClipid1420perCATsurfT313K,POPClipid1430perCATsurfT313K,POPClipid1442perCATsurfT313K,POPClipid1450perCATsurfT313K}.
+
 
 \section{Results and Discussion}
 
@@ -603,11 +603,11 @@ We analyzed the ratio of the number of calcium cations bound to either phosphate
     Transparent structures are shown to depict the variability of choline configurations 
     (colour warps from red to blue along the simulation time). 
     The number density was evaluated for each lipid, 
-    after its strucutral alignment using only phosphate group.
+    after its structural alignment using only phosphate group.
     MDAnalysis \cite{mdanalysis2011} library was used for 
     the calculations of the structural alignment and the spatial number density. 
     VMD \cite{hump96} was used for visualisation. 
-    Carbon atoms are cyan, hydrogen atoms white, oxygen atoms red, nitrogen blue.
+    Carbon atoms are depicted in cyan, hydrogen atoms in white, oxygen atoms in red, nitrogen in blue.
   }
  %\todo{The figure should be updated as discussed last week. Joe: Will only smoothen the isosurfaces now. }
 \end{figure}
