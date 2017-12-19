@@ -1,0 +1,20 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Topology of ions for gromacs using ;
+; sigma (nm) and epsilon (kJ/mol)    ;
+; Author: Hector martinez-Seara      ;
+; v.2.1                              ;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[ atomtypes ]
+;name  at.num    mass      charge   ptype   sigma     epsilon
+  Na_d  11      22.98980    1.00      A     0.2350    0.5439   ; DOI: 10.1063/1.466363  ; Dang1994
+  Na_s  11      22.98980    0.750     A     0.2115    0.544284 ; DOI: 10.1021/acs.jpcb.5b05221 ; Jungwirth2015 ; scaled
+  Cl_d  17      35.45300   -1.00      A     0.4400    0.4184   ; DOI: 10.1063/1.466363  ; Dang1994 ; (Default amber)
+  Cl_2d 17      35.45300   -1.00      A     0.43387   0.4184   ; DOI: 10.1021/jp064661f ; Dang2006
+  Cl_s  17      35.45300   -0.750     A     0.3784    0.4184   ; DOI: 10.1021/jp5005693 ; Jungwirth2014a ; scaled
+  Cl_2s 17      35.45300   -0.750     A     0.4100    0.4928   ; DOI: 10.1080/00268976.2013.875231 ; Jungwirth2014b ; scaled
+  K_d   19      39.0983     1.00      A     0.3047    0.4184   ; DOI: 10.1021/jp064661f ; Dang2006
+  K_s   19      39.0983     0.750     A     0.3154    0.41868  ; DOI: 10.1021/jp3008267 ; Mason2012
+  Ca_d  20      40.078      2.00      A     0.29132   0.4184   ; DOI: 10.1021/jp064661f ; Dang2006
+  Ca_s  20      40.078      1.500     A     0.2538    0.50725  ; DOI: 10.1021/jp5005693 ; Jungwirth2014 ; scaled ; ECCR
+  Ca_2s 20      40.078      1.500     A     0.266448  0.50725  ; DOI: unpublished ; Jungwirth2016 ; scaled ; ECCR+5% sigma ; (preferred parameters) 
