@@ -45,7 +45,7 @@ Prague 6, Czech Republic}
 \renewcommand{\thesection}{S\arabic{section}}%
 \renewcommand{\thepage}{S\arabic{page}}%
 
-\title{Supporting Information:\\ Accurate Binding of Sodium and Calcium to a POPC Bilayer by Effective Inclusion of Electronic Polarization}
+\title{Supporting Information:\\Accurate binding of sodium and calcium to phospholipid bilayers by effective inclusion of electronic polarization}
 
 \begin{document}
 
@@ -288,44 +288,7 @@ In conclusion, the results suggest that the almost equal probabilities for
   }
 \end{figure}
 
-\newpage
-\section{Electrostatic potential of lipid bilayer}
-\begin{figure}[!h]
-  \centering
-  \includegraphics[width=16.0cm]{../Fig/potential.eps}
-  \caption{\label{potential}
-    Electrostatic potential calculated by evaluating the double integral of the charge density
-    using {\it gmx density} tool from Gromacs package \cite{gromacsMANUAL}.
-    Comparing the Lipid14 and ECC-POPC simulations with TIP3P water model
-    reveals that applying ECC to the headgroup and glycerol backbone charges slightly decreases
-    the dipole potential inside the bilayer. On the other hand, ECC-POPC simulation
-    with SPC/E water model has larger dipole pontential than with TIP3P.
-    The stronger dependence of water model is expected as the dipole potential
-    mainly originates from orientation of water molecules \cite{gawrisch92}.
-  }
-\end{figure}
 
-\newpage
-\section{Binding of potassium to ECC-POPC lipid bilayer}
-\begin{figure}[!h]
-  \centering
-  \includegraphics[width=13.0cm]{../Fig/density_profiles_KCl-water.eps}
-  \caption{\label{Kdens}
-    Number density profiles of K$^+$, Cl$^-$ and water along membrane normal
-    axis from ECC-POPC simulation with KCl ($C_{ion}'$=1000mM).
-    Parameters for ions are taken from Ref. \citenum{mason12}.
-    In consistent with figure 5 in the main text, the density profiles of ions and water
-    are divided with 2 and 200, respectively. Similarity of potassium
-    and chloride curves together with the bulk concentrations indicate lower binding 
-    affinity for potassium than for sodium (Fig. 5 in the main text).
-    Since this is in line with wide range of experimental data \cite{eisenberg79,binder02,klasczyk10}, we conclude
-    that the ECC-POPC model reproduces the correct binding affinity also for potassium.
-    In line with low binding affinity, the headgroup order parameters were not
-    affected by the presense of KCl in simulations. The order parameter 
-    data is not shown because we are not aware of experimental data for PC headgroup
-    order parameters as a function of KCl concentration.
-  }
-\end{figure}
 
 \newpage
 \bibliography{refs.bib}
