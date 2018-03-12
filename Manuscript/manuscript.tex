@@ -63,6 +63,7 @@
 
 \author{Josef Melcr}
 \author{Hector Martinez-Seara}
+\author{Ricky Nencini}
 \affiliation{Institute of Organic Chemistry and Biochemistry,
 Academy of Sciences of the Czech Republic, 
 Prague 6, Czech Republic}
@@ -138,22 +139,31 @@ Prague 6, Czech Republic}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{tocentry}
 
-Some journals require a graphical entry for the Table of Contents.
-This should be laid out ``print ready'' so that the sizing of the
-text is correct.
+%Some journals require a graphical entry for the Table of Contents.
+%This should be laid out ``print ready'' so that the sizing of the
+%text is correct.
 
-Inside the \texttt{tocentry} environment, the font used is Helvetica
-8\,pt, as required by \emph{Journal of the American Chemical
-Society}.
+%Inside the \texttt{tocentry} environment, the font used is Helvetica
+%8\,pt, as required by \emph{Journal of the American Chemical
+%Society}.
 
-The surrounding frame is 9\,cm by 3.5\,cm, which is the maximum
-permitted for  \emph{Journal of the American Chemical Society}
-graphical table of content entries. The box will not resize if the
-content is too big: instead it will overflow the edge of the box.
+%The surrounding frame is 9\,cm by 3.5\,cm, which is the maximum
+%permitted for  \emph{Journal of the American Chemical Society}
+%graphical table of content entries. The box will not resize if the
+%content is too big: instead it will overflow the edge of the box.
 
-This box and the associated title will always be printed on a
-separate page at the end of the document.
+%This box and the associated title will always be printed on a
+%separate page at the end of the document.
 
+%\begin{figure}[tb!]
+%  \centering
+  \includegraphics[width=9.0cm]{../Fig/toc_figure.pdf}
+%  \caption{\label{tocFIG}
+%    The changes of head group order parameters and P-N vector orientation as a function of
+%    a molar fraction of the cationic surfactant dihexadecyldimethylammonium in a POPC bilayer
+%    from simulations and experiments \cite{scherer89} at 313 K.
+%  }
+%\end{figure}
 \end{tocentry}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -262,7 +272,8 @@ to the Lipid14 model of POPC by scaling
 partial charges of the head group, glycerol 
 backbone, and carbonyl regions. 
 These are the polar parts of phospholipids which can 
-contribute to the cation binding. 
+contribute to the cation binding.
+The similar approach is applied  also to the CHARMM36 model of POPC~\cite{klauda10} in SI.
 
 To reproduce the experimental ion binding affinities,
 we scanned possible values of the scaling factor from the interval $f_q~\in~(0.75, 1.0)$.
@@ -542,9 +553,9 @@ Finally, the ion binding affinities for the ECC-POPC model with different water 
 \label{sec:affinity}
 
 \begin{table}[tb!]
-  \caption{Bulk concentrations of Ca$^{2+}$ (C$_b$), relative surface excess of calcium with respect to water ($\Gamma_{Ca}^{\rm water}$),
+  \caption{Bulk concentrations of Ca$^{2+}$ ($C_{ion}$), relative surface excess of calcium with respect to water ($\Gamma_{Ca}^{\rm water}$),
     and the percetages of Ca$^{2+}$ bound to phosphate or carbonyl oxyges ($r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ and $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}}$)
-    in different POPC bilayer models. All systems have the same molar concentration of Ca$^{2+}$ with respect to water ($C_{ion}'$=350mM).
+    in different POPC bilayer models. All systems have the same molar concentration of Ca$^{2+}$ with respect to water ($C_{ion}'$=350 mM).
   \label{tab:binding}}
   \begin{tabular}{l|c c | c | c c}
     model                  & $C_{ion}'$ & $C_{ion}\,/\,\mathrm{mM}$ & $\Gamma_{Ca}^{\rm water} \,/\, \mathrm{nm}^{-2}$  & $r^\mathrm{Ca^{2+}} _\mathrm{PO_4} $ & $r^\mathrm{Ca^{2+}} _\mathrm{O_{carb.}} $ \\
@@ -658,12 +669,13 @@ In summary, the results from the ECC-POPC model suggest that the exchange of cal
 
 \section{Conclusions}
 
-In this study, we employed the electrometer concept to demonstrate that the binding of \ce{Na^+} and \ce{Ca^2+} ions to a POPC lipid bilayer can be accurately described within a force field MD simulation, provided that electronic polarization is implicitly included via the electronic continuum correction~\cite{leontyev11}. This ECC-POPC model is built upon the Lipid14 POPC model~\cite{dickson14} by scaling the partial charges by a factor of 0.8 and reducing the Lennard-Jones radii by a factor of 0.89 for the headgroup, glycerol backbone, and carbonyl atoms. While the structural details of a POPC lipid bilayer in pure water simulated with the newly developed ECC-POPC model agree with experiments with an accuracy comparable to the other state of the art lipid models, the new model in addition reproduces the experimental lipid head group order parameter responses to a cationic surfactant, NaCl, and CaCl$_2$ at varying concentrations. It thus represents a significant improvement over currently available lipid models, which tend to overestimate cation binding affinities~\cite{catte16}. 
+In this study, we employed the electrometer concept to demonstrate that the binding of \ce{Na^+} and \ce{Ca^2+} ions to a POPC lipid bilayer can be accurately described within a force field MD simulation, provided that electronic polarization is implicitly included via the electronic continuum correction~\cite{leontyev11}. This ECC-POPC model is built upon the Lipid14 POPC model~\cite{dickson14} by scaling the partial charges by a factor of 0.8 and reducing the Lennard-Jones radii by a factor of 0.89 for the headgroup, glycerol backbone, and carbonyl atoms. While the structural details of a POPC lipid bilayer in pure water simulated with the newly developed ECC-POPC model agree with experiments with an accuracy comparable to the other state of the art lipid models, the new model in addition reproduces the experimental lipid head group order parameter responses to a cationic surfactant, NaCl, and CaCl$_2$ at varying concentrations. It thus represents a significant improvement over currently available lipid models, which tend to overestimate cation binding affinities~\cite{catte16}.
+Similar improvement is demonstrated for the POPC model of CHARMM36 \cite{klauda10} in SI.
 
 The good agreement with experiments enables us to interpret NMR experiments with atomistic details using MD simulations with the ECC-POPC model. In line with previous interpretations of the experimental data \cite{hauser76,hauser78,herbette84,binder02}, Ca$^{2+}$ ions interact mainly with phosphate oxygens, with interactions to the carbonyls being of a secondary importance. However, the stoichiometry of calcium binding is significantly more complicated than the simple ternary complex model, used to interpret NMR data previously, within which one calcium binds to two POPC molecules~\cite{altenbach84}. While complexes with one calcium ion bound to two lipids are the most probable also in the ECC-POPC model, complexes of one or three lipids per one calcium were observed to be relatively abundant and also almost equally likely to occur. While the success of the simple ternary complex model in fitting NMR data is understandable based on the simulation results, it cannot capture the detailed nature of calcium binding to phospholipid bilayers observed in the present simulation.
 
 Accurate description of cation binding to POPC bilayer paves the way for simulations of complex biochemical systems at cellular membranes with realistically described electrostatic interactions, including a mean-field account for electronic polarization effects. To this end, the compatibility of the ECC-POPC model with existing models for proteins and other biological molecules needs to be verified and, if necessary, further adjustments following the ECC concept to the force fields of the biomolecules interacting with the lipids should be made.
-Also the applicability of the ECC concept to other than POPC lipid bilayers remains to be shown in future studies.
+In future studies, the ECC concept will be applied also to bilayers composed of other lipids than POPC.
 
 
 This work can be reached as a repository containing all data and scripts for analysis at Ref. \citenum{github}.
