@@ -134,6 +134,74 @@ OpenMM simulations were run with 4~fs time step using 4 times heavier hydrogen a
   }
 \end{figure}
 
+\newpage
+\section{Electronic continuum correction applied to CHARMM36 model}
+In order to demonstrate that ECC can be applied also to other than Lipid14 model,
+we scaled the charges and Lennard-Jones radii of headgroup, glycerol backbone and
+carbonyl atoms of the CHARMM36 model of POPC~\cite{klauda10}. We used the
+scaling factors optimized for Lipid14 in the main text, i.e., 0.8 for charges and 0.89 for Lennard-Jones
+radius. Changes of the headgroup order parameters as a function of added ions
+and number density profiles along membrane normal from the ECC-CHARMM model are shown 
+in Figs. \ref{scaledCHARMM} and \ref{scaledCHARMMdensity}, respectively,
+together with the results from CHARMM36 simulations \cite{catte16,charmmPOPC450mMCaClfiles}
+and experiments \cite{akutsu81,altenbach84}. As shown previously \cite{catte16},
+the binding of Ca$^{2+}$ is significantly overestimated in CHARMM36 simulations.
+In ECC-CHARMM simulations, the Ca$^{2+}$ binding affinity 
+is significantly reduced (Fig. \ref{scaledCHARMMdensity}) and the headgroup order parameter response to the added CaCl$_2$
+ is in better agreement with experiments (Fig. \ref{scaledCHARMM}).
+In line with the results in main text,
+Fig. \ref{scaledCHARMMcontacts} also shows faster equilibration time
+for Ca$^{2+}$ binding in ECC-CHARMM model than in the original CHARMM36.
+
+In conclusion, applying ECC to CHARMM36 simulation
+improved the ion binding affinity to a lipid bilayer, even thought the
+scaling factors optimized for Lipid14 were used. Also the area per molecule in
+ECC-CHARMM simulation without ions (61 $\AA^2$) is only slightly
+lower than the experimental value (64.3 $\AA^2$). 
+The optimal scaling factors for CHARMM36 are expected to be different
+than for Lipid14 because the initial partial charges are not the same
+in different models. Our results indicate that the performance of ion
+binding in CHARMM36, and probably in other lipid models as well, could
+be further improved by finding the optimal scaling factors for the partial
+charges and Lennard-Jones radii.
+
+
+\newpage
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=16.0cm]{../Fig/OP.pdf}
+  \caption{\label{scaledCHARMM}
+    Changes of the headgroup order parameters as a function of NaCl (left) and CaCl$_2$ (right)
+    from simulations with CHARMM36 \cite{klauda10}, simulations with ECC-CHARMM parameters and experiments \cite{akutsu81,altenbach84}. 
+    CHARMM36 force field parameters for simulations with and without NaCl were taken from CHARMM-GUI \cite{lee15}.
+    These were ran 320 ns and 280 ns, respectively, and the first 100 ns was omitted from the analysis.
+    Results for CHARMM36 with CaCl$_2$ were calculated from the last 100 ns from the data available at Ref.~\citenum{charmmPOPC450mMCaClfiles}.
+    ECC-CHARMM simulations with NaCl and CaCl$_2$ were ran 260 ns and 600 ns, respectively, and the first 100 ns were omitted from the analysis.
+    Sodium, calcium, and chloride ions were modeled as ECC-ions in these simulations with parameters from Refs. \citenum{martinek17, Pluharova2014}.
+    All the other simulation parameters in simulations in this figure were equal to the available dataset at Ref.~\citenum{charmmPOPC450mMCaClfiles}.
+    The temperature in all simulations was set to 310 K.
+  }
+\end{figure}
+
+\newpage
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=10.0cm]{../Fig/density2.pdf}
+  \caption{\label{scaledCHARMMdensity}
+    Number density profiles along membrane normal from CHARMM36 \cite{klauda10} and ECC-CHARMM models with NaCl and CaCl$_2$.
+    The values for the relative surface excess are also shown.
+  }
+\end{figure}
+
+\newpage
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=16.0cm]{../Fig/contacts_ca.pdf}
+  \caption{\label{scaledCHARMMcontacts}
+    Number of bound Ca$^{2+}$ during simulations.
+  }
+\end{figure}
 
 \newpage
 \section{Sodium binding to POPC with the glycerol carbon $g_3$ order parameters and the head group orientation}
@@ -154,7 +222,7 @@ OpenMM simulations were run with 4~fs time step using 4 times heavier hydrogen a
   }
 \end{figure}
 
-
+\newpage
 \section{Ternary complex model in simulations}
 The NMR data about PC headgroup order parameters
 and atomic absorption spectroscopy data were previously
