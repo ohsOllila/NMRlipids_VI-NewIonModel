@@ -136,44 +136,45 @@ OpenMM simulations were run with 4~fs time step using 4 times heavier hydrogen a
 
 \newpage
 \section{Electronic continuum correction applied to CHARMM36 model}
-In order to demonstrate that the ECC method can be applied also to other models than Lipid14,
+To demonstrate that the ECC method can also be applied to other models than Lipid14,
 we scaled the charges and Lennard-Jones radii of headgroup, glycerol backbone and
 carbonyl atoms of the CHARMM36 model of POPC~\cite{klauda10}. We used the
-scaling factors optimized for Lipid14 in the main text, i.e., 0.8 for charges and 0.89 for Lennard-Jones
-radii. Changes of the headgroup order parameters as functions of added ions
-and number density profiles along membrane normal from the ECC-CHARMM model are shown 
-in Figs. \ref{scaledCHARMM} and \ref{scaledCHARMMdensity}, respectively,
-together with the results from CHARMM36 simulations \cite{catte16,charmmPOPC450mMCaClfiles}
+same scaling factors optimized for Lipid14 in the main text, i.e., 0.8 for charges and 0.89 for Lennard-Jones
+radii. In Figs. \ref{scaledCHARMM} and \ref{scaledCHARMMdensity} we show
+changes of the headgroup order parameters as functions of added ions
+and number density profiles along membrane normal for our ECC-CHARMM model,
+together with the CHARMM36 model \cite{catte16,charmmPOPC450mMCaClfiles}
 and experiments \cite{akutsu81,altenbach84}. As shown previously \cite{catte16},
-the binding of Ca$^{2+}$ is significantly overestimated in CHARMM36 simulations.
+the binding of Ca$^{2+}$ is significantly overestimated in CHARMM36 simulations
+where no explicit repulsive Ca$^{2+}$--oxygen Lennard-Jones parameters are included.
 In ECC-CHARMM simulations, the Ca$^{2+}$ binding affinity 
-is significantly reduced (Fig. \ref{scaledCHARMMdensity}) and the headgroup order parameter response to the added CaCl$_2$
-is in a better agreement with experiments than for the original CHARMM model (Fig. \ref{scaledCHARMM}).
-In line with the results in main text,
+is reduced substantially (Fig. \ref{scaledCHARMMdensity}), and the headgroup order parameter response to the added CaCl$_2$
+is in a better agreement with experiments than for the original CHARMM36 model (Fig. \ref{scaledCHARMM}).
 Fig. \ref{scaledCHARMMcontacts} also shows faster equilibration times
 for Ca$^{2+}$ binding in the ECC-CHARMM model than in the original CHARMM36.
+Both results are in line with the findings described in the main text.
+
 
 In conclusion, applying ECC to CHARMM36 simulation
-improved the ion binding affinity to a lipid bilayer, even thought the
-scaling factors optimized for Lipid14 were used. Also the area per molecule in
+improved the ion binding affinity to a lipid bilayer, despite we
+directly applied the scaling factors optimized for Lipid14 without further optimizations. Also, the area per molecule in
 the ECC-CHARMM simulation without ions (61 $\AA^2$) is only slightly
 lower than the experimental value (64.3 $\AA^2$) \cite{kucerka11}. 
 The optimal scaling factors for CHARMM36 are expected to be somewhat different
 than for Lipid14 because the initial partial charges are not the same
 in different models. Our results indicate that the performance of ion
 binding in ECC-CHARMM36, and probably in other lipid models as well, could
-be further improved by finding the optimal scaling factors for the partial
+be further improved by finding the optimal values for the partial
 charges and Lennard-Jones radii.
 
-It should be noted that the calcium binding to POPC bilayer within the ECC-CHARMM model
-is compared here to the CHARMM36 simulation, which was originally done in a 
-previous study \cite{catte16,charmmPOPC450mMCaClfiles}.
-After the latter simulation has been performed, specific interaction parameters
-between calcium and oxygen \cite{kim16} have been introduced in CHARMM-gui
-to reduce the binding of calcium to lipid bilayers. These parameters
-reduce the calcium binding to a POPC bilayer to the same level as that of sodium (data not shown).
-Further analyses of ion binding with different parameters (including the newly modified CHARMM) are in progress
-within the NMRlipids IV project (\url{nmrlipids.blogspot.fi}), being beyond the scope of this work. 
+It should be noted that the CHARMM36 simulation used here uses the original paramter
+as in our previous study \cite{catte16,charmmPOPC450mMCaClfiles}.
+Currently (February 2018), specific interaction parameters
+between calcium and oxygen \cite{kim16} have been introduced in CHARMM-GUI
+to reduce the binding of calcium to lipid bilayers. The impact of this changes that
+dramatically reduce the calcium binding to levels similar to sodium is beyond the
+scope of this work.
+
 
 %\newpage
 

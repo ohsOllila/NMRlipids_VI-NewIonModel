@@ -397,9 +397,9 @@ The topology of the dihexadecyldimethylammonium cation was created with the auto
 The AmberTools program~\cite{amber} was used to generate the Amber-type force field parameters. These parameters were
 then converted to the Gromacs format with the acpype tool \cite{acpype}. The partial charges were manually modified in
 the non-scaled version to approximately match similar segments in Lipid14 \cite{dickson14}.
-For simulations of cations mixed with ECC-POPC, the ECC version of cation force field was made
-by scaling the head group parameters with the same scaling factors that were
-used for ECC-POPC, i.e., $f_q=0.8$ for charges and 0.89 for $\sigma$.
+For simulations of cationic surfactant mixed with ECC-POPC, the ECC version of the cationic surgactnat force field was made
+by scaling the partial charges and Lennard-Jones parameters of the head group parameters with the same scaling factors as in
+ECC-POPC, i.e., $f_q=0.8$ for charges and 0.89 for $\sigma$.
 
 The cationic surfactants were randomly mixed among the phospholipids to form bilayer structures with mole fractions of 10\%, 20\%, 30\%, 42\%, or 50\% of surfactant in the POPC bilayer. All these systems contained 50 POPC molecules per leaflet, 6340 water molecules, and 6, 14, 21, 35, or 50 surfactants per leaflet.  Chloride counter ions were used in all the simulations, while bromide was the counter ion in the experiment~\cite{scherer89}. For POPC, either Lipid14 with TIP3P~\cite{jorgensen83} or ECC-POPC with SPC/E~\cite{Berendsen1987} parameters  were used. The first 20~ns of the total simulation time of 200~ns was considered as an equilibration period and was thus omitted from the analysis. We checked that a sufficient lipid  exchange occurred during the simulations.
 For deposited trajectories and parameter files of scaled and unscaled simulations see
