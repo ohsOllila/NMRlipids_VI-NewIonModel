@@ -142,27 +142,27 @@ carbonyl atoms of the CHARMM36 model of POPC~\cite{klauda10}. We used the
 same scaling factors optimized for Lipid14 in the main text, i.e., 0.8 for charges and 0.89 for Lennard-Jones
 radii. In Figs. \ref{scaledCHARMM} and \ref{scaledCHARMMdensity} we show
 changes of the headgroup order parameters as functions of added ions
-and number density profiles along membrane normal for our ECC-CHARMM model,
+and number density profiles along membrane normal for our ECC-CHARMM36 model,
 together with the CHARMM36 model \cite{catte16,charmmPOPC450mMCaClfiles}
 and experiments \cite{akutsu81,altenbach84}. As shown previously \cite{catte16},
 the binding of Ca$^{2+}$ is significantly overestimated in CHARMM36 simulations
 where no explicit repulsive Ca$^{2+}$--oxygen Lennard-Jones parameters are included.
-In ECC-CHARMM simulations, the Ca$^{2+}$ binding affinity 
+In ECC-CHARMM36 simulations, the Ca$^{2+}$ binding affinity 
 is reduced substantially (Fig. \ref{scaledCHARMMdensity}), and the headgroup order parameter response to the added CaCl$_2$
 is in a better agreement with experiments than for the original CHARMM36 model (Fig. \ref{scaledCHARMM}).
 Fig. \ref{scaledCHARMMcontacts} also shows faster equilibration times
-for Ca$^{2+}$ binding in the ECC-CHARMM model than in the original CHARMM36.
+for Ca$^{2+}$ binding in the ECC-CHARMM36 model than in the original CHARMM36.
 Both results are in line with the findings described in the main text.
 
 
 In conclusion, applying ECC to CHARMM36 simulation
 improved the ion binding affinity to a lipid bilayer, despite we
 directly applied the scaling factors optimized for Lipid14 without further optimizations. Also, the area per molecule in
-the ECC-CHARMM simulation without ions (61 $\AA^2$) is only slightly
+the ECC-CHARMM36 simulation without ions (61 $\AA^2$) is only slightly
 lower than the experimental value (64.3 $\AA^2$) \cite{kucerka11}. 
 The optimal scaling factors for CHARMM36 are expected to be somewhat different
 than for Lipid14 because the initial partial charges are not the same
-in different models. Our results indicate that the performance of ion
+in the two models. Our results indicate that the performance of ion
 binding in ECC-CHARMM36, and probably in other lipid models as well, could
 be further improved by finding the optimal values for the partial
 charges and Lennard-Jones radii.
@@ -170,9 +170,9 @@ charges and Lennard-Jones radii.
 It should be noted that the CHARMM36 simulation used here uses the original paramter
 as in our previous study \cite{catte16,charmmPOPC450mMCaClfiles}.
 Currently (February 2018), specific interaction parameters
-between calcium and oxygen \cite{kim16} have been introduced in CHARMM-GUI
-to reduce the binding of calcium to lipid bilayers. The impact of this changes that
-dramatically reduce the calcium binding to levels similar to sodium is beyond the
+between calcium and oxygen \cite{kim16} have been introduced in CHARMM-GUI \cite{lee15}
+to reduce the binding of calcium to lipid bilayers. The further discussion of these
+changes that dramatically reduce the calcium binding to levels similar to sodium is beyond the
 scope of this work.
 
 
@@ -183,11 +183,11 @@ scope of this work.
   \includegraphics[width=16.0cm]{../Fig/OP.pdf}
   \caption{\label{scaledCHARMM}
     Changes of the headgroup order parameters as a function of NaCl (left) and CaCl$_2$ (right)
-    from simulations with CHARMM36 \cite{klauda10}, simulations with ECC-CHARMM parameters and experiments \cite{akutsu81,altenbach84}. 
-    CHARMM36 force field parameters for simulations with and without NaCl were taken from CHARMM-gui \cite{lee15}.
+    from simulations with CHARMM36 \cite{klauda10}, simulations with ECC-CHARMM36 parameters and experiments \cite{akutsu81,altenbach84}. 
+    CHARMM36 force field parameters for simulations with and without NaCl were taken from CHARMM-GUI \cite{lee15}.
     These were ran 320 ns and 280 ns, respectively, and the first 100 ns was omitted from the analysis.
     Results for CHARMM36 with CaCl$_2$ were calculated from the last 100 ns from the data available at Ref.~\citenum{charmmPOPC450mMCaClfiles}.
-    ECC-CHARMM simulations with NaCl and CaCl$_2$ were ran 260 ns and 600 ns, respectively, and the first 100 ns were omitted from the analysis.
+    ECC-CHARMM36 simulations with NaCl and CaCl$_2$ were ran 260 ns and 600 ns, respectively, and the first 100 ns were omitted from the analysis.
     Sodium, calcium, and chloride ions were modeled as ECC-ions in these simulations with parameters from Refs. \citenum{martinek17, Pluharova2014}.
     All the other simulation parameters in simulations in this figure were equal to the available dataset at Ref.~\citenum{charmmPOPC450mMCaClfiles}.
     The temperature in all simulations was set to 310 K.
@@ -200,7 +200,7 @@ scope of this work.
   \centering
   \includegraphics[width=10.0cm]{../Fig/density2.pdf}
   \caption{\label{scaledCHARMMdensity}
-    Number density profiles along membrane normal from CHARMM36 \cite{klauda10} and ECC-CHARMM models with NaCl and CaCl$_2$.
+    Number density profiles along membrane normal from CHARMM36 \cite{klauda10} and ECC-CHARMM36 models with NaCl and CaCl$_2$.
     The values for the relative surface excess are also shown.
   }
 \end{figure}
